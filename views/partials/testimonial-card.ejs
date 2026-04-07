@@ -1,0 +1,21 @@
+<div class="testimonial-card">
+  <div class="testimonial-card-inner">
+    <div class="testimonial-stars stars">★★★★★</div>
+    <span class="testimonial-quote-mark">&ldquo;</span>
+    <p class="testimonial-text"><%= testimonial.quote %></p>
+    <div class="testimonial-author">
+      <img
+        class="testimonial-avatar"
+        src="<%= testimonial.photo %>"
+        alt="<%= testimonial.name %>"
+        loading="lazy"
+        onerror="this.src='/images/lion.png'"
+      >
+      <div>
+        <div class="testimonial-author-name"><%= testimonial.name %></div>
+        <div class="testimonial-author-country"><%= testimonial.flag %> <%= testimonial.country %></div>
+        <div class="testimonial-tour"><%= testimonial.tour %></div>
+      </div>
+    </div>
+  </div>
+</div>

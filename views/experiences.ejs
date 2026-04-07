@@ -1,0 +1,60 @@
+<%
+const experiences = [
+  { id: 'gorilla-trekking', icon: 'fa-paw', title: 'Gorilla Trekking', subtitle: 'Bwindi Impenetrable Forest & Mgahinga', desc1: 'Trek into the misty forests of Bwindi or Mgahinga to spend one magical hour face-to-face with mountain gorilla families in the wild.', desc2: 'Our expert guides have decades of experience. Permits are limited — book early to secure your spot.', image: '/images/gorilla.png', highlights: ['Habituated gorilla families', '1 hour with the gorillas', 'Expert UWA certified guides', 'UNESCO World Heritage Forest', 'Gorilla tracking certificate'], link: '/tours?category=Gorilla+Trekking' },
+  { id: 'wildlife-safari', icon: 'fa-hippo', title: 'Wildlife Safari', subtitle: 'Queen Elizabeth NP, Murchison Falls & Lake Mburo', desc1: 'Game drives across Uganda\'s savannah parks: Queen Elizabeth, Murchison Falls, Lake Mburo — lions, elephants, hippos, giraffes and over 600 bird species.', desc2: 'The Kazinga Channel boat cruise offers one of Africa\'s most spectacular wildlife viewing experiences — with exceptional hippo, crocodile and waterbird density.', image: '/images/lion.png', highlights: ['Big Five game drives', 'Kazinga Channel cruise', 'Tree-climbing lions of Ishasha', '600+ bird species', 'Nile River boat trips'], link: '/tours?category=Wildlife+Safari' },
+  { id: 'mountain-climbing', icon: 'fa-mountain', title: 'Mountain Adventures', subtitle: 'Kilimanjaro, Rwenzori Mountains & Mount Kenya', desc1: 'Conquer Kilimanjaro, the Rwenzori Mountains of the Moon, or Mount Kenya — guided by our certified high-altitude experts.', desc2: 'Our certified mountaineering guides have led hundreds of successful summits with strong safety protocols throughout every ascent.', image: '/images/safari.png', highlights: ['Mount Kilimanjaro 5,895m', 'Rwenzori Margherita Peak 5,109m', 'Mount Kenya 5,199m', 'Certified guides & porters', 'Full logistics included'], link: '/tours?category=Mountain+Climbing' },
+  { id: 'cultural-tours', icon: 'fa-masks-theater', title: 'Cultural Tours', subtitle: 'Buganda, Ankole, Karamoja & Batwa Communities', desc1: 'Immerse in the kingdoms, traditions, and communities of Uganda — from Buganda to Karamoja, Ankole to Batwa.', desc2: 'Our cultural tours prioritise authentic, respectful engagement with local communities including traditional meals, storytelling and visits to royal palaces.', image: '/images/safari.png', highlights: ['Batwa forest community', 'Ankole long-horned cattle', 'Bunyoro royal palace', 'Traditional music & dance', 'Fort Portal crater lakes'], link: '/tours?category=Cultural+Tour' },
+  { id: 'birding', icon: 'fa-dove', title: 'Birding Safaris', subtitle: '1,000+ Species — Shoebill & Albertine Rift Endemics', desc1: 'Uganda is a birder\'s paradise with 1,000+ species. Spot the elusive shoebill, African green broadbill, and rare Albertine Rift endemics.', desc2: 'Our specialist birding guides take you to Mabamba swamp, Kibale Forest, and Bwindi for the finest birding Uganda offers.', image: '/images/safari.png', highlights: ['1,000+ bird species', 'Shoebill stork specialist trips', 'Mabamba swamp birding', 'Albertine Rift endemics', 'Expert naturalist guides'], link: '/tours' },
+  { id: 'honeymoon', icon: 'fa-heart', title: 'Honeymoon Safaris', subtitle: 'Romantic Escapes Across East Africa', desc1: 'Sundowners on the savannah, candlelit dinners at forest lodges, private boat cruises, and gorilla trekking side by side.', desc2: 'We craft tailor-made romantic itineraries combining wildlife adventure with luxurious lodge stays and exclusive private experiences.', image: '/images/gorilla.png', highlights: ['Private gorilla permits', 'Luxury lodge stays', 'Sundowner experiences', 'Private boat cruises', 'Surprise candlelit dinners'], link: '/contact' }
+];
+%>
+
+<section class="page-hero" style="min-height:380px;">
+  <div class="page-hero-bg" style="background-image:url('/images/gorilla.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Experiences</span></nav>
+    <h1 style="color:#fff;">Safari Experiences</h1>
+    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime</p>
+  </div>
+</section>
+
+<% experiences.forEach((exp, i) => { %>
+<section class="experience-section" id="<%= exp.id %>" style="background:<%= i % 2 === 0 ? 'var(--surface)' : 'var(--surface-alt)' %>; padding:80px 0; border-bottom:1px solid var(--border-light);">
+  <div class="container">
+    <div class="grid-2" style="gap:60px;">
+      <div class="<%= i % 2 === 0 ? 'reveal-left' : 'reveal-right' %>" style="<%= i % 2 !== 0 ? 'order:2;' : '' %>">
+        <div class="section-label"><i class="fa-solid <%= exp.icon %>"></i> <%= exp.title %></div>
+        <h2 style="color:var(--dark); margin-bottom:8px;"><%= exp.title %></h2>
+        <p style="color:var(--primary); font-weight:600; font-size:0.88rem; margin-bottom:20px;"><%= exp.subtitle %></p>
+        <p style="color:var(--text-muted); line-height:1.8; margin-bottom:16px;"><%= exp.desc1 %></p>
+        <p style="color:var(--text-muted); line-height:1.8; margin-bottom:28px;"><%= exp.desc2 %></p>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:32px;">
+          <% exp.highlights.forEach(h => { %>
+          <div style="display:flex; align-items:center; gap:10px; font-size:0.9rem;">
+            <i class="fa-solid fa-circle-check" style="color:var(--primary); flex-shrink:0;"></i> <%= h %>
+          </div>
+          <% }) %>
+        </div>
+        <a href="<%= exp.link %>" class="btn btn-green">View <%= exp.title %> Tours <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="<%= i % 2 === 0 ? 'reveal-right' : 'reveal-left' %>" style="<%= i % 2 !== 0 ? 'order:1;' : '' %>">
+        <div style="border-radius:var(--radius-lg); overflow:hidden; height:380px; box-shadow:var(--shadow-lg);">
+          <img src="<%= exp.image %>" alt="<%= exp.title %>" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/lion.png'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% }) %>
+
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Find Your Perfect Experience</h2>
+    <p>Tell us what excites you most and our team will craft your dream safari — gorillas, mountains, culture, or all three.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/contact" class="btn btn-primary btn-lg">Plan My Safari <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/tours" class="btn btn-outline btn-lg">Browse All Tours</a>
+    </div>
+  </div>
+</section>

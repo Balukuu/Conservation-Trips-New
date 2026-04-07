@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah M.",
+    "country": "United Kingdom",
+    "flag": "🇬🇧",
+    "rating": 5,
+    "tour": "2 Days Gorilla Tracking – Kigali to Bwindi",
+    "quote": "The gorilla trekking experience was beyond anything I could have imagined. Our guide was incredibly knowledgeable, and the logistics were flawless. Conservation Trips and Adventures truly lives up to their 'premium' promise. I'll be back for Kilimanjaro next year!",
+    "photo": "/images/lion.png",
+    "date": "March 2025"
+  },
+  {
+    "id": 2,
+    "name": "James & Rachel T.",
+    "country": "United States",
+    "flag": "🇺🇸",
+    "rating": 5,
+    "tour": "5 Days Gorilla Trekking & Lake Bunyonyi",
+    "quote": "Absolutely magical 5 days. From the moment we arrived at Bwindi to our last sunset on Lake Bunyonyi, everything was perfectly arranged. The gorilla trek was life-changing — we were sitting 3 metres from a silverback. Worth every penny and more.",
+    "photo": "/images/lion.png",
+    "date": "January 2025"
+  },
+  {
+    "id": 3,
+    "name": "Annika L.",
+    "country": "Germany",
+    "flag": "🇩🇪",
+    "rating": 5,
+    "tour": "3 Days Queen Elizabeth National Park Safari",
+    "quote": "Seeing the tree-climbing lions in Ishasha was a dream come true. Our guide Moses was exceptional — his knowledge of animal behaviour made every sighting so much more meaningful. The Kazinga Channel cruise was spectacular. Uganda is incredible and I will return!",
+    "photo": "/images/lion.png",
+    "date": "February 2025"
+  },
+  {
+    "id": 4,
+    "name": "David K.",
+    "country": "Australia",
+    "flag": "🇦🇺",
+    "rating": 5,
+    "tour": "7 Days Mount Kilimanjaro Climbing",
+    "quote": "I've climbed mountains on four continents and this was my most memorable summit. The Conservation Trips team had everything dialled in perfectly — guides, porters, catering. Reaching Uhuru Peak at sunrise is something I will never forget. Highly recommend!",
+    "photo": "/images/lion.png",
+    "date": "December 2024"
+  },
+  {
+    "id": 5,
+    "name": "Priya N.",
+    "country": "Canada",
+    "flag": "🇨🇦",
+    "rating": 5,
+    "tour": "2 Days Chimpanzee Tracking at Kibale",
+    "quote": "We tracked chimpanzees through Kibale Forest and it was absolutely extraordinary. The chimps were so close and so human-like in their movements. Our guide explained their behaviours in such detail. This trip changed how I see our relationship with the natural world.",
+    "photo": "/images/lion.png",
+    "date": "November 2024"
+  },
+  {
+    "id": 6,
+    "name": "Erik & Lisa H.",
+    "country": "Netherlands",
+    "flag": "🇳🇱",
+    "rating": 5,
+    "tour": "3 Days Murchison Falls Safari",
+    "quote": "Murchison Falls exceeded all our expectations. The sheer power of the Nile crashing through that gap is something you have to experience in person. The night game drive produced a leopard sighting. We couldn't believe our luck. The team was professional and caring.",
+    "photo": "/images/lion.png",
+    "date": "October 2024"
+  }
+]

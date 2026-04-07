@@ -1,0 +1,99 @@
+<!-- Article Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('<%= post.image %>');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <a href="/blog">Blog</a> <i class="fa-solid fa-angle-right"></i> <span><%= post.category %></span></nav>
+    <span class="badge badge-accent" style="margin-bottom:16px; display:inline-flex;"><%= post.category %></span>
+    <h1 style="color:#fff; max-width:700px;"><%= post.title %></h1>
+    <div style="display:flex; gap:20px; margin-top:16px; flex-wrap:wrap;">
+      <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; display:flex; align-items:center; gap:6px;"><i class="fa-regular fa-calendar"></i> <%= post.date %></span>
+      <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; display:flex; align-items:center; gap:6px;"><i class="fa-regular fa-clock"></i> <%= post.readTime %></span>
+      <span style="color:rgba(255,255,255,0.7); font-size:0.85rem; display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-pen"></i> <%= post.author %></span>
+    </div>
+  </div>
+</section>
+
+<!-- Article Content -->
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:start;">
+
+      <!-- Main Content -->
+      <article class="reveal">
+        <p class="body-lg" style="color:var(--text-muted); margin-bottom:28px; font-style:italic; border-left:4px solid var(--accent); padding-left:20px;">
+          <%= post.excerpt %>
+        </p>
+        <p style="color:var(--text); line-height:1.9; margin-bottom:20px;">
+          Planning the perfect Uganda safari requires insider knowledge. As East Africa's premier safari operator since 2008, Conservation Trips and Adventures has guided thousands of travellers through Uganda's extraordinary national parks and wilderness areas.
+        </p>
+        <p style="color:var(--text); line-height:1.9; margin-bottom:20px;">
+          Uganda — the Pearl of Africa — is home to half the world's remaining mountain gorillas, the chimpanzee capital of the world at Kibale Forest, and over 1,000 bird species. The country offers a diversity of wildlife experiences that few destinations can match.
+        </p>
+        <h2 style="color:var(--dark); font-size:1.6rem; margin:32px 0 16px;">Getting the Most from Your Safari</h2>
+        <p style="color:var(--text); line-height:1.9; margin-bottom:20px;">
+          Whether you're tracking mountain gorillas in the misty forests of Bwindi, watching tree-climbing lions in Queen Elizabeth National Park, or cruising the Nile at Murchison Falls — timing, preparation, and expert guidance make all the difference.
+        </p>
+        <p style="color:var(--text); line-height:1.9; margin-bottom:20px;">
+          Our team of certified guides and naturalists are available to answer any questions and craft your personalised itinerary. We respond to all enquiries within 24 hours and require no payment at the enquiry stage.
+        </p>
+        <div style="background:var(--surface-alt); border-radius:var(--radius-md); padding:28px; margin:32px 0; border-left:4px solid var(--primary);">
+          <h4 style="margin-bottom:10px; color:var(--dark);">🌿 Conservation Note</h4>
+          <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.7;">Every safari we organise contributes directly to Uganda's conservation efforts and local community livelihoods. Travel with us is travel that gives back.</p>
+        </div>
+        <div class="share-buttons" style="margin-top:40px;">
+          <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted); display:flex; align-items:center;">Share:</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent('https://tripsandadventures.co.ug/blog/' + post.slug) %>" target="_blank" rel="noopener" class="share-btn share-fb"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+          <a href="https://wa.me/?text=<%= encodeURIComponent(post.title + ': https://tripsandadventures.co.ug/blog/' + post.slug) %>" target="_blank" rel="noopener" class="share-btn share-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside style="position:sticky; top:calc(var(--nav-height) + 24px);">
+        <!-- CTA Card -->
+        <div style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius:var(--radius-lg); padding:32px; color:#fff; margin-bottom:24px;">
+          <h4 style="margin-bottom:12px; font-family:'Cormorant Garamond',serif; font-size:1.4rem;">Plan Your Safari</h4>
+          <p style="font-size:0.9rem; opacity:0.85; margin-bottom:20px; line-height:1.6;">Ready to experience Uganda for yourself? Our team of experts is ready to craft your perfect itinerary.</p>
+          <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center;">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/tours" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">View All Tours</a>
+          <div style="margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15);">
+            <a href="tel:+256767936590" style="color:rgba(255,255,255,0.8); font-size:0.85rem; display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-phone" style="color:var(--accent);"></i> +256 767 936 590
+            </a>
+          </div>
+        </div>
+
+        <!-- Related Articles -->
+        <% if (related && related.length > 0) { %>
+        <div>
+          <h4 style="color:var(--dark); margin-bottom:16px; font-family:'Inter',sans-serif;">Related Articles</h4>
+          <% related.forEach(r => { %>
+          <a href="/blog/<%= r.slug %>" style="display:flex; gap:12px; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border-light); text-decoration:none;">
+            <div style="width:70px; height:60px; border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0;">
+              <img src="<%= r.image %>" alt="<%= r.title %>" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.src='/images/lion.png'">
+            </div>
+            <div>
+              <p style="font-size:0.82rem; font-weight:600; color:var(--dark); line-height:1.4; margin-bottom:4px;"><%= r.title %></p>
+              <span style="font-size:0.75rem; color:var(--text-muted);"><%= r.readTime %></span>
+            </div>
+          </a>
+          <% }) %>
+        </div>
+        <% } %>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Inspired? Let's Plan Your Safari</h2>
+    <p>Our expert team is ready to craft your perfect Uganda adventure. Get in touch today — we respond within 24 hours.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/contact" class="btn btn-primary btn-lg">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/tours" class="btn btn-outline btn-lg">Browse Tours</a>
+    </div>
+  </div>
+</section>

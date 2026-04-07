@@ -1,0 +1,26 @@
+<div class="tour-card" data-category="<%= tour.category %>">
+  <div class="tour-card-img">
+    <img
+      src="<%= tour.image %>"
+      alt="<%= tour.name %>"
+      loading="lazy"
+      onerror="this.src='/images/lion.png'"
+    >
+    <div class="tour-card-img-overlay"></div>
+    <span class="duration-badge"><i class="fa-regular fa-clock"></i> <%= tour.duration %></span>
+    <span class="category-tag"><%= tour.category %></span>
+  </div>
+  <div class="tour-card-body">
+    <h3 class="tour-card-title">
+      <a href="/tours/<%= tour.slug %>"><%= tour.name %></a>
+    </h3>
+    <p class="tour-card-excerpt"><%= tour.summary %></p>
+    <div class="tour-card-price"><%= tour.price %></div>
+    <div class="tour-card-footer">
+      <a href="/tours/<%= tour.slug %>" class="tour-card-link">
+        View Itinerary <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="/tours/<%= tour.slug %>" class="btn btn-primary btn-sm">Book Now</a>
+    </div>
+  </div>
+</div>

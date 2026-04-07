@@ -1,0 +1,235 @@
+<!-- Tour Hero -->
+<section class="tour-hero">
+  <div class="tour-hero-img" style="background-image: url('<%= tour.image %>');"></div>
+  <div class="tour-hero-overlay"></div>
+  <div class="tour-hero-content container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <a href="/tours">Tours</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <span><%= tour.name %></span>
+    </nav>
+    <div class="tour-badges-row">
+      <span class="badge badge-primary"><i class="fa-regular fa-clock"></i> <%= tour.duration %></span>
+      <span class="badge badge-accent"><%= tour.category %></span>
+      <span class="badge badge-dark"><i class="fa-solid fa-tag"></i> <%= tour.price %></span>
+    </div>
+    <h1 class="tour-detail-title"><%= tour.name %></h1>
+    <a href="#enquire-form" class="btn btn-primary btn-lg">Book This Tour <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- Tour Content -->
+<section class="section" style="background: var(--surface-alt); padding-top: 48px;">
+  <div class="container">
+    <div class="tour-detail-grid">
+
+      <!-- Main Content -->
+      <div class="tour-main">
+
+        <!-- Overview -->
+        <div class="tour-detail-section reveal">
+          <h3><i class="fa-solid fa-binoculars"></i> Overview</h3>
+          <p class="body-lg" style="color: var(--text-muted); line-height: 1.8;"><%= tour.summary %></p>
+        </div>
+
+        <!-- Highlights -->
+        <% if (tour.highlights && tour.highlights.length) { %>
+        <div class="tour-detail-section reveal">
+          <h3><i class="fa-solid fa-star"></i> Tour Highlights</h3>
+          <div class="tour-highlight-grid">
+            <% tour.highlights.forEach(h => { %>
+            <div class="tour-highlight-item">
+              <i class="fa-solid fa-check-circle" style="color: var(--primary);"></i>
+              <span><%= h %></span>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Itinerary -->
+        <% if (tour.itinerary && tour.itinerary.length) { %>
+        <div class="tour-detail-section reveal">
+          <h3><i class="fa-solid fa-map-location-dot"></i> Day-by-Day Itinerary</h3>
+          <div class="accordion">
+            <% tour.itinerary.forEach((day, i) => { %>
+            <div class="accordion-item">
+              <div class="accordion-header" role="button" tabindex="0" aria-expanded="<%= i === 0 %>">
+                <span class="accordion-day">D<%= day.day %></span>
+                <span class="accordion-title"><%= day.title %></span>
+                <i class="fa-solid fa-chevron-down accordion-icon"></i>
+              </div>
+              <div class="accordion-body <%= i === 0 ? 'open' : '' %>">
+                <p><%= day.description %></p>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+        <!-- Included / Excluded -->
+        <div class="tour-detail-section reveal">
+          <h3><i class="fa-solid fa-list-check"></i> What's Included</h3>
+          <div class="inclusions-grid">
+            <div>
+              <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px;">✓ Included</p>
+              <% tour.included.forEach(item => { %>
+              <div class="inclusion-item">
+                <i class="fa-solid fa-circle-check"></i>
+                <span><%= item %></span>
+              </div>
+              <% }) %>
+            </div>
+            <div>
+              <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #E53E3E; margin-bottom: 12px;">✕ Not Included</p>
+              <% tour.excluded.forEach(item => { %>
+              <div class="exclusion-item">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <span><%= item %></span>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="tour-detail-section reveal">
+          <h3><i class="fa-regular fa-images"></i> Photo Gallery</h3>
+          <div class="gallery-grid">
+            <% tour.gallery.forEach((img, i) => { %>
+            <div class="gallery-item">
+              <img src="<%= img %>" alt="<%= tour.name %> gallery image <%= i + 1 %>" loading="lazy" onerror="this.src='/images/lion.png'">
+            </div>
+            <% }) %>
+          </div>
+        </div>
+
+        <!-- Share -->
+        <div class="tour-detail-section reveal">
+          <h4 style="margin-bottom: 12px;">Share This Tour</h4>
+          <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent('https://tripsandadventures.co.ug/tours/' + tour.slug) %>" target="_blank" rel="noopener" class="share-btn share-fb"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+            <a href="https://wa.me/?text=<%= encodeURIComponent(tour.name + ' — Conservation Trips & Adventures: https://tripsandadventures.co.ug/tours/' + tour.slug) %>" target="_blank" rel="noopener" class="share-btn share-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:?subject=<%= encodeURIComponent(tour.name) %>&body=<%= encodeURIComponent('Check out this safari: https://tripsandadventures.co.ug/tours/' + tour.slug) %>" class="share-btn share-email"><i class="fa-solid fa-envelope"></i> Email</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="tour-sidebar">
+        <div class="sidebar-card" id="enquire-form">
+          <div class="sidebar-header">
+            <div class="sidebar-meta">
+              <span class="sidebar-meta-item"><i class="fa-regular fa-clock"></i> <%= tour.duration %></span>
+              <span class="sidebar-meta-item"><i class="fa-solid fa-users"></i> Small Groups</span>
+            </div>
+            <div class="sidebar-price"><%= tour.price %></div>
+            <div class="sidebar-price-sub">Per person, inclusive of park fees</div>
+          </div>
+          <div class="sidebar-body">
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; display: flex; align-items: center; gap: 6px;">
+              <i class="fa-solid fa-circle-check" style="color: var(--primary);"></i>
+              We respond within 24 hours · No payment required
+            </p>
+            <form id="quick-enquiry-form">
+              <input type="hidden" name="tour" value="<%= tour.name %>">
+              <div class="form-group">
+                <label for="eq-name">Full Name *</label>
+                <input type="text" id="eq-name" name="name" class="form-control" placeholder="Your name" required>
+                <div class="form-error"></div>
+              </div>
+              <div class="form-group">
+                <label for="eq-email">Email *</label>
+                <input type="email" id="eq-email" name="email" class="form-control" placeholder="your@email.com" required>
+                <div class="form-error"></div>
+              </div>
+              <div class="form-group">
+                <label for="eq-phone">Phone / WhatsApp</label>
+                <input type="tel" id="eq-phone" name="phone" class="form-control" placeholder="+1 234 567 8900">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="eq-date">Travel Date</label>
+                  <input type="date" id="eq-date" name="travel_date" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="eq-group">Group Size</label>
+                  <input type="number" id="eq-group" name="group_size" class="form-control" placeholder="2" min="1" max="20">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="eq-msg">Special Requests</label>
+                <textarea id="eq-msg" name="message" class="form-control" rows="3" placeholder="Dietary needs, accessibility, etc."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">
+                Enquire Now <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+            <div id="enquiry-success" style="display:none; text-align:center; padding: 20px 0;">
+              <i class="fa-solid fa-circle-check" style="font-size: 2.5rem; color: var(--primary); display:block; margin-bottom:12px;"></i>
+              <p style="font-weight: 600; color: var(--dark);">Enquiry sent!</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">We'll be in touch within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="trust-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <p>UTB Licensed Operator</p>
+          </div>
+          <div class="trust-badge">
+            <i class="fa-solid fa-leaf"></i>
+            <p>Conservation-First Tourism</p>
+          </div>
+          <div class="trust-badge">
+            <i class="fa-solid fa-headset"></i>
+            <p>24/7 Trip Support</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Related Tours -->
+    <% if (relatedTours.length > 0) { %>
+    <div class="mt-64 reveal" style="margin-top: 64px;">
+      <h2 style="color: var(--dark); margin-bottom: 32px;">You May Also Like</h2>
+      <div class="related-tours-grid">
+        <% relatedTours.forEach(t => { %>
+          <%- include('partials/tour-card', { tour: t }) %>
+        <% }) %>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</section>
+
+<script>
+// Quick enquiry form handler
+document.getElementById('quick-enquiry-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('[type="submit"]');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+  const data = Object.fromEntries(new FormData(this).entries());
+  try {
+    const res = await fetch('/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const json = await res.json();
+    if (json.success) {
+      this.style.display = 'none';
+      document.getElementById('enquiry-success').style.display = 'block';
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.innerHTML = 'Enquire Now <i class="fa-solid fa-paper-plane"></i>';
+    alert('Failed to send. Please try again.');
+  }
+});
+</script>

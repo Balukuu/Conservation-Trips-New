@@ -1,0 +1,385 @@
+[
+  {
+    "id": "3-days-queen-elizabeth-national-park",
+    "slug": "3-days-queen-elizabeth-national-park",
+    "name": "3 Days Queen Elizabeth National Park Safari",
+    "category": "Wildlife Safari",
+    "duration": "3 Days",
+    "durationDays": 3,
+    "price": "From $650 pp",
+    "priceUSD": 650,
+    "image": "/images/lion.png",
+    "gallery": [
+      "/images/lion.png",
+      "/images/safari.png",
+      "/images/lodge.png"
+    ],
+    "summary": "Experience the wild heart of Uganda in Queen Elizabeth National Park – home to tree-climbing lions, massive hippo pods, savannah elephants, and over 600 bird species. This 3-day adventure balances game drives, a scenic Kazinga Channel boat cruise, and golden savannah sunsets.",
+    "highlights": [
+      "Morning & afternoon game drives in the Kasenyi Plains",
+      "Kazinga Channel boat cruise – spot hippos, crocodiles & waterbirds",
+      "Look for Uganda's famous tree-climbing lions in Ishasha sector",
+      "Over 600 bird species including the rare shoebill stork",
+      "Sundowner views over the Rwenzori Mountains"
+    ],
+    "included": ["Private 4x4 safari vehicle with pop-up roof", "Professional English-speaking guide", "Park entrance fees", "Kazinga Channel boat cruise", "2 nights accommodation (mid-range lodge)", "All meals during safari", "Drinking water"],
+    "excluded": ["International flights", "Uganda visa fees", "Travel insurance", "Personal expenses & tips", "Alcoholic beverages"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Queen Elizabeth National Park", "description": "Early morning departure from Kampala heading southwest through the beautiful Uganda countryside. Afternoon game drive in the Kasenyi Plains, famous for large lion prides. Check-in at your lodge with stunning savannah views." },
+      { "day": 2, "title": "Full Day Game Drives & Kazinga Channel Cruise", "description": "Morning game drive to see lions, elephants, buffalos, and hippos. After breakfast return to the lodge. At midday, embark on a 2-hour boat cruise on the Kazinga Channel — the world's most densely populated waterway for hippos and water birds. Evening game drive to the Ishasha sector to spot the rare tree-climbing lions." },
+      { "day": 3, "title": "Morning Game Drive & Return to Kampala", "description": "Final morning game drive with golden sunrise light. After brunch, depart for Kampala arriving in the evening. 3 days of pure Ugandan safari magic." }
+    ],
+    "destinations": ["Queen Elizabeth National Park"],
+    "featured": true
+  },
+  {
+    "id": "2-days-gorilla-tracking-kigali-bwindi",
+    "slug": "2-days-gorilla-tracking-kigali-bwindi",
+    "name": "2 Days Gorilla Tracking – Kigali to Bwindi",
+    "category": "Gorilla Trekking",
+    "duration": "2 Days",
+    "durationDays": 2,
+    "price": "From $800 pp",
+    "priceUSD": 800,
+    "image": "/images/gorilla.png",
+    "gallery": [
+      "/images/gorilla.png",
+      "/images/lodge.png"
+    ],
+    "summary": "A perfectly crafted 2-day gorilla trek combining the convenience of flying into Kigali, Rwanda, with the breathtaking wilderness of Bwindi Impenetrable Forest in Uganda. Come face-to-face with habituated mountain gorilla families in their misty jungle home.",
+    "highlights": [
+      "Encounter habituated mountain gorilla families in Bwindi",
+      "Convenient fly-in from Kigali, Rwanda",
+      "UNESCO World Heritage Forest experience",
+      "Expert gorilla guides and trackers",
+      "1 magical hour with a gorilla family in the wild"
+    ],
+    "included": ["Gorilla trekking permit ($800 pp)", "Professional gorilla guide & trackers", "Private 4x4 safari vehicle", "1 night accommodation at Bwindi lodge", "All meals during safari", "Kigali-Bwindi transfer (both ways)"],
+    "excluded": ["International flights to Kigali", "Rwanda & Uganda visa fees", "Travel insurance", "Personal expenses & tips"],
+    "itinerary": [
+      { "day": 1, "title": "Kigali Arrival – Transfer to Bwindi", "description": "Arrive at Kigali International Airport. Meet your guide for the scenic drive through Rwanda's terraced hillsides and across the Rwanda-Uganda border into Bwindi. Evening briefing with your gorilla guide about tomorrow's trek. Dinner and overnight at your Bwindi forest lodge." },
+      { "day": 2, "title": "Gorilla Trekking – Return to Kigali", "description": "Early breakfast then set off for the most thrilling wildlife experience on Earth. Trek through Bwindi's ancient forest with expert guides and trackers. Spend one unforgettable hour with a habituated mountain gorilla family. Certificates awarded. Return to Kigali, arriving evening." }
+    ],
+    "destinations": ["Bwindi Impenetrable National Park", "Rwanda"],
+    "featured": true
+  },
+  {
+    "id": "2-days-chimpanzee-tracking-kibale",
+    "slug": "2-days-chimpanzee-tracking-kibale",
+    "name": "2 Days Chimpanzee Tracking at Kibale",
+    "category": "Primate Safari",
+    "duration": "2 Days",
+    "durationDays": 2,
+    "price": "From $450 pp",
+    "priceUSD": 450,
+    "image": "/images/gorilla.png",
+    "gallery": [
+      "/images/gorilla.png",
+      "/images/safari.png"
+    ],
+    "summary": "Kibale National Park is East Africa's premier primate destination — home to 1,500 chimpanzees and 12 other primate species. Immerse yourself in lush tropical forest tracking wild chimpanzees with expert naturalist guides.",
+    "highlights": [
+      "Track habituated chimpanzees in Kibale Forest",
+      "12 primate species including red colobus and L'Hoest's monkeys",
+      "Bigodi Wetland Sanctuary walk",
+      "Expert naturalist guides throughout",
+      "Tea plantation country scenery drive from Kampala"
+    ],
+    "included": ["Chimpanzee tracking permit", "Expert naturalist guide", "Private 4x4 vehicle", "1 night lodge accommodation", "All meals", "Bigodi wetland walk fee"],
+    "excluded": ["International flights", "Travel insurance", "Personal expenses & tips", "Alcoholic beverages"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Kibale National Park", "description": "Morning departure from Kampala heading west through Fort Portal, a scenic town cradled between the Rwenzori Mountains and crater lakes. Stop for lunch on route. Afternoon arrival at Kibale. Evening briefing with your naturalist guide." },
+      { "day": 2, "title": "Chimpanzee Tracking – Bigodi Wetland – Kampala", "description": "Early morning start into the forest for chimpanzee tracking. Follow expert trackers through the dense jungle canopy listening for the chimpanzees' distinctive calls. After tracking, enjoy a guided walk through Bigodi Wetland Sanctuary. Return to Kampala in the afternoon." }
+    ],
+    "destinations": ["Kibale Forest National Park"],
+    "featured": true
+  },
+  {
+    "id": "3-days-murchison-falls-safari",
+    "slug": "3-days-murchison-falls-safari",
+    "name": "3 Days Murchison Falls Safari",
+    "category": "Wildlife Safari",
+    "duration": "3 Days",
+    "durationDays": 3,
+    "price": "From $700 pp",
+    "priceUSD": 700,
+    "image": "/images/waterfall.png",
+    "gallery": [
+      "/images/waterfall.png",
+      "/images/safari.png"
+    ],
+    "summary": "Murchison Falls is Uganda's largest national park and one of Africa's greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world's most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.",
+    "highlights": [
+      "Game drives spotting lions, elephants, giraffes, and buffalos",
+      "Nile River boat cruise to the base of Murchison Falls",
+      "Top of the falls viewpoint hike",
+      "Morning birding (470+ species)",
+      "Chimp tracking at Kaniyo Pabidi (optional add-on)"
+    ],
+    "included": ["Private safari vehicle (4x4)", "Professional guide", "Park & ferry fees", "Nile boat cruise", "2 nights accommodation", "All meals", "Drinking water"],
+    "excluded": ["International flights", "Uganda visa", "Travel insurance", "Tips & personal expenses"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Murchison Falls National Park", "description": "Early morning departure heading north through Kampala suburbs and into the open savannah. Afternoon game drive spotting Uganda's largest concentration of giraffe, elephants, lions, and Nile crocodiles. Sunset at the river bank before dinner at your lodge." },
+      { "day": 2, "title": "Game Drive, Nile Cruise & Falls Viewpoint", "description": "Dawn game drive through the parklands. After breakfast, a spectacular 2-hour boat cruise up the Nile River to the base of Murchison Falls. Afternoon hike to the top of the falls for breathtaking views of the Nile squeezing through the rock gap. Evening game drive." },
+      { "day": 3, "title": "Morning Game Drive – Return to Kampala", "description": "Final morning game drive with the chance to spot leopards and lions. After brunch, drive back to Kampala arriving in the evening. A safari of unsurpassed natural drama." }
+    ],
+    "destinations": ["Murchison Falls National Park"],
+    "featured": true
+  },
+  {
+    "id": "5-days-gorilla-trekking-lake-bunyonyi",
+    "slug": "5-days-gorilla-trekking-lake-bunyonyi",
+    "name": "5 Days Gorilla Trekking & Lake Bunyonyi",
+    "category": "Gorilla Trekking",
+    "duration": "5 Days",
+    "durationDays": 5,
+    "price": "From $1,200 pp",
+    "priceUSD": 1200,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/safari.png",
+      "/images/safari.png",
+      "/images/safari.png"
+    ],
+    "summary": "An exceptional 5-day Uganda safari combining the world's greatest wildlife encounter — mountain gorilla trekking in Bwindi — with a relaxing finale on the stunning terraced shores of Lake Bunyonyi, Africa's second deepest lake.",
+    "highlights": [
+      "Mountain gorilla trekking in Bwindi Impenetrable Forest",
+      "Relaxing stay on the shores of Lake Bunyonyi",
+      "Canoe exploration of Bunyonyi's 29 islands",
+      "Batwa cultural experience and forest walk",
+      "Scenic drive through Uganda's beautiful southwest"
+    ],
+    "included": ["Gorilla trekking permit", "Professional guide & drivers", "4 nights accommodation", "All meals", "Canoe hire on Lake Bunyonyi", "Park fees", "4x4 safari vehicle"],
+    "excluded": ["International flights", "Visa fees", "Travel insurance", "Personal expenses", "Tips"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Bwindi", "description": "Scenic 8-hour drive through Uganda's rolling hills, stopping at the equator and in Kabale town. Arrive Bwindi for dinner and overnight at forest lodge." },
+      { "day": 2, "title": "Gorilla Trekking in Bwindi", "description": "The main event — trek into Bwindi's ancient primeval forest guided by expert trackers to find your assigned gorilla family. One hour of pure magic face-to-face with mountain gorillas. Afternoon rest and debrief." },
+      { "day": 3, "title": "Batwa Cultural Experience", "description": "Morning: guided half-day experience with the Batwa people, the original 'keepers' of the Bwindi Forest. Learn traditional forest survival skills, music, and storytelling. Afternoon drive to Lake Bunyonyi." },
+      { "day": 4, "title": "Lake Bunyonyi – Island Exploration", "description": "Full relaxing day on Africa's second deepest lake. Canoe between Bunyonyi's 29 islands. Visit Punishment Island with its remarkable history. Sunset from the lakeside terrace." },
+      { "day": 5, "title": "Lake Bunyonyi – Kampala", "description": "Morning canoe sunrise paddle. After breakfast, scenic drive back to Kampala arriving in the late afternoon. End of an unforgettable 5-day Uganda adventure." }
+    ],
+    "destinations": ["Bwindi Impenetrable National Park", "Lake Bunyonyi"],
+    "featured": true
+  },
+  {
+    "id": "3-days-queen-elizabeth-boat-cruise",
+    "slug": "3-days-queen-elizabeth-boat-cruise",
+    "name": "3 Days Queen Elizabeth & Kazinga Channel Cruise",
+    "category": "Boat Cruise",
+    "duration": "3 Days",
+    "durationDays": 3,
+    "price": "From $680 pp",
+    "priceUSD": 680,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/lion.png"
+    ],
+    "summary": "A tailor-made safari focused on the world-famous Kazinga Channel boat cruise at Queen Elizabeth National Park — where the wildlife density along the riverbanks is exceptional: hundreds of hippos, Nile crocodiles, elephants drinking at the water's edge, and 600+ bird species.",
+    "highlights": [
+      "Extended Kazinga Channel boat cruise with maximum wildlife viewing",
+      "Hundreds of hippos and Nile crocodiles at close range",
+      "Exceptional birdwatching — 600+ species including shoebill",
+      "Game drives in Kasenyi Plains for lions and elephants",
+      "Sunset over the Kazinga Channel"
+    ],
+    "included": ["Private 4x4 vehicle with pop-up roof", "Professional birding-specialist guide", "Park entrance fees", "Extended Kazinga Channel cruise", "2 nights accommodation", "All meals", "Drinking water"],
+    "excluded": ["International flights", "Uganda visa fees", "Travel insurance", "Personal expenses & tips"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Queen Elizabeth National Park", "description": "Early morning drive southwest. Arrival by early afternoon for a game drive. Check in and sunset cocktails overlooking the Channel." },
+      { "day": 2, "title": "Extended Kazinga Channel Cruise & Game Drives", "description": "Full morning game drive targeting the famous tree-climbing lions in Ishasha. Extended Kazinga Channel cruise in the afternoon — your naturalist guide will identify hundreds of species including the elusive shoebill stork." },
+      { "day": 3, "title": "Morning Game Drive & Return", "description": "Final dawn game drive. Brunch before the scenic drive back to Kampala." }
+    ],
+    "destinations": ["Queen Elizabeth National Park"],
+    "featured": false
+  },
+  {
+    "id": "22-days-complete-uganda-circuit",
+    "slug": "22-days-complete-uganda-circuit",
+    "name": "22 Days Complete Uganda Cultural Circuit",
+    "category": "Cultural Tour",
+    "duration": "22 Days",
+    "durationDays": 22,
+    "price": "From $4,500 pp",
+    "priceUSD": 4500,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/gorilla.png",
+      "/images/waterfall.png"
+    ],
+    "summary": "The ultimate Uganda experience — a complete 22-day circuit visiting every cultural region of the country. Northern plains, Eastern highlands, Western crater lakes, and Southern forests — all Uganda's greatest wildlife and cultural treasures in one epic journey.",
+    "highlights": [
+      "Gorilla trekking in Bwindi Impenetrable Forest",
+      "Chimpanzee tracking in Kibale Forest",
+      "Game drives in Queen Elizabeth, Murchison Falls & Kidepo",
+      "Cultural visits to Buganda, Ankole, Karamoja kingdoms",
+      "Jinja - Source of the Nile & whitewater rafting",
+      "Sipi Falls & Mount Elgon trekking"
+    ],
+    "included": ["All accommodation (22 nights)", "All meals", "All park & activity fees", "Professional guide throughout", "Private 4x4 safari vehicle", "All internal transfers"],
+    "excluded": ["International flights", "Visa fees", "Travel insurance", "Personal expenses & tips", "Alcoholic beverages"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival – Kampala", "description": "Airport meet and greet. Transfer to your Kampala hotel. Welcome dinner and trip briefing." },
+      { "day": 2, "title": "Kampala City Tour", "description": "Full day city tour of Uganda's vibrant capital. Kasubi Royal Tombs, Namirembe Cathedral, craft markets, and traditional food." },
+      { "day": 3, "title": "Kampala – Jinja (Source of the Nile)", "description": "Drive east to Jinja. Boat trip to the Source of the Nile. Optional whitewater rafting (Grade 5)." },
+      { "day": 4, "title": "Sipi Falls – Mount Elgon", "description": "Drive to Sipi Falls for a spectacular three-tiered waterfall hike. Cultural encounter with the Bagisu people." },
+      { "day": 5, "title": "Kidepo Valley National Park (fly)", "description": "Morning flight to Kidepo — Africa's most remote and dramatic national park. Afternoon game drive." },
+      { "day": 6, "title": "Kidepo – Full Day Game Drives", "description": "Full day exploring Kidepo's vast wilderness. Cheetahs, ostriches, Karamoja giraffes and Rothschild giraffes." },
+      { "day": 7, "title": "Kidepo – Murchison Falls (scenic drive)", "description": "Drive southwest through Northern Uganda passing through Gulu and Karuma Falls." },
+      { "day": 8, "title": "Murchison Falls – Game Drive", "description": "Morning game drive. Afternoon Nile boat cruise to Murchison Falls base." },
+      { "day": 9, "title": "Murchison Falls – Falls Top Hike", "description": "Hike to top of the falls. Afternoon game drive. Optional chimp tracking at Kaniyo Pabidi." },
+      { "day": 10, "title": "Fort Portal – Kibale Forest", "description": "Scenic drive to Fort Portal via Budongo Forest. Arrival at Kibale." }
+    ],
+    "destinations": ["Kampala", "Jinja", "Kidepo Valley National Park", "Murchison Falls National Park", "Kibale Forest National Park", "Queen Elizabeth National Park", "Bwindi Impenetrable National Park"],
+    "featured": false
+  },
+  {
+    "id": "4-days-mount-kenya-trekking",
+    "slug": "4-days-mount-kenya-trekking",
+    "name": "4 Days Mount Kenya Trekking",
+    "category": "Mountain Climbing",
+    "duration": "4 Days",
+    "durationDays": 4,
+    "price": "From $890 pp",
+    "priceUSD": 890,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/lodge.png"
+    ],
+    "summary": "Mount Kenya (5,199m) is Africa's second highest peak and a UNESCO World Heritage Site. Trek through equatorial forests, giant heather zones and glacial valleys to reach Point Lenana at 4,985m — a life-changing high-altitude adventure.",
+    "highlights": [
+      "Summit Point Lenana (4,985m) at sunrise",
+      "Trek through unique Afro-alpine vegetation zones",
+      "Glacier views and stunning equatorial mountain scenery",
+      "Rich wildlife: elephant, buffalo, colobus monkey",
+      "Certified high-altitude guides throughout"
+    ],
+    "included": ["Certified mountain guides & porters", "Park fees & mountain hut accommodation", "All meals on the mountain", "4x4 transfers Nairobi – trailhead", "Equipment checklist provided"],
+    "excluded": ["International flights", "Kenya visa", "Travel insurance", "Personal climbing gear", "Tips"],
+    "itinerary": [
+      { "day": 1, "title": "Nairobi – Sirimon Gate – Old Moses Camp (3,300m)", "description": "Drive north from Nairobi to Sirimon Gate. Begin trekking through Afro-montane forest. Arrive at Old Moses Camp for dinner and first night at altitude." },
+      { "day": 2, "title": "Old Moses Camp – Shipton's Camp (4,200m)", "description": "Acclimatisation day. Ascending through heather moorland and giant lobelia. Arrive Shipton's Camp with stunning views of Batian and Nelion peaks." },
+      { "day": 3, "title": "Summit Push – Point Lenana (4,985m)", "description": "Early 3am wake up. Summit push to Point Lenana arriving for spectacular sunrise. Descend via Chogoria route through the dramatic Gorges Valley." },
+      { "day": 4, "title": "Descent – Nairobi", "description": "Complete descent to Chogoria Gate. Transfer back to Nairobi for drinks and debrief celebration." }
+    ],
+    "destinations": ["Kenya", "Mount Kenya"],
+    "featured": false
+  },
+  {
+    "id": "7-days-mount-kilimanjaro",
+    "slug": "7-days-mount-kilimanjaro",
+    "name": "7 Days Mount Kilimanjaro Climbing",
+    "category": "Mountain Climbing",
+    "duration": "7 Days",
+    "durationDays": 7,
+    "price": "From $2,100 pp",
+    "priceUSD": 2100,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/lodge.png"
+    ],
+    "summary": "Conquer Africa's highest peak — Mount Kilimanjaro (5,895m) — on the scenic Machame Route, known as the 'Whiskey Route' for its dramatic scenery. A life-changing 7-day ascent through five distinct climate zones to the Roof of Africa.",
+    "highlights": [
+      "Summit Uhuru Peak (5,895m) — the Roof of Africa",
+      "Machame Route — most scenic Kilimanjaro route",
+      "Five distinct climate zones: rainforest to arctic",
+      "Exceptional summit success rate with acclimatisation profile",
+      "Certified KPAP-compliant local guides and porter team"
+    ],
+    "included": ["Certified guides, cooks & porters", "All park fees & camping fees", "All meals on the mountain (full board)", "Group camping equipment", "Rescue & safety equipment"],
+    "excluded": ["International flights", "Tanzania visa", "Travel insurance", "Personal climbing gear", "Tips for guides & porters"],
+    "itinerary": [
+      { "day": 1, "title": "Arusha – Machame Gate – Machame Camp (3,000m)", "description": "Transfer from Arusha to Machame Gate. Trek through dense rainforest alive with colobus monkeys. Arrive Machame Camp for first night on the mountain." },
+      { "day": 2, "title": "Machame Camp – Shira Camp (3,850m)", "description": "Emerge above the treeline into moorland plateau. Stunning views of Kibo summit. Arrive Shira Camp." },
+      { "day": 3, "title": "Shira Camp – Lava Tower – Barranco Camp", "description": "Acclimatisation day climbing to Lava Tower (4,600m) then descending to Barranco Camp (3,950m) — a classic 'climb high, sleep low' acclimatisation strategy." },
+      { "day": 4, "title": "Barranco Camp – Barafu Camp (4,550m)", "description": "The famous Barranco Wall scramble — thrilling exposed ridge climbing. Continue through the alpine desert to Barafu Camp, the launch pad for summit night." },
+      { "day": 5, "title": "Summit Night – Uhuru Peak (5,895m)", "description": "Midnight departure under the stars. Ascent through Stella Point (5,756m) to Uhuru Peak at sunrise. Descend to Mweka Camp. Your greatest achievement." },
+      { "day": 6, "title": "Mweka Camp – Mweka Gate", "description": "Final descent through rainforest collecting your summit certificate at Mweka Gate." },
+      { "day": 7, "title": "Arusha – Depart", "description": "Transfer back to Arusha hotel. Celebration dinner and debrief. Certificate presentation ceremony." }
+    ],
+    "destinations": ["Tanzania", "Mount Kilimanjaro"],
+    "featured": false
+  },
+  {
+    "id": "7-days-western-uganda-cultural-tour",
+    "slug": "7-days-western-uganda-cultural-tour",
+    "name": "7 Days Western Uganda Cultural Tour",
+    "category": "Cultural Tour",
+    "duration": "7 Days",
+    "durationDays": 7,
+    "price": "From $1,800 pp",
+    "priceUSD": 1800,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/safari.png",
+      "/images/safari.png",
+      "/images/gorilla.png",
+      "/images/safari.png",
+      "/images/lodge.png"
+    ],
+    "summary": "Explore the rich cultural tapestry of western Uganda — from the ancient kingdoms of Ankole and Bunyoro to the vibrant Bwindi Batwa community and the stunning crater lakes of Fort Portal. A soul-enriching journey through Uganda's most culturally diverse region.",
+    "highlights": [
+      "Ankole cultural experience with the famous long-horned cattle",
+      "Bunyoro kingdom and ancient royal palaces",
+      "Batwa forest community experience near Bwindi",
+      "Fort Portal crater lakes canoe trip",
+      "Traditional Ugandan cuisine cooking class"
+    ],
+    "included": ["Professional cultural guide", "All accommodation (6 nights)", "All meals", "Cultural activity fees", "4x4 transport throughout"],
+    "excluded": ["International flights", "Visa fees", "Travel insurance", "Personal expenses", "Tips"],
+    "itinerary": [
+      { "day": 1, "title": "Kampala – Mbarara – Ankole", "description": "Drive south-west to Ankole region. Visit Ankole Cultural Centre and meet the legendary long-horned Ankole cattle. Evening cultural performance." },
+      { "day": 2, "title": "Ankole – Ibanda – Crater Lakes", "description": "Morning visit to Ibanda district cultural sites. Afternoon drive through the dramatic Fort Portal crater lake region." },
+      { "day": 3, "title": "Fort Portal – Kibale Forest Edges", "description": "Explore the extraordinary crater lake landscape on foot and by canoe. Birding along the lakeshores." },
+      { "day": 4, "title": "Kibale – Bwindi (Cultural Day)", "description": "Drive to Bwindi. Afternoon Batwa cultural experience — the original forest people of Bwindi share their heritage, traditions, and forest knowledge." },
+      { "day": 5, "title": "Bwindi – Bunyoro Kingdom", "description": "Drive north through the green Uganda highlands. Visit the Bunyoro-Kitara Kingdom palace and museum." },
+      { "day": 6, "title": "Bunyoro – Murchison Area", "description": "Explore the Bunyoro cultural heartland. Traditional food experience and local market visit." },
+      { "day": 7, "title": "Return to Kampala", "description": "Scenic morning drive back to Kampala through the rolling Ugandan countryside. Evening farewell dinner." }
+    ],
+    "destinations": ["Ankole", "Fort Portal", "Bwindi", "Bunyoro"],
+    "featured": false
+  },
+  {
+    "id": "8-days-rwenzori-mountain-trekking",
+    "slug": "8-days-rwenzori-mountain-trekking",
+    "name": "8 Days Rwenzori Mountain Trekking – Margherita Peak",
+    "category": "Mountain Climbing",
+    "duration": "8 Days",
+    "durationDays": 8,
+    "price": "From $2,800 pp",
+    "priceUSD": 2800,
+    "image": "/images/safari.png",
+    "gallery": [
+      "/images/safari.png",
+      "/images/lodge.png",
+      "/images/lion.png"
+    ],
+    "summary": "The Rwenzori Mountains — the mythical Mountains of the Moon — are one of Africa's most coveted and challenging trekking destinations. Summit Margherita Peak (5,109m), the third highest point in Africa, through alien Afro-alpine vegetation unlike anywhere on Earth.",
+    "highlights": [
+      "Summit Margherita Peak (5,109m) — 3rd highest in Africa",
+      "Unique giant lobelia and groundsel Afro-alpine vegetation",
+      "Historic 'Mountains of the Moon' — the legendary source of the Nile",
+      "Glaciers and snowfields straddling the equator",
+      "UNESCO World Heritage Site trekking"
+    ],
+    "included": ["Certified Rwenzori mountain guides & porters", "All park fees", "Hut accommodation throughout", "All meals on trek", "Safety and rescue equipment"],
+    "excluded": ["International flights", "Uganda visa", "Travel insurance", "Personal trekking gear", "Tips"],
+    "itinerary": [
+      { "day": 1, "title": "Fort Portal – Nyakalengija (Trailhead) – Sine Hut (2,600m)", "description": "Drive from Fort Portal to Nyakalengija village at the park boundary. Begin trekking through cultivated land into montane forest. Arrive Sine Hut for dinner and overnight." },
+      { "day": 2, "title": "Sine Hut – Nyabitaba Hut (2,651m)", "description": "Trek through dense montane forest alongside the Mubuku River. Spectacular forest birds and chance of forest elephant. Arrive Nyabitaba for night." },
+      { "day": 3, "title": "Nyabitaba – John Matte Hut (3,414m)", "description": "Cross the Bujuku River and ascend steeply through heather and moorland. First views of the snow-capped peaks. John Matte Hut tonight." },
+      { "day": 4, "title": "John Matte – Bujuku Hut (3,962m)", "description": "Trek through surreal giant senecio and lobelia forests. Arrive Bujuku Hut in the heart of the mountains with Margherita Peak dominating the skyline." },
+      { "day": 5, "title": "Acclimatisation – Scott Elliot Pass (4,372m)", "description": "Acclimatisation day — climb to Scott Elliot Pass for stunning views. Return to Bujuku for overnight." },
+      { "day": 6, "title": "Summit Margherita Peak (5,109m)", "description": "Early start for the technical summit ascent via Elena Hut and the glaciers. Summit Margherita Peak with views across Uganda and DRC. Descend to Kitandara Hut." },
+      { "day": 7, "title": "Kitandara – Nyabitaba", "description": "Long descent day through the spectacular Bujuku Valley and back down through montane forest." },
+      { "day": 8, "title": "Nyabitaba – Nyakalengija – Fort Portal", "description": "Final descent back to the trailhead. Transfer to Fort Portal for hot shower and celebration dinner. Certificates awarded." }
+    ],
+    "destinations": ["Rwenzori Mountains National Park"],
+    "featured": false
+  }
+]

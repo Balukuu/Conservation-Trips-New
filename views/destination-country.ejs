@@ -1,0 +1,94 @@
+<!-- Destination Country Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('<%= dest.image %>');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <a href="/destinations">Destinations</a> <i class="fa-solid fa-angle-right"></i> <span><%= dest.name %></span></nav>
+    <div class="badge badge-accent" style="margin-bottom:16px; display:inline-flex;"><%= dest.subtitle %></div>
+    <h1 style="color:#fff;"><%= dest.name %></h1>
+    <p style="color:rgba(255,255,255,0.85); max-width:580px; margin-top:12px; font-size:1.05rem;"><%= dest.tagline %></p>
+  </div>
+</section>
+
+<!-- Description -->
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="grid-2" style="gap:60px;">
+      <div class="reveal-left">
+        <div class="section-label"><i class="fa-solid fa-map-location-dot"></i> About <%= dest.name %></div>
+        <h2 style="color:var(--dark); margin-bottom:20px;"><%= dest.name %> — <%= dest.subtitle %></h2>
+        <p class="body-lg" style="color:var(--text-muted)"><%= dest.description %></p>
+        <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+          <span class="dest-stat-pill"><i class="fa-solid fa-plane"></i> <%= dest.tourCount %> tours available</span>
+        </div>
+        <a href="/tours" class="btn btn-green mt-32">View All <%= dest.name %> Tours <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="reveal-right">
+        <div style="border-radius:var(--radius-lg); overflow:hidden; height:380px; box-shadow:var(--shadow-lg);">
+          <img src="<%= dest.image %>" alt="<%= dest.name %>" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Parks (for Uganda) -->
+<% if (dest.parks && dest.parks.length > 0) { %>
+<section class="section" style="background:var(--surface-alt); padding-top:48px;">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-tree"></i> National Parks</div>
+      <h2 style="color:var(--dark);">Explore <%= dest.name %>'s National Parks</h2>
+    </div>
+    <% dest.parks.forEach((park, i) => { %>
+    <div style="margin-bottom:48px; padding-bottom:48px; border-bottom:<%= i < dest.parks.length-1 ? '1px solid var(--border-light)' : 'none' %>;">
+      <div class="grid-2" style="gap:48px;">
+        <div class="<%= i%2===0?'reveal-left':'reveal-right' %>" style="<%= i%2!==0?'order:2;':'' %>">
+          <h3 style="color:var(--dark); margin-bottom:12px;"><%= park.name %></h3>
+          <div class="dest-stats-row">
+            <span class="dest-stat-pill"><i class="fa-solid fa-ruler-combined"></i> <%= park.area %></span>
+            <span class="dest-stat-pill"><i class="fa-regular fa-calendar"></i> Best: <%= park.bestTime %></span>
+          </div>
+          <p style="color:var(--text-muted); line-height:1.8; margin:16px 0 12px;"><%= park.description %></p>
+          <p style="font-size:0.85rem; color:var(--primary); font-weight:600;"><i class="fa-solid fa-star"></i> <%= park.highlights %></p>
+          <a href="/tours" class="btn btn-outline-dark" style="margin-top:20px;">See <%= park.name.split(' ')[0] %> Safaris <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="<%= i%2===0?'reveal-right':'reveal-left' %>" style="<%= i%2!==0?'order:1;':'' %>">
+          <div style="border-radius:var(--radius-lg); overflow:hidden; height:280px; box-shadow:var(--shadow-md);">
+            <img src="<%= park.image %>" alt="<%= park.name %>" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/lion.png'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+<% } %>
+
+<!-- Tours for this destination -->
+<% if (tours && tours.length > 0) { %>
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-compass"></i> Safari Packages</div>
+      <h2 style="color:var(--dark);"><%= dest.name %> Safari Packages</h2>
+    </div>
+    <div class="tours-grid reveal-grid">
+      <% tours.forEach(tour => { %>
+        <%- include('partials/tour-card', { tour }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Plan Your <%= dest.name %> Adventure</h2>
+    <p>Let our expert team craft your perfect <%= dest.name %> safari itinerary. Contact us today.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/contact" class="btn btn-primary btn-lg">Get a Custom Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/tours" class="btn btn-outline btn-lg">All Tours</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/lion.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Destinations</span></nav>
+    <h1 style="color: #fff;">Uganda's National Parks &amp; East Africa Destinations</h1>
+    <p style="color: rgba(255,255,255,0.8); max-width: 560px; margin-top: 12px; font-size: 1.05rem;">
+      From gorilla sanctuaries to snowcapped peaks — explore the most extraordinary destinations in East Africa
+    </p>
+  </div>
+</section>
+
+<!-- Destinations Country Grid -->
+<section class="section" style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-globe"></i> Countries We Cover</div>
+      <h2 style="color: var(--dark);">Choose Your Destination</h2>
+    </div>
+    <div class="grid-4 reveal-grid" style="gap: 20px; margin-bottom: 56px;">
+      <% destinations.forEach(dest => { %>
+      <a href="/destinations/<%= dest.slug %>" class="dest-card" style="height: 300px; display: block; text-decoration: none;">
+        <div class="dest-card-bg" style="background-image: url('<%= dest.image %>');"></div>
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-content">
+          <div class="dest-card-region"><%= dest.subtitle %></div>
+          <div class="dest-card-name"><%= dest.name %></div>
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 8px;"><%= dest.tourCount %> tours available</div>
+          <div class="dest-card-link" style="opacity: 1;">Explore <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Uganda National Parks Detail -->
+<% const uganda = destinations.find(d => d.id === 'uganda'); %>
+<% if (uganda && uganda.parks && uganda.parks.length) { %>
+<section class="section" style="background: var(--surface);">
+  <div class="container">
+    <div class="text-center reveal mb-56">
+      <div class="section-label"><i class="fa-solid fa-tree"></i> Pearl of Africa</div>
+      <h2 style="color: var(--dark);">Uganda's National Parks</h2>
+      <p class="section-subtitle" style="margin: 14px auto 0; text-align: center;">
+        Uganda is one of the most biodiverse countries on Earth — hosting half the world's mountain gorillas, the chimpanzee capital of the world, and over 1,000 bird species.
+      </p>
+    </div>
+
+    <% uganda.parks.forEach((park, i) => { %>
+    <div class="destination-section reveal">
+      <div class="grid-2" style="gap: 60px; <%= i % 2 !== 0 ? 'direction: rtl;' : '' %>">
+        <div style="<%= i % 2 !== 0 ? 'direction:ltr;' : '' %>">
+          <div class="section-label"><i class="fa-solid fa-map-pin"></i> Uganda</div>
+          <h2 style="color: var(--dark); margin-bottom: 16px;"><%= park.name %></h2>
+          <div class="dest-stats-row">
+            <span class="dest-stat-pill"><i class="fa-solid fa-ruler-combined"></i> <%= park.area %></span>
+            <span class="dest-stat-pill"><i class="fa-regular fa-calendar"></i> <%= park.bestTime %></span>
+          </div>
+          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; font-size: 1rem;"><%= park.description %></p>
+          <p style="font-size: 0.85rem; color: var(--primary); font-weight: 600; margin-bottom: 24px;"><i class="fa-solid fa-star"></i> <%= park.highlights %></p>
+          <a href="/tours" class="btn btn-green">See Our <%= park.name.split(' ')[0] %> Safaris <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div style="<%= i % 2 !== 0 ? 'direction:ltr; order:-1;' : '' %>">
+          <div style="border-radius: var(--radius-lg); overflow: hidden; height: 360px; box-shadow: var(--shadow-lg);">
+            <img src="<%= park.image %>" alt="<%= park.name %>" loading="lazy" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='/images/lion.png'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+<% } %>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Ready to Explore East Africa?</h2>
+    <p>Let our expert team craft your personalised safari itinerary. Contact us today and start your adventure.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/tours" class="btn btn-primary btn-lg">Browse All Tours <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/contact" class="btn btn-outline btn-lg">Get a Custom Quote</a>
+    </div>
+  </div>
+</section>

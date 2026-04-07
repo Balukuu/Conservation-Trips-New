@@ -1,0 +1,657 @@
+<%
+  // Homepage needs hero images for slider
+  const slides = [
+    {
+      eyebrow: 'Murchison Falls National Park',
+      title: 'Murchison Falls Awaits',
+      sub: 'The World\'s Most Powerful Waterfall',
+      badge: 'EXPLORE ALL TOURS',
+      bg: '/images/waterfall.png'
+    },
+    {
+      eyebrow: 'Bwindi Impenetrable Forest',
+      title: 'Face to Face with Mountain Gorillas',
+      sub: 'Trek through ancient rainforest for a once-in-a-lifetime encounter with Africa\'s most magnificent primates',
+      bg: '/images/gorilla.png'
+    },
+    {
+      eyebrow: 'Queen Elizabeth National Park',
+      title: 'Where the Savanna Meets the Forest',
+      sub: 'Witness the rare tree-climbing lions and cruise the legendary Kazinga Channel teeming with wildlife',
+      bg: '/images/lion.png'
+    },
+    {
+      eyebrow: 'Kibale Forest',
+      title: 'Track Our Closest Relatives',
+      sub: 'Uganda is home to the world\'s greatest concentration of habituated chimpanzees in Kibale Forest',
+      bg: '/images/safari.png'
+    }
+  ];
+%>
+<style>
+  .hero-trust-strip .trust-stat + .trust-stat::before { background: rgba(255,255,255,0.2) !important; }
+  .hero-trust-strip .stat-number { color: var(--accent) !important; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+  .hero-trust-strip .stat-label { text-shadow: 0 1px 4px rgba(0,0,0,0.5); font-weight: 500; }
+  .hero-slide-title-custom { font-family: 'Cormorant Garamond', serif; line-height: 1.05; margin-bottom: 8px; text-shadow: 0 4px 16px rgba(0,0,0,0.6); }
+  .whatsapp-float { transition: transform 0.3s ease; }
+  .whatsapp-float:hover { transform: scale(1.1); }
+  .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 20px rgba(98, 210, 111, 0.4); }
+</style>
+
+<!-- ═══════════════ SECTION 1: HERO SLIDER ═══════════════ -->
+<section class="hero-slider" id="hero" aria-label="Hero image slider">
+
+  <% slides.forEach((slide, i) => { %>
+  <div class="hero-slide <%= i === 0 ? 'active' : '' %>" aria-hidden="<%= i !== 0 %>">
+    <div class="hero-slide-bg" style="background-image: url('<%= slide.bg %>');"></div>
+    <div class="hero-slide-overlay"></div>
+    <div class="hero-slide-content">
+
+      <h1 class="slide-title"><%= slide.title %></h1>
+      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;"><%= slide.sub %></p>
+      <div class="slide-ctas" style="display: flex; gap: 16px; justify-content: center;">
+        <a href="/tours" class="btn btn-primary btn-lg" style="letter-spacing: 0.05em;">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="/contact" class="btn btn-outline btn-lg" style="letter-spacing: 0.05em; border-width: 1.5px;">PLAN MY SAFARI</a>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+
+  <!-- Arrows -->
+  <button class="slider-arrow slider-prev" aria-label="Previous slide">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <button class="slider-arrow slider-next" aria-label="Next slide">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- Dots -->
+  <div class="slider-dots" role="tablist" aria-label="Slider navigation">
+    <% slides.forEach((_, i) => { %>
+    <button class="slider-dot <%= i === 0 ? 'active' : '' %>" role="tab" aria-label="Slide <%= i + 1 %>"></button>
+    <% }) %>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll to Explore</span>
+    <div class="scroll-chevrons">
+      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </div>
+  <!-- ═══════════════ TRUST STRIP INSIDE HERO ═══════════════ -->
+  <div class="hero-trust-strip" style="position: absolute; bottom: 30px; left: 0; right: 0; z-index: 10;">
+    <div class="container">
+      <div class="trust-strip-inner" style="background: transparent;">
+        <div class="trust-stat">
+          <span class="stat-number" data-count="15" data-suffix="+">15+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="trust-stat">
+          <span class="stat-number" data-count="2000" data-suffix="+">2,000+</span>
+          <span class="stat-label">Happy Travellers</span>
+        </div>
+        <div class="trust-stat">
+          <span class="stat-number" data-count="6" data-suffix="">6</span>
+          <span class="stat-label">Countries</span>
+        </div>
+        <div class="trust-stat">
+          <span class="stat-number" data-count="50" data-suffix="+">50+</span>
+          <span class="stat-label">Tour Packages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════ SECTION 3: ABOUT INTRO ═══════════════ -->
+<section class="section" id="about-intro" style="background: var(--surface);">
+  <div class="container">
+    <div class="grid-2">
+
+      <!-- Text Left -->
+      <div class="reveal-left">
+        <div class="section-label">
+          <i class="fa-solid fa-leaf"></i> Who We Are
+        </div>
+        <h2 style="color: var(--dark); margin-bottom: 20px;">Your Prime Tour &amp; Travel Partner in Uganda</h2>
+        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
+          Since 2008, Conservation Trips and Adventures has been creating life-changing safari experiences — with a dedication to excellence, safety, and conservation at our core. As a fully-fledged travel, tourism and conservation management company, we cater for both regional and global clients.
+        </p>
+        <p style="color: var(--text-muted); margin-bottom: 28px;">
+          Uganda • Rwanda • Kenya • Tanzania — East Africa's premier safari &amp; adventure travel company, crafting unforgettable journeys that connect travellers with Africa's most extraordinary wildlife and landscapes.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <div class="about-feature-title">Conservation-First</div>
+              <div class="about-feature-desc">Every trip directly contributes to Uganda's wildlife protection and local community livelihoods.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fa-solid fa-globe"></i></div>
+            <div>
+              <div class="about-feature-title">Regional &amp; Global Clients</div>
+              <div class="about-feature-desc">Serving travellers from East Africa and across the world with tailored, premium experiences.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/about" class="about-discover-link">
+          Discover Our Story <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Images Right -->
+      <div class="reveal-right">
+        <div class="about-image-stack">
+          <div class="about-img-primary">
+            <img src="/images/lion.png" alt="Uganda wildlife safari" loading="lazy">
+          </div>
+          <div class="about-img-secondary">
+            <img src="/images/gorilla.png" alt="Mountain gorilla encounter" loading="lazy">
+          </div>
+          <div class="about-years-badge">
+            <span class="badge-num">15+</span>
+            <span class="badge-text">Years of<br>Experience</span>
+          </div>
+          <div class="eco-badge">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Eco Certified</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 4: FEATURED TOURS ═══════════════ -->
+<section class="section" id="featured-tours" style="background: var(--surface-alt); position: relative;">
+  <!-- Top Wave -->
+  <div style="position: absolute; top: -1px; left: 0; right: 0; line-height: 0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
+      <path d="M0,60 C480,0 960,60 1440,20 L1440,0 L0,0 Z" fill="#FFFFFF"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="tours-section-header reveal">
+      <div>
+        <div class="section-label"><i class="fa-solid fa-compass"></i> Safari Packages</div>
+        <h2 style="color: var(--dark);">Handpicked Journeys Through Uganda</h2>
+        <p class="section-subtitle">Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime.</p>
+      </div>
+      <a href="/tours" class="btn btn-outline-dark hide-mobile">View All Tours <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-bar reveal mt-32" role="tablist">
+      <button class="filter-tab active" data-category="All" role="tab">All Safaris</button>
+      <button class="filter-tab" data-category="Gorilla Trekking" role="tab">Gorilla Trekking</button>
+      <button class="filter-tab" data-category="Wildlife Safari" role="tab">Wildlife Safari</button>
+      <button class="filter-tab" data-category="Primate Safari" role="tab">Primate Treks</button>
+      <button class="filter-tab" data-category="Mountain Climbing" role="tab">Mountain Adventures</button>
+      <button class="filter-tab" data-category="Cultural Tour" role="tab">Cultural Tours</button>
+    </div>
+
+    <!-- Tours Grid -->
+    <div class="tours-grid reveal-grid" id="featured-tours-grid">
+      <% featuredTours.forEach(tour => { %>
+        <%- include('partials/tour-card', { tour }) %>
+      <% }) %>
+    </div>
+
+    <div class="text-center mt-48 reveal">
+      <a href="/tours" class="btn btn-primary btn-lg">View All Safari Packages <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Bottom Wave -->
+  <div style="position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
+      <path d="M0,0 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#0F1F0F"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 5: DESTINATIONS ═══════════════ -->
+<section class="section" id="destinations" style="background: var(--dark);">
+  <div class="container-wide">
+    <div class="text-center reveal mb-0" style="padding-bottom: 0;">
+      <div class="section-label light"><i class="fa-solid fa-map-location-dot"></i> Explore Africa</div>
+      <h2 style="color: #fff; font-style: italic;">Uganda's Most Breathtaking Destinations</h2>
+      <p style="color: rgba(255,255,255,0.6); max-width: 580px; margin: 12px auto 0; font-size: 1.05rem;">
+        From Uganda's mountain gorillas to Tanzania's endless Serengeti plains — we take you to the heart of East Africa's most iconic destinations.
+      </p>
+    </div>
+
+    <div class="destinations-masonry reveal-grid">
+      <!-- Tall card 1 -->
+      <div class="dest-card dest-tall">
+        <div class="dest-card-bg" style="background-image: url('/images/gorilla.png');"></div>
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-content">
+          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
+          <div class="dest-card-name">Bwindi Impenetrable National Park</div>
+          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Tall card 2 -->
+      <div class="dest-card dest-tall">
+        <div class="dest-card-bg" style="background-image: url('/images/lion.png');"></div>
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-content">
+          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
+          <div class="dest-card-name">Queen Elizabeth National Park</div>
+          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Normal cards -->
+      <% const normalDests = [
+        { name: 'Kibale Forest National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/safari.png', href: '/destinations/uganda' },
+        { name: 'Murchison Falls National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/waterfall.png', href: '/destinations/uganda' },
+        { name: 'Serengeti — Tanzania', region: 'TANZANIA', flag: 'fi-tz', img: '/images/safari.png', href: '/destinations/tanzania' },
+        { name: 'Rwanda — Land of Gorillas', region: 'RWANDA', flag: 'fi-rw', img: '/images/gorilla.png', href: '/destinations/rwanda' }
+      ]; %>
+      <% normalDests.forEach(d => { %>
+      <div class="dest-card dest-normal">
+        <div class="dest-card-bg" style="background-image: url('<%= d.img %>');"></div>
+        <div class="dest-card-overlay"></div>
+        <div class="dest-card-content">
+          <div class="dest-card-region"><span class="fi <%= d.flag %>"></span> <%= d.region %></div>
+          <div class="dest-card-name"><%= d.name %></div>
+          <a href="<%= d.href %>" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="text-center mt-48 reveal">
+      <a href="/destinations" class="btn btn-outline btn-lg">View All Destinations <i class="fa-solid fa-globe"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 6: WHY CHOOSE US ═══════════════ -->
+<section class="section" id="why-us" style="background: var(--surface);">
+  <!-- Top Wave -->
+  <div style="margin-top: -1px; line-height: 0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
+      <path d="M0,60 C360,10 720,50 1080,20 C1260,8 1380,30 1440,60 L1440,0 L0,0 Z" fill="#0F1F0F"/>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-star"></i> Why Choose Us</div>
+      <h2 style="color: var(--dark);">Safari Excellence, Every Step of the Way</h2>
+    </div>
+
+    <div class="why-us-grid">
+      <!-- Left Column -->
+      <div class="why-us-col reveal-left">
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-paw"></i></div>
+          <div>
+            <div class="why-us-title">Gorilla Trekking Experts</div>
+            <div class="why-us-desc">Specialist gorilla permit procurement, expert guides with decade-long Bwindi experience, and group sizes carefully managed for authentic encounters.</div>
+          </div>
+        </div>
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
+          <div>
+            <div class="why-us-title">Conservation-First Tourism</div>
+            <div class="why-us-desc">Every trip we organise contributes directly to Uganda's conservation efforts and local community livelihoods. Travel that gives back.</div>
+          </div>
+        </div>
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-map"></i></div>
+          <div>
+            <div class="why-us-title">Custom Itineraries</div>
+            <div class="why-us-desc">Your journey, your way. Every safari is tailored to your timeline, travel style, group size, and budget — no two trips are the same.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centre SVG -->
+      <div class="why-us-center-img reveal-scale">
+        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+          <!-- Gorilla face geometric illustration -->
+          <defs>
+            <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#2D6A2D"/>
+              <stop offset="100%" stop-color="#0F1F0F"/>
+            </radialGradient>
+          </defs>
+          <circle cx="240" cy="240" r="220" fill="url(#bgGrad)" opacity="0.15"/>
+          <circle cx="240" cy="240" r="180" fill="none" stroke="#C8922A" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.4"/>
+          <!-- Gorilla silhouette body -->
+          <ellipse cx="240" cy="310" rx="100" ry="90" fill="#1a3a1a" opacity="0.9"/>
+          <!-- Head -->
+          <ellipse cx="240" cy="200" rx="90" ry="85" fill="#1a3a1a" opacity="0.95"/>
+          <!-- Brow ridges -->
+          <path d="M165,170 Q200,152 240,155 Q280,152 315,170" stroke="#2D6A2D" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <!-- Eyes -->
+          <circle cx="205" cy="195" r="18" fill="#0d150d"/>
+          <circle cx="275" cy="195" r="18" fill="#0d150d"/>
+          <circle cx="208" cy="192" r="7" fill="#C8922A"/>
+          <circle cx="278" cy="192" r="7" fill="#C8922A"/>
+          <circle cx="211" cy="189" r="3" fill="#fff"/>
+          <circle cx="281" cy="189" r="3" fill="#fff"/>
+          <!-- Nose -->
+          <ellipse cx="240" cy="220" rx="20" ry="12" fill="#0d150d"/>
+          <circle cx="232" cy="218" r="5" fill="#2a2a2a"/>
+          <circle cx="248" cy="218" r="5" fill="#2a2a2a"/>
+          <!-- Mouth area -->
+          <path d="M220,240 Q240,250 260,240" stroke="#0d150d" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Ears -->
+          <ellipse cx="152" cy="198" rx="18" ry="22" fill="#1a3a1a"/>
+          <ellipse cx="328" cy="198" rx="18" ry="22" fill="#1a3a1a"/>
+          <!-- Arms -->
+          <path d="M145,310 Q100,340 90,400" stroke="#1a3a1a" stroke-width="28" fill="none" stroke-linecap="round"/>
+          <path d="M335,310 Q380,340 390,400" stroke="#1a3a1a" stroke-width="28" fill="none" stroke-linecap="round"/>
+          <!-- Gold accent ring -->
+          <circle cx="240" cy="240" r="215" fill="none" stroke="#C8922A" stroke-width="3" opacity="0.25"/>
+          <!-- Leaf accents -->
+          <path d="M60,100 Q80,80 100,100 Q80,120 60,100Z" fill="#2D6A2D" opacity="0.5"/>
+          <path d="M380,100 Q400,80 420,100 Q400,120 380,100Z" fill="#2D6A2D" opacity="0.5"/>
+          <path d="M60,380 Q80,360 100,380 Q80,400 60,380Z" fill="#2D6A2D" opacity="0.5"/>
+          <path d="M380,380 Q400,360 420,380 Q400,400 380,380Z" fill="#2D6A2D" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <!-- Right Column -->
+      <div class="why-us-col why-us-right reveal-right">
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-truck-monster"></i></div>
+          <div>
+            <div class="why-us-title">Exclusive Safari Vehicles</div>
+            <div class="why-us-desc">Custom 4x4 safari vehicles with pop-up roofs, USB charging, cooler boxes, and first-aid kits — built for comfort and wildlife viewing.</div>
+          </div>
+        </div>
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <div class="why-us-title">Licensed &amp; Insured</div>
+            <div class="why-us-desc">Fully registered with Uganda Tourism Board and Uganda Wildlife Authority. Your safety is our top priority with rigorous protocols throughout.</div>
+          </div>
+        </div>
+        <div class="why-us-item">
+          <div class="why-us-icon-wrap"><i class="fa-solid fa-headset"></i></div>
+          <div>
+            <div class="why-us-title">24/7 Dedicated Support</div>
+            <div class="why-us-desc">Your dedicated trip advisor is available throughout your journey — from first enquiry through to your safe return home.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 7: TESTIMONIALS ═══════════════ -->
+<section class="section" id="testimonials" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--sky) 100%); padding-top: 80px; padding-bottom: 80px;">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label light"><i class="fa-solid fa-star"></i> Testimonials</div>
+      <h2 style="color: #fff; font-style: italic;">What Our Travellers Say</h2>
+    </div>
+
+    <div class="testimonial-slider reveal">
+      <div class="testimonial-track">
+        <% testimonials.forEach(t => { %>
+          <%- include('partials/testimonial-card', { testimonial: t }) %>
+        <% }) %>
+      </div>
+
+      <div class="testimonial-nav">
+        <button class="test-arrow test-prev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="test-dots">
+          <% testimonials.forEach((_, i) => { %>
+          <button class="test-dot <%= i === 0 ? 'active' : '' %>" aria-label="Testimonial <%= i + 1 %>"></button>
+          <% }) %>
+        </div>
+        <button class="test-arrow test-next" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 8: CONSERVATION ═══════════════ -->
+<section class="conservation-section" id="conservation">
+  <div class="container">
+    <div class="grid-2">
+      <div class="reveal-left">
+        <div class="section-label light"><i class="fa-solid fa-leaf"></i> Our Commitment</div>
+        <h2 style="color: #fff; font-style: italic; margin-bottom: 20px;">Travel That Gives Back</h2>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px;">
+          Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.
+        </p>
+        <div class="conservation-stats">
+          <div class="conservation-stat">
+            <div class="stat-number" data-count="1000" data-suffix="+">1,000+</div>
+            <div class="stat-label">Gorillas Protected</div>
+          </div>
+          <div class="conservation-stat">
+            <div class="stat-number" data-count="200" data-suffix="+">200+</div>
+            <div class="stat-label">Local Jobs Created</div>
+          </div>
+          <div class="conservation-stat">
+            <div class="stat-number" data-count="10" data-suffix="%">10%</div>
+            <div class="stat-label">Revenue to Conservation</div>
+          </div>
+        </div>
+        <a href="/about" class="btn btn-outline mt-32">Our Conservation Pledge <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="conservation-img-wrap reveal-right">
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+          <!-- Savanna sunset SVG illustration -->
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1A3D5C"/>
+              <stop offset="40%" stop-color="#C8922A" stop-opacity="0.7"/>
+              <stop offset="70%" stop-color="#D45A1A" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#8B4513"/>
+            </linearGradient>
+          </defs>
+          <!-- Sky -->
+          <rect width="500" height="400" fill="url(#skyGrad)"/>
+          <!-- Sun -->
+          <circle cx="250" cy="160" r="45" fill="#C8922A" opacity="0.9"/>
+          <circle cx="250" cy="160" r="55" fill="#C8922A" opacity="0.25"/>
+          <circle cx="250" cy="160" r="70" fill="#C8922A" opacity="0.1"/>
+          <!-- Ground -->
+          <ellipse cx="250" cy="380" rx="280" ry="60" fill="#5A3010"/>
+          <!-- Acacia tree 1 -->
+          <rect x="80" y="240" width="8" height="100" fill="#2A1A08"/>
+          <ellipse cx="84" cy="235" rx="38" ry="18" fill="#1A350A"/>
+          <!-- Acacia tree 2 -->
+          <rect x="380" y="260" width="7" height="80" fill="#2A1A08"/>
+          <ellipse cx="383" cy="255" rx="32" ry="16" fill="#1A350A"/>
+          <!-- Acacia tree 3 (smaller) -->
+          <rect x="155" y="275" width="5" height="65" fill="#2A1A08"/>
+          <ellipse cx="157" cy="270" rx="24" ry="12" fill="#1A3A0A"/>
+          <!-- Elephant silhouette -->
+          <ellipse cx="300" cy="320" rx="45" ry="30" fill="#0D150D"/>
+          <ellipse cx="260" cy="322" rx="26" ry="24" fill="#0D150D"/>
+          <path d="M242,325 Q232,355 238,370 Q244,375 248,360 Q250,345 250,330" fill="#0D150D"/>
+          <path d="M290,350 L288,375" stroke="#0D150D" stroke-width="6" stroke-linecap="round"/>
+          <path d="M310,352 L308,377" stroke="#0D150D" stroke-width="6" stroke-linecap="round"/>
+          <path d="M328,348 L326,373" stroke="#0D150D" stroke-width="6" stroke-linecap="round"/>
+          <path d="M271,352 L269,377" stroke="#0D150D" stroke-width="6" stroke-linecap="round"/>
+          <!-- Mountains distant -->
+          <path d="M0,290 L80,220 L160,270 L240,200 L300,250 L380,190 L460,240 L500,280 L500,300 L0,300Z" fill="#1A2A1A" opacity="0.6"/>
+          <!-- Foreground grass -->
+          <path d="M0,370 Q125,340 250,365 Q375,390 500,355 L500,400 L0,400Z" fill="#3D2010"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 9: PARTNER LOGOS ═══════════════ -->
+<section class="section-sm" id="partners" style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="text-center reveal mb-32">
+      <div class="section-label"><i class="fa-solid fa-handshake"></i> Trusted Partners &amp; Associations</div>
+    </div>
+    <div class="partners-track-wrap reveal">
+      <div class="partners-track">
+        <% 
+        const partners = [
+          { name: 'Uganda Tourism Board', icon: 'fa-landmark' },
+          { name: 'Uganda Wildlife Authority', icon: 'fa-shield-dog' },
+          { name: 'AUTO', icon: 'fa-car-side' },
+          { name: 'IUCN Conservation', icon: 'fa-leaf' },
+          { name: 'East Africa Tourism', icon: 'fa-globe' },
+          { name: 'TripAdvisor Certified', icon: 'fa-star' },
+          { name: 'SafariBookings.com', icon: 'fa-binoculars' }
+        ];
+        // Duplicate for infinite scroll effect
+        [...partners, ...partners].forEach(p => { %>
+        <div class="partner-logo-card">
+          <i class="fa-solid <%= p.icon %>" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
+          <span class="partner-name"><%= p.name %></span>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
+<section class="section" id="blog-preview" style="background: var(--surface);">
+  <div class="container">
+    <div class="tours-section-header reveal">
+      <div>
+        <div class="section-label"><i class="fa-solid fa-newspaper"></i> Safari Insights</div>
+        <h2 style="color: var(--dark);">Safari Insights &amp; Travel Tips</h2>
+      </div>
+      <a href="/blog" class="btn btn-outline-dark hide-mobile">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="blog-grid reveal-grid mt-48">
+      <% const blogPreviews = [
+        {
+          title: 'The Best Time to Go Gorilla Trekking in Uganda',
+          category: 'Gorilla Trekking',
+          date: 'March 15, 2025',
+          readTime: '6 min read',
+          excerpt: 'Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit.',
+          image: '/images/gorilla.png',
+          slug: 'best-time-gorilla-trekking-uganda'
+        },
+        {
+          title: "Uganda's Incredible Tree-Climbing Lions of Ishasha",
+          category: 'Wildlife',
+          date: 'January 10, 2025',
+          readTime: '5 min read',
+          excerpt: "One of Africa's most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park.",
+          image: '/images/lion.png',
+          slug: 'tree-climbing-lions-ishasha'
+        },
+        {
+          title: 'The Ultimate Uganda Safari Packing List',
+          category: 'Travel Tips',
+          date: 'February 22, 2025',
+          readTime: '8 min read',
+          excerpt: 'From gorilla trekking clothes to savannah game drive essentials — everything you need to pack for the perfect Uganda safari.',
+          image: '/images/lion.png',
+          slug: 'uganda-packing-list-safari'
+        }
+      ]; %>
+
+      <% blogPreviews.forEach(post => { %>
+      <article class="blog-card">
+        <a href="/blog/<%= post.slug %>" class="blog-card-img">
+          <img src="<%= post.image %>" alt="<%= post.title %>" loading="lazy" onerror="this.src='/images/lion.png'">
+        </a>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-date"><i class="fa-regular fa-calendar"></i> <%= post.date %></span>
+            <span class="blog-cat"><%= post.category %></span>
+          </div>
+          <h3 class="blog-title"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
+          <p class="blog-excerpt"><%= post.excerpt %></p>
+          <div class="blog-footer">
+            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> <%= post.readTime %></span>
+            <a href="/blog/<%= post.slug %>" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+    <div class="text-center mt-32 reveal hide-desktop">
+      <a href="/blog" class="btn btn-outline-dark">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 11: CTA STRIP ═══════════════ -->
+<section class="cta-strip" id="cta">
+  <div class="cta-strip-content container">
+    <div class="reveal">
+      <h2>Let Us Craft Your Perfect Uganda Safari</h2>
+      <p>Take advantage of our trip advisory services and let us assist you in creating a seamless and unforgettable journey through Uganda's captivating landscapes and incredible wildlife encounters.</p>
+      <div class="flex-center gap-16 flex-wrap">
+        <a href="/contact" class="btn btn-primary btn-lg">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
+      <div class="cta-contact-row">
+        <a href="tel:+256767936590" class="cta-contact-item">
+          <i class="fa-solid fa-phone"></i> +256 767 936 590
+        </a>
+        <a href="mailto:info@tripsandadventures.co.ug" class="cta-contact-item">
+          <i class="fa-solid fa-envelope"></i> info@tripsandadventures.co.ug
+        </a>
+        <a href="https://wa.me/256767936590" target="_blank" rel="noopener" class="cta-contact-item">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookie-banner" role="alert">
+  <p>🍪 We use cookies to improve your browsing experience on our safari website. <a href="/privacy">Learn More</a></p>
+  <button class="btn btn-primary btn-sm cookie-accept">Accept</button>
+</div>
+
+<!-- Availability Toast -->
+<div class="availability-toast" id="avail-toast" role="status">
+  <span class="toast-emoji">🦍</span>
+  <p>Gorilla permits are filling fast for 2025 — Book early to secure your spot!</p>
+  <button class="toast-close" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Conservation Trips & Adventures",
+  "description": "Leading tours and travel company in Uganda — Gorilla trekking, wildlife safaris, mountain climbing and cultural tours across East Africa.",
+  "url": "https://tripsandadventures.co.ug/",
+  "telephone": "+256767936590",
+  "email": "info@tripsandadventures.co.ug",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "UG",
+    "addressLocality": "Buloba, Busiro County",
+    "streetAddress": "8FF4+GH3 Kyanyanya Trading Center, LUKAAWA PLAZA"
+  },
+  "areaServed": ["Uganda", "Kenya", "Tanzania", "Rwanda", "East Africa"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Uganda Safari Packages"
+  },
+  "foundingDate": "2008",
+  "logo": "https://tripsandadventures.co.ug/images/logonew.jpeg",
+  "image": "https://tripsandadventures.co.ug/images/logonew.jpeg",
+  "sameAs": ["https://www.facebook.com/tripsandadventures"]
+}
+</script>

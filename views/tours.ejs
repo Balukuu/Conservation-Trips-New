@@ -1,0 +1,56 @@
+<!-- Page Hero -->
+<section class="page-hero" style="padding-top: var(--nav-height);">
+  <div class="page-hero-bg" style="background-image: url('/images/lion.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <i class="fa-solid fa-angle-right"></i>
+      <span>Tours</span>
+    </nav>
+    <h1 style="color: #fff; margin-bottom: 12px;">Our Safari Packages</h1>
+    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 560px;">
+      Expertly crafted journeys through Uganda and East Africa — from gorilla treks to summit climbs
+    </p>
+  </div>
+</section>
+
+<!-- Tours Section -->
+<section class="section" style="background: var(--surface-alt); padding-top: 60px;">
+  <div class="container">
+
+    <!-- Filter Tabs -->
+    <div class="flex-between flex-wrap gap-16 reveal mb-32">
+      <div class="filter-tabs" role="tablist">
+        <button class="filter-tab <%= activeCategory === 'All' ? 'active' : '' %>" data-category="All" role="tab">All Safaris</button>
+        <% categories.forEach(cat => { %>
+        <button class="filter-tab <%= activeCategory === cat ? 'active' : '' %>" data-category="<%= cat %>" role="tab"><%= cat %></button>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="tours-grid reveal-grid" id="tours-grid">
+      <% tours.forEach(tour => { %>
+        <%- include('partials/tour-card', { tour }) %>
+      <% }) %>
+    </div>
+
+    <!-- No results -->
+    <div class="no-results-msg text-center" style="display:none; padding: 60px 0;">
+      <i class="fa-solid fa-binoculars" style="font-size: 3rem; color: var(--border); display:block; margin-bottom:16px;"></i>
+      <h3 style="color: var(--text-muted);">No tours found in this category</h3>
+      <p style="color: var(--text-muted); margin: 8px 0 24px;">Try a different filter or explore all our safaris</p>
+      <button class="btn btn-green" onclick="document.querySelector('.filter-tab').click()">View All Tours</button>
+    </div>
+
+    <!-- Custom Safari CTA -->
+    <div class="text-center mt-64 reveal" style="margin-top: 60px; padding: 48px; background: var(--surface); border-radius: var(--radius-lg); border: 1px dashed var(--border); max-width: 640px; margin-left: auto; margin-right: auto;">
+      <i class="fa-solid fa-compass" style="font-size: 2rem; color: var(--accent); display: block; margin-bottom: 16px;"></i>
+      <h3 style="color: var(--dark); margin-bottom: 10px;">Can't find what you're looking for?</h3>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">We specialise in bespoke safaris tailored exactly to your wishes. Tell us your dream and we'll make it happen.</p>
+      <a href="/contact" class="btn btn-primary">Request a Custom Safari <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+</section>

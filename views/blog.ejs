@@ -1,0 +1,74 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('/images/gorilla.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Blog</span></nav>
+    <h1 style="color:#fff;">Safari Insights &amp; Travel Tips</h1>
+    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
+      Expert guides, wildlife stories, packing tips, and conservation news from East Africa
+    </p>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section class="section" style="background:var(--surface-alt);">
+  <div class="container">
+
+    <!-- Category Tabs -->
+    <div class="filter-tabs reveal mb-32" role="tablist">
+      <% categories.forEach(cat => { %>
+      <a href="/blog<%= cat !== 'All' ? '?category=' + encodeURIComponent(cat) : '' %>"
+         class="filter-tab <%= activeCategory === cat ? 'active' : '' %>"
+         role="tab">
+        <%= cat %>
+      </a>
+      <% }) %>
+    </div>
+
+    <!-- Blog Grid -->
+    <% if (posts.length > 0) { %>
+    <div class="blog-grid reveal-grid">
+      <% posts.forEach(post => { %>
+      <article class="blog-card">
+        <a href="/blog/<%= post.slug %>" class="blog-card-img">
+          <img src="<%= post.image %>" alt="<%= post.title %>" loading="lazy" onerror="this.src='/images/lion.png'">
+        </a>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-date"><i class="fa-regular fa-calendar"></i> <%= post.date %></span>
+            <span class="blog-cat"><%= post.category %></span>
+          </div>
+          <h2 class="blog-title" style="font-size:1.2rem;"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2>
+          <p class="blog-excerpt"><%= post.excerpt %></p>
+          <div class="blog-footer">
+            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> <%= post.readTime %></span>
+            <a href="/blog/<%= post.slug %>" class="blog-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <div class="text-center" style="padding: 60px 0;">
+      <i class="fa-solid fa-newspaper" style="font-size:3rem; color:var(--border); display:block; margin-bottom:16px;"></i>
+      <h3 style="color:var(--text-muted);">No articles found in this category</h3>
+      <p style="color:var(--text-muted); margin:8px 0 24px;">Browse all our safari insights</p>
+      <a href="/blog" class="btn btn-green">View All Articles</a>
+    </div>
+    <% } %>
+
+  </div>
+</section>
+
+<!-- Newsletter / CTA -->
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Ready to Live Your Safari Story?</h2>
+    <p>Stop reading about it — let us plan your perfect Uganda adventure. Talk to our safari experts today.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/tours" class="btn btn-primary btn-lg">Explore Our Tours <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/contact" class="btn btn-outline btn-lg">Plan My Safari</a>
+    </div>
+  </div>
+</section>

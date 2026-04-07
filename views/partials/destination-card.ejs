@@ -1,0 +1,11 @@
+<div class="dest-card <%= typeof tall !== 'undefined' && tall ? 'dest-tall' : 'dest-normal' %>">
+  <div class="dest-card-bg" style="background-image: url('<%= dest.image %>')"></div>
+  <div class="dest-card-overlay"></div>
+  <div class="dest-card-content">
+    <div class="dest-card-region">🌍 <%= dest.subtitle || dest.country || 'East Africa' %></div>
+    <div class="dest-card-name"><%= dest.name %></div>
+    <a href="/destinations/<%= dest.slug %>" class="dest-card-link">
+      Explore <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+</div>

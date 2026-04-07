@@ -1,0 +1,95 @@
+[
+  {
+    "id": "uganda",
+    "slug": "uganda",
+    "name": "Uganda",
+    "subtitle": "The Pearl of Africa",
+    "tagline": "Mountain Gorilla Trekking · Queen Elizabeth NP",
+    "description": "Uganda — the Pearl of Africa — is one of the most biodiverse countries on Earth. Home to half the world's mountain gorilla population, the chimpanzee capital of the world, and over 1,000 bird species, Uganda offers unparalleled primate and wildlife encounters in an extraordinarily lush landscape.",
+    "image": "/images/safari.png",
+    "tourCount": 8,
+    "parks": [
+      {
+        "name": "Bwindi Impenetrable National Park",
+        "area": "321 sq km",
+        "highlights": "Half the world's mountain gorillas, 350+ bird species, UNESCO World Heritage Site",
+        "bestTime": "June–September, December–February",
+        "image": "/images/safari.png",
+        "description": "Bwindi Impenetrable National Park is one of Africa's most extraordinary and biologically diverse forests. A UNESCO World Heritage Site, it protects approximately 400 of the world's remaining mountain gorillas — half the global population. The ancient forest, covering 321 square kilometres, comprises a mosaic of montane and lowland forest, bamboo, and open grasslands at altitudes ranging from 1,160m to 2,607m."
+      },
+      {
+        "name": "Queen Elizabeth National Park",
+        "area": "1,978 sq km",
+        "highlights": "Tree-climbing lions, Kazinga Channel, 600+ bird species",
+        "bestTime": "June–August, December–February",
+        "image": "/images/safari.png",
+        "description": "Queen Elizabeth National Park is Uganda's most visited park and one of Africa's most rewarding game-viewing destinations. The legendary Kazinga Channel — a 40km natural waterway connecting lakes Edward and George — supports one of the world's highest densities of hippos. The Ishasha sector in the south is famous for its tree-climbing lions lounging in fig trees."
+      },
+      {
+        "name": "Kibale Forest National Park",
+        "area": "766 sq km",
+        "highlights": "1,500 chimpanzees, 13 primate species, Primate Capital of the World",
+        "bestTime": "June–August, December–February",
+        "image": "/images/safari.png",
+        "description": "Kibale Forest National Park — the Primate Capital of the World — is home to the world's largest population of habituated chimpanzees. With 13 primate species including red-tailed monkeys, red colobus and L'Hoest's monkeys, the forest canopy is alive with movement and sound. Adjacent Bigodi Wetland Sanctuary adds exceptional birding to the experience."
+      },
+      {
+        "name": "Murchison Falls National Park",
+        "area": "3,893 sq km",
+        "highlights": "World's most powerful waterfall, largest Uganda park, 470+ bird species",
+        "bestTime": "December–February, June–September",
+        "image": "/images/safari.png",
+        "description": "Murchison Falls National Park is Uganda's largest conservation area, where the mighty Nile River squeezes through a 7-metre rock gap to create what is widely considered the world's most powerful waterfall. The park's northern sector is prime big-game country — lions, elephants, giraffes, buffalos and Nile crocodiles are commonly seen on game drives."
+      },
+      {
+        "name": "Kidepo Valley National Park",
+        "area": "1,442 sq km",
+        "highlights": "CNN's Top African Park, endemic species, remote wilderness",
+        "bestTime": "June–September",
+        "image": "/images/safari.png",
+        "description": "Kidepo Valley National Park — Uganda's most remote national park — is regularly voted among Africa's finest wilderness areas by CNN and other travel publications. Located near the Sudan border in northeastern Uganda, this vast semi-arid savannah hosts endemic and rare species found nowhere else in Uganda: cheetahs, ostriches, Besia oryx, and the striking Karamoja giraffe."
+      },
+      {
+        "name": "Lake Mburo National Park",
+        "area": "370 sq km",
+        "highlights": "Uganda's only zebras, closest park to Kampala, impalas & elands",
+        "bestTime": "June–September, December–February",
+        "image": "/images/safari.png",
+        "description": "Lake Mburo National Park — Uganda's smallest savannah park — is the only place in Uganda where you can see zebras and impalas. Just three hours from Kampala, it offers exceptional game drives without the long travel times, plus unique walking safaris, horse-back safaris, and beautiful boat trips on Lake Mburo itself."
+      }
+    ]
+  },
+  {
+    "id": "kenya",
+    "slug": "kenya",
+    "name": "Kenya",
+    "subtitle": "The Land of Unparalleled Beauty",
+    "tagline": "Masai Mara & Great Migration · Amboseli & Kilimanjaro views",
+    "description": "Kenya is the birthplace of the African safari. From the iconic Masai Mara to the snow-capped peaks of Mount Kenya, Kenya offers a diversity of wildlife experiences that have captivated travellers for over a century.",
+    "image": "/images/safari.png",
+    "tourCount": 4,
+    "parks": []
+  },
+  {
+    "id": "tanzania",
+    "slug": "tanzania",
+    "name": "Tanzania",
+    "subtitle": "Land of Endless Plains",
+    "tagline": "Serengeti Great Migration · Mount Kilimanjaro Summit",
+    "description": "Tanzania hosts the greatest wildlife spectacle on Earth — the Great Wildebeest Migration across the Serengeti — plus Africa's highest peak, Mount Kilimanjaro, and the breathtaking Ngorongoro Crater.",
+    "image": "/images/safari.png",
+    "tourCount": 3,
+    "parks": []
+  },
+  {
+    "id": "rwanda",
+    "slug": "rwanda",
+    "name": "Rwanda",
+    "subtitle": "Land of a Thousand Hills",
+    "tagline": "Volcanoes NP Gorilla Trekking · Golden Monkey Trekking",
+    "description": "Rwanda — the Land of a Thousand Hills — has undergone a remarkable transformation and is now one of Africa's premier safari destinations, famous for mountain gorilla trekking in Volcanoes National Park.",
+    "image": "/images/safari.png",
+    "tourCount": 2,
+    "parks": []
+  }
+]

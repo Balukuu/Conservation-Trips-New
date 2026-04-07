@@ -1,0 +1,162 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/safari.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>About Us</span></nav>
+    <h1 style="color:#fff;">About Conservation Trips &amp; Adventures</h1>
+    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
+      Uganda's premier safari company — crafting life-changing East Africa journeys since 2008
+    </p>
+  </div>
+</section>
+
+<!-- Company Story -->
+<section class="section" style="background: var(--surface);">
+  <div class="container">
+    <div class="grid-2" style="gap:80px;">
+      <div class="reveal-left">
+        <div class="section-label"><i class="fa-solid fa-leaf"></i> Our Story</div>
+        <h2 style="color:var(--dark); margin-bottom:24px;">Pioneering Conservation Tourism in Uganda</h2>
+        <p class="body-lg" style="color:var(--text-muted); margin-bottom:20px;">
+          Conservation Trips and Adventures is Uganda's premier safari and adventure travel company. Since 2008, we have been crafting life-changing experiences — with a dedication to excellence, safety, and conservation at our core.
+        </p>
+        <p style="color:var(--text-muted); margin-bottom:20px; line-height:1.8;">
+          As a fully-fledged travel, tourism and conservation management company, we cater for both regional and global clients. We are proudly local, deeply knowledgeable, and absolutely passionate about sharing Uganda's extraordinary natural and cultural heritage with the world.
+        </p>
+        <p style="color:var(--text-muted); line-height:1.8;">
+          Our team of certified guides, naturalists, and logistics specialists combine insider knowledge with international service standards — ensuring every journey exceeds expectations. From selecting the finest lodges to securing sought-after gorilla permits, every detail is handled with expert care.
+        </p>
+        <!-- Decorative quote -->
+        <blockquote style="position:relative; margin:32px 0; padding-left:28px; border-left:4px solid var(--accent);">
+          <p class="quote-text" style="color:var(--text);">
+            "Your prime tour and travel partner bringing exceptional experiences in Uganda and beyond."
+          </p>
+        </blockquote>
+        <a href="/tours" class="btn btn-green">Explore Our Tours <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="reveal-right">
+        <div style="position:relative;">
+          <div style="border-radius:var(--radius-lg); overflow:hidden; height:420px; box-shadow:var(--shadow-lg); transform:rotate(-1.5deg);">
+            <img src="/images/lion.png" alt="Uganda safari" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="position:absolute; bottom:-24px; right:-20px; background:#fff; border-radius:var(--radius-md); padding:20px 24px; box-shadow:var(--shadow-xl); text-align:center; animation:bobFloat 4s ease-in-out infinite;">
+            <span style="font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:700; color:var(--accent); display:block; line-height:1;">15+</span>
+            <span style="font-size:0.8rem; font-weight:600; color:var(--dark);">Years of Excellence</span>
+          </div>
+        </div>
+        <!-- Decorative bg element -->
+        <div style="position:absolute; top:40px; left:-30px; width:120px; height:120px; border-radius:50%; background:var(--primary-light); z-index:-1; opacity:0.7;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission / Vision / Values -->
+<section class="section" style="background:var(--surface-alt);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-bullseye"></i> What Drives Us</div>
+      <h2 style="color:var(--dark);">Mission, Vision &amp; Values</h2>
+    </div>
+    <div class="grid-3 reveal-grid">
+      <div class="mission-card">
+        <div class="mission-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To provide world-class, sustainable safari and adventure experiences that connect people with Africa's extraordinary wildlife while supporting conservation and local communities.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon"><i class="fa-solid fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To be East Africa's most trusted and impactful tour operator — inspiring travellers worldwide to experience the continent's majesty while protecting it for future generations.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3>Our Values</h3>
+        <p>Conservation first. Integrity always. Excellence in every detail. Community empowerment. Safety without compromise. Authentic experiences over manufactured ones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Travel With Us -->
+<section class="section" style="background:var(--surface);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-star"></i> Why Choose Us</div>
+      <h2 style="color:var(--dark);">Since 2008, We've Been Doing This Right</h2>
+      <p class="section-subtitle" style="text-align:center; margin:14px auto 0;">Since 2008, Conservation Trips and Adventures has been creating life-changing safari experiences — with a dedication to excellence, safety, and conservation at our core.</p>
+    </div>
+    <div class="grid-3 reveal-grid">
+      <% const whyItems = [
+        { icon: 'fa-shield-halved', title: 'Integrity & Safety', desc: 'Your safety is our top priority. We meticulously plan every aspect — from transport to accommodation — with rigorous safety protocols and emergency plans in place.' },
+        { icon: 'fa-user-graduate', title: 'Professional Guides', desc: 'Embark on a seamless adventure with our knowledgeable and professional guides who bring every destination alive with expertise and passion.' },
+        { icon: 'fa-map-location-dot', title: 'Local Expertise', desc: 'As a proudly local Ugandan company, we offer an authentic perspective that unlocks hidden gems and cultural insights no outside operator can match.' },
+        { icon: 'fa-truck-monster', title: 'Exclusive Vehicles', desc: 'Travel in custom 4x4 safari vehicles with pop-up roofs, USB charging, cooler boxes, and first-aid kits — built for comfort and wildlife viewing.' },
+        { icon: 'fa-sliders', title: 'Tailored Experiences', desc: 'Your journey, your way. Every safari is customised to align perfectly with your preferences, travel style, group size, and budget.' },
+        { icon: 'fa-seedling', title: 'Sustainable Tourism', desc: 'We are committed to conservation and responsible tourism — protecting natural resources, wildlife, and the unique cultural heritage of East Africa.' }
+      ]; %>
+      <% whyItems.forEach(item => { %>
+      <div class="card" style="padding: 32px; border: 1px solid var(--border-light);">
+        <div class="feature-icon large" style="margin-bottom: 20px;">
+          <i class="fa-solid <%= item.icon %>"></i>
+        </div>
+        <h4 style="margin-bottom: 10px; color: var(--dark);"><%= item.title %></h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;"><%= item.desc %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section" style="background:var(--surface-alt);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-users"></i> Our Team</div>
+      <h2 style="color:var(--dark);">Meet Our Expert Guides &amp; Team</h2>
+    </div>
+    <div class="team-grid reveal-grid">
+      <% const team = [
+        { name: 'Joseph Tumusiime', role: 'Lead Safari Guide', bio: '15+ years guiding in Bwindi and Queen Elizabeth NP. Gorilla trekking specialist and certified UWA ranger.', img: '/images/lion.png' },
+        { name: 'Grace Nakiganda', role: 'Operations Manager', bio: 'Logistics expert ensuring every safari runs flawlessly. 10 years coordinating complex multi-country journeys.', img: '/images/safari.png' },
+        { name: 'Moses Byaruhanga', role: 'Senior Birding Guide', bio: 'Uganda\'s top birding specialist. Identified 850+ Ugandan species. Expert on the shoebill and Albertine Rift endemics.', img: '/images/lodge.png' },
+        { name: 'Sarah Akello', role: 'Travel Consultant', bio: 'Your dedicated safari planner. Passionate about crafting personalised itineraries that exceed every expectation.', img: '/images/waterfall.png' }
+      ]; %>
+      <% team.forEach(member => { %>
+      <div class="team-card">
+        <img src="<%= member.img %>" alt="<%= member.name %>" class="team-avatar" loading="lazy" onerror="this.src='/images/lion.png'">
+        <div class="team-name"><%= member.name %></div>
+        <div class="team-role"><%= member.role %></div>
+        <p class="team-bio"><%= member.bio %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="section-sm" style="background:var(--surface);">
+  <div class="container">
+    <div class="text-center reveal mb-32">
+      <div class="section-label"><i class="fa-solid fa-certificate"></i> Certifications &amp; Partners</div>
+    </div>
+    <div class="footer-partner-logos reveal" style="margin:0; gap:16px;">
+      <% ['Uganda Tourism Board', 'Uganda Wildlife Authority', 'AUTO', 'IUCN', 'East Africa Tourism Platform', 'TripAdvisor'].forEach(p => { %>
+      <span class="footer-partner-badge" style="border-color:var(--border); color:var(--text-muted);"><%= p %></span>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>Ready for Your African Adventure?</h2>
+    <p>Let our expert team craft your perfect safari. Whether it's gorillas in Bwindi, the summit of Kilimanjaro, or a custom multi-country journey — we make it seamless.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/tours" class="btn btn-primary btn-lg">Browse All Tours <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/contact" class="btn btn-outline btn-lg">Get a Custom Quote</a>
+    </div>
+  </div>
+</section>
