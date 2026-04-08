@@ -67,14 +67,14 @@
 @media (max-width: 768px) {
   .trust-strip-inner { flex-wrap: wrap; }
   .trust-stat { flex: 0 0 50%; padding: 12px 10px; }
-  .trust-stat .stat-number { font-size: 1.8rem; }
+  .trust-stat .stat-number { font-size: 1.6rem; }
   .trust-stat .stat-label { font-size: 0.65rem; }
   .trust-stat:nth-child(odd)::before { display: none; }
 }
 @media (max-width: 420px) {
   .trust-stat { flex: 0 0 100%; padding: 16px 10px; }
   .trust-stat::before { display: none; }
-  .trust-stat .stat-number { font-size: 1.6rem; }
+  .trust-stat .stat-number { font-size: 1.4rem; }
 }
 
 /* ============================================================
@@ -914,6 +914,7 @@
   .hide-mobile { display: none !important; }
   .section { padding: 56px 0; }
   .section-sm { padding: 36px 0; }
+  h2 { font-size: 1.7rem; }
 }
 @media (min-width: 769px) {
   .hide-desktop { display: none !important; }

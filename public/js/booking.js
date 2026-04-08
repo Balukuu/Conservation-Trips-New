@@ -170,7 +170,15 @@
     }
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const data = {};
+    formData.forEach((value, key) => {
+      if (data[key]) {
+        if (!Array.isArray(data[key])) data[key] = [data[key]];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    });
 
     try {
       const res = await fetch('/contact/booking', {

@@ -1,0 +1,20 @@
+# cPanel .htaccess for Node.js Application (Conservation Trips & Adventures)
+# For setups using Phusion Passenger on Apache.
+
+PassengerEnabled on
+PassengerAppRoot /home/username/public_html
+PassengerAppType node
+PassengerStartupFile server.js
+
+# Ensure static files are served by Apache directly for performance
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Custom 404
+ErrorDocument 404 /404.html

@@ -53,9 +53,15 @@ router.post('/', (req, res) => {
   });
 });
 
+const nodemailer = require('nodemailer');
+
 // POST booking form
-router.post('/booking', (req, res) => {
-  const { firstName, lastName, email, phone, country, safari_type, duration_range, travel_month, travel_year, group_size, destinations, accommodation, requirements } = req.body;
+router.post('/booking', async (req, res) => {
+  const { 
+    firstName, lastName, email, phone, country, 
+    safari_type, duration_range, travel_month, travel_year, 
+    group_size, destinations, accommodation, requirements 
+  } = req.body;
   
   // Basic validation
   if (!firstName || !email || !safari_type) {
@@ -71,21 +77,76 @@ router.post('/booking', (req, res) => {
   console.log('Name:', firstName, lastName);
   console.log('Email:', email);
   console.log('Phone:', phone);
-  console.log('Country:', country);
-  console.log('Safari Type:', safari_type);
-  console.log('Duration:', duration_range, 'days');
-  console.log('Travel:', travel_month, travel_year);
-  console.log('Group Size:', group_size);
-  console.log('Destinations:', destinations);
-  console.log('Accommodation:', accommodation);
-  console.log('Requirements:', requirements);
-  console.log('---\n');
+  console.log('--- Details ---\n');
 
-  res.json({ 
-    success: true, 
-    firstName,
-    message: `Thank you, ${firstName}! Your safari enquiry has been received. Our team will contact you within 24 hours to craft your perfect Uganda adventure.`
-  });
+  try {
+    // 1. Configure the transporter
+    // SMTP credentials must be set in .env
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT || 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+
+    // 2. Format the email content
+    const destString = Array.isArray(destinations) ? destinations.join(', ') : destinations;
+    
+    const mailOptions = {
+      from: `"${firstName} ${lastName}" <${process.env.SMTP_USER}>`, // Recommended to send from your authenticated user
+      replyTo: email,
+      to: process.env.CONTACT_EMAIL || 'info@tripsandadventures.co.ug',
+      subject: `New Safari Enquiry: ${safari_type} from ${firstName} ${lastName}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #2D6A2D;">New Safari Enquiry 🦍</h2>
+          <p><strong>Customer:</strong> ${firstName} ${lastName}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+          <p><strong>Country:</strong> ${country || 'Not provided'}</p>
+          <hr>
+          <h3 style="color: #2D6A2D;">Trip Details</h3>
+          <p><strong>Safari Type:</strong> ${safari_type}</p>
+          <p><strong>Duration:</strong> ${duration_range || 'Not specified'}</p>
+          <p><strong>Travel Date:</strong> ${travel_month} ${travel_year}</p>
+          <p><strong>Group Size:</strong> ${group_size}</p>
+          <p><strong>Preferred Destinations:</strong> ${destString || 'None selected'}</p>
+          <p><strong>Accommodation:</strong> ${accommodation || 'No preference'}</p>
+          <hr>
+          <h3 style="color: #2D6A2D;">Additional Info</h3>
+          <p>${requirements || 'No special requirements noted.'}</p>
+        </div>
+      `
+    };
+
+    // 3. Send the email
+    // Note: In development without real credentials, this will fail.
+    // I'll wrap it so it still "succeeds" for the user experience in Dev, but logs the error.
+    if (process.env.NODE_ENV === 'production' || (process.env.SMTP_USER && process.env.SMTP_PASS && process.env.SMTP_USER !== 'your@email.com')) {
+      await transporter.sendMail(mailOptions);
+      console.log('✅ Email sent successfully.');
+    } else {
+      console.log('⚠️  Email skipped (Development mode or missing SMTP credentials)');
+    }
+
+    res.json({ 
+      success: true, 
+      firstName,
+      message: `Thank you, ${firstName}! Your safari enquiry has been received. Our team will contact you within 24 hours to craft your perfect Uganda adventure.`
+    });
+
+  } catch (error) {
+    console.error('❌ Error sending email:', error);
+    // Still return success if it's the server's fault (to keep customer UX), or return error.
+    // Given the user's "Failed to send" issue, they probably WANT to know if the email failed.
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send enquiry. Please contact us directly at info@tripsandadventures.co.ug' 
+    });
+  }
 });
 
 module.exports = router;
