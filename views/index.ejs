@@ -490,35 +490,7 @@
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 9: PARTNER LOGOS ═══════════════ -->
-<section class="section-sm" id="partners" style="background: var(--surface-alt);">
-  <div class="container">
-    <div class="text-center reveal mb-32">
-      <div class="section-label"><i class="fa-solid fa-handshake"></i> Trusted Partners &amp; Associations</div>
-    </div>
-    <div class="partners-track-wrap reveal">
-      <div class="partners-track">
-        <% 
-        const partners = [
-          { name: 'Uganda Tourism Board', icon: 'fa-landmark' },
-          { name: 'Uganda Wildlife Authority', icon: 'fa-shield-dog' },
-          { name: 'AUTO', icon: 'fa-car-side' },
-          { name: 'IUCN Conservation', icon: 'fa-leaf' },
-          { name: 'East Africa Tourism', icon: 'fa-globe' },
-          { name: 'TripAdvisor Certified', icon: 'fa-star' },
-          { name: 'SafariBookings.com', icon: 'fa-binoculars' }
-        ];
-        // Duplicate for infinite scroll effect
-        [...partners, ...partners].forEach(p => { %>
-        <div class="partner-logo-card">
-          <i class="fa-solid <%= p.icon %>" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name"><%= p.name %></span>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
 <section class="section" id="blog-preview" style="background: var(--surface);">

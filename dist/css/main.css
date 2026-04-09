@@ -855,3 +855,36 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   .btn-lg { padding: 14px 32px; font-size: 0.85rem; }
   .btn { width: 100%; text-align: center; justify-content: center; }
 }
+
+.footer-partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.partner-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: grayscale(100%) opacity(0.7);
+  cursor: pointer;
+}
+
+.partner-logo:hover {
+  transform: scale(1.15) translateY(-5px);
+  filter: grayscale(0%) opacity(1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .footer-partner-logos {
+    gap: 20px;
+  }
+  .partner-logo {
+    height: 36px;
+  }
+}
