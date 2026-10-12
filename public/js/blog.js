@@ -5,25 +5,28 @@
    where "?category=" can't be handled by a server.
    ============================================================ */
 
-(function() {
+(function () {
   'use strict';
 
-  const grid = document.querySelector('.blog-grid');
-  const tabs = document.querySelectorAll('.filter-tabs .filter-tab[data-category]');
+  var grid = document.querySelector('.blog-grid');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.filter-tabs .filter-tab[data-category]'));
   if (!grid || !tabs.length) return;
 
-  const cards = grid.querySelectorAll('.blog-card[data-category]');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.blog-card[data-category]'));
 
   function filterPosts(category) {
-    tabs.forEach(tab => tab.classList.toggle('active', tab.getAttribute('data-category') === category));
-    cards.forEach(card => {
-      const matches = category === 'All' || card.getAttribute('data-category') === category;
-      card.style.display = matches ? '' : 'none';
+    tabs.forEach(function (tab) {
+      var on = tab.getAttribute('data-category') === category;
+      tab.classList.toggle('active', on);
+      tab.setAttribute('aria-selected', String(on));
+    });
+    cards.forEach(function (card) {
+      card.hidden = !(category === 'All' || card.getAttribute('data-category') === category);
     });
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function (e) {
       e.preventDefault();
       filterPosts(tab.getAttribute('data-category'));
       history.replaceState(null, '', tab.getAttribute('href'));
@@ -31,8 +34,8 @@
   });
 
   // Initialize from URL query param
-  const catParam = new URLSearchParams(window.location.search).get('category');
-  if (catParam && Array.from(tabs).some(tab => tab.getAttribute('data-category') === catParam)) {
+  var catParam = new URLSearchParams(window.location.search).get('category');
+  if (catParam && tabs.some(function (tab) { return tab.getAttribute('data-category') === catParam; })) {
     filterPosts(catParam);
   }
 

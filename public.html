@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Runs before first paint:
+       .js            → scroll-reveal content may be hidden (no-JS visitors always see it)
+       .cookies-ok    → returning visitors never get the cookie banner (no slide-down flash) -->
+  <script>
+    (function (d) {
+      d.documentElement.classList.add('js');
+      try { if (localStorage.getItem('cookiesAccepted') === 'true') d.documentElement.classList.add('cookies-ok'); } catch (e) {}
+    })(document);
+  </script>
   <title>Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours</title>
   <meta name="description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
   <meta name="keywords" content="gorilla trekking Uganda, Uganda safaris, Bwindi gorillas, Queen Elizabeth National Park, chimpanzee tracking Kibale, Murchison Falls safari, East Africa tours">
@@ -40,16 +49,18 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/components.css">
+  <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
+  <link rel="stylesheet" href="/css/preferences.css">
 
   
 </head>
 <body>
 
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" aria-label="Main">
   <div class="nav-inner">
-    <!-- Logo -->
+    <!-- Logo (sized in CSS; an inline height here used to beat the mobile rule) -->
     <a href="/" class="nav-logo">
-      <img src="/images/logonew.jpeg" alt="Logo" style="height: 52px; width: auto; border-radius: 5px;">
+      <img src="/images/logonew.jpeg" alt="">
       <div class="nav-logo-text">
         <span>Conservation Trips</span>
         <span>&amp; Adventures</span>
@@ -77,7 +88,7 @@
     </div>
 
     <!-- Hamburger -->
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -106,110 +117,106 @@
 
   <main>
     
-<style>
-  .hero-trust-strip .trust-stat + .trust-stat::before { background: rgba(255,255,255,0.2) !important; }
-  .hero-trust-strip .stat-number { color: var(--accent) !important; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-  .hero-trust-strip .stat-label { text-shadow: 0 1px 4px rgba(0,0,0,0.5); font-weight: 500; }
-  .hero-slide-title-custom { font-family: 'Cormorant Garamond', serif; line-height: 1.05; margin-bottom: 8px; text-shadow: 0 4px 16px rgba(0,0,0,0.6); }
-  .whatsapp-float { transition: transform 0.3s ease; }
-  .whatsapp-float:hover { transform: scale(1.1); }
-  .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 20px rgba(98, 210, 111, 0.4); }
-</style>
 
 <!-- ═══════════════ SECTION 1: HERO SLIDER ═══════════════ -->
-<section class="hero-slider" id="hero" aria-label="Hero image slider">
+<h1 class="sr-only">Uganda Safaris &amp; East Africa Tours — Conservation Trips &amp; Adventures</h1>
+<div class="hero">
+  <section class="hero-slider" id="hero" aria-roledescription="carousel" aria-label="Featured safari destinations">
 
-  
-  <div class="hero-slide active" aria-hidden="false">
-    <div class="hero-slide-bg" style="background-image: url('/images/waterfall.png');"></div>
-    <div class="hero-slide-overlay"></div>
-    <div class="hero-slide-content">
-
-      <h1 class="slide-title">Murchison Falls Awaits</h1>
-      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;">The World&#39;s Most Powerful Waterfall</p>
-      <div class="slide-ctas" style="display: flex; gap: 16px; justify-content: center;">
-        <a href="/tours" class="btn btn-primary btn-lg" style="letter-spacing: 0.05em;">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg" style="letter-spacing: 0.05em; border-width: 1.5px;">PLAN MY SAFARI</a>
+    
+    <div class="hero-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" aria-hidden="false">
+      <div class="hero-slide-bg" style="background-image: url('/images/waterfall.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <h2 class="slide-title">Murchison Falls Awaits</h2>
+        <p class="slide-sub">The World&#39;s Most Powerful Waterfall</p>
+        <div class="slide-ctas">
+          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="hero-slide " aria-hidden="true">
-    <div class="hero-slide-bg" style="background-image: url('/images/gorilla.png');"></div>
-    <div class="hero-slide-overlay"></div>
-    <div class="hero-slide-content">
-
-      <h1 class="slide-title">Face to Face with Mountain Gorillas</h1>
-      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;">Trek through ancient rainforest for a once-in-a-lifetime encounter with Africa&#39;s most magnificent primates</p>
-      <div class="slide-ctas" style="display: flex; gap: 16px; justify-content: center;">
-        <a href="/tours" class="btn btn-primary btn-lg" style="letter-spacing: 0.05em;">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg" style="letter-spacing: 0.05em; border-width: 1.5px;">PLAN MY SAFARI</a>
+    
+    <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
+      <div class="hero-slide-bg" style="background-image: url('/images/gorilla.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <h2 class="slide-title">Face to Face with Mountain Gorillas</h2>
+        <p class="slide-sub">Trek through ancient rainforest for a once-in-a-lifetime encounter with Africa&#39;s most magnificent primates</p>
+        <div class="slide-ctas">
+          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="hero-slide " aria-hidden="true">
-    <div class="hero-slide-bg" style="background-image: url('/images/lion.png');"></div>
-    <div class="hero-slide-overlay"></div>
-    <div class="hero-slide-content">
-
-      <h1 class="slide-title">Where the Savanna Meets the Forest</h1>
-      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;">Witness the rare tree-climbing lions and cruise the legendary Kazinga Channel teeming with wildlife</p>
-      <div class="slide-ctas" style="display: flex; gap: 16px; justify-content: center;">
-        <a href="/tours" class="btn btn-primary btn-lg" style="letter-spacing: 0.05em;">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg" style="letter-spacing: 0.05em; border-width: 1.5px;">PLAN MY SAFARI</a>
+    
+    <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
+      <div class="hero-slide-bg" style="background-image: url('/images/lion.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <h2 class="slide-title">Where the Savanna Meets the Forest</h2>
+        <p class="slide-sub">Witness the rare tree-climbing lions and cruise the legendary Kazinga Channel teeming with wildlife</p>
+        <div class="slide-ctas">
+          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="hero-slide " aria-hidden="true">
-    <div class="hero-slide-bg" style="background-image: url('/images/safari.png');"></div>
-    <div class="hero-slide-overlay"></div>
-    <div class="hero-slide-content">
-
-      <h1 class="slide-title">Track Our Closest Relatives</h1>
-      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;">Uganda is home to the world&#39;s greatest concentration of habituated chimpanzees in Kibale Forest</p>
-      <div class="slide-ctas" style="display: flex; gap: 16px; justify-content: center;">
-        <a href="/tours" class="btn btn-primary btn-lg" style="letter-spacing: 0.05em;">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg" style="letter-spacing: 0.05em; border-width: 1.5px;">PLAN MY SAFARI</a>
+    
+    <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
+      <div class="hero-slide-bg" style="background-image: url('/images/safari.png');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <h2 class="slide-title">Track Our Closest Relatives</h2>
+        <p class="slide-sub">Uganda is home to the world&#39;s greatest concentration of habituated chimpanzees in Kibale Forest</p>
+        <div class="slide-ctas">
+          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+        </div>
       </div>
     </div>
-  </div>
-  
+    
 
-  <!-- Arrows -->
-  <button class="slider-arrow slider-prev" aria-label="Previous slide">
-    <i class="fa-solid fa-chevron-left"></i>
-  </button>
-  <button class="slider-arrow slider-next" aria-label="Next slide">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
+    <!-- Arrows -->
+    <button class="slider-arrow slider-prev" type="button" aria-label="Previous slide">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="slider-arrow slider-next" type="button" aria-label="Next slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
 
-  <!-- Dots -->
-  <div class="slider-dots" role="tablist" aria-label="Slider navigation">
-    
-    <button class="slider-dot active" role="tab" aria-label="Slide 1"></button>
-    
-    <button class="slider-dot " role="tab" aria-label="Slide 2"></button>
-    
-    <button class="slider-dot " role="tab" aria-label="Slide 3"></button>
-    
-    <button class="slider-dot " role="tab" aria-label="Slide 4"></button>
-    
-  </div>
-
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator" aria-hidden="true">
-    <span>Scroll to Explore</span>
-    <div class="scroll-chevrons">
-      <i class="fa-solid fa-chevron-down"></i>
-      <i class="fa-solid fa-chevron-down"></i>
+    <!-- Pause + dots -->
+    <div class="slider-controls">
+      <button class="slider-pause" type="button" aria-label="Pause slideshow" aria-pressed="false">
+        <i class="fa-solid fa-pause"></i>
+      </button>
+      <div class="slider-dots">
+        
+        <button class="slider-dot active" type="button" aria-label="Go to slide 1" aria-current="true"></button>
+        
+        <button class="slider-dot " type="button" aria-label="Go to slide 2" aria-current="false"></button>
+        
+        <button class="slider-dot " type="button" aria-label="Go to slide 3" aria-current="false"></button>
+        
+        <button class="slider-dot " type="button" aria-label="Go to slide 4" aria-current="false"></button>
+        
+      </div>
     </div>
-  </div>
-  <!-- ═══════════════ TRUST STRIP INSIDE HERO ═══════════════ -->
-  <div class="hero-trust-strip" style="position: absolute; bottom: 30px; left: 0; right: 0; z-index: 10;">
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll to Explore</span>
+      <div class="scroll-chevrons">
+        <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STATS: overlay on desktop, a band under the slider on phones ═══════════════ -->
+  <div class="hero-trust-strip">
     <div class="container">
-      <div class="trust-strip-inner" style="background: transparent;">
+      <div class="trust-strip-inner">
         <div class="trust-stat">
           <span class="stat-number" data-count="15" data-suffix="+">15+</span>
           <span class="stat-label">Years Experience</span>
@@ -229,9 +236,7 @@
       </div>
     </div>
   </div>
-</section>
-
-
+</div>
 
 <!-- ═══════════════ SECTION 3: ABOUT INTRO ═══════════════ -->
 <section class="section" id="about-intro" style="background: var(--surface);">
@@ -312,13 +317,15 @@
     </div>
 
     <!-- Filter Tabs -->
-    <div class="filter-bar reveal mt-32" role="tablist">
-      <button class="filter-tab active" data-category="All" role="tab">All Safaris</button>
-      <button class="filter-tab" data-category="Gorilla Trekking" role="tab">Gorilla Trekking</button>
-      <button class="filter-tab" data-category="Wildlife Safari" role="tab">Wildlife Safari</button>
-      <button class="filter-tab" data-category="Primate Safari" role="tab">Primate Treks</button>
-      <button class="filter-tab" data-category="Mountain Climbing" role="tab">Mountain Adventures</button>
-      <button class="filter-tab" data-category="Cultural Tour" role="tab">Cultural Tours</button>
+    <div class="filter-bar reveal mt-32" role="tablist" aria-label="Filter safari packages">
+      <button class="filter-tab active" type="button" data-category="All" role="tab" aria-selected="true">All Safaris</button>
+      
+      <button class="filter-tab" type="button" data-category="Wildlife Safari" role="tab" aria-selected="false">Wildlife Safari</button>
+      
+      <button class="filter-tab" type="button" data-category="Gorilla Trekking" role="tab" aria-selected="false">Gorilla Trekking</button>
+      
+      <button class="filter-tab" type="button" data-category="Primate Safari" role="tab" aria-selected="false">Primate Treks</button>
+      
     </div>
 
     <!-- Tours Grid -->
@@ -687,8 +694,8 @@
       <h2 style="color: #fff; font-style: italic;">What Our Travellers Say</h2>
     </div>
 
-    <div class="testimonial-slider reveal">
-      <div class="testimonial-track">
+    <div class="testimonial-slider reveal" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
+      <div class="testimonial-track" tabindex="0">
         
           <div class="testimonial-card">
   <div class="testimonial-card-inner">
@@ -831,23 +838,24 @@
       </div>
 
       <div class="testimonial-nav">
-        <button class="test-arrow test-prev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="test-dots">
           
-          <button class="test-dot active" aria-label="Testimonial 1"></button>
+          <button class="test-dot active" type="button" aria-label="Testimonial 1" aria-current="true"></button>
           
-          <button class="test-dot " aria-label="Testimonial 2"></button>
+          <button class="test-dot " type="button" aria-label="Testimonial 2" aria-current="false"></button>
           
-          <button class="test-dot " aria-label="Testimonial 3"></button>
+          <button class="test-dot " type="button" aria-label="Testimonial 3" aria-current="false"></button>
           
-          <button class="test-dot " aria-label="Testimonial 4"></button>
+          <button class="test-dot " type="button" aria-label="Testimonial 4" aria-current="false"></button>
           
-          <button class="test-dot " aria-label="Testimonial 5"></button>
+          <button class="test-dot " type="button" aria-label="Testimonial 5" aria-current="false"></button>
           
-          <button class="test-dot " aria-label="Testimonial 6"></button>
+          <button class="test-dot " type="button" aria-label="Testimonial 6" aria-current="false"></button>
           
         </div>
-        <button class="test-arrow test-next" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
       </div>
     </div>
   </div>
@@ -925,89 +933,7 @@
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 9: PARTNER LOGOS ═══════════════ -->
-<section class="section-sm" id="partners" style="background: var(--surface-alt);">
-  <div class="container">
-    <div class="text-center reveal mb-32">
-      <div class="section-label"><i class="fa-solid fa-handshake"></i> Trusted Partners &amp; Associations</div>
-    </div>
-    <div class="partners-track-wrap reveal">
-      <div class="partners-track">
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-landmark" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">Uganda Tourism Board</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-shield-dog" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">Uganda Wildlife Authority</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-car-side" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">AUTO</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-leaf" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">IUCN Conservation</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-globe" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">East Africa Tourism</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-star" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">TripAdvisor Certified</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-binoculars" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">SafariBookings.com</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-landmark" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">Uganda Tourism Board</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-shield-dog" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">Uganda Wildlife Authority</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-car-side" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">AUTO</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-leaf" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">IUCN Conservation</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-globe" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">East Africa Tourism</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-star" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">TripAdvisor Certified</span>
-        </div>
-        
-        <div class="partner-logo-card">
-          <i class="fa-solid fa-binoculars" style="color: var(--primary); font-size: 1.2rem; margin-right: 12px; opacity: 0.6;"></i>
-          <span class="partner-name">SafariBookings.com</span>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
 <section class="section" id="blog-preview" style="background: var(--surface);">
@@ -1110,16 +1036,16 @@
 </section>
 
 <!-- Cookie Banner -->
-<div class="cookie-banner" id="cookie-banner" role="alert">
-  <p>🍪 We use cookies to improve your browsing experience on our safari website. <a href="/privacy">Learn More</a></p>
-  <button class="btn btn-primary btn-sm cookie-accept">Accept</button>
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice">
+  <p>🍪 We use cookies to improve your browsing experience. <a href="/privacy">Learn more</a></p>
+  <button class="btn btn-primary btn-sm cookie-accept" type="button">Accept</button>
 </div>
 
 <!-- Availability Toast -->
 <div class="availability-toast" id="avail-toast" role="status">
   <span class="toast-emoji">🦍</span>
-  <p>Gorilla permits are filling fast for 2025 — Book early to secure your spot!</p>
-  <button class="toast-close" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
+  <p>Gorilla permits are limited every day — enquire early to secure your dates.</p>
+  <button class="toast-close" type="button" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
 </div>
 
 <!-- JSON-LD Structured Data -->
@@ -1146,7 +1072,12 @@
   "foundingDate": "2008",
   "logo": "https://tripsandadventures.co.ug/images/logonew.jpeg",
   "image": "https://tripsandadventures.co.ug/images/logonew.jpeg",
-  "sameAs": ["https://www.facebook.com/tripsandadventures"]
+  "sameAs": [
+    "https://www.facebook.com/tripsandadventures",
+    "https://www.instagram.com/trips_and_adventures.1",
+    "https://x.com/conservation_t",
+    "https://www.tiktok.com/@conservationtrips"
+  ]
 }
 </script>
 
@@ -1177,10 +1108,10 @@
           <div class="footer-brand-name">Conservation Trips &amp; Adventures</div>
           <p class="footer-brand-desc">Your prime tour and travel partner bringing exceptional experiences in Uganda and beyond. A fully-fledged travel, tourism and conservation management company catering for both regional and global clients. Crafting life-changing journeys since 2008.</p>
           <div class="footer-social">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/conservation_t" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.tiktok.com/@conservationtrips" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             <a href="https://www.tripadvisor.com/" target="_blank" rel="noopener" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
           </div>
         </div>
@@ -1248,20 +1179,7 @@
     </div>
   </div>
 
-  <!-- Partners Row -->
-  <div class="footer-partners-row">
-    <div class="container">
-      <div class="footer-partners-label">Proud member of</div>
-      <div class="footer-partner-logos">
-        <span class="footer-partner-badge">Uganda Tourism Board</span>
-        <span class="footer-partner-badge">Uganda Wildlife Authority</span>
-        <span class="footer-partner-badge">AUTO</span>
-        <span class="footer-partner-badge">IUCN</span>
-        <span class="footer-partner-badge">East Africa Tourism Platform</span>
-        <span class="footer-partner-badge">TripAdvisor</span>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Footer Bottom -->
   <div class="container">
@@ -1282,7 +1200,7 @@
 
   <!-- Floating WhatsApp -->
   <div class="whatsapp-float">
-    <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    <span class="whatsapp-tooltip" aria-hidden="true">Chat on WhatsApp</span>
     <a class="whatsapp-btn" href="https://wa.me/256767936590?text=Hello%20Conservation%20Trips%20%26%20Adventures!%20I%27m%20interested%20in%20booking%20a%20Uganda%20safari.%20Can%20you%20help%20me%20plan%20my%20trip%3F" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -1297,20 +1215,23 @@
   <div class="menu-backdrop"></div>
 
   <!-- Lightbox -->
-  <div class="lightbox-overlay" role="dialog" aria-modal="true">
+  <div class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image gallery">
     <div class="lightbox-inner">
-      <button class="lightbox-close" aria-label="Close lightbox"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lightbox-close" aria-label="Close gallery"><i class="fa-solid fa-xmark"></i></button>
       <button class="lightbox-nav lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-      <img src="" alt="Gallery image">
+      <img src="" alt="">
       <button class="lightbox-nav lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
+    <div class="lightbox-count" aria-live="polite"></div>
   </div>
 
   <!-- Scripts -->
+  <script src="/js/motion.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/slider.js"></script>
   <script src="/js/lightbox.js"></script>
   <script src="/js/tours.js"></script>
+  <script src="/js/blog.js"></script>
   <script src="/js/booking.js"></script>
 
   

@@ -27,63 +27,71 @@
       bg: '/images/safari.png'
     }
   ];
+
+  // Filter tabs only for categories that actually have a featured tour, so no
+  // tab leads to an empty grid. Labels keep the friendlier home-page wording.
+  const tabLabels = {
+    'Primate Safari': 'Primate Treks',
+    'Mountain Climbing': 'Mountain Adventures',
+    'Cultural Tour': 'Cultural Tours'
+  };
+  const featuredCategories = [...new Set(featuredTours.map(t => t.category))];
 %>
-<style>
-  .hero-trust-strip .trust-stat + .trust-stat::before { background: rgba(255,255,255,0.2) !important; }
-  .hero-trust-strip .stat-number { color: var(--accent) !important; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-  .hero-trust-strip .stat-label { text-shadow: 0 1px 4px rgba(0,0,0,0.5); font-weight: 500; }
-  .hero-slide-title-custom { font-family: 'Cormorant Garamond', serif; line-height: 1.05; margin-bottom: 8px; text-shadow: 0 4px 16px rgba(0,0,0,0.6); }
-  .whatsapp-float { transition: transform 0.3s ease; }
-  .whatsapp-float:hover { transform: scale(1.1); }
-  .whatsapp-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 20px rgba(98, 210, 111, 0.4); }
-</style>
 
 <!-- ═══════════════ SECTION 1: HERO SLIDER ═══════════════ -->
-<section class="hero-slider" id="hero" aria-label="Hero image slider">
+<h1 class="sr-only">Uganda Safaris &amp; East Africa Tours — Conservation Trips &amp; Adventures</h1>
+<div class="hero">
+  <section class="hero-slider" id="hero" aria-roledescription="carousel" aria-label="Featured safari destinations">
 
-  <% slides.forEach((slide, i) => { %>
-  <div class="hero-slide <%= i === 0 ? 'active' : '' %>" aria-hidden="<%= i !== 0 %>">
-    <div class="hero-slide-bg" style="background-image: url('<%= slide.bg %>');"></div>
-    <div class="hero-slide-overlay"></div>
-    <div class="hero-slide-content">
-
-      <h1 class="slide-title"><%= slide.title %></h1>
-      <p class="slide-sub" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 12px auto 32px;"><%= slide.sub %></p>
-      <div class="slide-ctas">
-        <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+    <% slides.forEach((slide, i) => { %>
+    <div class="hero-slide <%= i === 0 ? 'active' : '' %>" role="group" aria-roledescription="slide" aria-label="<%= i + 1 %> of <%= slides.length %>" aria-hidden="<%= i !== 0 %>">
+      <div class="hero-slide-bg" style="background-image: url('<%= slide.bg %>');"></div>
+      <div class="hero-slide-overlay"></div>
+      <div class="hero-slide-content">
+        <h2 class="slide-title"><%= slide.title %></h2>
+        <p class="slide-sub"><%= slide.sub %></p>
+        <div class="slide-ctas">
+          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
+        </div>
       </div>
     </div>
-  </div>
-  <% }) %>
-
-  <!-- Arrows -->
-  <button class="slider-arrow slider-prev" aria-label="Previous slide">
-    <i class="fa-solid fa-chevron-left"></i>
-  </button>
-  <button class="slider-arrow slider-next" aria-label="Next slide">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
-
-  <!-- Dots -->
-  <div class="slider-dots" role="tablist" aria-label="Slider navigation">
-    <% slides.forEach((_, i) => { %>
-    <button class="slider-dot <%= i === 0 ? 'active' : '' %>" role="tab" aria-label="Slide <%= i + 1 %>"></button>
     <% }) %>
-  </div>
 
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator" aria-hidden="true">
-    <span>Scroll to Explore</span>
-    <div class="scroll-chevrons">
-      <i class="fa-solid fa-chevron-down"></i>
-      <i class="fa-solid fa-chevron-down"></i>
+    <!-- Arrows -->
+    <button class="slider-arrow slider-prev" type="button" aria-label="Previous slide">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="slider-arrow slider-next" type="button" aria-label="Next slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- Pause + dots -->
+    <div class="slider-controls">
+      <button class="slider-pause" type="button" aria-label="Pause slideshow" aria-pressed="false">
+        <i class="fa-solid fa-pause"></i>
+      </button>
+      <div class="slider-dots">
+        <% slides.forEach((_, i) => { %>
+        <button class="slider-dot <%= i === 0 ? 'active' : '' %>" type="button" aria-label="Go to slide <%= i + 1 %>" aria-current="<%= i === 0 ? 'true' : 'false' %>"></button>
+        <% }) %>
+      </div>
     </div>
-  </div>
-  <!-- ═══════════════ TRUST STRIP INSIDE HERO ═══════════════ -->
-  <div class="hero-trust-strip" style="position: absolute; bottom: 30px; left: 0; right: 0; z-index: 10;">
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll to Explore</span>
+      <div class="scroll-chevrons">
+        <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STATS: overlay on desktop, a band under the slider on phones ═══════════════ -->
+  <div class="hero-trust-strip">
     <div class="container">
-      <div class="trust-strip-inner" style="background: transparent;">
+      <div class="trust-strip-inner">
         <div class="trust-stat">
           <span class="stat-number" data-count="15" data-suffix="+">15+</span>
           <span class="stat-label">Years Experience</span>
@@ -103,9 +111,7 @@
       </div>
     </div>
   </div>
-</section>
-
-
+</div>
 
 <!-- ═══════════════ SECTION 3: ABOUT INTRO ═══════════════ -->
 <section class="section" id="about-intro" style="background: var(--surface);">
@@ -186,13 +192,11 @@
     </div>
 
     <!-- Filter Tabs -->
-    <div class="filter-bar reveal mt-32" role="tablist">
-      <button class="filter-tab active" data-category="All" role="tab">All Safaris</button>
-      <button class="filter-tab" data-category="Gorilla Trekking" role="tab">Gorilla Trekking</button>
-      <button class="filter-tab" data-category="Wildlife Safari" role="tab">Wildlife Safari</button>
-      <button class="filter-tab" data-category="Primate Safari" role="tab">Primate Treks</button>
-      <button class="filter-tab" data-category="Mountain Climbing" role="tab">Mountain Adventures</button>
-      <button class="filter-tab" data-category="Cultural Tour" role="tab">Cultural Tours</button>
+    <div class="filter-bar reveal mt-32" role="tablist" aria-label="Filter safari packages">
+      <button class="filter-tab active" type="button" data-category="All" role="tab" aria-selected="true">All Safaris</button>
+      <% featuredCategories.forEach(cat => { %>
+      <button class="filter-tab" type="button" data-category="<%= cat %>" role="tab" aria-selected="false"><%= tabLabels[cat] || cat %></button>
+      <% }) %>
     </div>
 
     <!-- Tours Grid -->
@@ -398,21 +402,22 @@
       <h2 style="color: #fff; font-style: italic;">What Our Travellers Say</h2>
     </div>
 
-    <div class="testimonial-slider reveal">
-      <div class="testimonial-track">
+    <div class="testimonial-slider reveal" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
+      <div class="testimonial-track" tabindex="0">
         <% testimonials.forEach(t => { %>
           <%- include('partials/testimonial-card', { testimonial: t }) %>
         <% }) %>
       </div>
 
       <div class="testimonial-nav">
-        <button class="test-arrow test-prev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="test-dots">
           <% testimonials.forEach((_, i) => { %>
-          <button class="test-dot <%= i === 0 ? 'active' : '' %>" aria-label="Testimonial <%= i + 1 %>"></button>
+          <button class="test-dot <%= i === 0 ? 'active' : '' %>" type="button" aria-label="Testimonial <%= i + 1 %>" aria-current="<%= i === 0 ? 'true' : 'false' %>"></button>
           <% }) %>
         </div>
-        <button class="test-arrow test-next" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
       </div>
     </div>
   </div>
@@ -585,16 +590,16 @@
 </section>
 
 <!-- Cookie Banner -->
-<div class="cookie-banner" id="cookie-banner" role="alert">
-  <p>🍪 We use cookies to improve your browsing experience on our safari website. <a href="/privacy">Learn More</a></p>
-  <button class="btn btn-primary btn-sm cookie-accept">Accept</button>
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookie notice">
+  <p>🍪 We use cookies to improve your browsing experience. <a href="/privacy">Learn more</a></p>
+  <button class="btn btn-primary btn-sm cookie-accept" type="button">Accept</button>
 </div>
 
 <!-- Availability Toast -->
 <div class="availability-toast" id="avail-toast" role="status">
   <span class="toast-emoji">🦍</span>
-  <p>Gorilla permits are filling fast for 2025 — Book early to secure your spot!</p>
-  <button class="toast-close" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
+  <p>Gorilla permits are limited every day — enquire early to secure your dates.</p>
+  <button class="toast-close" type="button" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
 </div>
 
 <!-- JSON-LD Structured Data -->

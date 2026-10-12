@@ -54,6 +54,30 @@ GitHub Pages has no server, so `routes/contact.js` (and its SMTP settings) is no
 - **Without it**, submitting the form opens a pre-filled email to `info@tripsandadventures.co.ug`
   in the visitor's mail app, and the confirmation screen says so.
 
-## Known gaps
+## Front-end conventions
 
-- The footer links to `/privacy` and `/terms`, but no such pages exist yet (they 404 in the dev server too).
+The motion/interaction layer follows a few rules — keep them when adding components:
+
+- **CSS load order matters**: `main.css` → `animations.css` → `components.css` → `preferences.css`.
+  `preferences.css` (reduced motion / transparency / contrast) loads **last** so it wins.
+- **Never `transition: all`.** Use the `--transition` / `--transition-fast` tokens (they list properties)
+  and animate `transform` / `opacity`.
+- **Hover lifts live in one `@media (hover: hover)` block in `main.css`**, using `--lift` / `--lift-sm`
+  (both zeroed for reduced motion). Don't put `transform` on individual `:hover` rules.
+- **Scroll reveal** (`.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-scale`, `.reveal-grid`)
+  only hides content under `<html class="js">`, and `main.js` adds `.reveal-done` afterwards so the
+  element's own hover/transform rules take over. Don't write inline `opacity`/`transform` from JS.
+- **Anything that slides away also goes `visibility:hidden`** so it can't be tabbed to off-screen.
+- **Errors are inline (`role="alert"`)**, never `window.alert()`.
+- `motion.js` holds the small physics helpers (spring with velocity handoff, momentum projection,
+  rubber-banding) used by the mobile menu drag-to-dismiss.
+
+## Content to confirm
+
+- `views/privacy.ejs` and `views/terms.ejs` are **drafts** written to match what the site actually
+  does. They are not legal advice — have the owner (and counsel, if appropriate) review them.
+- Business claims that appear in several places and should be checked by the owner:
+  the "6 Countries" stat vs. the four countries listed in the copy, "15+ years" vs. "since 2008",
+  and "1,000+ Gorillas Protected".
+- `public.html` is a generated snapshot of the home page (`node scripts/export-html.js`); regenerate it
+  after changing `views/index.ejs`.

@@ -56,13 +56,15 @@
           <div class="accordion">
             <% tour.itinerary.forEach((day, i) => { %>
             <div class="accordion-item">
-              <div class="accordion-header" role="button" tabindex="0" aria-expanded="<%= i === 0 %>">
+              <button type="button" class="accordion-header" id="day-h-<%= i %>" aria-expanded="<%= i === 0 %>" aria-controls="day-b-<%= i %>">
                 <span class="accordion-day">D<%= day.day %></span>
                 <span class="accordion-title"><%= day.title %></span>
-                <i class="fa-solid fa-chevron-down accordion-icon"></i>
-              </div>
-              <div class="accordion-body <%= i === 0 ? 'open' : '' %>">
-                <p><%= day.description %></p>
+                <i class="fa-solid fa-chevron-down accordion-icon" aria-hidden="true"></i>
+              </button>
+              <div class="accordion-body <%= i === 0 ? 'open' : '' %>" id="day-b-<%= i %>" role="region" aria-labelledby="day-h-<%= i %>">
+                <div class="accordion-inner">
+                  <p><%= day.description %></p>
+                </div>
               </div>
             </div>
             <% }) %>
@@ -135,7 +137,12 @@
               <i class="fa-solid fa-circle-check" style="color: var(--primary);"></i>
               We respond within 24 hours · No payment required
             </p>
-            <form id="quick-enquiry-form">
+            <%# Same delivery contract as the contact form (see booking.js): the Express
+                route in dev, a hosted endpoint if configured, otherwise a prefilled mailto:. %>
+            <form id="quick-enquiry-form" novalidate
+                  data-mode="<%= typeof staticBuild !== 'undefined' && staticBuild ? 'static' : 'server' %>"
+                  data-endpoint="<%= typeof formEndpoint !== 'undefined' ? formEndpoint : '' %>"
+                  data-email="info@tripsandadventures.co.ug">
               <input type="hidden" name="tour" value="<%= tour.name %>">
               <div class="form-group">
                 <label for="eq-name">Full Name *</label>
@@ -169,7 +176,7 @@
                 Enquire Now <i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
-            <div id="enquiry-success" style="display:none; text-align:center; padding: 20px 0;">
+            <div id="enquiry-success" hidden style="text-align:center; padding: 20px 0;">
               <i class="fa-solid fa-circle-check" style="font-size: 2.5rem; color: var(--primary); display:block; margin-bottom:12px;"></i>
               <p style="font-weight: 600; color: var(--dark);">Enquiry sent!</p>
               <p style="font-size: 0.85rem; color: var(--text-muted);">We'll be in touch within 24 hours.</p>
@@ -210,26 +217,3 @@
 
   </div>
 </section>
-
-<script>
-// Quick enquiry form handler
-document.getElementById('quick-enquiry-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('[type="submit"]');
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-  const data = Object.fromEntries(new FormData(this).entries());
-  try {
-    const res = await fetch('/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-    const json = await res.json();
-    if (json.success) {
-      this.style.display = 'none';
-      document.getElementById('enquiry-success').style.display = 'block';
-    }
-  } catch(err) {
-    btn.disabled = false;
-    btn.innerHTML = 'Enquire Now <i class="fa-solid fa-paper-plane"></i>';
-    alert('Failed to send. Please try again.');
-  }
-});
-</script>

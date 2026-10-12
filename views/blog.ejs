@@ -16,12 +16,13 @@
   <div class="container">
 
     <!-- Category Tabs -->
-    <div class="filter-tabs reveal mb-32" role="tablist">
+    <div class="filter-tabs reveal mb-32" role="tablist" aria-label="Filter articles">
       <% categories.forEach(cat => { %>
       <a href="/blog<%= cat !== 'All' ? '?category=' + encodeURIComponent(cat) : '' %>"
          class="filter-tab <%= activeCategory === cat ? 'active' : '' %>"
          data-category="<%= cat %>"
-         role="tab">
+         role="tab"
+         aria-selected="<%= activeCategory === cat %>">
         <%= cat %>
       </a>
       <% }) %>

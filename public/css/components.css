@@ -4,19 +4,24 @@
    ============================================================ */
 
 /* ============================================================
-   TRUST STRIP (Stats Bar)
+   HERO STATS STRIP
+   Desktop: overlaid on the bottom of the hero.
+   Phones: a normal-flow band UNDER the slider, so it can never collide with
+   the call-to-action buttons (it used to be absolutely positioned on top).
    ============================================================ */
-.trust-strip {
-  background: var(--accent);
-  padding: 28px 0;
-  position: relative;
-  z-index: 5;
+.hero-trust-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* clears the ~56px first-visit cookie banner instead of being half-covered */
+  bottom: 72px;
+  z-index: 10;
+  pointer-events: none;
 }
 .trust-strip-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
 }
 .trust-stat {
   flex: 1;
@@ -31,50 +36,51 @@
   top: 15%;
   bottom: 15%;
   width: 1px;
-  background: rgba(15,31,15,0.18);
+  background: rgba(255,255,255,0.25);
 }
 .trust-stat .stat-number {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.8rem;
   font-weight: 700;
-  color: var(--dark);
   line-height: 1;
   display: block;
+  color: var(--accent);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 .trust-stat .stat-label {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(15,31,15,0.65);
+  color: rgba(255,255,255,0.95);
+  opacity: 1;
   margin-top: 4px;
   display: block;
-}
-
-/* Light version for hero section */
-.hero-trust-strip .stat-number {
-  color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-.hero-trust-strip .stat-label {
-  color: rgba(255,255,255,0.95) !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
-.hero-trust-strip .trust-stat + .trust-stat::before {
-  background: rgba(255,255,255,0.25);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 768px) {
-  .trust-strip-inner { flex-wrap: wrap; }
-  .trust-stat { flex: 0 0 50%; padding: 12px 10px; }
+  .hero-slider { height: calc(100vh - 150px); height: calc(100svh - 150px); min-height: 480px; }
+  .hero-slide-content { padding: calc(var(--nav-height) + 8px) 24px 56px; }
+  .slider-controls { bottom: 14px; }
+  .hero-trust-strip {
+    position: static;
+    background: var(--dark);
+    padding: 12px 0 10px;
+    pointer-events: auto;
+  }
+  .trust-strip-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 6px;
+  }
+  .trust-stat { padding: 6px 10px; }
   .trust-stat .stat-number { font-size: 1.6rem; }
   .trust-stat .stat-label { font-size: 0.65rem; }
+  /* hairlines only between the two columns, not at the start of each row */
   .trust-stat:nth-child(odd)::before { display: none; }
-}
-@media (max-width: 420px) {
-  .trust-stat { flex: 0 0 100%; padding: 16px 10px; }
-  .trust-stat::before { display: none; }
-  .trust-stat .stat-number { font-size: 1.4rem; }
+  .trust-stat:nth-child(even)::before { display: block; }
+  .trust-stat:nth-child(3)::before { display: none; }
 }
 
 /* ============================================================
@@ -119,7 +125,6 @@
   box-shadow: var(--shadow-lg);
   text-align: center;
   z-index: 5;
-  animation: bobFloat 4s ease-in-out infinite;
 }
 .about-years-badge .badge-num {
   font-family: 'Cormorant Garamond', serif;
@@ -185,7 +190,6 @@
   .about-img-primary { right: 40px; bottom: 40px; }
   .about-img-secondary { width: 160px; height: 170px; }
   .about-years-badge { top: 10px; right: 5px; }
-  .eco-badge { left: -10px; width: 68px; height: 68px; }
 }
 
 /* ============================================================
@@ -433,7 +437,7 @@
   text-align: center;
   transition: var(--transition);
 }
-.mission-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.mission-card:hover { box-shadow: var(--shadow-lg); }
 .mission-icon {
   width: 70px;
   height: 70px;
@@ -468,8 +472,7 @@
   flex-direction: column;
   height: 100%;
 }
-.team-card:hover { 
-  transform: translateY(-12px); 
+.team-card:hover {
   box-shadow: var(--shadow-lg);
   border-color: var(--primary-light);
 }
@@ -496,7 +499,7 @@
 }
 .team-role { 
   font-size: 0.75rem; 
-  color: var(--accent); 
+  color: var(--accent-text); 
   font-weight: 700; 
   text-transform: uppercase; 
   letter-spacing: 0.1em; 
@@ -532,7 +535,7 @@
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
 }
-.blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.blog-card:hover { box-shadow: var(--shadow-lg); }
 .blog-card-img {
   aspect-ratio: 16/9;
   overflow: hidden;
@@ -615,7 +618,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   margin-bottom: 8px;
 }
 .contact-heading {
@@ -647,7 +650,7 @@
 .contact-detail-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 3px; }
 .contact-detail-value { font-size: 0.95rem; color: var(--text); font-weight: 500; }
 .contact-detail-value a { color: var(--primary); }
-.contact-detail-value a:hover { color: var(--accent); }
+.contact-detail-value a:hover { color: var(--accent-text); }
 
 .contact-social { display: flex; gap: 10px; margin-top: 28px; }
 .contact-social-btn {
@@ -716,6 +719,8 @@
   justify-content: flex-end;
   padding-bottom: 48px;
 }
+/* The hero is a flex column, so a bare .btn child would stretch edge to edge */
+.tour-hero-content > .btn { align-self: flex-start; }
 .tour-badges-row {
   display: flex;
   gap: 10px;
@@ -887,9 +892,11 @@
   align-items: center;
   justify-content: center;
   background: var(--surface-alt);
-  padding: 40px 24px;
+  padding: calc(var(--nav-height) + 40px) 24px 40px;
   text-align: center;
 }
+/* The 404 has no dark hero behind the (white-text) navbar, so give it a solid bar */
+body:has(.not-found-page) .navbar { background: var(--dark); }
 .not-found-content { max-width: 560px; }
 .not-found-svg { max-width: 400px; margin: 0 auto 40px; }
 .not-found-title {
@@ -919,3 +926,20 @@
 @media (min-width: 769px) {
   .hide-desktop { display: none !important; }
 }
+
+/* ============================================================
+   LEGAL PAGES (privacy, terms)
+   ============================================================ */
+.legal { max-width: 760px; margin: 0 auto; }
+.legal-updated { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 32px; }
+.legal h2 {
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  color: var(--dark);
+  margin: 40px 0 12px;
+}
+.legal p, .legal li { color: var(--text); font-size: 1rem; line-height: 1.75; }
+.legal p { margin-bottom: 16px; }
+.legal ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 16px; }
+.legal li { margin-bottom: 6px; }
+.legal a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.legal a:hover { color: var(--primary-dark); }

@@ -1,123 +1,180 @@
 /* ============================================================
    slider.js — Hero Slider
    Conservation Trips & Adventures
+
+   The cross-fade, Ken Burns zoom and text entrances are all CSS (driven by
+   the .active class), so they re-target cleanly if the visitor changes
+   slide mid-transition. This file owns state: which slide is active,
+   autoplay (pausable), swipe, and keeping inactive slides out of the
+   accessibility tree.
    ============================================================ */
 
-(function() {
+(function () {
   'use strict';
 
-  class HeroSlider {
-    constructor(el) {
-      this.el = el;
-      this.slides = el.querySelectorAll('.hero-slide');
-      this.dots = el.querySelectorAll('.slider-dot');
-      this.prevBtn = el.querySelector('.slider-prev');
-      this.nextBtn = el.querySelector('.slider-next');
-      this.current = 0;
-      this.total = this.slides.length;
-      this.autoInterval = null;
-      this.isPaused = false;
+  var INTERVAL = 6000;
 
-      if (this.total === 0) return;
+  function HeroSlider(el) {
+    this.el = el;
+    this.slides = Array.prototype.slice.call(el.querySelectorAll('.hero-slide'));
+    this.dots = Array.prototype.slice.call(el.querySelectorAll('.slider-dot'));
+    this.prevBtn = el.querySelector('.slider-prev');
+    this.nextBtn = el.querySelector('.slider-next');
+    this.pauseBtn = el.querySelector('.slider-pause');
+    this.current = 0;
+    this.timer = null;
 
-      this.init();
-    }
+    // autoplay gates — any one of them stops the carousel
+    this.userPaused = false;
+    this.hovering = false;
+    this.focused = false;
+    this.visible = true;
+    this.reduced = window.Motion ? window.Motion.prefersReducedMotion() : false;
 
-    init() {
-      this.goTo(0);
-      this.startAuto();
+    if (!this.slides.length) return;
+    this.splitWords();
+    this.init();
+  }
 
-      if (this.prevBtn) this.prevBtn.addEventListener('click', () => { this.stop(); this.prev(); this.startAuto(); });
-      if (this.nextBtn) this.nextBtn.addEventListener('click', () => { this.stop(); this.next(); this.startAuto(); });
-
-      this.dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => { this.stop(); this.goTo(i); this.startAuto(); });
+  HeroSlider.prototype.splitWords = function () {
+    // One-off: wrap each title word so CSS can stagger them via --w
+    this.slides.forEach(function (slide) {
+      var title = slide.querySelector('.slide-title');
+      if (!title || title.querySelector('.word-span')) return;
+      var words = title.textContent.trim().split(/\s+/);
+      title.textContent = '';
+      words.forEach(function (word, i) {
+        var span = document.createElement('span');
+        span.className = 'word-span';
+        span.style.setProperty('--w', i);
+        span.textContent = word;
+        title.appendChild(span);
+        title.appendChild(document.createTextNode(' '));
       });
+    });
+  };
 
-      // Pause on hover
-      this.el.addEventListener('mouseenter', () => this.pause());
-      this.el.addEventListener('mouseleave', () => this.resume());
+  HeroSlider.prototype.init = function () {
+    var self = this;
 
-      // Touch swipe
-      let startX = 0;
-      this.el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      this.el.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 50) {
-          this.stop();
-          dx < 0 ? this.next() : this.prev();
-          this.startAuto();
-        }
+    // Re-enter the first slide so its text animates in on load. Same tick,
+    // before first paint — no flash.
+    this.slides[0].classList.remove('active');
+    void this.slides[0].offsetWidth;
+    this.show(0);
+
+    if (this.prevBtn) this.prevBtn.addEventListener('click', function () { self.go(self.current - 1); });
+    if (this.nextBtn) this.nextBtn.addEventListener('click', function () { self.go(self.current + 1); });
+    this.dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { self.go(i); });
+    });
+
+    if (this.pauseBtn) {
+      this.pauseBtn.addEventListener('click', function () {
+        self.userPaused = !self.userPaused;
+        self.updatePauseButton();
+        self.schedule();
       });
     }
 
-    goTo(n) {
-      // Deactivate current
-      const prevSlide = this.slides[this.current];
-      prevSlide.classList.remove('active');
-      this.resetWords(prevSlide);
+    // Pause for hover (mouse only — touch "hover" would stick), focus, hidden tab, off-screen
+    this.el.addEventListener('pointerenter', function (e) {
+      if (e.pointerType === 'mouse') { self.hovering = true; self.schedule(); }
+    });
+    this.el.addEventListener('pointerleave', function (e) {
+      if (e.pointerType === 'mouse') { self.hovering = false; self.schedule(); }
+    });
+    this.el.addEventListener('focusin', function () { self.focused = true; self.schedule(); });
+    this.el.addEventListener('focusout', function () { self.focused = false; self.schedule(); });
+    document.addEventListener('visibilitychange', function () { self.schedule(); });
 
-      this.current = ((n % this.total) + this.total) % this.total;
-
-      // Activate new
-      const slide = this.slides[this.current];
-      slide.classList.add('active');
-      this.animateWords(slide);
-      this.updateDots();
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        self.visible = entries[0].isIntersecting;
+        self.schedule();
+      }, { threshold: 0.2 }).observe(this.el);
     }
 
-    animateWords(slide) {
-      const title = slide.querySelector('.slide-title');
-      if (!title) return;
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var onChange = function () { self.reduced = mq.matches; self.schedule(); };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+    }
 
-      // If not yet split into words, split now
-      if (!title.querySelector('.word-span')) {
-        const text = title.textContent.trim();
-        title.innerHTML = '';
-        text.split(/\s+/).forEach(word => {
-          const span = document.createElement('span');
-          span.className = 'word-span';
-          span.textContent = word;
-          title.appendChild(span);
-          // Add a literal space after each word span to prevent smashed text
-          title.appendChild(document.createTextNode(' '));
-        });
+    // Swipe: horizontal intent only (a diagonal scroll must not change slides),
+    // and a short fast flick counts as well as a long slow drag.
+    var sx = 0, sy = 0, st = 0;
+    this.el.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      sx = t.clientX; sy = t.clientY; st = e.timeStamp;
+    }, { passive: true });
+    this.el.addEventListener('touchend', function (e) {
+      var t = e.changedTouches[0];
+      var dx = t.clientX - sx;
+      var dy = t.clientY - sy;
+      var dt = Math.max(e.timeStamp - st, 1);
+      var horizontal = Math.abs(dx) > Math.abs(dy) * 1.5;
+      var flick = Math.abs(dx) > 30 && Math.abs(dx) / dt > 0.5; // px per ms
+      if (horizontal && (Math.abs(dx) > 50 || flick)) {
+        self.go(self.current + (dx < 0 ? 1 : -1));
       }
+    }, { passive: true });
 
-      // Stagger reveal
-      const words = slide.querySelectorAll('.word-span');
-      words.forEach((w, i) => {
-        setTimeout(() => w.classList.add('word-visible'), 200 + i * 80);
+    this.updatePauseButton();
+    this.schedule();
+  };
+
+  HeroSlider.prototype.show = function (n) {
+    var total = this.slides.length;
+    var next = ((n % total) + total) % total;
+
+    this.slides.forEach(function (slide, i) {
+      var on = i === next;
+      slide.classList.toggle('active', on);
+      slide.setAttribute('aria-hidden', String(!on));
+      // inert removes the slide's links from tab order and the a11y tree;
+      // tabindex covers browsers without inert.
+      slide.inert = !on;
+      slide.querySelectorAll('a, button').forEach(function (c) {
+        if (on) c.removeAttribute('tabindex'); else c.setAttribute('tabindex', '-1');
       });
-    }
+    });
+    this.dots.forEach(function (dot, i) {
+      dot.classList.toggle('active', i === next);
+      dot.setAttribute('aria-current', i === next ? 'true' : 'false');
+    });
+    this.current = next;
+  };
 
-    resetWords(slide) {
-      slide.querySelectorAll('.word-span').forEach(w => w.classList.remove('word-visible'));
-    }
+  HeroSlider.prototype.go = function (n) {
+    this.show(n);
+    this.schedule(); // a manual change restarts the countdown
+  };
 
-    updateDots() {
-      this.dots.forEach((dot, i) => dot.classList.toggle('active', i === this.current));
-    }
+  HeroSlider.prototype.canAutoplay = function () {
+    return !this.reduced && !this.userPaused && !this.hovering && !this.focused &&
+           this.visible && !document.hidden && this.slides.length > 1;
+  };
 
-    next() { this.goTo(this.current + 1); }
-    prev() { this.goTo(this.current - 1); }
+  HeroSlider.prototype.schedule = function () {
+    var self = this;
+    clearTimeout(this.timer);
+    if (!this.canAutoplay()) return;
+    this.timer = setTimeout(function () {
+      self.show(self.current + 1);
+      self.schedule();
+    }, INTERVAL);
+  };
 
-    startAuto() {
-      this.stop();
-      this.autoInterval = setInterval(() => {
-        if (!this.isPaused) this.next();
-      }, 6000);
-    }
+  HeroSlider.prototype.updatePauseButton = function () {
+    if (!this.pauseBtn) return;
+    this.pauseBtn.setAttribute('aria-pressed', String(this.userPaused));
+    this.pauseBtn.setAttribute('aria-label', this.userPaused ? 'Play slideshow' : 'Pause slideshow');
+    var icon = this.pauseBtn.querySelector('i');
+    if (icon) icon.className = this.userPaused ? 'fa-solid fa-play' : 'fa-solid fa-pause';
+  };
 
-    stop() { clearInterval(this.autoInterval); }
-    pause() { this.isPaused = true; }
-    resume() { this.isPaused = false; }
-  }
-
-  // Init
-  const sliderEl = document.querySelector('.hero-slider');
-  if (sliderEl) {
-    new HeroSlider(sliderEl);
-  }
+  var sliderEl = document.querySelector('.hero-slider');
+  if (sliderEl) new HeroSlider(sliderEl);
 
 })();

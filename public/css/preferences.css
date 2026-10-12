@@ -1,0 +1,134 @@
+/* ============================================================
+   USER PREFERENCES — loaded LAST so these win at equal specificity.
+
+   Reduced motion does not mean "no feedback": slides, springs, zooms and
+   loops become short opacity fades or nothing; colour/opacity changes that
+   aid comprehension stay.
+   ============================================================ */
+
+/* ─── prefers-reduced-motion ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root { --lift: 0px; --lift-sm: 0px; }
+  html { scroll-behavior: auto; }
+
+  /* Scroll reveal: fade only, no travel, no stagger */
+  .js .reveal:not(.reveal-done),
+  .js .reveal-left:not(.reveal-done),
+  .js .reveal-right:not(.reveal-done),
+  .js .reveal-scale:not(.reveal-done),
+  .js .reveal-grid > *:not(.reveal-done) {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  .js .reveal-grid > .in-view:not(.reveal-done) { transition-delay: 0s; }
+
+  /* Loops and decoration */
+  .whatsapp-btn,
+  .scroll-chevrons i { animation: none; }
+  .btn:hover::after { animation: none; }
+
+  /* Hero: a short cross-fade; text just arrives with its slide */
+  .hero-slide { transition-delay: 0.5s; }
+  .hero-slide.active { transition-duration: 0.5s; transition-delay: 0s; }
+  .word-span,
+  .slide-sub,
+  .slide-ctas {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  .hero-slide.active .word-span,
+  .hero-slide.active .slide-sub,
+  .hero-slide.active .slide-ctas {
+    transform: none;
+    transition: opacity 0.4s ease;
+    transition-delay: 0s;
+  }
+
+  /* Sheets, drawers and toasts: fade instead of slide */
+  .mobile-menu {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    transition: opacity 0.2s ease, visibility 0s;
+  }
+  .mobile-link { transform: none; }
+  .availability-toast {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .availability-toast.show {
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0s;
+  }
+  .cookie-banner.hidden {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .back-to-top { transform: none; }
+
+  /* Hover zooms, in-card motion, step changes, filters */
+  .tour-card-img img,
+  .dest-card-bg,
+  .gallery-item img { transition: none; }
+  .tour-card:hover .tour-card-img img,
+  .dest-card:hover .dest-card-bg,
+  .gallery-item:hover img { transform: none; }
+  .dest-card-content,
+  .dest-card-link { transform: none; }
+  .form-step.active,
+  .is-entering { animation: none; }
+  .accordion-body,
+  .accordion-icon { transition: none; }
+  .slider-dot,
+  .test-dot { transition: background-color 0.2s ease; }
+}
+
+/* ─── prefers-reduced-transparency: frosted becomes solid ── */
+@media (prefers-reduced-transparency: reduce) {
+  .navbar.scrolled {
+    background: var(--dark);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .slider-arrow,
+  .badge-glass {
+    background: rgba(15, 31, 15, 0.9);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .menu-backdrop { background: rgba(0, 0, 0, 0.8); }
+  .lightbox-overlay { background: #000; }
+}
+
+/* ─── prefers-contrast: more — firmer edges, near-solid text ─ */
+@media (prefers-contrast: more) {
+  :root {
+    --text-muted: #3A453A;
+    --border: #7F9573;
+    --border-light: #A9BB9D;
+    --accent-text: #6B4A0D;
+  }
+  .navbar.scrolled {
+    background: var(--dark);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: 1px solid #fff;
+  }
+  .btn-outline { border-width: 2px; border-color: #fff; }
+  .card, .tour-card, .blog-card, .team-card, .mission-card { border: 1px solid var(--border); }
+  .form-control { border-color: #3A453A; }
+  .slide-sub,
+  .breadcrumb,
+  .trust-stat .stat-label,
+  .footer-copy,
+  .footer-brand-desc,
+  .footer-links a,
+  .footer-contact-item a,
+  .footer-trust-badge,
+  .cookie-banner p { color: #fff; }
+}

@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Runs before first paint:
+       .js            → scroll-reveal content may be hidden (no-JS visitors always see it)
+       .cookies-ok    → returning visitors never get the cookie banner (no slide-down flash) -->
+  <script>
+    (function (d) {
+      d.documentElement.classList.add('js');
+      try { if (localStorage.getItem('cookiesAccepted') === 'true') d.documentElement.classList.add('cookies-ok'); } catch (e) {}
+    })(document);
+  </script>
   <title><%= meta.title %></title>
   <meta name="description" content="<%= meta.description %>">
   <meta name="keywords" content="<%= meta.keywords %>">
@@ -40,6 +49,8 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/components.css">
+  <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
+  <link rel="stylesheet" href="/css/preferences.css">
 
   <%- typeof extraHead !== 'undefined' ? extraHead : '' %>
 </head>
@@ -55,7 +66,7 @@
 
   <!-- Floating WhatsApp -->
   <div class="whatsapp-float">
-    <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+    <span class="whatsapp-tooltip" aria-hidden="true">Chat on WhatsApp</span>
     <a class="whatsapp-btn" href="https://wa.me/256767936590?text=Hello%20Conservation%20Trips%20%26%20Adventures!%20I%27m%20interested%20in%20booking%20a%20Uganda%20safari.%20Can%20you%20help%20me%20plan%20my%20trip%3F" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -70,16 +81,18 @@
   <div class="menu-backdrop"></div>
 
   <!-- Lightbox -->
-  <div class="lightbox-overlay" role="dialog" aria-modal="true">
+  <div class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image gallery">
     <div class="lightbox-inner">
-      <button class="lightbox-close" aria-label="Close lightbox"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lightbox-close" aria-label="Close gallery"><i class="fa-solid fa-xmark"></i></button>
       <button class="lightbox-nav lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
-      <img src="" alt="Gallery image">
+      <img src="" alt="">
       <button class="lightbox-nav lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
+    <div class="lightbox-count" aria-live="polite"></div>
   </div>
 
   <!-- Scripts -->
+  <script src="/js/motion.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/slider.js"></script>
   <script src="/js/lightbox.js"></script>

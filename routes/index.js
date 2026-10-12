@@ -22,4 +22,29 @@ router.get('/', (req, res) => {
   });
 });
 
+// Legal pages (linked from the footer, the cookie notice and the contact form)
+router.get('/privacy', (req, res) => {
+  res.render('privacy', {
+    meta: {
+      title: 'Privacy Policy | Conservation Trips & Adventures',
+      description: 'How Conservation Trips & Adventures collects, uses and protects your personal information when you enquire about a Uganda safari.',
+      keywords: 'privacy policy, Conservation Trips Adventures',
+      ogImage: '/images/safari.png',
+      ogUrl: 'https://tripsandadventures.co.ug/privacy'
+    }
+  });
+});
+
+router.get('/terms', (req, res) => {
+  res.render('terms', {
+    meta: {
+      title: 'Terms of Service | Conservation Trips & Adventures',
+      description: 'The terms for using the Conservation Trips & Adventures website and for sending a safari enquiry.',
+      keywords: 'terms of service, Conservation Trips Adventures',
+      ogImage: '/images/safari.png',
+      ogUrl: 'https://tripsandadventures.co.ug/terms'
+    }
+  });
+});
+
 module.exports = router;

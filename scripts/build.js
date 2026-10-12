@@ -194,6 +194,20 @@ async function build() {
     meta: { title: 'Authentic Safari Experiences | Conservation Trips & Adventures' }
   });
 
+  // Legal
+  await renderPage('privacy', 'privacy/index.html', {
+    meta: {
+      title: 'Privacy Policy | Conservation Trips & Adventures',
+      description: 'How Conservation Trips & Adventures collects, uses and protects your personal information when you enquire about a Uganda safari.'
+    }
+  });
+  await renderPage('terms', 'terms/index.html', {
+    meta: {
+      title: 'Terms of Service | Conservation Trips & Adventures',
+      description: 'The terms for using the Conservation Trips & Adventures website and for sending a safari enquiry.'
+    }
+  });
+
   // 404
   await renderPage('404', '404.html', {
     meta: { title: 'Page Not Found | Conservation Trips & Adventures' }

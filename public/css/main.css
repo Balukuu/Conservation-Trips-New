@@ -1,8 +1,7 @@
 /* ============================================================
    CONSERVATION TRIPS & ADVENTURES — GLOBAL DESIGN SYSTEM
+   Fonts are loaded once, via <link> in views/layouts/main.ejs.
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
 /* ============================================================
    CSS CUSTOM PROPERTIES
@@ -14,6 +13,8 @@
   --accent:         #C8922A;
   --accent-dark:    #A87420;
   --accent-light:   #FFF3DC;
+  /* Gold for TEXT on light surfaces: 5.2:1 on white (--accent is only 2.8:1) */
+  --accent-text:    #8A5F14;
   --earth:          #8B4513;
   --sky:            #1A3D5C;
   --dark:           #0F1F0F;
@@ -35,9 +36,31 @@
   --radius-md:      16px;
   --radius-lg:      28px;
   --radius-pill:    999px;
-  --transition:     all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Motion. Transitions list the properties they animate — never `all`, which
+     also animates width/padding/etc. and drags layout into every hover. */
+  --ease-out:       cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-sheet:     cubic-bezier(0.32, 0.72, 0, 1);
+  --transition:
+    background-color 0.25s var(--ease-out),
+    border-color     0.25s var(--ease-out),
+    color            0.25s var(--ease-out),
+    box-shadow       0.25s var(--ease-out),
+    opacity          0.25s var(--ease-out),
+    transform        0.25s var(--ease-out);
+  --transition-fast:
+    background-color 0.15s ease,
+    border-color     0.15s ease,
+    color            0.15s ease,
+    box-shadow       0.15s ease,
+    opacity          0.15s ease,
+    transform        0.15s ease;
+  /* One hover lift for cards, one for small controls. Zeroed for reduced motion. */
+  --lift:           -6px;
+  --lift-sm:        -2px;
+
   --nav-height:     80px;
+  --nav-height-scrolled: 64px;
   --section-pad:    100px;
   --section-pad-sm: 60px;
 }
@@ -46,21 +69,55 @@
    CSS RESET
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  /* % (not px) so the visitor's browser text-size setting is honoured */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* Anchor jumps clear the fixed navbar */
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+}
 body {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.6;
   color: var(--text);
   background: var(--surface);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+html.no-scroll, html.no-scroll body { overflow: hidden; }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 input, textarea, select { font-family: inherit; }
+/* `display` on a component must never beat the hidden attribute */
+[hidden] { display: none !important; }
+/* Removes the 300ms tap delay / double-tap zoom on controls */
+a, button, input, select, textarea, label, summary, [role="button"], [role="radio"], [role="tab"] {
+  touch-action: manipulation;
+}
+
+/* Keyboard focus: visible everywhere, gold on dark surfaces */
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+.navbar :focus-visible, .mobile-menu :focus-visible, .hero-slider :focus-visible,
+.footer :focus-visible, .cta-strip :focus-visible, .conservation-section :focus-visible,
+.cookie-banner :focus-visible, .lightbox-overlay :focus-visible, .page-hero :focus-visible,
+.availability-toast :focus-visible, #testimonials :focus-visible, .tour-hero :focus-visible {
+  outline-color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 /* ============================================================
    TYPOGRAPHY
@@ -100,7 +157,7 @@ h4, .h4 {
 }
 .body-lg {
   font-size: 1.125rem;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 .caption {
   font-size: 0.75rem;
@@ -156,9 +213,6 @@ h4, .h4 {
 .gap-24 { gap: 24px; }
 .gap-32 { gap: 32px; }
 .text-center { text-align: center; }
-.text-white { color: #fff; }
-.text-accent { color: var(--accent); }
-.text-primary { color: var(--primary); }
 .text-muted { color: var(--text-muted); }
 .mt-8 { margin-top: 8px; }
 .mt-16 { margin-top: 16px; }
@@ -173,6 +227,8 @@ h4, .h4 {
 
 /* ============================================================
    BUTTONS
+   Hover lifts live in the single (hover: hover) block below, so touch
+   screens never get a "stuck" hover. Press feedback is instant (§Response).
    ============================================================ */
 .btn {
   display: inline-flex;
@@ -199,8 +255,11 @@ h4, .h4 {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   transform: skewX(-15deg);
   transition: none;
+  pointer-events: none;
 }
-.btn:hover::after { animation: shimmer 0.7s ease forwards; }
+@media (hover: hover) {
+  .btn:hover::after { animation: shimmer 0.7s ease forwards; }
+}
 
 .btn-primary {
   background: var(--accent);
@@ -209,7 +268,6 @@ h4, .h4 {
 }
 .btn-primary:hover {
   background: var(--accent-dark);
-  transform: translateY(-3px);
   box-shadow: 0 12px 40px rgba(200,146,42,0.4);
 }
 .btn-outline {
@@ -220,7 +278,6 @@ h4, .h4 {
 .btn-outline:hover {
   background: rgba(255,255,255,0.1);
   border-color: #fff;
-  transform: translateY(-3px);
 }
 .btn-outline-dark {
   background: transparent;
@@ -230,7 +287,6 @@ h4, .h4 {
 .btn-outline-dark:hover {
   background: var(--primary);
   color: #fff;
-  transform: translateY(-3px);
 }
 .btn-green {
   background: var(--primary);
@@ -238,11 +294,11 @@ h4, .h4 {
 }
 .btn-green:hover {
   background: var(--primary-dark);
-  transform: translateY(-3px);
   box-shadow: var(--shadow-green);
 }
 .btn-sm { padding: 10px 24px; font-size: 0.8rem; }
 .btn-lg { padding: 18px 44px; font-size: 0.95rem; }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
 
 /* ============================================================
    BADGES & TAGS
@@ -261,7 +317,7 @@ h4, .h4 {
 .badge-accent { background: var(--accent); color: var(--dark); }
 .badge-primary { background: var(--primary); color: #fff; }
 .badge-dark { background: var(--dark); color: #fff; }
-.badge-glass { background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); }
+.badge-glass { background: rgba(255,255,255,0.15); color: #fff; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); }
 
 /* ============================================================
    CARDS (base)
@@ -273,10 +329,30 @@ h4, .h4 {
   overflow: hidden;
   transition: var(--transition);
 }
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-8px);
+.card:hover { box-shadow: var(--shadow-lg); }
+
+/* ============================================================
+   HOVER LIFTS — one block, hover-capable devices only
+   ============================================================ */
+@media (hover: hover) {
+  .btn:hover, .nav-book:hover, .back-to-top:hover { transform: translateY(var(--lift-sm)); }
+  .card:hover, .tour-card:hover, .blog-card:hover,
+  .mission-card:hover, .team-card:hover { transform: translateY(var(--lift)); }
 }
+
+/* ============================================================
+   PRESS STATES — feedback on touch-down, not on release
+   ============================================================ */
+.btn:active, .nav-book:active, .filter-tab:active, .share-btn:active,
+.safari-type-card:active, .duration-pill:active, .accom-card:active,
+.test-arrow:active, .contact-social-btn:active, .mobile-book-btn:active,
+.footer-social a:active, .mobile-social a:active {
+  transform: scale(0.97);
+  transition-duration: 0.1s;
+}
+.back-to-top.visible:active { transform: scale(0.94); transition-duration: 0.1s; }
+.whatsapp-btn:active { transform: scale(0.94); transition-duration: 0.1s; }
+.accordion-header:active, .mobile-link:active { background-color: rgba(45, 106, 45, 0.08); transition-duration: 0.1s; }
 
 /* ============================================================
    HERO PAGES (non-home)
@@ -309,28 +385,15 @@ h4, .h4 {
   gap: 8px;
   margin-bottom: 16px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.75);
 }
 .breadcrumb a:hover { color: var(--accent); }
 .breadcrumb i { font-size: 0.65rem; }
 
 /* ============================================================
-   DECORATIVE ELEMENTS
-   ============================================================ */
-.wave-divider { line-height: 0; overflow: hidden; }
-.wave-divider svg { display: block; width: 100%; }
-
-.leaf-pattern {
-  background-image: radial-gradient(circle, rgba(45,106,45,0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-.gold-dots {
-  background-image: radial-gradient(circle, rgba(200,146,42,0.2) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-/* ============================================================
    FLOATING ELEMENTS
+   Anything that slides/fades away also goes `visibility: hidden`, so it
+   can't be tabbed to while off-screen.
    ============================================================ */
 
 /* WhatsApp Float */
@@ -355,11 +418,12 @@ h4, .h4 {
   color: #fff;
   font-size: 26px;
   box-shadow: 0 4px 20px rgba(37,211,102,0.45);
-  animation: waPulse 2.5s infinite;
+  /* Draws the eye three times, then settles — a permanent pulse is noise */
+  animation: waPulse 2.5s ease-out 1.5s 3;
   transition: var(--transition);
 }
 .whatsapp-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   background: #1DA851;
   color: #fff;
 }
@@ -376,7 +440,8 @@ h4, .h4 {
   transition: var(--transition-fast);
   pointer-events: none;
 }
-.whatsapp-float:hover .whatsapp-tooltip {
+.whatsapp-float:hover .whatsapp-tooltip,
+.whatsapp-float:focus-within .whatsapp-tooltip {
   opacity: 1;
   transform: translateX(0);
 }
@@ -398,22 +463,24 @@ h4, .h4 {
   font-size: 18px;
   box-shadow: var(--shadow-md);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: var(--transition);
   transform: translateY(10px);
+  transition: var(--transition), visibility 0s linear 0.25s;
 }
 .back-to-top.visible {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
+  transition: var(--transition), visibility 0s;
 }
 .back-to-top:hover {
   background: var(--primary-dark);
-  transform: translateY(-3px);
   color: #fff;
 }
 
-/* Cookie Banner */
+/* Cookie Banner (informational — the site sets no tracking cookies) */
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -422,18 +489,30 @@ h4, .h4 {
   z-index: 1001;
   background: var(--dark);
   border-top: 4px solid var(--accent);
-  padding: 16px 24px;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
   transform: translateY(0);
-  transition: transform 0.4s ease;
+  transition: transform 0.4s var(--ease-sheet), visibility 0s;
 }
-.cookie-banner.hidden { transform: translateY(110%); }
-.cookie-banner p { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+.cookie-banner.hidden {
+  transform: translateY(110%);
+  visibility: hidden;
+  transition: transform 0.4s var(--ease-sheet), visibility 0s linear 0.4s;
+}
+/* Returning visitors: never rendered, so there is no slide-down flash on load */
+.cookies-ok .cookie-banner { display: none; }
+.cookie-banner p { color: rgba(255,255,255,0.88); font-size: 0.9rem; line-height: 1.5; }
 .cookie-banner a { color: var(--accent); text-decoration: underline; }
+@media (max-width: 480px) {
+  /* one compact row, so it doesn't swallow ~90px of a phone screen */
+  .cookie-banner { padding: 10px 16px; gap: 12px; flex-wrap: nowrap; justify-content: space-between; }
+  .cookie-banner p { font-size: 0.8rem; }
+  .cookie-banner .btn { flex-shrink: 0; }
+}
 
 /* Availability Toast */
 .availability-toast {
@@ -443,23 +522,33 @@ h4, .h4 {
   z-index: 997;
   background: var(--primary);
   color: #fff;
-  padding: 16px 20px;
+  padding: 16px 44px 16px 20px;
   border-radius: var(--radius-md);
   max-width: 300px;
   box-shadow: var(--shadow-lg);
   transform: translateX(120%);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  transition: transform 0.5s var(--ease-sheet), visibility 0s linear 0.5s;
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
-.availability-toast.show { transform: translateX(0); }
+.availability-toast.show {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.5s var(--ease-sheet), visibility 0s;
+}
 .availability-toast p { font-size: 0.875rem; line-height: 1.5; }
 .toast-close {
   position: absolute;
-  top: 8px;
-  right: 10px;
-  color: rgba(255,255,255,0.7);
+  top: 4px;
+  right: 4px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
   font-size: 18px;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -486,7 +575,7 @@ h4, .h4 {
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem; /* 16px+ stops iOS Safari zooming the page on focus */
   color: var(--text);
   background: #fff;
   transition: var(--transition-fast);
@@ -494,14 +583,30 @@ h4, .h4 {
 }
 .form-control:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(45,106,45,0.12);
+  box-shadow: 0 0 0 3px rgba(45,106,45,0.18);
 }
-.form-control.error { border-color: #E53E3E; }
-.form-error { font-size: 0.8rem; color: #E53E3E; margin-top: 5px; display: none; }
+.form-control.error { border-color: #C53030; }
+.form-error { font-size: 0.8rem; color: #C53030; margin-top: 5px; display: none; }
 .form-error.show { display: block; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 textarea.form-control { resize: vertical; min-height: 120px; }
 select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235A6A5A' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+/* Inline form status — replaces native alert() */
+.form-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: #FFF5F5;
+  border: 1px solid #FEB2B2;
+  color: #9B2C2C;
+}
+.form-status a { color: inherit; text-decoration: underline; font-weight: 600; }
 
 /* Checkbox */
 .checkbox-group { display: flex; align-items: center; gap: 10px; cursor: pointer; }
@@ -559,19 +664,25 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .check-list li:last-child { border-bottom: none; }
 .check-list li i { color: var(--primary); flex-shrink: 0; margin-top: 3px; }
 .cross-list li { align-items: flex-start; }
-.cross-list li i { color: #E53E3E; }
+.cross-list li i { color: #C53030; }
 
 /* ============================================================
    ACCORDION (Itinerary)
+   Height animates via grid rows 0fr → 1fr, so there is no max-height cap
+   to outgrow and no timing mismatch on short/long days.
    ============================================================ */
 .accordion-item { border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
 .accordion-header {
   display: flex;
   align-items: center;
   gap: 16px;
+  width: 100%;
   padding: 20px 24px;
   cursor: pointer;
   background: var(--surface);
+  text-align: left;
+  font: inherit;
+  color: inherit;
   transition: var(--transition-fast);
 }
 .accordion-header:hover { background: var(--surface-alt); }
@@ -590,11 +701,17 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   flex-shrink: 0;
 }
 .accordion-title { font-family: 'Inter', sans-serif; font-weight: 600; flex: 1; }
-.accordion-icon { color: var(--text-muted); transition: transform 0.3s ease; }
+.accordion-icon { color: var(--text-muted); transition: transform 0.3s var(--ease-out), color 0.2s ease; }
 .accordion-header.active .accordion-icon { transform: rotate(180deg); color: var(--primary); }
-.accordion-body { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
-.accordion-body.open { max-height: 400px; padding: 0 24px 20px; }
-.accordion-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s var(--ease-out);
+}
+.accordion-body.open { grid-template-rows: 1fr; }
+.accordion-inner { overflow: hidden; min-height: 0; padding: 0 24px; }
+.accordion-body.open .accordion-inner { padding-bottom: 20px; }
+.accordion-inner p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
 
 /* ============================================================
    FILTER TABS
@@ -613,41 +730,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 }
 .filter-tab:hover { border-color: var(--primary); color: var(--primary); }
 .filter-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-
-/* ============================================================
-   PARTNER LOGOS MARQUEE
-   ============================================================ */
-.partners-track-wrap { overflow: hidden; }
-.partners-track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: marqueeLeft 30s linear infinite;
-}
-.partners-track:hover { animation-play-state: paused; }
-.partner-logo-card {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 18px 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 200px;
-  height: 80px;
-  transition: var(--transition);
-}
-.partner-logo-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); }
-.partner-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-align: center;
-  letter-spacing: 0.03em;
-  transition: var(--transition-fast);
-}
-.partner-logo-card:hover .partner-name { color: var(--primary); }
+/* Cards coming back after a filter ease in rather than popping */
+.is-entering { animation: filterIn 0.35s var(--ease-out) both; }
 
 /* ============================================================
    GALLERY GRID
@@ -660,8 +744,7 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   aspect-ratio: 4/3;
   cursor: pointer;
 }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
 .gallery-item::after {
   content: '\f00e';
   font-family: 'Font Awesome 6 Free';
@@ -674,58 +757,75 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   font-size: 2rem;
   color: #fff;
   background: rgba(15,31,15,0);
-  transition: var(--transition);
+  opacity: 0;
+  transition: background-color 0.25s ease, opacity 0.25s ease;
 }
-.gallery-item:hover::after { background: rgba(15,31,15,0.45); }
+@media (hover: hover) {
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item:hover::after { background: rgba(15,31,15,0.45); opacity: 1; }
+}
+.gallery-item:focus-visible::after { background: rgba(15,31,15,0.45); opacity: 1; }
 
 /* ============================================================
    LIGHTBOX
+   Controls are positioned against the viewport (not the image) so they
+   can never fall off-screen on a phone.
    ============================================================ */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.92);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  touch-action: pan-y pinch-zoom;
 }
-.lightbox-overlay.active { opacity: 1; pointer-events: all; }
-.lightbox-inner { position: relative; max-width: 90vw; max-height: 90vh; }
-.lightbox-inner img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: var(--radius-md); }
-.lightbox-close {
-  position: absolute;
-  top: -48px;
-  right: 0;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  opacity: 0.75;
-  transition: opacity 0.2s;
+.lightbox-overlay.active { opacity: 1; visibility: visible; transition: opacity 0.25s ease, visibility 0s; }
+.lightbox-inner { position: static; display: contents; }
+.lightbox-inner img {
+  max-width: min(92vw, 1200px);
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  transition: opacity 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.lightbox-close:hover { opacity: 1; }
-.lightbox-nav {
+.lightbox-inner img.is-swapping { opacity: 0; }
+.lightbox-close, .lightbox-nav {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.3);
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: var(--transition-fast);
 }
-.lightbox-nav:hover { background: var(--accent); border-color: var(--accent); }
-.lightbox-prev { left: -64px; }
-.lightbox-next { right: -64px; }
+.lightbox-close { top: max(12px, env(safe-area-inset-top)); right: 12px; }
+.lightbox-nav { top: 50%; margin-top: -24px; }
+.lightbox-prev { left: 12px; }
+.lightbox-next { right: 12px; }
+.lightbox-close:hover, .lightbox-nav:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
+.lightbox-close:active, .lightbox-nav:active { transform: scale(0.94); transition-duration: 0.1s; }
+.lightbox-count {
+  position: absolute;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.8);
+}
 
 /* ============================================================
    SHARE BUTTONS
@@ -743,8 +843,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 }
 .share-fb { background: #1877F2; color: #fff; }
 .share-fb:hover { background: #1869D8; color: #fff; }
-.share-wa { background: #25D366; color: #fff; }
-.share-wa:hover { background: #1DA851; color: #fff; }
+.share-wa { background: #0F7A40; color: #fff; }
+.share-wa:hover { background: #0B6334; color: #fff; }
 .share-email { background: var(--surface-alt); color: var(--text); border: 1px solid var(--border); }
 .share-email:hover { background: var(--border); color: var(--text); }
 
@@ -770,10 +870,10 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   font-weight: 700;
   color: var(--accent);
 }
-.sidebar-price-sub { font-size: 0.8rem; opacity: 0.75; margin-top: 4px; }
+.sidebar-price-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
 .sidebar-body { padding: 32px; }
 .sidebar-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-.sidebar-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+.sidebar-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.85); }
 .sidebar-meta-item i { color: var(--accent); }
 
 /* ============================================================
@@ -823,6 +923,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
     --section-pad: 40px;
     --section-pad-sm: 28px;
     --nav-height: 52px;
+    /* No shrink on phones: the bar is already compact (it used to GROW to 66px) */
+    --nav-height-scrolled: 52px;
   }
   h1 { font-size: 2.2rem; }
   h2 { font-size: 1.8rem; }
@@ -832,8 +934,6 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   .form-row { grid-template-columns: 1fr; }
   .container { padding: 0 20px; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .lightbox-prev { left: -40px; }
-  .lightbox-next { right: -40px; }
   .availability-toast { right: 16px; bottom: 160px; max-width: 260px; }
   .whatsapp-float { bottom: 16px; right: 16px; }
   .back-to-top { bottom: 84px; right: 16px; }
@@ -849,42 +949,9 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   .filter-tabs { gap: 8px; }
   .filter-tab { padding: 7px 16px; font-size: 0.8rem; }
   .gallery-grid { grid-template-columns: 1fr; }
-  .btn { width: 100%; text-align: center; justify-content: center; padding: 12px 24px; }
-  .share-buttons { gap: 8px; }
-  .share-buttons { gap: 8px; }
+  /* Full-width only for the primary calls to action; small buttons
+     (card footers, cookie banner) keep their natural width. */
+  .btn-lg, .slide-ctas .btn { width: 100%; text-align: center; justify-content: center; }
   .btn-lg { padding: 14px 32px; font-size: 0.85rem; }
-  .btn { width: 100%; text-align: center; justify-content: center; }
-}
-
-.footer-partner-logos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-}
-
-.partner-logo {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: grayscale(100%) opacity(0.7);
-  cursor: pointer;
-}
-
-.partner-logo:hover {
-  transform: scale(1.15) translateY(-5px);
-  filter: grayscale(0%) opacity(1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-  .footer-partner-logos {
-    gap: 20px;
-  }
-  .partner-logo {
-    height: 36px;
-  }
+  .share-buttons { gap: 8px; }
 }

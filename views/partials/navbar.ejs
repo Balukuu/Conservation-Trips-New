@@ -1,8 +1,8 @@
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" aria-label="Main">
   <div class="nav-inner">
-    <!-- Logo -->
+    <!-- Logo (sized in CSS; an inline height here used to beat the mobile rule) -->
     <a href="/" class="nav-logo">
-      <img src="/images/logonew.jpeg" alt="Logo" style="height: 52px; width: auto; border-radius: 5px;">
+      <img src="/images/logonew.jpeg" alt="">
       <div class="nav-logo-text">
         <span>Conservation Trips</span>
         <span>&amp; Adventures</span>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Hamburger -->
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+    <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
