@@ -3,6 +3,7 @@ const router = express.Router();
 const tours = require('../data/tours.json');
 const testimonials = require('../data/testimonials.json');
 const destinations = require('../data/destinations.json');
+const social = require('../data/social.json');
 
 router.get('/', (req, res) => {
   const featuredTours = tours.filter(t => t.featured);
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
     },
     featuredTours,
     testimonials,
+    social,
     ugandaParks: ugandaDest ? ugandaDest.parks : []
   });
 });

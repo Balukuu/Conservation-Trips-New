@@ -12,7 +12,8 @@
     <img
       src="<%= tour.image %>"
       alt=""
-      loading="lazy"
+      loading="lazy"<% if (tour.imagePosition) { %>
+      style="object-position: <%= tour.imagePosition %>"<% } %>
       onerror="this.src='/images/lion.png'"
     >
     <div class="tour-card-img-overlay"></div>

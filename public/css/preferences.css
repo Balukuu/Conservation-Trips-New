@@ -74,6 +74,7 @@
   .back-to-top { transform: none; }
   .sticky-cta.is-hidden { transform: none; }
   .tour-card:hover .tour-card-cta i { transform: none; }
+  .social-card:hover .social-link i { transform: none; }
 
   /* Hover zooms, in-card motion, step changes, filters */
   .tour-card-img img,

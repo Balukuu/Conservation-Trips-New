@@ -422,6 +422,69 @@
 
 
 
+<!-- ═══════════════ SECTION 9: FROM OUR FEED ═══════════════
+     Static cards (no third-party script): photos are served from /images/social and each
+     card links out to the original post on X. Data lives in data/social.json. -->
+<% const socialPosts = (typeof social !== 'undefined' && social && social.posts) ? social.posts : []; %>
+<% if (socialPosts.length) { %>
+<section class="section" id="social" style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="tours-section-header reveal">
+      <div>
+        <div class="section-label"><i class="fa-brands fa-x-twitter"></i> Follow the Adventure</div>
+        <h2 style="color: var(--dark);">Moments From the Field</h2>
+        <p class="section-subtitle">Mountains, rivers and wildlife — shared on X as <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="text-link">@<%= social.handle %></a>.</p>
+      </div>
+      <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="btn btn-outline-dark hide-mobile">Follow on X <i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <div class="social-grid reveal-grid">
+      <% socialPosts.forEach(post => {
+           const media = post.media || [];
+           // card copy: single line, trailing hashtag block dropped
+           const copy = post.text.replace(/\s*\n+\s*/g, ' ').replace(/(\s+#\w+)+\s*$/, '').trim();
+           const when = new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+      %>
+      <article class="social-card">
+        <% if (media.length === 1) { %>
+        <div class="social-media">
+          <img src="<%= media[0].src %>" alt="<%= media[0].alt %>" loading="lazy">
+        </div>
+        <% } else if (media.length > 1) { %>
+        <div class="social-media social-media--mosaic">
+          <% media.slice(0, 3).forEach(m => { %>
+          <img src="<%= m.src %>" alt="<%= m.alt %>" loading="lazy">
+          <% }) %>
+        </div>
+        <% } else { %>
+        <div class="social-media social-media--text" aria-hidden="true">
+          <i class="fa-solid fa-leaf"></i>
+          <span><%= post.label || 'From our feed' %></span>
+        </div>
+        <% } %>
+        <div class="social-body">
+          <div class="social-meta">
+            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+            <span>@<%= social.handle %></span>
+            <span aria-hidden="true">·</span>
+            <time datetime="<%= post.date %>"><%= when %></time>
+          </div>
+          <p class="social-text"><%= copy %></p>
+          <a class="social-link" href="<%= post.url %>" target="_blank" rel="noopener">
+            View on X <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="text-center mt-32 reveal hide-desktop">
+      <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="btn btn-outline-dark">Follow on X <i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+  </div>
+</section>
+<% } %>
+
 <!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
 <section class="section" id="blog-preview" style="background: var(--surface);">
   <div class="container">
@@ -458,7 +521,7 @@
           date: 'February 22, 2025',
           readTime: '8 min read',
           excerpt: 'From gorilla trekking clothes to savannah game drive essentials — everything you need to pack for the perfect Uganda safari.',
-          image: '/images/lion.png',
+          image: '/images/social/uganda-passport.jpg',
           slug: 'uganda-packing-list-safari'
         }
       ]; %>

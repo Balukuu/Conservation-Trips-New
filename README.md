@@ -78,7 +78,21 @@ The motion/interaction layer follows a few rules — keep them when adding compo
 - `motion.js` holds the small physics helpers (spring with velocity handoff, momentum projection,
   rubber-banding) used by the mobile menu drag-to-dismiss.
 
+## "From our feed" (home page)
+
+`data/social.json` holds hand-picked posts from https://x.com/conservation_t; their photos live in
+`public/images/social/` (copied, not hot-linked, so the page loads no third-party script and can't break
+if a post is deleted). The static site can't read X live, so to refresh: add posts at the top of
+`posts` (newest first) and drop the images into that folder. Time-limited promos shouldn't be added.
+
 ## Content to confirm
+
+- Photos in `public/images/social/` came from X posts. Some look like professional wildlife photography —
+  confirm the business has the right to use them.
+- The Rwenzori summit photo is only 1125px wide, so it is soft as a full-width tour hero; swap in the
+  original file if there is one.
+- The banner photos in the pinned X post print different emails/phone numbers
+  (`…@tripsandadventure.com`, +256 778 137 421 …) than this site. They weren't used; worth reconciling.
 
 - `views/privacy.ejs` and `views/terms.ejs` are **drafts** written to match what the site actually
   does. They are not legal advice — have the owner (and counsel, if appropriate) review them.

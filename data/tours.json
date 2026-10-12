@@ -106,6 +106,7 @@
     "image": "/images/waterfall.png",
     "gallery": [
       "/images/waterfall.png",
+      "/images/social/murchison-nile-cruise.jpg",
       "/images/safari.png"
     ],
     "summary": "Murchison Falls is Uganda's largest national park and one of Africa's greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world's most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.",
@@ -171,9 +172,9 @@
     "durationDays": 3,
     "price": "From $680 pp",
     "priceUSD": 680,
-    "image": "/images/safari.png",
+    "image": "/images/social/elephants-bathing.jpg",
     "gallery": [
-      "/images/safari.png",
+      "/images/social/elephants-bathing.jpg",
       "/images/lion.png"
     ],
     "summary": "A tailor-made safari focused on the world-famous Kazinga Channel boat cruise at Queen Elizabeth National Park — where the wildlife density along the riverbanks is exceptional: hundreds of hippos, Nile crocodiles, elephants drinking at the water's edge, and 600+ bird species.",
@@ -353,9 +354,10 @@
     "durationDays": 8,
     "price": "From $2,800 pp",
     "priceUSD": 2800,
-    "image": "/images/safari.png",
+    "image": "/images/social/rwenzori-margherita-peak.jpg",
+    "imagePosition": "50% 16%",
     "gallery": [
-      "/images/safari.png",
+      "/images/social/rwenzori-margherita-peak.jpg",
       "/images/lodge.png",
       "/images/lion.png"
     ],

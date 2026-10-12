@@ -1076,3 +1076,106 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
   .has-sticky-cta .whatsapp-float { bottom: calc(88px + env(safe-area-inset-bottom)); }
   .has-sticky-cta .back-to-top { bottom: calc(160px + env(safe-area-inset-bottom)); }
 }
+
+/* ============================================================
+   FROM OUR FEED (social cards)
+   ============================================================ */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (max-width: 1100px) { .social-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  {
+  .social-grid { grid-template-columns: 1fr; }
+  /* a text-only post doesn't need a full-width square on a phone */
+  .social-media--text { aspect-ratio: 16 / 7; }
+}
+
+.social-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.social-card:hover { box-shadow: var(--shadow-lg); }
+
+.social-media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--primary-light);
+}
+.social-media img { width: 100%; height: 100%; object-fit: cover; }
+/* three photos from one post: one large, two stacked */
+.social-media--mosaic {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+}
+.social-media--mosaic img:first-child { grid-row: 1 / span 2; }
+/* a post with no photo gets a branded panel instead of an empty gap */
+.social-media--text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(200,146,42,0.28) 0%, transparent 55%),
+    linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+.social-media--text i { font-size: 2.6rem; color: var(--accent); }
+.social-media--text span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.social-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding: 18px 20px 20px;
+}
+.social-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.social-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.social-link {
+  margin-top: auto;
+  padding-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+/* the link covers the whole card: one tap target, one stop for keyboards */
+.social-link::after { content: ''; position: absolute; inset: 0; z-index: 2; }
+.social-link:focus-visible { outline: none; }
+.social-link:focus-visible::after { outline: 3px solid var(--primary); outline-offset: -3px; border-radius: var(--radius-md); }
+.social-link i { font-size: 0.7rem; transition: transform 0.25s var(--ease-out); }
+.social-card:hover .social-link i { transform: translate(2px, -2px); }

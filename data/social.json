@@ -1,0 +1,60 @@
+{
+  "handle": "conservation_t",
+  "name": "Conservation Trips And Adventures",
+  "profileUrl": "https://x.com/conservation_t",
+  "_curation": "Hand-picked from https://x.com/conservation_t (read 12 Oct 2026). Left out on purpose: two 'WEEKENDGETAWAY 10% off today' promos (expired offers) and the pinned post, whose banner photos print contact details that differ from this site's. Images are copied into public/images/social/ rather than hot-linked. To refresh: add posts here (newest first) and drop the images into that folder.",
+  "posts": [
+    {
+      "id": "1902221426486051182",
+      "url": "https://x.com/conservation_t/status/1902221426486051182",
+      "date": "2025-03-19T04:51:44.000Z",
+      "label": "Conservation tip",
+      "text": "Wildlife Conservation Tip: Reduce, Reuse, Recycle!\nDid you know that plastic waste harms wildlife and their habitats? Make a difference by reducing your plastic usage, reusing bags and containers, and recycling as much as possible!\n\nShare your eco-friendly tips with us!",
+      "media": []
+    },
+    {
+      "id": "1901863307356582255",
+      "url": "https://x.com/conservation_t/status/1901863307356582255",
+      "date": "2025-03-18T05:08:42.000Z",
+      "text": "Exploring the great outdoors! Join us on a virtual hike through the beautiful mountains of Rwenzori",
+      "media": [
+        {
+          "src": "/images/social/rwenzori-margherita-peak.jpg",
+          "alt": "A climber holding an ice axe beside the Margherita Peak sign, the highest point in Uganda"
+        }
+      ]
+    },
+    {
+      "id": "1901510601194492010",
+      "url": "https://x.com/conservation_t/status/1901510601194492010",
+      "date": "2025-03-17T05:47:10.000Z",
+      "text": "Wildlife Monday! Did you know that elephants have a highly developed brain and are considered one of the smartest animals on Earth? Share your favorite wildlife facts with us! #wildlife #conservation #outdooradventures",
+      "media": [
+        {
+          "src": "/images/social/elephant-mother-and-calves.jpg",
+          "alt": "An elephant mother with two calves walking through green savannah grass"
+        }
+      ]
+    },
+    {
+      "id": "1900051716155781601",
+      "url": "https://x.com/conservation_t/status/1900051716155781601",
+      "date": "2025-03-13T05:10:05.000Z",
+      "text": "Throwback to our incredible safari adventure in Africa! Who's ready for their next wildlife encounter? Share your favorite safari memories with us! #throwback #safari #wildlife",
+      "media": [
+        {
+          "src": "/images/social/murchison-nile-cruise.jpg",
+          "alt": "A tour boat on the Nile heading toward Murchison Falls between forested hills"
+        },
+        {
+          "src": "/images/social/safari-vehicles-at-the-nile.jpg",
+          "alt": "Safari vehicles parked in a line beside the river"
+        },
+        {
+          "src": "/images/social/elephants-bathing.jpg",
+          "alt": "Elephants bathing in a river"
+        }
+      ]
+    }
+  ]
+}

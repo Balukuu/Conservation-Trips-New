@@ -117,6 +117,16 @@ a, button, input, select, textarea, label, summary, [role="button"], [role="radi
   outline-color: var(--accent);
 }
 
+.text-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 106, 45, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.text-link:hover { color: var(--primary-dark); text-decoration-color: currentColor; }
+
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -347,7 +357,7 @@ h4, .h4 {
    ============================================================ */
 @media (hover: hover) {
   .btn:hover, .nav-book:hover, .back-to-top:hover { transform: translateY(var(--lift-sm)); }
-  .card:hover, .tour-card:hover, .blog-card:hover,
+  .card:hover, .tour-card:hover, .blog-card:hover, .social-card:hover,
   .mission-card:hover, .team-card:hover { transform: translateY(var(--lift)); }
 }
 

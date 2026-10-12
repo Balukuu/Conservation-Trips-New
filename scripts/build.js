@@ -33,6 +33,7 @@ const tours = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'tours.json')
 const testimonials = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'testimonials.json'), 'utf8'));
 const destinations = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'destinations.json'), 'utf8'));
 const blogPosts = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'posts.json'), 'utf8'));
+const social = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'social.json'), 'utf8'));
 
 // Helper: Ensure directory exists
 function ensureDir(dirPath) {
@@ -151,6 +152,7 @@ async function build() {
     },
     featuredTours,
     testimonials,
+    social,
     ugandaParks: ugandaDest ? ugandaDest.parks : []
   });
 

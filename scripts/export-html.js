@@ -11,6 +11,7 @@ const outputFile = path.join(__dirname, '..', 'public.html');
 const tours = JSON.parse(fs.readFileSync(path.join(dataDir, 'tours.json'), 'utf8'));
 const testimonials = JSON.parse(fs.readFileSync(path.join(dataDir, 'testimonials.json'), 'utf8'));
 const destinations = JSON.parse(fs.readFileSync(path.join(dataDir, 'destinations.json'), 'utf8'));
+const social = JSON.parse(fs.readFileSync(path.join(dataDir, 'social.json'), 'utf8'));
 
 const featuredTours = tours.filter(t => t.featured);
 const ugandaDest = destinations.find(d => d.id === 'uganda');
@@ -27,6 +28,7 @@ const templateData = {
   },
   featuredTours,
   testimonials,
+  social,
   ugandaParks,
   // Helper for partials if needed, though EJS handles relative paths
   filename: path.join(viewsDir, 'index.ejs') 

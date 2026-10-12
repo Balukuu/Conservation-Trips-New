@@ -1,6 +1,6 @@
 <!-- Tour Hero -->
 <section class="tour-hero">
-  <div class="tour-hero-img" style="background-image: url('<%= tour.image %>');"></div>
+  <div class="tour-hero-img" style="background-image: url('<%= tour.image %>');<% if (tour.imagePosition) { %> background-position: <%= tour.imagePosition %>;<% } %>"></div>
   <div class="tour-hero-overlay"></div>
   <div class="tour-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
