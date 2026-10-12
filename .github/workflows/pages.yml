@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; let a running deploy finish rather than cancel it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --omit=dev
+
+      # Work out where the site will be served from:
+      #   public/CNAME present     -> custom domain, served at the root
+      #   repo named <owner>.github.io -> user site, served at the root
+      #   anything else            -> project site under /<repo>
+      - name: Resolve site URL and base path
+        run: |
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          repo="${GITHUB_REPOSITORY#*/}"
+          if [ -s public/CNAME ]; then
+            echo "BASE_PATH=" >> "$GITHUB_ENV"
+            echo "SITE_URL=https://$(tr -d '[:space:]' < public/CNAME)" >> "$GITHUB_ENV"
+          elif [ "${repo,,}" = "$owner.github.io" ]; then
+            echo "BASE_PATH=" >> "$GITHUB_ENV"
+            echo "SITE_URL=https://$owner.github.io" >> "$GITHUB_ENV"
+          else
+            echo "BASE_PATH=/$repo" >> "$GITHUB_ENV"
+            echo "SITE_URL=https://$owner.github.io/$repo" >> "$GITHUB_ENV"
+          fi
+
+      - name: Build static site
+        run: npm run build
+        env:
+          # Optional repository variable (Settings → Secrets and variables → Actions → Variables),
+          # e.g. https://formspree.io/f/xxxxxxxx. Leave unset to use the mailto: fallback.
+          FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

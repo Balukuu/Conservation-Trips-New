@@ -185,10 +185,15 @@
   }
 
   /* ─── Active Nav Link ─── */
-  const currentPath = window.location.pathname;
+  // The site may be served under a sub-path (GitHub Pages project sites), so the
+  // home link is whatever the logo points at rather than a literal "/".
+  const trimSlash = p => p.replace(/\/+$/, '') || '/';
+  const currentPath = trimSlash(window.location.pathname);
+  const logoLink = document.querySelector('.nav-logo');
+  const homePath = trimSlash(logoLink ? logoLink.getAttribute('href') : '/');
   document.querySelectorAll('.nav-links a, .mobile-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+    const href = trimSlash(link.getAttribute('href'));
+    if (href === currentPath || (href !== homePath && currentPath.startsWith(href + '/'))) {
       link.classList.add('active');
     }
   });

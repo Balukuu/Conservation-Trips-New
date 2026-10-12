@@ -102,7 +102,12 @@
             Fill in 3 quick steps and we'll get back to you within 24 hours with a personalised quote.
           </p>
 
-          <form class="booking-form" id="booking-form" novalidate>
+          <%# data-mode "server" posts to the Express route; "static" (GitHub Pages build) uses
+              data-endpoint if set, otherwise falls back to a prefilled mailto: draft. %>
+          <form class="booking-form" id="booking-form" novalidate
+                data-mode="<%= typeof staticBuild !== 'undefined' && staticBuild ? 'static' : 'server' %>"
+                data-endpoint="<%= typeof formEndpoint !== 'undefined' ? formEndpoint : '' %>"
+                data-email="info@tripsandadventures.co.ug">
 
             <!-- Progress Bar -->
             <div class="progress-bar-wrap">

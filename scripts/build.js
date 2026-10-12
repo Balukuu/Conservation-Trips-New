@@ -2,14 +2,31 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
+// Deployment target
+//   BASE_PATH    URL prefix the site is served under. '' for a custom domain or a
+//                user/org site; '/<repo>' for a GitHub Pages project site.
+//   SITE_URL     Absolute origin + base path, used for canonical/og URLs.
+//   FORM_ENDPOINT  Optional hosted form endpoint (Formspree, Web3Forms, ...) that
+//                the booking form POSTs to, since Pages has no server.
+function normalizeBasePath(p) {
+  const trimmed = (p || '').trim().replace(/^\/+|\/+$/g, '');
+  return trimmed ? '/' + trimmed : '';
+}
+
+const basePath = normalizeBasePath(process.env.BASE_PATH);
+const siteUrl = (process.env.SITE_URL || 'https://tripsandadventures.co.ug').replace(/\/+$/, '');
+const formEndpoint = (process.env.FORM_ENDPOINT || '').trim();
+
 // Configuration
 const config = {
   viewsDir: path.join(__dirname, '..', 'views'),
   dataDir: path.join(__dirname, '..', 'data'),
   publicDir: path.join(__dirname, '..', 'public'),
   distDir: path.join(__dirname, '..', 'dist'),
-  baseUrl: 'https://tripsandadventures.co.ug'
+  baseUrl: siteUrl
 };
+
+let failures = 0;
 
 // Load Data
 const tours = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'tours.json'), 'utf8'));
@@ -39,6 +56,32 @@ function copyDir(src, dest) {
   }
 }
 
+// Helper: Re-root absolute paths
+// Templates use plain "/css/main.css"-style paths so the Express dev server and the
+// static build share one source. For a Pages project site those must live under
+// BASE_PATH, so rewrite them in the rendered HTML. Page links also get a trailing
+// slash, which avoids a redirect hop for "/tours" -> "/tours/" on GitHub Pages.
+const FILE_EXT = /\.[a-z0-9]{1,5}$/i;
+
+function prefixPath(url, isPage) {
+  const [, pathname, rest] = url.match(/^([^?#]*)(.*)$/);
+  const slashed = isPage && !pathname.endsWith('/') && !FILE_EXT.test(pathname) ? pathname + '/' : pathname;
+  return basePath + slashed + rest;
+}
+
+function applyBasePath(html) {
+  return html
+    // <a href="/x">, <img src="/x">, <form action="/x">, and onerror="this.src='/x'"
+    .replace(/\b(href|src|action|poster)=(["'])\/(?!\/)([^"']*)\2/g,
+      (_, attr, q, p) => `${attr}=${q}${prefixPath('/' + p, attr === 'href')}${q}`)
+    // style="background-image:url('/x')"
+    .replace(/url\((["']?)\/(?!\/)([^"')]*)\1\)/g,
+      (_, q, p) => `url(${q}${prefixPath('/' + p, false)}${q})`)
+    // og:image / twitter:image must be absolute URLs for crawlers
+    .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")\/(?!\/)([^"]*)"/g,
+      (_, pre, p) => `${pre}${config.baseUrl}/${p}"`);
+}
+
 // Helper: Render Page
 async function renderPage(viewName, outputPath, data = {}) {
   const fullOutputPath = path.join(config.distDir, outputPath);
@@ -51,9 +94,12 @@ async function renderPage(viewName, outputPath, data = {}) {
       description: 'Uganda Safari & East Africa Tours',
       keywords: '',
       ogImage: '/images/safari.png',
-      ogUrl: config.baseUrl + (outputPath === 'index.html' ? '' : '/' + outputPath.replace('/index.html', '')),
+      // Pages serves "/tours" by redirecting to "/tours/", so canonical URLs carry the slash.
+      ogUrl: config.baseUrl + '/' + outputPath.replace(/(^|\/)index\.html$/, '$1'),
       ...data.meta
     },
+    staticBuild: true,
+    formEndpoint,
     filename: path.join(config.viewsDir, viewName + '.ejs')
   };
 
@@ -68,15 +114,19 @@ async function renderPage(viewName, outputPath, data = {}) {
       filename: path.join(config.viewsDir, 'layouts', 'main.ejs')
     });
 
-    fs.writeFileSync(fullOutputPath, finalHtml);
+    fs.writeFileSync(fullOutputPath, applyBasePath(finalHtml));
     console.log(`  ✅ Generated: ${outputPath}`);
   } catch (err) {
     console.error(`  ❌ Failed to render ${viewName}:`, err.message);
+    failures++;
   }
 }
 
 async function build() {
   console.log('🚀 Starting Static Site Build...\n');
+  console.log(`   base path : ${basePath || '(root)'}`);
+  console.log(`   site url  : ${siteUrl}`);
+  console.log(`   form      : ${formEndpoint || '(none — mailto fallback)'}\n`);
 
   // 1. Clean & Prepare Dist
   if (fs.existsSync(config.distDir)) {
@@ -198,7 +248,16 @@ async function build() {
     });
   }
 
+  if (failures > 0) {
+    console.error(`\n❌ Build finished with ${failures} failed page(s).\n`);
+    process.exitCode = 1;
+    return;
+  }
+
   console.log('\n✨ Build Complete! Static site available in /dist\n');
 }
 
-build();
+build().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

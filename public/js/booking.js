@@ -158,6 +158,81 @@
     });
   });
 
+  /* ─── Delivery ───
+     server  → Express route (npm start)
+     static  → hosted form endpoint if the build set one (FORM_ENDPOINT),
+               otherwise open a prefilled email draft. GitHub Pages has no backend. */
+  const mode = form.dataset.mode || 'server';
+  const endpoint = form.dataset.endpoint || '';
+  const fallbackEmail = form.dataset.email || '';
+
+  async function sendEnquiry(data) {
+    if (mode === 'server') {
+      const res = await fetch('/contact/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      return { ok: !!json.success, message: json.message };
+    }
+
+    if (endpoint) {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) return { ok: true };
+      let message;
+      try {
+        const json = await res.json();
+        message = json.error || (json.errors && json.errors.map(err => err.message).join(', '));
+      } catch (_) { /* non-JSON error body */ }
+      return { ok: false, message };
+    }
+
+    openMailDraft(data);
+    return { ok: true, viaMailto: true };
+  }
+
+  function openMailDraft(data) {
+    const list = v => Array.isArray(v) ? v.join(', ') : (v || '');
+    const lines = [
+      `Name: ${data.firstName || ''} ${data.lastName || ''}`.trim(),
+      `Email: ${data.email || ''}`,
+      `Phone: ${data.phone || ''}`,
+      `Country: ${data.country || ''}`,
+      '',
+      `Safari type: ${data.safari_type || ''}`,
+      `Duration: ${data.duration_range || ''}`,
+      `Travel date: ${data.travel_month || ''} ${data.travel_year || ''}`.trim(),
+      `Group size: ${data.group_size || ''}`,
+      `Destinations: ${list(data.destinations)}`,
+      `Accommodation: ${data.accommodation || ''}`,
+      '',
+      'Requirements:',
+      data.requirements || ''
+    ];
+    const subject = `Safari Enquiry: ${data.safari_type || 'Custom'} — ${data.firstName || ''} ${data.lastName || ''}`.trim();
+    window.location.href = 'mailto:' + fallbackEmail +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  // The enquiry is only sent once the visitor presses Send in their mail app,
+  // so don't claim "received" — say what actually happens.
+  function showMailtoNotice() {
+    const note = successScreen && successScreen.querySelector('p');
+    if (!note) return;
+    note.textContent = 'Your email app should now be open with your enquiry ready to go — just press Send. If nothing opened, email us at ';
+    const link = document.createElement('a');
+    link.href = 'mailto:' + fallbackEmail;
+    link.textContent = fallbackEmail;
+    note.appendChild(link);
+    note.append('.');
+  }
+
   /* ─── Form Submit ─── */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -181,14 +256,9 @@
     });
 
     try {
-      const res = await fetch('/contact/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const json = await res.json();
+      const result = await sendEnquiry(data);
 
-      if (json.success) {
+      if (result.ok) {
         // Show success screen
         steps.forEach(s => s.classList.remove('active'));
         const progressWrap = form.querySelector('.progress-bar-wrap');
@@ -197,9 +267,11 @@
         const nameDisplay = document.querySelector('.success-first-name');
         if (nameDisplay) nameDisplay.textContent = data.firstName || 'Explorer';
 
+        if (result.viaMailto) showMailtoNotice();
+
         if (successScreen) successScreen.classList.add('show');
       } else {
-        alert(json.message || 'An error occurred. Please try again.');
+        alert(result.message || 'An error occurred. Please try again.');
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = 'Send Enquiry <i class="fa-solid fa-paper-plane"></i>'; }
       }
     } catch (err) {

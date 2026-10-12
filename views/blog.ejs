@@ -20,6 +20,7 @@
       <% categories.forEach(cat => { %>
       <a href="/blog<%= cat !== 'All' ? '?category=' + encodeURIComponent(cat) : '' %>"
          class="filter-tab <%= activeCategory === cat ? 'active' : '' %>"
+         data-category="<%= cat %>"
          role="tab">
         <%= cat %>
       </a>
@@ -30,7 +31,7 @@
     <% if (posts.length > 0) { %>
     <div class="blog-grid reveal-grid">
       <% posts.forEach(post => { %>
-      <article class="blog-card">
+      <article class="blog-card" data-category="<%= post.category %>">
         <a href="/blog/<%= post.slug %>" class="blog-card-img">
           <img src="<%= post.image %>" alt="<%= post.title %>" loading="lazy" onerror="this.src='/images/lion.png'">
         </a>
