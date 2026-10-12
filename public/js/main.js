@@ -300,6 +300,18 @@
     backToTop.addEventListener('click', function () { window.scrollTo(0, 0); });
   }
 
+  /* ─── WhatsApp float: on phones it appears once the visitor starts scrolling ─── */
+  var waFloat = document.querySelector('.whatsapp-float');
+  if (waFloat) {
+    var waOn = null;
+    var syncWa = function () {
+      var next = window.scrollY > 160;
+      if (next !== waOn) { waOn = next; waFloat.classList.toggle('is-visible', next); }
+    };
+    window.addEventListener('scroll', syncWa, { passive: true });
+    syncWa();
+  }
+
   /* ─── Cookie Banner (returning visitors never see it: see the layout <head>) ─── */
   var cookieBanner = document.querySelector('.cookie-banner');
   if (cookieBanner) {
@@ -373,6 +385,31 @@
 
     if (headers.length) setOpen(headers[0], true);
   });
+
+  /* ─── Sticky enquiry bar (tour pages) ───
+     Shown once the visitor has scrolled past the hero, hidden again while the
+     real enquiry form is on screen (no point offering a button to it). */
+  var stickyCta = document.getElementById('sticky-cta');
+  var enquireForm = document.getElementById('enquire-form');
+  if (stickyCta && enquireForm) {
+    root.classList.add('has-sticky-cta');
+    var pastHero = false;
+    var formOnScreen = false;
+    var syncSticky = function () {
+      stickyCta.classList.toggle('is-hidden', !pastHero || formOnScreen);
+    };
+    window.addEventListener('scroll', function () {
+      var next = window.scrollY > 480;
+      if (next !== pastHero) { pastHero = next; syncSticky(); }
+    }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        formOnScreen = entries[0].isIntersecting;
+        syncSticky();
+      }, { threshold: 0.15 }).observe(enquireForm);
+    }
+    syncSticky();
+  }
 
   /* ─── Testimonial slider ───
      Native scroll-snap does the physical part (1:1 finger tracking,

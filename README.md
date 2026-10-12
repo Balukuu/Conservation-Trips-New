@@ -68,6 +68,12 @@ The motion/interaction layer follows a few rules — keep them when adding compo
   only hides content under `<html class="js">`, and `main.js` adds `.reveal-done` afterwards so the
   element's own hover/transform rules take over. Don't write inline `opacity`/`transform` from JS.
 - **Anything that slides away also goes `visibility:hidden`** so it can't be tabbed to off-screen.
+- **Cards carry one link.** The title's `<a>` is stretched over the whole card (`a::after { inset: 0 }`);
+  photos and "View itinerary / Read more" are decorative (`aria-hidden`). Don't add a second link inside a card.
+- **Shadows are tinted and layered** (`--shadow-sm … --shadow-xl`); use the tokens rather than ad-hoc `rgba(0,0,0,…)`.
+- **Gold on light backgrounds** uses `--accent-text`; `--accent` is for fills and for text on dark surfaces.
+- **Test layouts at a real viewport width.** `vh`/`svh` heroes behave differently under CSS `zoom`, so use a
+  genuinely narrower window or an iframe when checking the hero.
 - **Errors are inline (`role="alert"`)**, never `window.alert()`.
 - `motion.js` holds the small physics helpers (spring with velocity handoff, momentum projection,
   rubber-banding) used by the mobile menu drag-to-dismiss.

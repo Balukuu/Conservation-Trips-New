@@ -31,12 +31,14 @@
   .hero-slide { transition-delay: 0.5s; }
   .hero-slide.active { transition-duration: 0.5s; transition-delay: 0s; }
   .word-span,
+  .slide-eyebrow,
   .slide-sub,
   .slide-ctas {
     transform: none;
     transition: opacity 0.3s ease;
   }
   .hero-slide.active .word-span,
+  .hero-slide.active .slide-eyebrow,
   .hero-slide.active .slide-sub,
   .hero-slide.active .slide-ctas {
     transform: none;
@@ -70,6 +72,8 @@
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
   }
   .back-to-top { transform: none; }
+  .sticky-cta.is-hidden { transform: none; }
+  .tour-card:hover .tour-card-cta i { transform: none; }
 
   /* Hover zooms, in-card motion, step changes, filters */
   .tour-card-img img,
@@ -96,8 +100,13 @@
     backdrop-filter: none;
   }
   .slider-arrow,
-  .badge-glass {
-    background: rgba(15, 31, 15, 0.9);
+  .badge-glass,
+  .duration-badge,
+  .category-tag,
+  .sticky-cta,
+  .why-us-photo figcaption,
+  .hero-trust-strip .trust-strip-inner {
+    background: rgba(15, 31, 15, 0.92);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

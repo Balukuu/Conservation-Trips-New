@@ -217,3 +217,12 @@
 
   </div>
 </section>
+
+<!-- Sticky enquiry bar (tablet / phone; behaviour in main.js) -->
+<div class="sticky-cta is-hidden" id="sticky-cta">
+  <div class="sticky-cta-price">
+    <span>From</span>
+    <strong><%= String(tour.price || '').replace(/^\s*from\s+/i, '') %></strong>
+  </div>
+  <a href="#enquire-form" class="btn btn-primary btn-sm">Enquire now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
