@@ -1226,18 +1226,52 @@ html.no-scroll .sticky-cta { visibility: hidden !important; pointer-events: none
 }
 .footer-copy a { color: rgba(255,255,255,0.8); text-decoration: underline; text-underline-offset: 3px; }
 .footer-copy a:hover { color: var(--accent); }
-.footer-trust-badge {
+.footer-credit {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.7);
-  background: rgba(45,106,45,0.2);
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(45,106,45,0.35);
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
 }
-.footer-trust-badge i { color: #6FBF6F; font-size: 0.85rem; }
+.footer-credit i { color: var(--accent); font-size: 0.8rem; }
+.footer-credit a { font-weight: 700; color: rgba(255,255,255,0.9); text-decoration: underline; text-underline-offset: 3px; }
+.footer-credit a:hover { color: var(--accent); }
+
+/* Registrations: label left, logos on white tiles right */
+.footer-reg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-reg-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.footer-reg-label i { font-size: 0.95rem; }
+.footer-reg-logos { list-style: none; display: flex; align-items: center; gap: 12px; margin: 0; padding: 0; }
+.footer-reg-logos li {
+  display: grid;
+  place-items: center;
+  height: 68px;
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+/* the lazy-image placeholder tint must not show behind a transparent logo */
+img.footer-reg-logo { width: auto; height: 36px; max-width: none; background-color: transparent; }
+img.footer-reg-logo--tall { height: 50px; }
 
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
@@ -1263,6 +1297,9 @@ html.no-scroll .sticky-cta { visibility: hidden !important; pointer-events: none
   .nav-right { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-reg { flex-direction: column; text-align: center; }
+  .footer-reg-logos { justify-content: center; }
+  .footer-credit { justify-content: center; }
   .testimonial-card-inner { padding: 32px 24px; }
   .testimonial-text { font-size: 1rem; }
   .scroll-indicator { display: none; }

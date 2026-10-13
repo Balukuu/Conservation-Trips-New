@@ -84,6 +84,17 @@
     </div>
   </div>
 
+  <!-- Registrations (logos are on white tiles: the Uganda Tourism Board one is black on transparent) -->
+  <div class="container">
+    <div class="footer-reg">
+      <p class="footer-reg-label"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Registered with</p>
+      <ul class="footer-reg-logos">
+        <li><%- image({ src: '/images/utb.png', sizes: '110px', className: 'footer-reg-logo' }) %></li>
+        <li><%- image({ src: '/images/uwa.png', sizes: '48px', className: 'footer-reg-logo footer-reg-logo--tall' }) %></li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Footer Bottom -->
   <div class="container">
     <div class="footer-bottom">
@@ -92,10 +103,10 @@
         <a href="/privacy">Privacy Policy</a> &nbsp;|&nbsp;
         <a href="/terms">Terms of Service</a>
       </p>
-      <span class="footer-trust-badge">
-        <i class="fa-solid fa-shield-halved"></i>
-        Registered with Uganda Tourism Board
-      </span>
+      <p class="footer-credit">
+        <i class="fa-solid fa-code" aria-hidden="true"></i>
+        Developed by <a href="https://blactec.ug" target="_blank" rel="noopener">Blactec</a>
+      </p>
     </div>
   </div>
 </footer>
