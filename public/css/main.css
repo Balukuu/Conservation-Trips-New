@@ -140,7 +140,7 @@ a, button, input, select, textarea, label, summary, [role="button"], [role="radi
 .navbar :focus-visible, .mobile-menu :focus-visible, .hero-slider :focus-visible,
 .footer :focus-visible, .cta-strip :focus-visible, .conservation-section :focus-visible,
 .cookie-banner :focus-visible, .lightbox-overlay :focus-visible, .page-hero :focus-visible,
-.availability-toast :focus-visible, #testimonials :focus-visible, .tour-hero :focus-visible {
+.availability-toast :focus-visible, #testimonials :focus-visible, .td-hero :focus-visible {
   outline-color: var(--accent);
 }
 
@@ -619,7 +619,7 @@ h4, .h4 {
   border: none;
 }
 .toast-close:hover { color: #fff; }
-.toast-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.toast-icon { font-size: 1.35rem; color: var(--accent); flex-shrink: 0; }
 
 /* ============================================================
    FORMS
@@ -910,49 +910,6 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .share-wa:hover { background: #0B6334; color: #fff; }
 .share-email { background: var(--surface-alt); color: var(--text); border: 1px solid var(--border); }
 .share-email:hover { background: var(--border); color: var(--text); }
-
-/* ============================================================
-   TOUR BOOKING SIDEBAR
-   ============================================================ */
-.tour-sidebar { position: sticky; top: calc(var(--nav-height) + 24px); }
-.sidebar-card {
-  background: #fff;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-light);
-  overflow: hidden;
-}
-.sidebar-header {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 28px 32px;
-  color: #fff;
-}
-.sidebar-title {
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-.sidebar-title-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
-.sidebar-body { padding: 32px; }
-.sidebar-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-.sidebar-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.85); }
-.sidebar-meta-item i { color: var(--accent); }
-
-/* ============================================================
-   TRUST BADGES
-   ============================================================ */
-.trust-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: var(--surface-alt);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-}
-.trust-badge i { color: var(--primary); font-size: 1.1rem; }
-.trust-badge p { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); }
 
 /* ============================================================
    STARS

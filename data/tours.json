@@ -78,12 +78,12 @@
     "durationDays": 2,
     "price": "From $450 pp",
     "priceUSD": 450,
-    "image": "/images/gorilla.jpg",
-    "cardImage": "/images/photos/western-uganda-road.webp",
+    "image": "/images/photos/western-uganda-road.webp",
     "gallery": [
-      "/images/gorilla.jpg",
+      "/images/photos/western-uganda-road.webp",
       "/images/safari.jpg"
     ],
+    "galleryAlbums": [{ "album": "tea-estates", "limit": 6 }, { "album": "road-west", "limit": 4 }],
     "summary": "Kibale National Park is East Africa's premier primate destination — home to 1,500 chimpanzees and 12 other primate species. Immerse yourself in lush tropical forest tracking wild chimpanzees with expert naturalist guides.",
     "highlights": [
       "Track habituated chimpanzees in Kibale Forest",
@@ -115,7 +115,11 @@
     "gallery": [
       "/images/waterfall.jpg",
       "/images/social/murchison-nile-cruise.jpg",
-      "/images/safari.jpg"
+      "/images/safari.jpg",
+      "/images/social/safari-vehicles-at-the-nile.jpg",
+      "/images/social/elephants-bathing.jpg",
+      "/images/social/elephant-mother-and-calves.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "Murchison Falls is Uganda's largest national park and one of Africa's greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world's most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.",
     "highlights": [
@@ -145,10 +149,10 @@
     "durationDays": 5,
     "price": "From $1,200 pp",
     "priceUSD": 1200,
-    "image": "/images/gorilla.jpg",
-    "cardImage": "/images/photos/lake-sunset-silhouette.webp",
+    "image": "/images/photos/lake-sunset-silhouette.webp",
+    "imagePosition": "50% 28%",
     "gallery": [
-      "/images/gorilla.jpg",
+      "/images/photos/lake-sunset-silhouette.webp",
       "/images/lodge.jpg",
       "/images/safari.jpg",
       "/images/photos/equator-kayabwe-ring.webp"
@@ -220,10 +224,9 @@
     "durationDays": 22,
     "price": "From $4,500 pp",
     "priceUSD": 4500,
-    "image": "/images/safari.jpg",
-    "cardImage": "/images/social/elephant-mother-and-calves.jpg",
+    "image": "/images/social/elephant-mother-and-calves.jpg",
     "gallery": [
-      "/images/safari.jpg",
+      "/images/social/elephant-mother-and-calves.jpg",
       "/images/gorilla.jpg",
       "/images/waterfall.jpg",
       "/images/photos/lake-mburo-zebras.webp",
@@ -266,12 +269,14 @@
     "durationDays": 4,
     "price": "From $890 pp",
     "priceUSD": 890,
-    "image": "/images/safari.jpg",
-    "cardImage": "/images/photos/guides-trio-track.webp",
-    "imagePosition": "50% 34%",
+    "image": "/images/photos/guides-trio-track.webp",
+    "imagePosition": "50% 48%",
     "gallery": [
-      "/images/safari.jpg",
-      "/images/lodge.jpg"
+      "/images/photos/guides-trio-track.webp",
+      "/images/lodge.jpg",
+      "/images/photos/western-uganda-road.webp",
+      "/images/photos/guide-portrait.webp",
+      "/images/photos/lake-sunset-silhouette.webp"
     ],
     "summary": "Mount Kenya (5,199m) is Africa's second highest peak and a UNESCO World Heritage Site. Trek through equatorial forests, giant heather zones and glacial valleys to reach Point Lenana at 4,985m — a life-changing high-altitude adventure.",
     "highlights": [
@@ -306,7 +311,11 @@
     "imagePosition": "50% 34%",
     "gallery": [
       "/images/safari.jpg",
-      "/images/lodge.jpg"
+      "/images/lodge.jpg",
+      "/images/photos/western-uganda-road.webp",
+      "/images/photos/guides-trio-track.webp",
+      "/images/photos/guide-portrait.webp",
+      "/images/photos/lake-sunset-silhouette.webp"
     ],
     "summary": "Conquer Africa's highest peak — Mount Kilimanjaro (5,895m) — on the scenic Machame Route, known as the 'Whiskey Route' for its dramatic scenery. A life-changing 7-day ascent through five distinct climate zones to the Roof of Africa.",
     "highlights": [
@@ -340,12 +349,10 @@
     "durationDays": 7,
     "price": "From $1,800 pp",
     "priceUSD": 1800,
-    "image": "/images/safari.jpg",
-    "cardImage": "/images/lodge.jpg",
+    "image": "/images/lodge.jpg",
     "gallery": [
-      "/images/safari.jpg",
-      "/images/gorilla.jpg",
       "/images/lodge.jpg",
+      "/images/gorilla.jpg",
       "/images/photos/equator-kayabwe-ring.webp",
       "/images/photos/western-uganda-road.webp"
     ],
