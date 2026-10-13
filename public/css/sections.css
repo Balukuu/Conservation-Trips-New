@@ -43,7 +43,7 @@
   max-width: 56ch;
   margin-top: 12px;
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: var(--leading-ui);
   color: var(--text-muted);
 }
 .sx-head--center p { margin-left: auto; margin-right: auto; }
@@ -58,7 +58,7 @@
   font-weight: 700;
   color: var(--primary);
 }
-.sx-link i { font-size: 0.8rem; transition: transform 0.25s var(--ease-out); }
+.sx-link i { font-size: 0.8rem; transition: transform var(--dur-base) var(--ease-out); }
 .sx--dark .sx-link { color: var(--accent); }
 
 /* White-on-photo / dark surfaces need the gold focus ring */
@@ -69,12 +69,13 @@
    Goes on a .page-hero (main.css): <section class="page-hero sx-hero">.
    .sx-hero-sub is the intro line, .sx-chips a row of glass facts under it. */
 .sx-hero { min-height: 440px; }
+.sx-hero--compact { min-height: 320px; }
 .sx-hero h1 { color: #fff; }
 .sx-hero-sub {
   max-width: 580px;
   margin-top: 12px;
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: var(--leading-ui);
   color: rgba(255,255,255,0.86);
 }
 .sx-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
@@ -142,7 +143,7 @@
 .sx-badge span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.88; }
 
 .sx-split h2 { color: var(--dark); font-size: clamp(1.75rem, 3.1vw, 2.5rem); }
-.sx-lead { margin: 16px 0 0; font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); }
+.sx-lead { margin: 16px 0 0; font-size: 1.05rem; line-height: var(--leading-read); color: var(--text-muted); }
 .sx-features {
   list-style: none;
   display: grid;
@@ -162,7 +163,7 @@
   color: var(--primary);
 }
 .sx-features h3 { margin: 0 0 4px; font-size: 1.02rem; line-height: 1.3; color: var(--dark); letter-spacing: -0.005em; }
-.sx-features p { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); }
+.sx-features p { margin: 0; font-size: 0.9rem; line-height: var(--leading-ui); color: var(--text-muted); }
 
 
 /* ─── Filter tabs with counts (tours, blog) ─────────────────────
@@ -190,7 +191,7 @@
   font-weight: 700;
   color: var(--text-muted);
   font-variant-numeric: lining-nums tabular-nums;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 .sx-tabs .filter-tab.active { box-shadow: var(--shadow-green); }
 .sx-tabs .filter-tab.active .sx-tab-count { background: rgba(255,255,255,0.2); color: #fff; }
@@ -213,7 +214,7 @@
 /* ─── 11. Final call to action ──────────────────────────────── */
 .sx-cta { padding: clamp(48px, 6vw, 80px) 0; background: var(--surface-alt); }
 .sx-cta--plain { background: var(--surface); }
-.sx-cta-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+.sx-cta-actions, .sx-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 .sx-cta-card {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -228,7 +229,7 @@
   box-shadow: var(--shadow-xl);
 }
 .sx-cta-card h2 { color: #fff; font-size: clamp(1.7rem, 3vw, 2.4rem); }
-.sx-cta-card p { margin: 14px 0 26px; max-width: 52ch; font-size: 1.02rem; line-height: 1.7; color: rgba(255,255,255,0.8); }
+.sx-cta-card p { margin: 14px 0 26px; max-width: 52ch; font-size: 1.02rem; line-height: var(--leading-read); color: rgba(255,255,255,0.8); }
 .sx-cta-contacts { list-style: none; display: grid; gap: 12px; }
 .sx-cta-contacts a {
   display: flex;
@@ -240,7 +241,7 @@
   background: rgba(255,255,255,0.06);
   color: #fff;
   font-weight: 600;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease, transform var(--dur-fast) var(--ease-out);
 }
 .sx-cta-contacts a i {
   flex: none;

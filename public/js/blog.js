@@ -17,12 +17,18 @@
 
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.bl-card[data-category]'));
   var countEl = document.querySelector('[data-blog-count]'); // "6 articles"
+  var headingEl = document.querySelector('[data-page-heading]'); // the h1
 
   function filterPosts(category) {
     tabs.forEach(function (tab) {
       var on = tab.getAttribute('data-category') === category;
       tab.classList.toggle('active', on);
       tab.setAttribute('aria-selected', String(on));
+      // where am I: the heading and tab title follow the filter, as they do on a category URL
+      if (on) {
+        if (headingEl && tab.getAttribute('data-heading')) headingEl.textContent = tab.getAttribute('data-heading');
+        if (tab.getAttribute('data-title')) document.title = tab.getAttribute('data-title');
+      }
     });
     var shown = 0;
     cards.forEach(function (card) {

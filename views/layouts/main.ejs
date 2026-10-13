@@ -71,6 +71,8 @@
   <% (typeof pageStyles !== 'undefined' ? pageStyles : []).forEach(href => { %>
   <link rel="stylesheet" href="<%= assetUrl(href) %>">
   <% }) %>
+  <!-- Press feedback and hit areas: after the page styles so it wins at equal specificity -->
+  <link rel="stylesheet" href="<%= assetUrl('/css/press.css') %>">
   <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
   <link rel="stylesheet" href="<%= assetUrl('/css/preferences.css') %>">
 

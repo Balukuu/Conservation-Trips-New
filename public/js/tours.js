@@ -24,6 +24,7 @@
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.tour-card'));
   var noResults = document.querySelector('.no-results-msg');
   var countEl = document.querySelector('[data-tours-count]'); // /tours only: "11 itineraries"
+  var headingEl = document.querySelector('[data-page-heading]'); // /tours only: the h1
   if (!tabs.length) return;
 
   function setActive(category) {
@@ -31,6 +32,11 @@
       var on = tab.getAttribute('data-category') === category;
       tab.classList.toggle('active', on);
       tab.setAttribute('aria-selected', String(on));
+      // where am I: the heading and tab title follow the filter, as they do on a category URL
+      if (on) {
+        if (headingEl && tab.getAttribute('data-heading')) headingEl.textContent = tab.getAttribute('data-heading');
+        if (tab.getAttribute('data-title')) document.title = tab.getAttribute('data-title');
+      }
     });
   }
 

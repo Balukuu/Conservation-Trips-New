@@ -143,7 +143,7 @@
   font-weight: 600;
   opacity: 0.9;
 }
-.hm-country-meta i { font-size: 0.75rem; transition: transform 0.25s var(--ease-out); }
+.hm-country-meta i { font-size: 0.75rem; transition: transform var(--dur-base) var(--ease-out); }
 
 /* ─── 5. Photo bento ────────────────────────────────────────── */
 .hm-bento {
@@ -200,7 +200,7 @@
   border-radius: 50%;
   background: rgba(255,255,255,0.14);
   font-size: 0.8rem;
-  transition: transform 0.25s var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
 /* ─── 6. How it works ───────────────────────────────────────── */
@@ -244,7 +244,7 @@
   box-shadow: var(--shadow-green);
 }
 .hm-step h3 { position: relative; margin: 0 0 8px; font-size: 1.2rem; color: var(--dark); }
-.hm-step p { position: relative; margin: 0; font-size: 0.96rem; line-height: 1.65; color: var(--text-muted); }
+.hm-step p { position: relative; margin: 0; font-size: 0.96rem; line-height: var(--leading-ui); color: var(--text-muted); }
 
 /* ─── 7. Reviews ────────────────────────────────────────────── */
 .hm-reviews {
@@ -292,7 +292,7 @@
   align-items: center;
 }
 .hm-conservation h2 { color: #fff; font-size: clamp(1.75rem, 3.1vw, 2.5rem); }
-.hm-conservation p { margin: 16px 0 0; max-width: 54ch; font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,0.84); }
+.hm-conservation p { margin: 16px 0 0; max-width: 54ch; font-size: 1.05rem; line-height: var(--leading-read); color: rgba(255,255,255,0.84); }
 .hm-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -335,7 +335,7 @@
   background: var(--surface);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-out);
 }
 .hm-post--lead { grid-row: span 2; flex-direction: column; }
 .hm-post-img { position: relative; flex: none; background: var(--primary-light); overflow: hidden; }
@@ -358,7 +358,7 @@
 .hm-post p {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.65;
+  line-height: var(--leading-ui);
   color: var(--text-muted);
   display: -webkit-box;
   -webkit-line-clamp: 3;

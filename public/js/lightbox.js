@@ -56,6 +56,8 @@
   }
 
   function open(list, index, trigger) {
+    stopSpring();
+    resetPaint();
     items = normalise(list);
     current = index || 0;
     lastFocus = trigger || document.activeElement;
@@ -67,6 +69,7 @@
   }
 
   function close() {
+    stopSpring();
     overlay.classList.remove('active');
     document.documentElement.classList.remove('no-scroll');
     items = [];
@@ -124,22 +127,172 @@
     }
   });
 
-  // Touch: swipe sideways to browse, swipe down to dismiss (intent-locked)
-  var sx = 0, sy = 0;
-  overlay.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  overlay.addEventListener('touchend', function (e) {
-    if (!isOpen() || items.length === 0) return;
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > Math.abs(dy) * 1.5 && Math.abs(dx) > 50) {
-      if (dx < 0) next(); else prev();
-    } else if (dy > 90 && dy > Math.abs(dx) * 1.5) {
-      close();
+  /* ─── Touch: the photo follows the finger ───
+     Same model as the mobile menu: ~10px of intent picks an axis, the photo
+     tracks 1:1, and on release the flick is projected to decide where it
+     was going, then a spring carries on at the finger's own velocity.
+     Sideways browses; up or down dismisses (the dim fades with the drag).
+     Touch and pen only: a mouse has the arrows and Escape. */
+  var M = window.Motion;
+  var drag = null;
+  var spring = null;
+  var offX = 0, offY = 0;
+  var swallowClick = false;
+  var lastAxis = 'x';
+
+  function paint() {
+    var h = overlay.clientHeight || window.innerHeight;
+    var p = Math.min(Math.abs(offY) / (h * 0.6), 1);
+    img.style.transform = 'translate3d(' + offX + 'px,' + offY + 'px,0) scale(' + (1 - p * 0.12) + ')';
+    overlay.style.setProperty('--lb-alpha', String(0.92 * (1 - p)));
+  }
+
+  function resetPaint() {
+    offX = 0; offY = 0;
+    img.style.transform = '';
+    overlay.style.removeProperty('--lb-alpha');
+  }
+
+  function stopSpring() {
+    if (spring) { spring.stop(); spring = null; }
+  }
+
+  // throws if the pointer has already gone (a quick tap, a cancelled touch)
+  function capture(id) {
+    try { overlay.setPointerCapture(id); } catch (err) { /* nothing to hold on to */ }
+  }
+
+  function velocityOf(samples, axis, now) {
+    // px/s over the last ~100ms of movement, measured at the moment of release:
+    // a finger that rested before it lifted has no momentum to hand over
+    var last = samples[samples.length - 1];
+    if (now - last.t > 100) return 0;
+    var first = last;
+    for (var i = samples.length - 1; i >= 0; i--) {
+      if (last.t - samples[i].t > 100) break;
+      first = samples[i];
     }
-  }, { passive: true });
+    var dt = last.t - first.t;
+    return dt > 0 ? ((last[axis] - first[axis]) / dt) * 1000 : 0;
+  }
+
+  function springAxis(axis, to, v, done) {
+    stopSpring();
+    spring = M.spring({
+      from: axis === 'x' ? offX : offY,
+      to: to,
+      velocity: v,
+      response: 0.38,
+      damping: Math.abs(v) > 600 ? 0.8 : 1, // only a real flick earns overshoot
+      onUpdate: function (x) { if (axis === 'x') offX = x; else offY = x; paint(); },
+      onDone: function () { spring = null; if (done) done(); }
+    });
+  }
+
+  // Slide the current photo out, bring the neighbour in from the other side
+  function browse(sign, v) {
+    var w = overlay.clientWidth || window.innerWidth;
+    var step = sign < 0 ? 1 : -1; // swiped left → next photo
+    var swap = function () {
+      current = (current + step + items.length) % items.length;
+      var incoming = items[current];
+      var enter = function () {
+        apply();
+        preloadNeighbours();
+        offX = -sign * w * 1.1; offY = 0;
+        paint();
+        if (M.prefersReducedMotion()) { resetPaint(); return; }
+        springAxis('x', 0, 0, resetPaint);
+      };
+      // swap only once the next photo can paint, so it never arrives blank
+      var pre = new Image();
+      pre.src = incoming.src;
+      if (pre.decode) pre.decode().then(enter, enter); else enter();
+    };
+    if (M.prefersReducedMotion()) { swap(); return; }
+    springAxis('x', sign * w * 1.1, v, swap); // carries the finger's own velocity
+  }
+
+  function settle(axis, v) {
+    lastAxis = axis;
+    var reduced = M.prefersReducedMotion();
+    if (axis === 'x') {
+      var w = overlay.clientWidth || window.innerWidth;
+      var projected = offX + M.project(v, 0.99);
+      var sign = projected < 0 ? -1 : 1;
+      var go = items.length > 1 && (Math.abs(projected) > w * 0.3 || Math.abs(v) > 500) &&
+               (Math.abs(offX) < 2 || (offX < 0) === (sign < 0));
+      if (go) { browse(sign, v); return; }
+      if (reduced) { resetPaint(); return; }
+      springAxis('x', 0, v, resetPaint);
+    } else {
+      var h = overlay.clientHeight || window.innerHeight;
+      var projY = offY + M.project(v, 0.99);
+      var dismiss = Math.abs(projY) > h * 0.25 || Math.abs(v) > 600;
+      if (dismiss) {
+        var dir = (projY !== 0 ? projY : v) < 0 ? -1 : 1;
+        var finish = function () { close(); resetPaint(); };
+        if (reduced) { finish(); return; }
+        springAxis('y', dir * h, v, finish);
+        return;
+      }
+      if (reduced) { resetPaint(); return; }
+      springAxis('y', 0, v, resetPaint);
+    }
+  }
+
+  overlay.addEventListener('pointerdown', function (e) {
+    if (!isOpen() || !M || e.pointerType === 'mouse' || !e.isPrimary) return;
+    if (e.target.closest && e.target.closest('button')) return;
+    var interrupted = !!spring;
+    stopSpring(); // grabbed mid-flight: carry on from where it is
+    drag = {
+      id: e.pointerId, x0: e.clientX, y0: e.clientY, bx: offX, by: offY,
+      axis: interrupted ? lastAxis : null,
+      samples: [{ x: e.clientX, y: e.clientY, t: e.timeStamp }]
+    };
+    swallowClick = false;
+    if (interrupted) { capture(e.pointerId); swallowClick = true; }
+  });
+
+  overlay.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.x0;
+    var dy = e.clientY - drag.y0;
+    if (!drag.axis) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+      drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      capture(drag.id);
+      swallowClick = true;
+    }
+    if (drag.axis === 'x') {
+      var raw = drag.bx + dx;
+      // a single photo has nowhere to go: resist instead of following
+      offX = items.length > 1 ? raw : M.rubberband(raw, overlay.clientWidth || window.innerWidth);
+      offY = 0;
+    } else {
+      offY = drag.by + dy;
+      offX = 0;
+    }
+    paint();
+    drag.samples.push({ x: e.clientX, y: e.clientY, t: e.timeStamp });
+    if (drag.samples.length > 8) drag.samples.shift();
+  });
+
+  function endDrag(e, cancelled) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag;
+    drag = null;
+    if (!d.axis) return; // a tap: let the click through
+    settle(d.axis, cancelled ? 0 : velocityOf(d.samples, d.axis, e.timeStamp));
+  }
+  overlay.addEventListener('pointerup', function (e) { endDrag(e, false); });
+  overlay.addEventListener('pointercancel', function (e) { endDrag(e, true); });
+
+  // a drag that ends over the backdrop must not also count as a tap that closes it
+  overlay.addEventListener('click', function (e) {
+    if (swallowClick) { e.stopPropagation(); swallowClick = false; }
+  }, true);
 
   bindGallery();
 

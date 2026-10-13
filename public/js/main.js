@@ -115,9 +115,11 @@
       if (menuBackdrop) menuBackdrop.style.opacity = String(Math.max(0, Math.min(1, 1 - x / width)));
     };
 
-    var velocityX = function () {
-      // px/s over the last ~100ms of movement
+    var velocityX = function (now) {
+      // px/s over the last ~100ms of movement, measured at the moment of release:
+      // a finger that rested before it lifted has no momentum to hand over
       var last = samples[samples.length - 1];
+      if (now - last.t > 100) return 0;
       var first = last;
       for (var i = samples.length - 1; i >= 0; i--) {
         if (last.t - samples[i].t > 100) break;
@@ -127,10 +129,10 @@
       return dt > 0 ? ((last.x - first.x) / dt) * 1000 : 0;
     };
 
-    var endDrag = function (cancelled) {
+    var endDrag = function (cancelled, now) {
       if (!dragging) { pointerId = null; return; }
       var width = mobileMenu.offsetWidth;
-      var v = cancelled ? 0 : velocityX();
+      var v = cancelled ? 0 : velocityX(now);
       // Decide with where the flick is GOING, not just where it was released
       var projected = menuOffset + window.Motion.project(v, 0.99);
       var shouldClose = projected > width * 0.5 || v > 500;
@@ -201,7 +203,7 @@
       if (samples.length > 8) samples.shift();
     });
 
-    mobileMenu.addEventListener('pointerup', function (e) { if (e.pointerId === pointerId) endDrag(false); });
+    mobileMenu.addEventListener('pointerup', function (e) { if (e.pointerId === pointerId) endDrag(false, e.timeStamp); });
     mobileMenu.addEventListener('pointercancel', function (e) { if (e.pointerId === pointerId) endDrag(true); });
     // a drag that started on a link must not also follow it
     mobileMenu.addEventListener('click', function (e) {

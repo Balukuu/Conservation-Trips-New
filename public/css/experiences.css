@@ -12,10 +12,11 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 14px;
+  min-height: 44px;
+  padding: 0 16px;
   border-radius: var(--radius-pill);
   color: inherit;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--dur-base) ease, transform var(--dur-fast) var(--ease-out);
 }
 
 /* ─── One experience ────────────────────────────────────────── */
@@ -42,7 +43,7 @@
   color: var(--primary);
 }
 .ex-where i { margin-top: 3px; font-size: 0.8rem; }
-.ex-prose { margin: 0 0 14px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+.ex-prose { margin: 0 0 14px; font-size: 1rem; line-height: var(--leading-read); color: var(--text-muted); }
 
 .ex-list {
   list-style: none;
@@ -105,7 +106,7 @@
 }
 @media (max-width: 560px) {
   .ex-list { grid-template-columns: minmax(0, 1fr); }
-  .ex-jump a { padding: 6px 12px; }
+  .ex-jump a { padding: 0 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ex-photo > img, .ex-jump a { transition: none; }

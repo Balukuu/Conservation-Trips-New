@@ -116,6 +116,22 @@ The tabs are real links, so each category has its own URL and works without Java
 in place and keeps the "N itineraries" count in step. Below the container width the tabs become one swipeable strip.
 The cards are the shared `partials/tour-card.ejs`, also used on the home, destination and tour pages.
 
+## Motion, press feedback and hit areas
+
+- **Tokens** (`main.css` `:root`): `--dur-press / -fast / -base / -slow` for durations, `--ease-out` / `--ease-sheet`
+  for curves, `--leading-ui` / `--leading-read` for line height. New CSS should use them rather than raw values.
+  Scroll reveal and the hero zoom keep longer values on purpose.
+- **`public/css/press.css`** loads after the page stylesheets. Surfaces (whole-card links) scale in on press, inline
+  links dim, small controls scale more, and short targets get an invisible pseudo-element hit area up to ~44px. The
+  global `-webkit-tap-highlight-color` is transparent, so a new link or card with no rule there gives no feedback on a
+  phone: add it to the right list in `press.css`.
+- **Gestures** use `Motion` (`motion.js`): pointer events with ~10px intent lock, 1:1 tracking, projection of the
+  release velocity and a spring that inherits it. The mobile menu, the hero slider (touch and pen) and the lightbox
+  (sideways browses, up or down dismisses) all follow that pattern. Velocity is measured at the moment of release, so
+  a finger that rested before lifting carries no momentum.
+- **Reduced motion / transparency / contrast** live in `preferences.css`, loaded last. A new frosted-glass element
+  (`backdrop-filter`) must be added to its `prefers-reduced-transparency` list.
+
 ## Experiences, destinations, blog and contact
 
 - **Experiences** (`views/experiences.ejs`, `experiences.css`): the list lives in `EXPERIENCES` in `lib/pages.js`. An

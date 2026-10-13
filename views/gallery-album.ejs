@@ -1,5 +1,5 @@
-<!-- Hero -->
-<section class="page-hero" style="min-height:360px;">
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="page-hero sx-hero">
   <div class="page-hero-bg"><%- image({ src: album.cover.src, alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
@@ -8,17 +8,20 @@
       <a href="/gallery">Gallery</a> <i class="fa-solid fa-angle-right"></i>
       <span><%= album.title %></span>
     </nav>
-    <h1 style="color:#fff;"><%= album.title %></h1>
-    <p style="color:rgba(255,255,255,0.8); max-width:600px; margin-top:12px; font-size:1.05rem;">
-      <%= album.blurb %> <span style="opacity:.75;">(<%= album.count %> photos)</span>
-    </p>
+    <h1><%= album.title %></h1>
+    <p class="sx-hero-sub"><%= album.blurb %></p>
+    <ul class="sx-chips">
+      <li><i class="fa-regular fa-images" aria-hidden="true"></i> <%= album.count %> <%= album.count === 1 ? 'photo' : 'photos' %></li>
+      <% if (album.guests) { %><li><i class="fa-solid fa-user-group" aria-hidden="true"></i> Guest trip</li><% } %>
+    </ul>
   </div>
 </section>
 
-<section class="section" style="background: var(--surface); padding-top: 48px;">
+<!-- ═══════════════ PHOTOS ═══════════════ -->
+<section class="sx" id="photos">
   <div class="container-wide">
 
-    <div class="photo-wall" id="photos">
+    <div class="photo-wall">
       <% album.items.forEach((p, i) => { %>
       <figure class="gallery-item photo-tile">
         <%- image({ src: p.src, sizes: '(min-width: 1280px) 22vw, (min-width: 900px) 30vw, (min-width: 560px) 45vw, 100vw', eager: i < 4 }) %>
@@ -45,13 +48,11 @@
   </div>
 </section>
 
-<section class="cta-strip">
-  <div class="cta-strip-content container reveal">
-    <h2>See It for Yourself</h2>
-    <p>Tell us what you would like to see and we will plan the route, the stops and the time for photographs.</p>
-    <div class="flex-center gap-16 flex-wrap">
-      <a href="/contact" class="btn btn-primary btn-lg">Plan My Safari <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="/tours" class="btn btn-outline btn-lg">Browse Tours</a>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════ CALL TO ACTION ═══════════════ -->
+<%- include('partials/cta-card', {
+  tone: 'alt',
+  title: 'See it for yourself',
+  text: 'Tell us what you would like to see and we will plan the route, the stops and the time for photographs.',
+  primary: { href: '/contact', label: 'Plan my safari' },
+  secondary: { href: '/tours', label: 'Browse tours' }
+}) %>

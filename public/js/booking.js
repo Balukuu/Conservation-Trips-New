@@ -112,16 +112,37 @@
     });
   }
 
+  // What is wrong with this field, or null. One rule set for "Next"/"Send" and for leaving a field.
+  function fieldMessage(field) {
+    var val = field.type === 'checkbox' ? (field.checked ? 'checked' : '') : field.value.trim();
+    if (!val) return field.type === 'checkbox' ? 'Please tick this box to continue.' : 'This field is required.';
+    if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return 'Please enter a valid email address.';
+    if (field.type === 'tel' && val.length < 7) return 'Please enter a valid phone number.';
+    return null;
+  }
+
+  /* Check a field as the visitor leaves it, not only when they press Next or
+     Send. An empty field they never touched is left alone: tabbing past it is
+     not a mistake. */
+  function validateOnBlur(scope) {
+    scope.addEventListener('input', function (e) {
+      if (e.target.matches && e.target.matches('[required]')) e.target.dataset.touched = '1';
+    });
+    scope.addEventListener('focusout', function (e) {
+      var field = e.target;
+      if (!field.matches || !field.matches('[required]') || field.type === 'checkbox') return;
+      var message = fieldMessage(field);
+      if (message && !field.value.trim() && field.dataset.touched !== '1') return;
+      if (message) showError(field, message); else clearError(field);
+    });
+  }
+
   function validateRequired(scope) {
     var valid = true;
     var firstInvalid = null;
     scope.querySelectorAll('[required]').forEach(function (field) {
       clearError(field);
-      var val = field.type === 'checkbox' ? (field.checked ? 'checked' : '') : field.value.trim();
-      var message = null;
-      if (!val) message = field.type === 'checkbox' ? 'Please tick this box to continue.' : 'This field is required.';
-      else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) message = 'Please enter a valid email address.';
-      else if (field.type === 'tel' && val.length < 7) message = 'Please enter a valid phone number.';
+      var message = fieldMessage(field);
       if (message) {
         showError(field, message);
         valid = false;
@@ -262,6 +283,7 @@
       return ok;
     };
 
+    validateOnBlur(form);
     form.querySelectorAll('.form-control, input[type="checkbox"]').forEach(function (field) {
       field.addEventListener('input', function () { clearError(field); });
       field.addEventListener('change', function () { clearError(field); });
@@ -360,6 +382,7 @@
       };
     });
 
+    validateOnBlur(quick);
     quick.querySelectorAll('.form-control').forEach(function (field) {
       field.addEventListener('input', function () { clearError(field); });
     });

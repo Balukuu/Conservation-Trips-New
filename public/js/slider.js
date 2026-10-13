@@ -29,6 +29,7 @@
     this.hovering = false;
     this.focused = false;
     this.visible = true;
+    this.dragging = false;
     this.reduced = window.Motion ? window.Motion.prefersReducedMotion() : false;
 
     if (!this.slides.length) return;
@@ -105,27 +106,147 @@
       if (mq.addEventListener) mq.addEventListener('change', onChange);
     }
 
-    // Swipe: horizontal intent only (a diagonal scroll must not change slides),
-    // and a short fast flick counts as well as a long slow drag.
-    var sx = 0, sy = 0, st = 0;
-    this.el.addEventListener('touchstart', function (e) {
-      var t = e.touches[0];
-      sx = t.clientX; sy = t.clientY; st = e.timeStamp;
-    }, { passive: true });
-    this.el.addEventListener('touchend', function (e) {
-      var t = e.changedTouches[0];
-      var dx = t.clientX - sx;
-      var dy = t.clientY - sy;
-      var dt = Math.max(e.timeStamp - st, 1);
-      var horizontal = Math.abs(dx) > Math.abs(dy) * 1.5;
-      var flick = Math.abs(dx) > 30 && Math.abs(dx) / dt > 0.5; // px per ms
-      if (horizontal && (Math.abs(dx) > 50 || flick)) {
-        self.go(self.current + (dx < 0 ? 1 : -1));
-      }
-    }, { passive: true });
+    this.initDrag();
 
     this.updatePauseButton();
     this.schedule();
+  };
+
+  /* Swipe: the slide follows the finger 1:1 with the next one revealed
+     underneath, then settles with the release velocity (the menu's model:
+     ~10px of intent, projection, only a real flick bounces). Touch and pen
+     only; a mouse has the arrows and dots. Vertical movement is left to the
+     page (touch-action: pan-y), and a drag never also clicks a link. */
+  HeroSlider.prototype.initDrag = function () {
+    var self = this;
+    var M = window.Motion;
+    var n = this.slides.length;
+    if (!M || n < 2) return;
+
+    var drag = null;
+    var spring = null;
+    var offset = 0;
+    var neighbour = -1;
+    var swallowClick = false;
+    var width = function () { return self.el.offsetWidth || window.innerWidth; };
+
+    function release() { // hand the neighbour back to its stylesheet
+      if (neighbour < 0) return;
+      var s = self.slides[neighbour];
+      s.style.opacity = ''; s.style.zIndex = ''; s.style.transition = '';
+      neighbour = -1;
+    }
+
+    function paint(dx) {
+      offset = dx;
+      self.slides[self.current].style.transform = 'translate3d(' + dx + 'px,0,0)';
+      var want = dx === 0 ? -1 : (dx < 0 ? (self.current + 1) % n : (self.current - 1 + n) % n);
+      if (want !== neighbour) {
+        release();
+        if (want >= 0) {
+          var s = self.slides[want];
+          s.style.transition = 'none';
+          s.style.opacity = '1';
+          s.style.zIndex = '1';
+          neighbour = want;
+        }
+      }
+    }
+
+    function reset() {
+      release();
+      self.slides[self.current].style.transform = '';
+      offset = 0;
+    }
+
+    function stop() { if (spring) { spring.stop(); spring = null; } }
+
+    // throws if the pointer has already gone (a quick tap, a cancelled touch)
+    function capture(id) {
+      try { self.el.setPointerCapture(id); } catch (err) { /* nothing to hold on to */ }
+    }
+
+    function springTo(to, v, done) {
+      stop();
+      spring = M.spring({
+        from: offset, to: to, velocity: v, response: 0.4,
+        damping: Math.abs(v) > 600 ? 0.8 : 1,
+        onUpdate: paint,
+        onDone: function () { spring = null; done(); }
+      });
+    }
+
+    function velocity(samples, now) {
+      // measured at the moment of release: a finger that rested before it lifted has no momentum
+      var last = samples[samples.length - 1];
+      if (now - last.t > 100) return 0;
+      var first = last;
+      for (var i = samples.length - 1; i >= 0; i--) {
+        if (last.t - samples[i].t > 100) break;
+        first = samples[i];
+      }
+      var dt = last.t - first.t;
+      return dt > 0 ? ((last.x - first.x) / dt) * 1000 : 0;
+    }
+
+    function settle(v) {
+      var w = width();
+      var projected = offset + M.project(v, 0.99);
+      var sign = projected < 0 ? -1 : 1;
+      var go = (Math.abs(projected) > w * 0.3 || Math.abs(v) > 500) &&
+               (Math.abs(offset) < 2 || (offset < 0) === (sign < 0));
+      var target = self.current + (sign < 0 ? 1 : -1);
+      var end = function () {
+        self.dragging = false;
+        reset();
+        if (go) self.go(target); else self.schedule();
+      };
+      if (self.reduced) { end(); return; }
+      springTo(go ? sign * w : 0, v, end);
+    }
+
+    this.el.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' || !e.isPrimary) return;
+      if (e.target.closest && e.target.closest('.slider-arrow, .slider-dots, .slider-pause, .slider-controls')) return;
+      var interrupted = !!spring;
+      stop(); // grabbed mid-flight: carry on from where it is
+      drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, base: offset, on: interrupted, samples: [{ x: e.clientX, t: e.timeStamp }] };
+      swallowClick = false;
+      if (interrupted) { self.dragging = true; capture(e.pointerId); swallowClick = true; }
+    });
+
+    this.el.addEventListener('pointermove', function (e) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var dx = e.clientX - drag.x0;
+      var dy = e.clientY - drag.y0;
+      if (!drag.on) {
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+        if (Math.abs(dy) > Math.abs(dx)) { drag = null; return; } // vertical belongs to the page
+        drag.on = true;
+        swallowClick = true;
+        self.dragging = true;
+        clearTimeout(self.timer);
+        capture(drag.id);
+      }
+      paint(drag.base + dx);
+      drag.samples.push({ x: e.clientX, t: e.timeStamp });
+      if (drag.samples.length > 8) drag.samples.shift();
+    });
+
+    function end(e, cancelled) {
+      if (!drag || e.pointerId !== drag.id) return;
+      var d = drag;
+      drag = null;
+      if (!d.on) return;
+      settle(cancelled ? 0 : velocity(d.samples, e.timeStamp));
+    }
+    this.el.addEventListener('pointerup', function (e) { end(e, false); });
+    this.el.addEventListener('pointercancel', function (e) { end(e, true); });
+
+    // a drag that started on a slide's button must not also follow it
+    this.el.addEventListener('click', function (e) {
+      if (swallowClick) { e.preventDefault(); e.stopPropagation(); swallowClick = false; }
+    }, true);
   };
 
   HeroSlider.prototype.show = function (n) {
@@ -157,7 +278,7 @@
   };
 
   HeroSlider.prototype.canAutoplay = function () {
-    return !this.reduced && !this.userPaused && !this.hovering && !this.focused &&
+    return !this.reduced && !this.userPaused && !this.hovering && !this.focused && !this.dragging &&
            this.visible && !document.hidden && this.slides.length > 1;
   };
 

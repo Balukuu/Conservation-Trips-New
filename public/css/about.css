@@ -7,14 +7,14 @@
 
 /* ─── Story ─────────────────────────────────────────────────── */
 .ab-story .sx-lead { margin-top: 18px; }
-.ab-prose { margin-top: 16px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+.ab-prose { margin-top: 16px; font-size: 1rem; line-height: var(--leading-read); color: var(--text-muted); }
 .ab-quote {
   margin: 28px 0 32px;
   padding: 4px 0 4px 22px;
   border-left: 4px solid var(--accent);
   font-size: 1.15rem;
   font-weight: 600;
-  line-height: 1.55;
+  line-height: var(--leading-ui);
   letter-spacing: -0.01em;
   color: var(--dark);
 }
@@ -43,7 +43,7 @@
   font-size: 1.15rem;
 }
 .ab-pillar h3 { margin: 0 0 10px; font-size: 1.4rem; color: #fff; }
-.ab-pillar p { margin: 0; font-size: 0.98rem; line-height: 1.75; color: rgba(255,255,255,0.84); }
+.ab-pillar p { margin: 0; font-size: 0.98rem; line-height: var(--leading-read); color: rgba(255,255,255,0.84); }
 
 /* ─── Why choose us ─────────────────────────────────────────── */
 .ab-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -53,7 +53,7 @@
   border: 1px solid var(--border-light);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
 }
 .ab-value-icon {
   display: grid;
@@ -67,7 +67,7 @@
   font-size: 1.1rem;
 }
 .ab-value h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--dark); }
-.ab-value p { margin: 0; font-size: 0.94rem; line-height: 1.7; color: var(--text-muted); }
+.ab-value p { margin: 0; font-size: 0.94rem; line-height: var(--leading-read); color: var(--text-muted); }
 
 /* ─── Crew mosaic ───────────────────────────────────────────── */
 .ab-crew {
@@ -123,7 +123,7 @@
   border-radius: 50%;
   background: rgba(255,255,255,0.14);
   font-size: 0.8rem;
-  transition: transform 0.25s var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
 /* ─── Team ──────────────────────────────────────────────────── */
@@ -136,14 +136,14 @@
   background: var(--surface);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-out);
 }
 .ab-member-photo { position: relative; aspect-ratio: 4 / 5; background: var(--primary-light); overflow: hidden; }
 .ab-member-photo > img { position: absolute; inset: 0; transition: transform 0.6s var(--ease-out); }
 .ab-member-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px 24px; }
 .ab-member h3 { margin: 0; font-size: 1.2rem; line-height: 1.25; color: var(--dark); }
 .ab-member-role { margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-text); line-height: 1.45; }
-.ab-member-bio { margin: 6px 0 0; font-size: 0.92rem; line-height: 1.65; color: var(--text-muted); }
+.ab-member-bio { margin: 6px 0 0; font-size: 0.92rem; line-height: var(--leading-ui); color: var(--text-muted); }
 
 /* ─── Registered ────────────────────────────────────────────── */
 .ab-creds {

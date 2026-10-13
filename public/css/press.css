@@ -1,0 +1,159 @@
+/* ============================================================
+   PRESS FEEDBACK & HIT AREAS
+   Loaded after the page stylesheets and before preferences.css, so it wins
+   at equal specificity and reduced-motion still has the last word.
+
+   Feedback starts on touch-down, not on release. The tap highlight is
+   switched off site-wide (main.css), so anything without a rule here would
+   give no response at all on a phone. Three kinds of response:
+
+     surface   a whole card or tile that is one big link   -> scales in
+     text      an inline link                              -> dims
+     control   a small round or icon control               -> scales in, more
+
+   The generic .btn / .filter-tab / .share-btn / choice-card rules live in
+   main.css; this file covers everything else.
+   ============================================================ */
+
+/* ─── Surfaces ──────────────────────────────────────────────── */
+/* These are <a> tiles with no transition of their own, so give them one:
+   the global a-transition would also animate colour for no reason. */
+.hm-tile,
+.hm-country,
+.hm-bento-item,
+.hm-bento-cta,
+.ab-crew-cta {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.tour-card:active,
+.social-card:active,
+.bl-card:active,
+.ds-country:active,
+.ds-park:active,
+.hm-tile:active,
+.hm-country:active,
+.hm-bento-item:active,
+.hm-bento-cta:active,
+.ab-crew-cta:active,
+.album-card:active,
+.album-nav-link:active,
+.dest-card:active,
+.ct-quick a:active,
+.sx-cta-contacts a:active {
+  transform: scale(0.98);
+  transition-duration: var(--dur-press);
+}
+
+/* ─── Inline links ──────────────────────────────────────────── */
+/* every <a> already transitions opacity (main.css), so only the pressed state is needed */
+.nav-logo:active,
+.nav-links a:active,
+.nav-phone:active,
+.breadcrumb a:active,
+.sx-link:active,
+.footer-links a:active,
+.footer-contact-item a:active,
+.footer-copy a:active,
+.footer-credit a:active,
+.ds-park-more:active,
+.ds-park-tours li a:active,
+.bl-related a:active,
+.bl-plan-phone:active,
+.ct-details dd a:active,
+.ct-terms a:active,
+.mobile-meta a:active,
+.td-assure-wa:active,
+a.badge:active {
+  opacity: 0.6;
+  transition-duration: var(--dur-press);
+}
+
+/* ─── Small controls ────────────────────────────────────────── */
+.ex-jump a:active {
+  transform: scale(0.95);
+  transition-duration: var(--dur-press);
+}
+.hamburger:active,
+.slider-dot:active,
+.test-dot:active,
+.test-pause:active,
+.ct-social a:active {
+  transform: scale(0.88);
+  transition-duration: var(--dur-press);
+}
+
+/* ─── Hit areas ─────────────────────────────────────────────── */
+/* The look stays; an invisible pseudo-element grows the target to ~44px.
+   Short text links are spaced closer than 44px, so their areas meet at the
+   midpoint rather than overlap much. */
+.footer-links a,
+.footer-contact-item a,
+.footer-copy a,
+.footer-credit a,
+.breadcrumb a,
+.sx-link,
+.ds-park-more,
+.ds-park-tours li a,
+.nav-logo,
+a.badge,
+.slider-pause,
+.test-pause {
+  position: relative;
+}
+a.badge::after { content: ''; position: absolute; inset: -8px; }
+/* the round pause buttons are 32px; the padding brings them to 44px */
+.slider-pause::after,
+.test-pause::after { content: ''; position: absolute; inset: -8px; border-radius: 50%; }
+.footer-links a::after,
+.footer-contact-item a::after { content: ''; position: absolute; inset: -12px 0; }
+.footer-copy a::after,
+.footer-credit a::after { content: ''; position: absolute; inset: -14px -6px; }
+.breadcrumb a::after { content: ''; position: absolute; inset: -13px -10px; }
+.sx-link::after { content: ''; position: absolute; inset: -12px -8px; }
+.ds-park-more::after { content: ''; position: absolute; inset: -12px -6px; }
+.ds-park-tours li a::after { content: ''; position: absolute; inset: -8px 0; }
+.nav-logo::after { content: ''; position: absolute; inset: -4px -4px; }
+
+/* Filters and choice pills are comfortable with a pointer at their drawn
+   size; on a touch screen they grow to the 44px a thumb needs. */
+@media (pointer: coarse), (max-width: 640px) {
+  .filter-tab,
+  .duration-pill,
+  .share-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bl-plan-phone { min-height: 44px; }
+  .btn-sm { min-height: 44px; }
+}
+
+/* ─── Reduced motion: dim instead of scale ──────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tour-card:active,
+  .social-card:active,
+  .bl-card:active,
+  .ds-country:active,
+  .ds-park:active,
+  .hm-tile:active,
+  .hm-country:active,
+  .hm-bento-item:active,
+  .hm-bento-cta:active,
+  .ab-crew-cta:active,
+  .album-card:active,
+  .album-nav-link:active,
+  .dest-card:active,
+  .ct-quick a:active,
+  .sx-cta-contacts a:active,
+  .ex-jump a:active,
+  .hamburger:active,
+  .slider-dot:active,
+  .test-dot:active,
+  .test-pause:active,
+  .ct-social a:active {
+    transform: none;
+    opacity: 0.8;
+  }
+}

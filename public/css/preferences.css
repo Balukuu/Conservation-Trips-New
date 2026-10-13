@@ -105,6 +105,9 @@
   .tour-card-cta,
   .sticky-cta,
   .why-us-photo figcaption,
+  .sx-chips li,
+  .hm-tile-icon,
+  .td-mosaic-more,
   .hero-trust-strip .trust-strip-inner {
     background: rgba(15, 31, 15, 0.92);
     -webkit-backdrop-filter: none;
@@ -129,8 +132,7 @@
     border-bottom: 1px solid #fff;
   }
   .btn-outline { border-width: 2px; border-color: #fff; }
-  .card,
-.tour-card { border: 1px solid var(--border); }
+  .card, .tour-card { border: 1px solid var(--border); }
   .form-control { border-color: #3A453A; }
   .slide-sub,
   .breadcrumb,

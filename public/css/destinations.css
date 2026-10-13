@@ -24,7 +24,7 @@
   background: var(--dark);
   color: #fff;
   box-shadow: var(--shadow-md);
-  transition: box-shadow 0.3s var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 .ds-country-photo { position: absolute; inset: 0; }
 .ds-country-photo > img { position: absolute; inset: 0; transition: transform 0.8s var(--ease-out); }
@@ -71,7 +71,7 @@
   background: var(--accent);
   color: var(--dark);
   font-size: 0.85rem;
-  transition: transform 0.25s var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 /* the whole card is the link, so the keyboard ring goes round the card */
 .ds-country:focus-visible { outline-color: var(--accent); outline-offset: 4px; }
@@ -90,7 +90,7 @@
   background: var(--surface);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 .ds-park-photo { position: relative; aspect-ratio: 16 / 10; background: var(--primary-light); overflow: hidden; }
 .ds-park-photo > img { position: absolute; inset: 0; transition: transform 0.7s var(--ease-out); }
@@ -110,14 +110,14 @@
   color: var(--primary-dark);
 }
 .ds-park-facts i { margin-top: 2px; font-size: 0.72rem; }
-.ds-park-desc { margin: 0 0 12px; font-size: 0.93rem; line-height: 1.7; color: var(--text-muted); }
+.ds-park-desc { margin: 0 0 12px; font-size: 0.93rem; line-height: var(--leading-read); color: var(--text-muted); }
 .ds-park-highlights {
   display: flex;
   gap: 8px;
   margin: 0 0 auto;
   font-size: 0.84rem;
   font-weight: 600;
-  line-height: 1.55;
+  line-height: var(--leading-ui);
   color: var(--accent-text);
 }
 .ds-park-highlights i { flex: none; margin-top: 4px; font-size: 0.72rem; }
@@ -144,7 +144,7 @@
   line-height: 1.4;
   color: var(--primary);
 }
-.ds-park-tours li a i { flex: none; margin-top: 4px; font-size: 0.75rem; transition: transform 0.25s var(--ease-out); }
+.ds-park-tours li a i { flex: none; margin-top: 4px; font-size: 0.75rem; transition: transform var(--dur-base) var(--ease-out); }
 .ds-park-more { display: inline-block; margin-top: 6px; font-size: 0.84rem; font-weight: 700; color: var(--primary); }
 .ds-park-more i { margin-left: 4px; font-size: 0.72rem; }
 

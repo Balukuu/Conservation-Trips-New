@@ -8,7 +8,7 @@
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Tours</span></nav>
-    <h1>Our Safari Packages</h1>
+    <h1 data-page-heading><%= heading %></h1>
     <p class="sx-hero-sub">Expertly crafted journeys through Uganda and East Africa, from gorilla treks to summit climbs.</p>
     <ul class="sx-chips">
       <li><i class="fa-solid fa-route" aria-hidden="true"></i> <%= itineraries(s.tours) %></li>
@@ -35,7 +35,7 @@
     <div class="tr-filter reveal">
       <div class="filter-tabs sx-tabs" role="tablist" aria-label="Filter safari packages">
         <% tabs.forEach(tab => { %>
-        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
+        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" data-heading="<%= tab.heading %>" data-title="<%= tab.title %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
           <span><%= tab.label %></span>
           <span class="sx-tab-count" aria-hidden="true"><%= tab.count %></span>
         </a>

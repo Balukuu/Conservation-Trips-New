@@ -186,17 +186,17 @@
               <input type="hidden" name="tour" value="<%= tour.name %>">
               <div class="form-group">
                 <label for="eq-name">Full Name *</label>
-                <input type="text" id="eq-name" name="name" class="form-control" placeholder="Your name" required>
+                <input type="text" id="eq-name" name="name" class="form-control" placeholder="Your name" autocomplete="name" autocapitalize="words" required>
                 <div class="form-error"></div>
               </div>
               <div class="form-group">
                 <label for="eq-email">Email *</label>
-                <input type="email" id="eq-email" name="email" class="form-control" placeholder="your@email.com" required>
+                <input type="email" id="eq-email" name="email" class="form-control" placeholder="your@email.com" autocomplete="email" autocapitalize="none" spellcheck="false" required>
                 <div class="form-error"></div>
               </div>
               <div class="form-group">
                 <label for="eq-phone">Phone / WhatsApp</label>
-                <input type="tel" id="eq-phone" name="phone" class="form-control" placeholder="+1 234 567 8900">
+                <input type="tel" id="eq-phone" name="phone" class="form-control" placeholder="+1 234 567 8900" autocomplete="tel">
               </div>
               <div class="form-row">
                 <div class="form-group">

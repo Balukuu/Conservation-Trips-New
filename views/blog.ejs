@@ -7,7 +7,7 @@
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Blog</span></nav>
-    <h1>Safari Insights &amp; Travel Tips</h1>
+    <h1 data-page-heading><%= heading %></h1>
     <p class="sx-hero-sub">Expert guides, wildlife stories, packing tips, and conservation news from East Africa.</p>
     <ul class="sx-chips">
       <li><i class="fa-regular fa-newspaper" aria-hidden="true"></i> <%= articles(blogStats.articles) %></li>
@@ -32,7 +32,7 @@
     <div class="reveal">
       <div class="filter-tabs sx-tabs" role="tablist" aria-label="Filter articles">
         <% tabs.forEach(tab => { %>
-        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
+        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" data-heading="<%= tab.heading %>" data-title="<%= tab.title %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
           <span><%= tab.category %></span>
           <span class="sx-tab-count" aria-hidden="true"><%= tab.count %></span>
         </a>
