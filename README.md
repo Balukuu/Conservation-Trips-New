@@ -37,6 +37,18 @@ crops), `public/images/icons/*` (favicons from the logo) and `data/image-manifes
 committed, so CI and production don't need `sharp`. The build fails if a rendered image isn't registered, or a
 tour's gallery repeats a photo.
 
+The branded link-share card (the large image WhatsApp, Facebook and X show when a page is shared) is drawn from
+HTML by headless Chrome:
+
+```bash
+npm run og         # rewrites public/images/og/card-home.jpg (needs Chrome/Chromium; CHROME_BIN overrides)
+```
+
+It is the default `og:image` for any page without a photo of its own (`DEFAULT_IMAGE` in `lib/pages.js`). Its text
+lives in `CARDS` in `scripts/og-cards.js`; the "from" price and rating are read from the site data. Link previews
+are cached by the platforms: after changing the card, re-scrape with Facebook's Sharing Debugger (WhatsApp picks it
+up on a new link or after its cache expires).
+
 - The five long-standing hero photos are 1024 px wide at most, so full-bleed heroes made from them are upscaled
   on large screens. The photos in `source-images/photos/` are 2048 px and don't have that problem.
 

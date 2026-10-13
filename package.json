@@ -8,6 +8,7 @@
     "dev": "nodemon server.js",
     "build": "node scripts/build.js",
     "images": "node scripts/optimize-images.js",
+    "og": "node scripts/og-cards.js",
     "albums": "node scripts/albums.js"
   },
   "dependencies": {

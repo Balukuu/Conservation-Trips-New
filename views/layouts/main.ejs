@@ -19,6 +19,8 @@
     // Social cards want a 1200×630 crop; ogImageFor() returns it when one was generated.
     const ogSrc = ogImageFor(meta.ogImage);
     const ogImage = /^https?:\/\//.test(ogSrc) ? ogSrc : siteUrl + ogSrc;
+    // Everything under /images/og/ is exactly 1200×630; declaring it lets crawlers show the large card on first share.
+    const ogSized = ogSrc.startsWith('/images/og/');
   %>
   <title><%= meta.title %></title>
   <meta name="description" content="<%= meta.description %>">
@@ -29,8 +31,12 @@
   <meta property="og:title" content="<%= meta.title %>">
   <meta property="og:description" content="<%= meta.description %>">
   <meta property="og:image" content="<%= ogImage %>">
+  <% if (ogSized) { %><meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <% } %><meta property="og:image:alt" content="<%= meta.title %>">
   <% if (pageUrl) { %><meta property="og:url" content="<%= pageUrl %>">
   <% } %><meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Conservation Trips & Adventures">
 
   <!-- Twitter Card -->
