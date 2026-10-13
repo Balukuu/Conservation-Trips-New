@@ -79,6 +79,7 @@
     "price": "From $450 pp",
     "priceUSD": 450,
     "image": "/images/gorilla.jpg",
+    "cardImage": "/images/photos/western-uganda-road.webp",
     "gallery": [
       "/images/gorilla.jpg",
       "/images/safari.jpg"
@@ -145,6 +146,7 @@
     "price": "From $1,200 pp",
     "priceUSD": 1200,
     "image": "/images/gorilla.jpg",
+    "cardImage": "/images/photos/lake-sunset-silhouette.webp",
     "gallery": [
       "/images/gorilla.jpg",
       "/images/lodge.jpg",
@@ -219,6 +221,7 @@
     "price": "From $4,500 pp",
     "priceUSD": 4500,
     "image": "/images/safari.jpg",
+    "cardImage": "/images/social/elephant-mother-and-calves.jpg",
     "gallery": [
       "/images/safari.jpg",
       "/images/gorilla.jpg",
@@ -264,6 +267,7 @@
     "price": "From $890 pp",
     "priceUSD": 890,
     "image": "/images/safari.jpg",
+    "cardImage": "/images/photos/guides-trio-track.webp",
     "imagePosition": "50% 34%",
     "gallery": [
       "/images/safari.jpg",
@@ -337,6 +341,7 @@
     "price": "From $1,800 pp",
     "priceUSD": 1800,
     "image": "/images/safari.jpg",
+    "cardImage": "/images/lodge.jpg",
     "gallery": [
       "/images/safari.jpg",
       "/images/gorilla.jpg",

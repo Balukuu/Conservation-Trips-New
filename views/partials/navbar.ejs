@@ -38,20 +38,41 @@
   </div>
 </nav>
 
-<!-- Mobile Menu -->
+<!-- Mobile Menu (the Book Now button lives here on phones, not in the bar) -->
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <a href="/" class="mobile-link">Home</a>
-  <a href="/about" class="mobile-link">About Us</a>
-  <a href="/tours" class="mobile-link">Safari Tours</a>
-  <a href="/destinations" class="mobile-link">Destinations</a>
-  <a href="/experiences" class="mobile-link">Experiences</a>
-  <a href="/blog" class="mobile-link">Blog</a>
-  <a href="/contact" class="mobile-link">Contact</a>
-  <a href="/contact" class="mobile-book-btn">Book a Safari</a>
-  <div class="mobile-social">
-    <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://x.com/conservation_t" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-    <a href="https://wa.me/256767936590" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <div class="mobile-menu-head" aria-hidden="true">
+    <%- image({ src: '/images/logonew.jpeg', alt: '', sizes: '40px', eager: true }) %>
+    <div class="mobile-menu-brand">
+      <strong>Conservation Trips</strong>
+      <span>&amp; Adventures</span>
+    </div>
+  </div>
+
+  <div class="mobile-links">
+    <a href="/" class="mobile-link">Home</a>
+    <a href="/about" class="mobile-link">About Us</a>
+    <a href="/tours" class="mobile-link">Safari Tours</a>
+    <a href="/destinations" class="mobile-link">Destinations</a>
+    <a href="/experiences" class="mobile-link">Experiences</a>
+    <a href="/blog" class="mobile-link">Blog</a>
+    <a href="/contact" class="mobile-link">Contact</a>
+  </div>
+
+  <div class="mobile-actions">
+    <a href="/contact" class="mobile-book-btn">Book a Safari <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="mobile-quick">
+      <a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call us</a>
+      <a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="mobile-meta">
+    <p class="mobile-hours"><i class="fa-regular fa-clock" aria-hidden="true"></i> Mon&ndash;Sat 8am&ndash;6pm &middot; Sun 10am&ndash;4pm EAT</p>
+    <div class="mobile-social">
+      <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://x.com/conservation_t" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://www.tiktok.com/@conservationtrips" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
   </div>
 </nav>

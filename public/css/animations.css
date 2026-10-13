@@ -764,6 +764,25 @@
   transition: opacity 0.3s ease;
 }
 .navbar.scrolled::before { opacity: 0; }
+/* Menu open: the sheet carries the brand, so the bar keeps only the close
+   button and sits at its compact height (it lines up with the sheet's header). */
+.navbar.menu-open,
+.navbar.menu-open.scrolled {
+  height: var(--nav-height-scrolled);
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.navbar.menu-open::before { opacity: 0; }
+.nav-logo, .nav-right { transition: opacity 0.2s ease, visibility 0s; }
+.navbar.menu-open .nav-logo,
+.navbar.menu-open .nav-right {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .navbar.scrolled { background: rgba(15,31,15,0.97); }
 }
@@ -881,9 +900,12 @@
   cursor: pointer;
   width: 44px;
   height: 44px;
-  margin-right: -9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
   z-index: 1001;
+  transition: background-color 0.2s ease;
 }
+.navbar.menu-open .hamburger { background: rgba(255,255,255,0.1); }
 .hamburger .bar {
   width: 26px;
   height: 2px;
@@ -904,12 +926,14 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: min(310px, 86vw);
+  width: min(360px, 88vw);
   height: 100vh;
   height: 100dvh;
-  background: var(--dark);
+  background: linear-gradient(180deg, #0e1c0e 0%, #12261a 100%);
+  border-left: 1px solid rgba(255,255,255,0.07);
+  box-shadow: -24px 0 60px rgba(0,0,0,0.35);
   z-index: 999;
-  padding: calc(var(--nav-height) + 36px) 32px 40px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -925,65 +949,163 @@
   transition: transform 0.45s var(--ease-sheet), visibility 0s;
 }
 .mobile-menu.dragging { transition: none; }
-.mobile-link {
-  display: block;
-  font-size: 1.2rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: rgba(255,255,255,0.9);
-  padding: 12px 0;
+
+/* Brand row: sits level with the close button (the navbar is pinned to its
+   scrolled height while the menu is open, so they always line up). */
+.mobile-menu-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: var(--nav-height-scrolled);
+  padding: 0 76px 0 22px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu-head img { height: 36px; width: auto; border-radius: 6px; }
+.mobile-menu-brand strong {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.mobile-menu-brand span {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.62);
+}
+
+.mobile-links { flex: none; padding: 10px 12px 6px; }
+.mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 16px;
+  margin-bottom: 2px;
+  border-radius: 14px;
+  font-family: var(--font);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: rgba(255,255,255,0.92);
   opacity: 0;
-  transform: translateX(24px);
+  transform: translateX(20px);
   transition:
     opacity   0.3s ease var(--d, 0s),
     transform 0.4s var(--ease-out) var(--d, 0s),
     color 0.2s ease,
-    background-color 0.1s ease;
+    background-color 0.15s ease;
+}
+/* chevron */
+.mobile-link::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.35;
 }
 .mobile-menu.open .mobile-link { opacity: 1; transform: none; }
 .mobile-menu.open .mobile-link:nth-child(1) { --d: 0.08s; }
-.mobile-menu.open .mobile-link:nth-child(2) { --d: 0.12s; }
-.mobile-menu.open .mobile-link:nth-child(3) { --d: 0.16s; }
-.mobile-menu.open .mobile-link:nth-child(4) { --d: 0.20s; }
-.mobile-menu.open .mobile-link:nth-child(5) { --d: 0.24s; }
-.mobile-menu.open .mobile-link:nth-child(6) { --d: 0.28s; }
-.mobile-menu.open .mobile-link:nth-child(7) { --d: 0.32s; }
-.mobile-link:hover { color: var(--accent); }
-.mobile-link.active { color: var(--accent); }
+.mobile-menu.open .mobile-link:nth-child(2) { --d: 0.11s; }
+.mobile-menu.open .mobile-link:nth-child(3) { --d: 0.14s; }
+.mobile-menu.open .mobile-link:nth-child(4) { --d: 0.17s; }
+.mobile-menu.open .mobile-link:nth-child(5) { --d: 0.20s; }
+.mobile-menu.open .mobile-link:nth-child(6) { --d: 0.23s; }
+.mobile-menu.open .mobile-link:nth-child(7) { --d: 0.26s; }
+@media (hover: hover) {
+  .mobile-link:hover { background-color: rgba(255,255,255,0.06); color: #fff; }
+}
+.mobile-link:active { background-color: rgba(255,255,255,0.1); }
+.mobile-link.active { color: var(--accent); background-color: rgba(200,146,42,0.14); }
+.mobile-link.active::after { opacity: 1; }
+
+/* Primary action + quick contact (the phone number left the bar on phones) */
+.mobile-actions {
+  flex: none;
+  display: grid;
+  gap: 12px;
+  padding: 14px 20px 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.4s var(--ease-out);
+}
+.mobile-menu.open .mobile-actions { opacity: 1; transform: none; transition-delay: 0.3s; }
 .mobile-book-btn {
-  margin-top: 32px;
-  display: block;
-  text-align: center;
-  background: var(--accent);
-  color: var(--dark);
-  padding: 14px 24px;
-  border-radius: var(--radius-pill);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: var(--transition);
-}
-.mobile-social {
-  display: flex;
-  gap: 16px;
-  margin-top: auto;
-  padding-top: 32px;
-}
-.mobile-social a {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(200,146,42,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.8);
+  gap: 10px;
+  min-height: 54px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(200,146,42,0.28);
+  transition: var(--transition);
+}
+.mobile-book-btn i { font-size: 0.85rem; transition: transform 0.25s var(--ease-out); }
+.mobile-book-btn:active i { transform: translateX(3px); }
+.mobile-quick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mobile-quick a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.2s ease;
+}
+.mobile-quick a i { color: var(--accent); }
+.mobile-quick a:active { background-color: rgba(255,255,255,0.12); }
+
+.mobile-meta {
+  flex: none;
+  margin-top: auto;
+  padding: 24px 22px calc(22px + env(safe-area-inset-bottom));
+}
+.mobile-hours {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+}
+.mobile-hours i { color: var(--accent); }
+.mobile-social { display: flex; gap: 10px; }
+.mobile-social a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.82);
   font-size: 0.95rem;
   transition: var(--transition-fast);
 }
 .mobile-social a:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-height: 700px) {
+  .mobile-link { min-height: 46px; }
+  .mobile-actions { padding-top: 10px; }
+}
 .menu-backdrop {
   position: fixed;
   inset: 0;
@@ -999,6 +1121,13 @@
   transition: opacity 0.3s ease, visibility 0s;
 }
 .menu-backdrop.dragging { transition: none; }
+/* Floating UI must not sit on top of the sheet (the cookie bar used to cover its
+   social links). html.no-scroll is set while the menu or the lightbox is open. */
+html.no-scroll .cookie-banner,
+html.no-scroll .availability-toast,
+html.no-scroll .whatsapp-float,
+html.no-scroll .back-to-top,
+html.no-scroll .sticky-cta { visibility: hidden !important; pointer-events: none; }
 /* The full bar (logo + 7 links + Book Now) needs ~975px, so the menu collapses
    to the hamburger at 1024px and below. Keep main.js (NAV_BREAKPOINT) in step. */
 @media (min-width: 1025px) {
@@ -1131,11 +1260,12 @@
   .nav-links > li > a::after { left: 11px; right: 11px; }
 }
 @media (max-width: 768px) {
-  .nav-inner { padding: 0 20px; }
-  .nav-logo img { height: 38px; }
-  .nav-logo-text span:first-child { font-size: 1rem; }
+  .nav-inner { padding: 0 16px 0 20px; }
+  .nav-logo img { height: 40px; }
+  .nav-logo-text span:first-child { font-size: 1.05rem; }
   .nav-logo-text span:last-child { font-size: 0.6rem; }
-  .nav-book { padding: 8px 16px; font-size: 0.72rem; }
+  /* Book Now is in the menu on phones (and the bar stays calm) */
+  .nav-right { display: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .testimonial-card-inner { padding: 32px 24px; }

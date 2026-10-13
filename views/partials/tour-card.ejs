@@ -2,10 +2,14 @@
   const places = tour.countries || [];
   const where = places.length > 1 ? places.slice(0, -1).join(', ') + ' & ' + places[places.length - 1] : (places[0] || '');
   const meta = [tour.category, where].filter(Boolean).join(' • ');
+  // A tour can carry its own card photo so cards stay distinct; its focal point
+  // is separate because imagePosition is tuned for the detail-page hero photo.
+  const cardSrc = tour.cardImage || tour.image;
+  const cardPos = tour.cardImage ? tour.cardImagePosition : tour.imagePosition;
 %>
 <article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
   <div class="tour-card-img">
-    <%- image({ src: tour.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: tour.imagePosition }) %>
+    <%- image({ src: cardSrc, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: cardPos }) %>
     <div class="tour-card-img-overlay"></div>
   </div>
   <div class="tour-card-body">

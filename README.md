@@ -180,6 +180,10 @@ The motion/interaction layer follows a few rules — keep them when adding compo
   element's own hover/transform rules take over. Don't write inline `opacity`/`transform` from JS.
 - **The navbar collapses to the hamburger at 1024px and below** (`animations.css`; `NAV_BREAKPOINT` in `main.js`). The full bar needs
   ~975px.
+- **Phones (768px and below) have no Book Now in the bar**: the bar is just logo + menu button, and Book a Safari,
+  Call and WhatsApp live in the menu sheet (`views/partials/navbar.ejs`). Tablets keep Book Now beside the menu button.
+  While the sheet (or the lightbox) is open, `html.no-scroll` hides the cookie bar, toast, WhatsApp/back-to-top buttons
+  and the sticky enquiry bar so nothing sits on top of it.
 - **Anything that slides away also goes `visibility:hidden`** so it can't be tabbed to off-screen.
 - **Cards carry one link.** The title's `<a>` is stretched over the whole card (`a::after { inset: 0 }`);
   photos and "View itinerary / Read more" are decorative (`aria-hidden`). Don't add a second link inside a card.
