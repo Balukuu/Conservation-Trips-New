@@ -47,8 +47,7 @@
     "priceUSD": 800,
     "image": "/images/gorilla.jpg",
     "gallery": [
-      "/images/gorilla.jpg",
-      "/images/lodge.jpg"
+      "/images/gorilla.jpg"
     ],
     "galleryAlbums": [{ "album": "kayabwe-equator", "limit": 4 }, { "album": "road-west", "limit": 4 }],
     "summary": "A perfectly crafted 2-day gorilla trek combining the convenience of flying into Kigali, Rwanda, with the breathtaking wilderness of Bwindi Impenetrable Forest in Uganda. Come face-to-face with habituated mountain gorilla families in their misty jungle home.",
@@ -118,8 +117,7 @@
       "/images/safari.jpg",
       "/images/social/safari-vehicles-at-the-nile.jpg",
       "/images/social/elephants-bathing.jpg",
-      "/images/social/elephant-mother-and-calves.jpg",
-      "/images/lodge.jpg"
+      "/images/social/elephant-mother-and-calves.jpg"
     ],
     "summary": "Murchison Falls is Uganda's largest national park and one of Africa's greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world's most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.",
     "highlights": [
@@ -153,7 +151,6 @@
     "imagePosition": "50% 28%",
     "gallery": [
       "/images/photos/lake-sunset-silhouette.webp",
-      "/images/lodge.jpg",
       "/images/safari.jpg",
       "/images/photos/equator-kayabwe-ring.webp"
     ],
@@ -273,7 +270,6 @@
     "imagePosition": "50% 48%",
     "gallery": [
       "/images/photos/guides-trio-track.webp",
-      "/images/lodge.jpg",
       "/images/photos/western-uganda-road.webp",
       "/images/photos/guide-portrait.webp",
       "/images/photos/lake-sunset-silhouette.webp"
@@ -311,7 +307,6 @@
     "imagePosition": "50% 34%",
     "gallery": [
       "/images/safari.jpg",
-      "/images/lodge.jpg",
       "/images/photos/western-uganda-road.webp",
       "/images/photos/guides-trio-track.webp",
       "/images/photos/guide-portrait.webp",
@@ -393,7 +388,6 @@
     "imagePosition": "50% 16%",
     "gallery": [
       "/images/social/rwenzori-margherita-peak.jpg",
-      "/images/lodge.jpg",
       "/images/lion.jpg",
       "/images/photos/equator-kikorongo-globe-sign.webp"
     ],

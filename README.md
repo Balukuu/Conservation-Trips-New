@@ -82,6 +82,15 @@ April 2025 trip. They are marked `guests: true`; set `"hidden": true` on them in
 `npm run albums` if you do not have permission, and the site is rebuilt without them. Photos are also captioned
 by album only; check the location names against what you know.
 
+## Home page
+
+`views/index.ejs`: the hero slider and stats strip, then (all styled by `public/css/home.css`, classes `hm-*`, loaded
+only on `/` through `pageStyles`): find-your-safari category tiles, featured safaris (with the category filter),
+why us, destinations, a photo bento, how it works, reviews, conservation, blog, the X feed and a final call to action.
+It is data-driven: tiles and counts come from `data/tours.json`, destinations from `data/destinations.json`,
+the bento from `MOMENTS` in `lib/pages.js`, the rating from `data/testimonials.json`, the photo total from the albums.
+Other pages can add their own stylesheet the same way (`pageStyles: ['/css/x.css']` in the view model).
+
 ## URLs
 
 Every page has one address, and variants redirect (301) to it:

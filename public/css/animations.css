@@ -543,11 +543,6 @@
   align-items: center;
   gap: 10px;
 }
-.dest-card-region .fi {
-  font-size: 1rem;
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 .dest-card-link {
   font-size: 0.85rem;
   font-weight: 700;

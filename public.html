@@ -47,14 +47,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   
-  <!-- Flag Icons (only the pages that show country flags) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
-  
 
   <!-- Styles (assetUrl adds a content hash, so they can be cached long-term) -->
-  <link rel="stylesheet" href="/css/main.css?v=15924e5f0c">
-  <link rel="stylesheet" href="/css/animations.css?v=846b021e33">
-  <link rel="stylesheet" href="/css/components.css?v=5539838d7f">
+  <link rel="stylesheet" href="/css/main.css?v=04bf1d6422">
+  <link rel="stylesheet" href="/css/animations.css?v=c64de93b76">
+  <link rel="stylesheet" href="/css/components.css?v=ae6ac63f0b">
+  
+  <link rel="stylesheet" href="/css/home.css?v=1440b6a526">
+  
   <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
   <link rel="stylesheet" href="/css/preferences.css?v=87eb948bc3">
 
@@ -301,86 +301,106 @@
   </div>
 </div>
 
-<!-- ═══════════════ SECTION 3: ABOUT INTRO ═══════════════ -->
-<section class="section" id="about-intro" style="background: var(--surface);">
-  <div class="container">
-    <div class="grid-2">
+<!-- ═══════════════════════════════════════════════════════════════
+     Everything below the hero. Styles: public/css/home.css (hm-*).
+     ═══════════════════════════════════════════════════════════════ -->
 
-      <!-- Text Left -->
-      <div class="reveal-left">
-        <div class="section-label">
-          <i class="fa-solid fa-leaf"></i> Who We Are
-        </div>
-        <h2 style="color: var(--dark); margin-bottom: 20px;">Your Prime Tour &amp; Travel Partner in Uganda</h2>
-        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
-          Since 2008, Conservation Trips and Adventures has been creating life-changing safari experiences — with a dedication to excellence, safety, and conservation at our core. As a fully-fledged travel, tourism and conservation management company, we cater for both regional and global clients.
-        </p>
-        <p style="color: var(--text-muted); margin-bottom: 28px;">
-          Uganda • Rwanda • Kenya • Tanzania — East Africa's premier safari &amp; adventure travel company, crafting unforgettable journeys that connect travellers with Africa's most extraordinary wildlife and landscapes.
-        </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-leaf"></i></div>
-            <div>
-              <div class="about-feature-title">Conservation-First</div>
-              <div class="about-feature-desc">Every trip directly contributes to Uganda's wildlife protection and local community livelihoods.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-globe"></i></div>
-            <div>
-              <div class="about-feature-title">Regional &amp; Global Clients</div>
-              <div class="about-feature-desc">Serving travellers from East Africa and across the world with tailored, premium experiences.</div>
-            </div>
-          </div>
-        </div>
-        <a href="/about" class="about-discover-link">
-          Discover Our Story <i class="fa-solid fa-arrow-right"></i>
+<!-- ═══════════════ 1. FIND YOUR KIND OF SAFARI ═══════════════ -->
+<section class="hm-section" id="experiences">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">What do you want to see?</span>
+        <h2>Find your kind of safari</h2>
+      </div>
+      <a class="hm-link" href="/tours">All safari packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
+
+    <ul class="hm-tiles reveal">
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/gorilla-trekking">
+          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-paw" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Gorilla Trekking</strong>
+            <small>2 tours</small>
+          </span>
         </a>
-      </div>
-
-      <!-- Images Right -->
-      <div class="reveal-right">
-        <div class="about-image-stack">
-          <div class="about-img-primary">
-            <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 30vw, 70vw" width="1024" height="1024" alt="A male lion resting on the branch of an acacia tree at sunset" class="about-photo" style="object-position:50% 42%" loading="lazy" decoding="async">
-          </div>
-          <div class="about-img-secondary">
-            <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 18vw, 40vw" width="1024" height="1024" alt="A mountain gorilla sitting among ferns and moss in the misty Bwindi rainforest" class="about-photo" style="object-position:50% 38%" loading="lazy" decoding="async">
-          </div>
-          <div class="about-years-badge">
-            <span class="badge-num">15+</span>
-            <span class="badge-text">Years of<br>Experience</span>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+      </li>
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/wildlife-safari">
+          <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 40%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-hippo" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Wildlife Safaris</strong>
+            <small>2 tours</small>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/boat-cruise">
+          <img src="/images/opt/photos/kazinga-elephant-2048.webp" srcset="/images/opt/photos/kazinga-elephant-160.webp 160w, /images/opt/photos/kazinga-elephant-320.webp 320w, /images/opt/photos/kazinga-elephant-640.webp 640w, /images/opt/photos/kazinga-elephant-1024.webp 1024w, /images/opt/photos/kazinga-elephant-1600.webp 1600w, /images/opt/photos/kazinga-elephant-2048.webp 2048w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="2048" height="1367" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:45% 30%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-ship" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Boat Cruises</strong>
+            <small>1 tour</small>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/mountain-climbing">
+          <img src="/images/opt/social/rwenzori-margherita-peak-1125.webp" srcset="/images/opt/social/rwenzori-margherita-peak-160.webp 160w, /images/opt/social/rwenzori-margherita-peak-320.webp 320w, /images/opt/social/rwenzori-margherita-peak-640.webp 640w, /images/opt/social/rwenzori-margherita-peak-1024.webp 1024w, /images/opt/social/rwenzori-margherita-peak-1125.webp 1125w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="1125" height="1066" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-mountain" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Mountain Climbs</strong>
+            <small>3 tours</small>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/primate-safari">
+          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:20% 25%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-tree" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Primate Tracking</strong>
+            <small>1 tour</small>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="hm-tile" href="/tours/category/cultural-tour">
+          <img src="/images/gallery/tea-estates/pik_5818-1100.webp" srcset="/images/gallery/tea-estates/pik_5818-400.webp 400w, /images/gallery/tea-estates/pik_5818-1100.webp 1100w" sizes="(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
+          <span class="hm-tile-icon"><i class="fa-solid fa-masks-theater" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong>Cultural Tours</strong>
+            <small>2 tours</small>
+          </span>
+        </a>
+      </li>
+      
+    </ul>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 4: FEATURED TOURS ═══════════════ -->
-<section class="section" id="featured-tours" style="background: var(--surface-alt); position: relative;">
-  <!-- Top Wave -->
-  <div style="position: absolute; top: -1px; left: 0; right: 0; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,60 C480,0 960,60 1440,20 L1440,0 L0,0 Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
-
+<!-- ═══════════════ 2. FEATURED SAFARIS ═══════════════ -->
+<section class="hm-section hm-alt" id="featured-tours">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <header class="hm-head reveal">
       <div>
-        <div class="section-label"><i class="fa-solid fa-compass"></i> Safari Packages</div>
-        <h2 style="color: var(--dark);">Handpicked Journeys Through Uganda</h2>
-        <p class="section-subtitle">Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime.</p>
+        <span class="hm-eyebrow">Safari packages</span>
+        <h2>Handpicked journeys through Uganda</h2>
+        <p>Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime.</p>
       </div>
-      <a href="/tours" class="btn btn-outline-dark hide-mobile">View All Tours <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
+      <a class="hm-link hide-mobile" href="/tours">View all tours <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
 
-    <!-- Filter Tabs -->
-    <div class="filter-bar reveal mt-32" role="tablist" aria-label="Filter safari packages">
+    <div class="filter-bar hm-filter reveal" role="tablist" aria-label="Filter safari packages">
       <button class="filter-tab active" type="button" data-category="All" role="tab" aria-selected="true">All Safaris</button>
       
       <button class="filter-tab" type="button" data-category="Wildlife Safari" role="tab" aria-selected="false">Wildlife Safari</button>
@@ -391,7 +411,6 @@
       
     </div>
 
-    <!-- Tours Grid -->
     <div class="tours-grid reveal-grid" id="featured-tours-grid">
       
         
@@ -476,242 +495,243 @@
       
     </div>
 
-    <div class="text-center mt-48 reveal">
-      <a href="/tours" class="btn btn-primary btn-lg">View All Safari Packages <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-
-  <!-- Bottom Wave -->
-  <div style="position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,0 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#0F1F0F"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION 5: DESTINATIONS ═══════════════ -->
-<section class="section" id="destinations" style="background: var(--dark);">
-  <div class="container-wide">
-    <div class="text-center reveal mb-0" style="padding-bottom: 0;">
-      <div class="section-label light"><i class="fa-solid fa-map-location-dot"></i> Explore Africa</div>
-      <h2 style="color: #fff;">Uganda's Most Breathtaking Destinations</h2>
-      <p style="color: rgba(255,255,255,0.6); max-width: 580px; margin: 12px auto 0; font-size: 1.05rem;">
-        From Uganda's mountain gorillas to Tanzania's endless Serengeti plains — we take you to the heart of East Africa's most iconic destinations.
-      </p>
-    </div>
-
-    <div class="destinations-masonry reveal-grid">
-      <!-- Tall card 1 -->
-      <div class="dest-card dest-tall">
-        <div class="dest-card-bg"><img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Bwindi Impenetrable National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Tall card 2 -->
-      <div class="dest-card dest-tall">
-        <div class="dest-card-bg"><img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 42%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Queen Elizabeth National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Normal cards -->
-      
-      
-      <div class="dest-card dest-normal">
-        <div class="dest-card-bg"><img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Kibale Forest National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <div class="dest-card dest-normal">
-        <div class="dest-card-bg"><img src="/images/opt/waterfall-1024.webp" srcset="/images/opt/waterfall-160.webp 160w, /images/opt/waterfall-320.webp 320w, /images/opt/waterfall-640.webp 640w, /images/opt/waterfall-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Murchison Falls National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <div class="dest-card dest-normal">
-        <div class="dest-card-bg"><img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-tz"></span> TANZANIA</div>
-          <div class="dest-card-name">Serengeti — Tanzania</div>
-          <a href="/destinations/tanzania" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <div class="dest-card dest-normal">
-        <div class="dest-card-bg"><img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async"></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-rw"></span> RWANDA</div>
-          <div class="dest-card-name">Rwanda — Land of Gorillas</div>
-          <a href="/destinations/rwanda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-    </div>
-
-    <div class="text-center mt-48 reveal">
-      <a href="/destinations" class="btn btn-outline btn-lg">View All Destinations <i class="fa-solid fa-globe"></i></a>
+    <div class="text-center mt-48 reveal hide-desktop">
+      <a href="/tours" class="btn btn-primary">View all safari packages <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 5b: THE EQUATOR ═══════════════ -->
-<section class="section" id="equator" style="background: var(--surface-alt);">
+<!-- ═══════════════ 3. WHY CONSERVATION TRIPS ═══════════════ -->
+<section class="hm-section" id="why-us">
   <div class="container">
-    <div class="grid-2">
-
-      <!-- Photos -->
-      <div class="reveal-left">
-        <div class="about-image-stack">
-          <div class="about-img-primary">
-            <img src="/images/opt/photos/equator-kikorongo-globe-1024.webp" srcset="/images/opt/photos/equator-kikorongo-globe-160.webp 160w, /images/opt/photos/equator-kikorongo-globe-320.webp 320w, /images/opt/photos/equator-kikorongo-globe-640.webp 640w, /images/opt/photos/equator-kikorongo-globe-1024.webp 1024w" sizes="(min-width: 1024px) 30vw, 70vw" width="1365" height="2048" alt="A visitor in a red patterned dress stands in front of the polished steel Uganda Equator globe sculpture at Kikorongo" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%" loading="lazy" decoding="async">
-          </div>
-          <div class="about-img-secondary">
-            <img src="/images/opt/photos/equator-kayabwe-ring-1024.webp" srcset="/images/opt/photos/equator-kayabwe-ring-160.webp 160w, /images/opt/photos/equator-kayabwe-ring-320.webp 320w, /images/opt/photos/equator-kayabwe-ring-640.webp 640w, /images/opt/photos/equator-kayabwe-ring-1024.webp 1024w" sizes="(min-width: 1024px) 18vw, 40vw" width="1365" height="2048" alt="The white Uganda Equator monument at Kayabwe, with palm trees behind and the S and N hemisphere markers at its base" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%" loading="lazy" decoding="async">
-          </div>
+    <div class="hm-split">
+      <div class="hm-collage reveal-left">
+        <div class="hm-collage-main">
+          <img src="/images/opt/photos/coaster-guides-1600.webp" srcset="/images/opt/photos/coaster-guides-160.webp 160w, /images/opt/photos/coaster-guides-320.webp 320w, /images/opt/photos/coaster-guides-640.webp 640w, /images/opt/photos/coaster-guides-1024.webp 1024w, /images/opt/photos/coaster-guides-1600.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" width="2048" height="1365" alt="Three guides in khaki jumpsuits and bush hats beside the green-and-cream Conservation Trips safari coaster" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%" loading="lazy" decoding="async">
+        </div>
+        <div class="hm-collage-sub">
+          <img src="/images/opt/photos/equator-kayabwe-staff-ring-1024.webp" srcset="/images/opt/photos/equator-kayabwe-staff-ring-160.webp 160w, /images/opt/photos/equator-kayabwe-staff-ring-320.webp 320w, /images/opt/photos/equator-kayabwe-staff-ring-640.webp 640w, /images/opt/photos/equator-kayabwe-staff-ring-1024.webp 1024w" sizes="(min-width: 1024px) 18vw, 40vw" width="1365" height="2048" alt="A guide in a khaki safari uniform and bush hat poses inside the white Uganda Equator ring at Kayabwe, one foot on the north mark and one on the south" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%" loading="lazy" decoding="async">
+        </div>
+        <div class="hm-badge">
+          <strong>Since 2008</strong>
+          <span>Crafting journeys across East Africa</span>
         </div>
       </div>
 
-      <!-- Text -->
       <div class="reveal-right">
-        <div class="section-label"><i class="fa-solid fa-globe"></i> Cross the Equator</div>
-        <h2 style="color: var(--dark); margin-bottom: 20px;">Stand on the Equator, One Foot in Each Hemisphere</h2>
-        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
-          The Equator runs straight through Uganda, and it is easy to include on a safari. Two monuments make natural stops on the road to the western parks, and we build the time for photographs into your route.
+        <span class="hm-eyebrow">Why Conservation Trips</span>
+        <h2>Your prime tour &amp; travel partner in Uganda</h2>
+        <p class="hm-lead">
+          We are a fully-fledged travel, tourism and conservation management company, proudly local and deeply knowledgeable, serving both regional and global clients with a dedication to excellence, safety and conservation.
         </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-circle-notch"></i></div>
-            <div>
-              <div class="about-feature-title">Kayabwe</div>
-              <div class="about-feature-desc">The white ring on the Kampala&ndash;Masaka road: the classic stop on the way to Lake Mburo, Lake Bunyonyi and Bwindi.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-earth-africa"></i></div>
-            <div>
-              <div class="about-feature-title">Kikorongo</div>
-              <div class="about-feature-desc">The mirror-steel globe beside Queen Elizabeth National Park, on the road to Kasese, the Rwenzoris and the Kazinga Channel.</div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start; margin-top:32px;">
-          <a href="/gallery#equator" class="btn btn-green">See the Equator photos <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="/contact" class="btn btn-outline-dark">Add it to my safari</a>
-        </div>
-      </div>
 
-    </div>
-  </div>
-</section>
+        <ul class="hm-features">
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-paw" aria-hidden="true"></i></span>
+            <div><h3>Gorilla trekking experts</h3><p>Specialist permit procurement, guides with decade-long Bwindi experience, and group sizes managed for authentic encounters.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+            <div><h3>Conservation-first</h3><p>Every trip contributes directly to Uganda's conservation efforts and local community livelihoods. Travel that gives back.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-map" aria-hidden="true"></i></span>
+            <div><h3>Custom itineraries</h3><p>Tailored to your timeline, travel style, group size and budget. No two trips are the same.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-truck-monster" aria-hidden="true"></i></span>
+            <div><h3>Safari vehicles built for it</h3><p>4x4s with pop-up roofs, USB charging, cooler boxes and first-aid kits, made for comfort and wildlife viewing.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <div><h3>Licensed &amp; insured</h3><p>Registered with Uganda Tourism Board and Uganda Wildlife Authority, with rigorous safety protocols throughout.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
+            <div><h3>24/7 support</h3><p>A dedicated trip advisor is available from your first enquiry through to your safe return home.</p></div>
+          </li>
+        </ul>
 
-<!-- ═══════════════ SECTION 6: WHY CHOOSE US ═══════════════ -->
-<section class="section" id="why-us" style="background: var(--surface);">
-  <!-- Top Wave -->
-  <div style="margin-top: -1px; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,60 C360,10 720,50 1080,20 C1260,8 1380,30 1440,60 L1440,0 L0,0 Z" fill="#0F1F0F"/>
-    </svg>
-  </div>
-  <div class="container">
-    <div class="text-center reveal mb-48">
-      <div class="section-label"><i class="fa-solid fa-star"></i> Why Choose Us</div>
-      <h2 style="color: var(--dark);">Safari Excellence, Every Step of the Way</h2>
-    </div>
-
-    <div class="why-us-grid">
-      <!-- Left Column -->
-      <div class="why-us-col reveal-left">
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-paw"></i></div>
-          <div>
-            <div class="why-us-title">Gorilla Trekking Experts</div>
-            <div class="why-us-desc">Specialist gorilla permit procurement, expert guides with decade-long Bwindi experience, and group sizes carefully managed for authentic encounters.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
-          <div>
-            <div class="why-us-title">Conservation-First Tourism</div>
-            <div class="why-us-desc">Every trip we organise contributes directly to Uganda's conservation efforts and local community livelihoods. Travel that gives back.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-map"></i></div>
-          <div>
-            <div class="why-us-title">Custom Itineraries</div>
-            <div class="why-us-desc">Your journey, your way. Every safari is tailored to your timeline, travel style, group size, and budget — no two trips are the same.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Centre photograph -->
-      <div class="why-us-center-img reveal-scale">
-        <figure class="why-us-photo">
-          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 30vw, 90vw" width="1024" height="1024" alt="A mountain gorilla sitting among ferns and moss in the misty Bwindi rainforest" style="object-position:50% 38%" loading="lazy" decoding="async">
-          <figcaption>Bwindi Impenetrable Forest</figcaption>
-        </figure>
-      </div>
-
-      <!-- Right Column -->
-      <div class="why-us-col why-us-right reveal-right">
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-truck-monster"></i></div>
-          <div>
-            <div class="why-us-title">Exclusive Safari Vehicles</div>
-            <div class="why-us-desc">Custom 4x4 safari vehicles with pop-up roofs, USB charging, cooler boxes, and first-aid kits — built for comfort and wildlife viewing.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
-          <div>
-            <div class="why-us-title">Licensed &amp; Insured</div>
-            <div class="why-us-desc">Fully registered with Uganda Tourism Board and Uganda Wildlife Authority. Your safety is our top priority with rigorous protocols throughout.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-headset"></i></div>
-          <div>
-            <div class="why-us-title">24/7 Dedicated Support</div>
-            <div class="why-us-desc">Your dedicated trip advisor is available throughout your journey — from first enquiry through to your safe return home.</div>
-          </div>
-        </div>
+        <a class="hm-link" href="/about">Discover our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 7: TESTIMONIALS ═══════════════ -->
-<section class="section" id="testimonials" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--sky) 100%); padding-top: 80px; padding-bottom: 80px;">
-  <div class="container">
-    <div class="text-center reveal mb-48">
-      <div class="section-label light"><i class="fa-solid fa-star"></i> Testimonials</div>
-      <h2 style="color: #fff;">What Our Travellers Say</h2>
-    </div>
+<!-- ═══════════════ 4. DESTINATIONS ═══════════════ -->
+<section class="hm-section hm-dark" id="destinations">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Explore East Africa</span>
+        <h2>Where we take you</h2>
+        <p>From Uganda's mountain gorillas to Tanzania's endless Serengeti plains, we take you to the heart of East Africa's most iconic destinations.</p>
+      </div>
+      <a class="hm-link" href="/destinations">All destinations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
 
-    <div class="testimonial-slider reveal" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
-      <div class="testimonial-track" tabindex="0">
+    <div class="hm-countries reveal-grid">
+      
+      <a class="hm-country hm-country--lead" href="/destinations/uganda">
+        <img src="/images/opt/waterfall-1024.webp" srcset="/images/opt/waterfall-160.webp 160w, /images/opt/waterfall-320.webp 320w, /images/opt/waterfall-640.webp 640w, /images/opt/waterfall-1024.webp 1024w" sizes="(min-width: 1024px) 45vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%" loading="lazy" decoding="async">
+        <span class="hm-country-body">
+          <small>The Pearl of Africa</small>
+          <strong>Uganda</strong>
+          
+          <span class="hm-chips">
+            <span>Bwindi</span><span>Queen Elizabeth</span><span>Kibale</span><span>Murchison Falls</span><span>Kidepo</span><span>Lake Mburo</span>
+          </span>
+          
+          <span class="hm-country-meta">9 tours <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
+      
+      <a class="hm-country" href="/destinations/kenya">
+        <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 28vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 42%" loading="lazy" decoding="async">
+        <span class="hm-country-body">
+          <small>The Land of Unparalleled Beauty</small>
+          <strong>Kenya</strong>
+          
+          <span class="hm-country-meta">1 tour <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
+      
+      <a class="hm-country" href="/destinations/tanzania">
+        <img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 28vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async">
+        <span class="hm-country-body">
+          <small>Land of Endless Plains</small>
+          <strong>Tanzania</strong>
+          
+          <span class="hm-country-meta">1 tour <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
+      
+      <a class="hm-country" href="/destinations/rwanda">
+        <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 28vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async">
+        <span class="hm-country-body">
+          <small>Land of a Thousand Hills</small>
+          <strong>Rwanda</strong>
+          
+          <span class="hm-country-meta">1 tour <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 5. FROM OUR OWN JOURNEYS (photo bento) ═══════════════ -->
+<section class="hm-section" id="moments">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Photographed on our own journeys</span>
+        <h2>Stand on the Equator, meet the plains</h2>
+        <p>The Equator runs straight through Uganda and is an easy stop on the road to the western parks. Here are a few frames from the road.</p>
+      </div>
+      <a class="hm-link" href="/gallery">Open the gallery <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
+
+    <div class="hm-bento reveal-grid">
+      
+      <a class="hm-bento-item hm-bento-item--feature" href="/gallery/kikorongo-equator">
+        <img src="/images/opt/photos/equator-kikorongo-wide-2048.webp" srcset="/images/opt/photos/equator-kikorongo-wide-160.webp 160w, /images/opt/photos/equator-kikorongo-wide-320.webp 320w, /images/opt/photos/equator-kikorongo-wide-640.webp 640w, /images/opt/photos/equator-kikorongo-wide-1024.webp 1024w, /images/opt/photos/equator-kikorongo-wide-1600.webp 1600w, /images/opt/photos/equator-kikorongo-wide-2048.webp 2048w" sizes="(min-width: 1024px) 50vw, 100vw" width="2048" height="1365" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:40% 50%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Kikorongo Equator</span>
+      </a>
+      
+      <a class="hm-bento-item hm-bento-item--tile" href="/gallery/lake-mburo-plains">
+        <img src="/images/opt/photos/lake-mburo-zebras-2048.webp" srcset="/images/opt/photos/lake-mburo-zebras-160.webp 160w, /images/opt/photos/lake-mburo-zebras-320.webp 320w, /images/opt/photos/lake-mburo-zebras-640.webp 640w, /images/opt/photos/lake-mburo-zebras-1024.webp 1024w, /images/opt/photos/lake-mburo-zebras-1600.webp 1600w, /images/opt/photos/lake-mburo-zebras-2048.webp 2048w" sizes="(min-width: 1024px) 25vw, 50vw" width="2048" height="1365" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Zebras, Lake Mburo</span>
+      </a>
+      
+      <a class="hm-bento-item hm-bento-item--tall" href="/gallery/kazinga-cruise">
+        <img src="/images/opt/photos/kazinga-hippos-1024.webp" srcset="/images/opt/photos/kazinga-hippos-160.webp 160w, /images/opt/photos/kazinga-hippos-320.webp 320w, /images/opt/photos/kazinga-hippos-640.webp 640w, /images/opt/photos/kazinga-hippos-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Hippos on the Kazinga Channel</span>
+      </a>
+      
+      <a class="hm-bento-item hm-bento-item--tile" href="/gallery/kayabwe-equator">
+        <img src="/images/opt/photos/equator-kayabwe-staff-ring-1024.webp" srcset="/images/opt/photos/equator-kayabwe-staff-ring-160.webp 160w, /images/opt/photos/equator-kayabwe-staff-ring-320.webp 320w, /images/opt/photos/equator-kayabwe-staff-ring-640.webp 640w, /images/opt/photos/equator-kayabwe-staff-ring-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Kayabwe Equator</span>
+      </a>
+      
+      <a class="hm-bento-item hm-bento-item--wide" href="/gallery/kazinga-cruise">
+        <img src="/images/opt/photos/kazinga-elephant-2048.webp" srcset="/images/opt/photos/kazinga-elephant-160.webp 160w, /images/opt/photos/kazinga-elephant-320.webp 320w, /images/opt/photos/kazinga-elephant-640.webp 640w, /images/opt/photos/kazinga-elephant-1024.webp 1024w, /images/opt/photos/kazinga-elephant-1600.webp 1600w, /images/opt/photos/kazinga-elephant-2048.webp 2048w" sizes="(min-width: 1024px) 50vw, 100vw" width="2048" height="1367" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:45% 22%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Elephant on the shore</span>
+      </a>
+      
+      <a class="hm-bento-item hm-bento-item--tile" href="/gallery/lake-sunset">
+        <img src="/images/opt/photos/lake-sunset-silhouette-1024.webp" srcset="/images/opt/photos/lake-sunset-silhouette-160.webp 160w, /images/opt/photos/lake-sunset-silhouette-320.webp 320w, /images/opt/photos/lake-sunset-silhouette-640.webp 640w, /images/opt/photos/lake-sunset-silhouette-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async">
+        <span class="hm-bento-caption">Golden hour by the lake</span>
+      </a>
+      
+      <a class="hm-bento-cta" href="/gallery">
+        <strong>857</strong>
+        <span>photographs from our own trips, in albums</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 6. HOW IT WORKS ═══════════════ -->
+<section class="hm-section hm-alt" id="how-it-works">
+  <div class="container">
+    <header class="hm-head hm-head--center reveal">
+      <div>
+        <span class="hm-eyebrow">Planning your safari</span>
+        <h2>From first enquiry to safe return</h2>
+      </div>
+    </header>
+
+    <ol class="hm-steps reveal-grid">
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">1</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
+        <h3>Tell us your dream</h3>
+        <p>Send an enquiry in three quick steps: what you'd like to see, when, and who is travelling. No payment is needed at this stage.</p>
+      </li>
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">2</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-route" aria-hidden="true"></i></span>
+        <h3>Get a personalised itinerary</h3>
+        <p>We reply within 24 hours with an itinerary and quote shaped around your dates, interests and budget.</p>
+      </li>
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">3</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-suitcase-rolling" aria-hidden="true"></i></span>
+        <h3>We handle the details</h3>
+        <p>Permits, vehicles, lodges and guides are arranged for you, and your trip advisor is on hand until you are safely home.</p>
+      </li>
+    </ol>
+
+    <div class="text-center mt-48 reveal">
+      <a href="/contact" class="btn btn-primary btn-lg">Start your enquiry <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 7. TRAVELLER REVIEWS ═══════════════ -->
+<section class="hm-section" id="testimonials">
+  <div class="container">
+    <div class="hm-reviews">
+      <div class="hm-reviews-intro reveal-left">
+        <span class="hm-eyebrow">Traveller reviews</span>
+        <h2>What our travellers say</h2>
         
-          <div class="testimonial-card">
+        <div class="hm-rating">
+          <span class="hm-rating-score">5.0</span>
+          <span class="hm-rating-detail">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <small>average from 6 traveller reviews</small>
+          </span>
+        </div>
+        
+      </div>
+
+      <div class="testimonial-slider reveal-right" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
+        <div class="testimonial-track" tabindex="0">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -729,8 +749,8 @@
   </div>
 </div>
 
-        
-          <div class="testimonial-card">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -748,8 +768,8 @@
   </div>
 </div>
 
-        
-          <div class="testimonial-card">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -767,8 +787,8 @@
   </div>
 </div>
 
-        
-          <div class="testimonial-card">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -786,8 +806,8 @@
   </div>
 </div>
 
-        
-          <div class="testimonial-card">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -805,8 +825,8 @@
   </div>
 </div>
 
-        
-          <div class="testimonial-card">
+          
+            <div class="testimonial-card">
   <div class="testimonial-card-inner">
     <div class="testimonial-stars stars">★★★★★</div>
     <span class="testimonial-quote-mark">&ldquo;</span>
@@ -824,85 +844,136 @@
   </div>
 </div>
 
-        
-      </div>
-
-      <div class="testimonial-nav">
-        <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="test-dots">
-          
-          <button class="test-dot active" type="button" aria-label="Testimonial 1" aria-current="true"></button>
-          
-          <button class="test-dot " type="button" aria-label="Testimonial 2" aria-current="false"></button>
-          
-          <button class="test-dot " type="button" aria-label="Testimonial 3" aria-current="false"></button>
-          
-          <button class="test-dot " type="button" aria-label="Testimonial 4" aria-current="false"></button>
-          
-          <button class="test-dot " type="button" aria-label="Testimonial 5" aria-current="false"></button>
-          
-          <button class="test-dot " type="button" aria-label="Testimonial 6" aria-current="false"></button>
           
         </div>
-        <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
-        <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
+
+        <div class="testimonial-nav">
+          <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="test-dots">
+            
+            <button class="test-dot active" type="button" aria-label="Testimonial 1" aria-current="true"></button>
+            
+            <button class="test-dot " type="button" aria-label="Testimonial 2" aria-current="false"></button>
+            
+            <button class="test-dot " type="button" aria-label="Testimonial 3" aria-current="false"></button>
+            
+            <button class="test-dot " type="button" aria-label="Testimonial 4" aria-current="false"></button>
+            
+            <button class="test-dot " type="button" aria-label="Testimonial 5" aria-current="false"></button>
+            
+            <button class="test-dot " type="button" aria-label="Testimonial 6" aria-current="false"></button>
+            
+          </div>
+          <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+          <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 8: CONSERVATION ═══════════════ -->
-<section class="conservation-section" id="conservation">
+<!-- ═══════════════ 8. CONSERVATION ═══════════════ -->
+<section class="hm-conservation" id="conservation">
   <div class="container">
-    <div class="grid-2">
+    <div class="hm-conservation-grid">
       <div class="reveal-left">
-        <div class="section-label light"><i class="fa-solid fa-leaf"></i> Our Commitment</div>
-        <h2 style="color: #fff; margin-bottom: 20px;">Travel That Gives Back</h2>
-        <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px;">
-          Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.
-        </p>
-        <div class="conservation-stats">
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="1000" data-suffix="+">1,000+</div>
-            <div class="stat-label">Gorillas Protected</div>
+        <span class="hm-eyebrow">Our commitment</span>
+        <h2>Travel that gives back</h2>
+        <p>Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.</p>
+
+        <dl class="hm-stats">
+          <div>
+            <dt>Gorillas protected</dt>
+            <dd class="stat-number" data-count="1000" data-suffix="+">1,000+</dd>
           </div>
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="200" data-suffix="+">200+</div>
-            <div class="stat-label">Local Jobs Created</div>
+          <div>
+            <dt>Local jobs created</dt>
+            <dd class="stat-number" data-count="200" data-suffix="+">200+</dd>
           </div>
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="10" data-suffix="%">10%</div>
-            <div class="stat-label">Revenue to Conservation</div>
+          <div>
+            <dt>Revenue to conservation</dt>
+            <dd class="stat-number" data-count="10" data-suffix="%">10%</dd>
           </div>
-        </div>
-        <a href="/about" class="btn btn-outline mt-32">Our Conservation Pledge <i class="fa-solid fa-arrow-right"></i></a>
+        </dl>
+
+        <a href="/about" class="btn btn-outline">Our conservation pledge <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      <div class="conservation-img-wrap reveal-right">
-        <figure class="conservation-photo">
-          <img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 45vw, 90vw" width="1024" height="1024" alt="Guests in a safari vehicle watching a herd of elephants on the savannah at sunset" style="object-position:50% 55%" loading="lazy" decoding="async">
-        </figure>
-      </div>
+
+      <figure class="hm-conservation-photo reveal-right">
+        <img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 40vw, 90vw" width="1024" height="1024" alt="Guests in a safari vehicle watching a herd of elephants on the savannah at sunset" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async">
+      </figure>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ 9. FROM THE BLOG ═══════════════ -->
+<section class="hm-section" id="blog-preview">
+  <div class="container">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Safari insights</span>
+        <h2>Guides &amp; travel tips</h2>
+      </div>
+      <a class="hm-link" href="/blog">All articles <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
 
+    <div class="hm-posts reveal-grid">
+      
+      <article class="hm-post hm-post--lead">
+        <div class="hm-post-img">
+          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async">
+        </div>
+        <div class="hm-post-body">
+          <div class="hm-post-meta"><span class="hm-post-cat">Gorilla Trekking</span><span>6 min read</span></div>
+          <h3><a href="/blog/best-time-gorilla-trekking-uganda">The Best Time to Go Gorilla Trekking in Uganda</a></h3>
+          <p>Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit to Bwindi Impenetrable Forest — including permit availability tips.</p>
+          <time>March 15, 2025</time>
+        </div>
+      </article>
+      
+      <article class="hm-post">
+        <div class="hm-post-img">
+          <img src="/images/opt/social/uganda-passport-1101.webp" srcset="/images/opt/social/uganda-passport-160.webp 160w, /images/opt/social/uganda-passport-320.webp 320w, /images/opt/social/uganda-passport-640.webp 640w, /images/opt/social/uganda-passport-1024.webp 1024w, /images/opt/social/uganda-passport-1101.webp 1101w" sizes="(min-width: 1024px) 18vw, 40vw" width="1101" height="1400" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 58%" loading="lazy" decoding="async">
+        </div>
+        <div class="hm-post-body">
+          <div class="hm-post-meta"><span class="hm-post-cat">Travel Tips</span><span>8 min read</span></div>
+          <h3><a href="/blog/uganda-packing-list-safari">The Ultimate Uganda Safari Packing List</a></h3>
+          <p>From gorilla trekking clothes to savannah game drive essentials — here is everything you need to pack for the perfect Uganda safari, from what to wear in the forest to camera gear recommendations.</p>
+          <time>February 22, 2025</time>
+        </div>
+      </article>
+      
+      <article class="hm-post">
+        <div class="hm-post-img">
+          <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 18vw, 40vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 42%" loading="lazy" decoding="async">
+        </div>
+        <div class="hm-post-body">
+          <div class="hm-post-meta"><span class="hm-post-cat">Wildlife</span><span>5 min read</span></div>
+          <h3><a href="/blog/tree-climbing-lions-ishasha">Uganda&#39;s Incredible Tree-Climbing Lions of Ishasha</a></h3>
+          <p>One of Africa&#39;s most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park where this unique behaviour has been observed for generations.</p>
+          <time>January 10, 2025</time>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════ SECTION 9: FROM OUR FEED ═══════════════
      Static cards (no third-party script): photos are served from /images/social and each
      card links out to the original post on X. Data lives in data/social.json. -->
 
 
-<section class="section" id="social" style="background: var(--surface-alt);">
+<section class="hm-section hm-alt" id="social">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <header class="hm-head reveal">
       <div>
-        <div class="section-label"><i class="fa-brands fa-x-twitter"></i> Follow the Adventure</div>
-        <h2 style="color: var(--dark);">Moments From the Field</h2>
-        <p class="section-subtitle">Mountains, rivers and wildlife — shared on X as <a href="https://x.com/conservation_t" target="_blank" rel="noopener" class="text-link">@conservation_t</a>.</p>
+        <span class="hm-eyebrow">Follow the adventure</span>
+        <h2>Moments from the field</h2>
+        <p>Mountains, rivers and wildlife, shared on X as <a href="https://x.com/conservation_t" target="_blank" rel="noopener" class="text-link">@conservation_t</a>.</p>
       </div>
-      <a href="https://x.com/conservation_t" target="_blank" rel="noopener" class="btn btn-outline-dark hide-mobile">Follow on X <i class="fa-brands fa-x-twitter"></i></a>
-    </div>
+      <a class="hm-link hide-mobile" href="https://x.com/conservation_t" target="_blank" rel="noopener">Follow on X <i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+    </header>
 
     <div class="social-grid reveal-grid">
       
@@ -1002,165 +1073,23 @@
 </section>
 
 
-<!-- ═══════════════ SECTION 9b: FROM THE ROAD ═══════════════ -->
-
-<section class="section" id="photos" style="background: var(--surface);">
-  <div class="container-wide">
-    <div class="tours-section-header reveal">
-      <div>
-        <div class="section-label"><i class="fa-solid fa-camera"></i> From the Road</div>
-        <h2 style="color: var(--dark);">Photographed on Our Own Journeys</h2>
-        <p class="section-subtitle">Equator monuments, plains game and golden hours on the Kazinga Channel: every picture here was taken on a Conservation Trips journey.</p>
-      </div>
-      <a href="/gallery" class="btn btn-outline-dark hide-mobile">See all photos <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <div class="photo-strip reveal-grid">
-      
-      <a class="photo-strip-item photo-strip-item--feature" href="/gallery/kikorongo-equator">
-        <img src="/images/gallery/kikorongo-equator/pik_6065-1100.webp" srcset="/images/gallery/kikorongo-equator/pik_6065-400.webp 400w, /images/gallery/kikorongo-equator/pik_6065-1100.webp 1100w" sizes="(min-width: 1024px) 50vw, 100vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Kikorongo Equator</strong><small>110 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/lake-mburo-plains">
-        <img src="/images/gallery/lake-mburo-plains/pik_5692-1100.webp" srcset="/images/gallery/lake-mburo-plains/pik_5692-400.webp 400w, /images/gallery/lake-mburo-plains/pik_5692-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="2048" height="1365" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Lake Mburo: Game Drive &amp; Plains</strong><small>84 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/kazinga-cruise">
-        <img src="/images/gallery/kazinga-cruise/pik_6359-1100.webp" srcset="/images/gallery/kazinga-cruise/pik_6359-400.webp 400w, /images/gallery/kazinga-cruise/pik_6359-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Kazinga Channel Cruise</strong><small>141 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/kayabwe-equator">
-        <img src="/images/gallery/kayabwe-equator/pik_5289-1100.webp" srcset="/images/gallery/kayabwe-equator/pik_5289-400.webp 400w, /images/gallery/kayabwe-equator/pik_5289-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Kayabwe Equator</strong><small>96 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/tea-estates">
-        <img src="/images/gallery/tea-estates/pik_5859-1100.webp" srcset="/images/gallery/tea-estates/pik_5859-400.webp 400w, /images/gallery/tea-estates/pik_5859-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="2048" height="1365" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Tea Estates &amp; the Uganda Flag</strong><small>44 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/lake-sunset">
-        <img src="/images/gallery/lake-sunset/pik_5793-1100.webp" srcset="/images/gallery/lake-sunset/pik_5793-400.webp 400w, /images/gallery/lake-sunset/pik_5793-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Golden Hour by the Lake</strong><small>16 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/the-coaster">
-        <img src="/images/gallery/the-coaster/pik_5190-1100.webp" srcset="/images/gallery/the-coaster/pik_5190-400.webp 400w, /images/gallery/the-coaster/pik_5190-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="2048" height="1365" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>The Safari Coaster</strong><small>24 photos</small></span>
-      </a>
-      
-      <a class="photo-strip-item" href="/gallery/lake-mburo-gate">
-        <img src="/images/gallery/lake-mburo-gate/pik_5463-1100.webp" srcset="/images/gallery/lake-mburo-gate/pik_5463-400.webp 400w, /images/gallery/lake-mburo-gate/pik_5463-1100.webp 1100w" sizes="(min-width: 1024px) 25vw, 50vw" width="1365" height="2048" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%" loading="lazy" decoding="async">
-        <span class="photo-strip-caption"><strong>Lake Mburo National Park: Sanga Gate</strong><small>96 photos</small></span>
-      </a>
-      
-    </div>
-
-    <div class="text-center mt-32 reveal hide-desktop">
-      <a href="/gallery" class="btn btn-outline-dark">See all photos <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
-<section class="section" id="blog-preview" style="background: var(--surface);">
+<!-- ═══════════════ 11. FINAL CALL TO ACTION ═══════════════ -->
+<section class="hm-cta" id="cta">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <div class="hm-cta-card reveal">
       <div>
-        <div class="section-label"><i class="fa-solid fa-newspaper"></i> Safari Insights</div>
-        <h2 style="color: var(--dark);">Safari Insights &amp; Travel Tips</h2>
-      </div>
-      <a href="/blog" class="btn btn-outline-dark hide-mobile">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <div class="blog-grid reveal-grid mt-48">
-
-      
-      <article class="blog-card">
-        <a href="/blog/best-time-gorilla-trekking-uganda" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 38%" loading="lazy" decoding="async">
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> March 15, 2025</span>
-            <span class="blog-cat">Gorilla Trekking</span>
-          </div>
-          <h3 class="blog-title"><a href="/blog/best-time-gorilla-trekking-uganda">The Best Time to Go Gorilla Trekking in Uganda</a></h3>
-          <p class="blog-excerpt">Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit to Bwindi Impenetrable Forest — including permit availability tips.</p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 6 min read</span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
+        <h2>Let us craft your perfect Uganda safari</h2>
+        <p>Take advantage of our trip advisory services and let us help you create a seamless, unforgettable journey through Uganda's captivating landscapes and incredible wildlife encounters.</p>
+        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start;">
+          <a href="/contact" class="btn btn-primary btn-lg">Start planning <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/tours" class="btn btn-outline btn-lg">Browse tours</a>
         </div>
-      </article>
-      
-      <article class="blog-card">
-        <a href="/blog/uganda-packing-list-safari" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/opt/social/uganda-passport-1101.webp" srcset="/images/opt/social/uganda-passport-160.webp 160w, /images/opt/social/uganda-passport-320.webp 320w, /images/opt/social/uganda-passport-640.webp 640w, /images/opt/social/uganda-passport-1024.webp 1024w, /images/opt/social/uganda-passport-1101.webp 1101w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1101" height="1400" alt="" style="object-position:50% 58%" loading="lazy" decoding="async">
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> February 22, 2025</span>
-            <span class="blog-cat">Travel Tips</span>
-          </div>
-          <h3 class="blog-title"><a href="/blog/uganda-packing-list-safari">The Ultimate Uganda Safari Packing List</a></h3>
-          <p class="blog-excerpt">From gorilla trekking clothes to savannah game drive essentials — here is everything you need to pack for the perfect Uganda safari, from what to wear in the forest to camera gear recommendations.</p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 8 min read</span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="blog-card">
-        <a href="/blog/tree-climbing-lions-ishasha" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 42%" loading="lazy" decoding="async">
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> January 10, 2025</span>
-            <span class="blog-cat">Wildlife</span>
-          </div>
-          <h3 class="blog-title"><a href="/blog/tree-climbing-lions-ishasha">Uganda&#39;s Incredible Tree-Climbing Lions of Ishasha</a></h3>
-          <p class="blog-excerpt">One of Africa&#39;s most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park where this unique behaviour has been observed for generations.</p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 5 min read</span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </article>
-      
-    </div>
-    <div class="text-center mt-32 reveal hide-desktop">
-      <a href="/blog" class="btn btn-outline-dark">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION 11: CTA STRIP ═══════════════ -->
-<section class="cta-strip" id="cta">
-  <div class="cta-strip-content container">
-    <div class="reveal">
-      <h2>Let Us Craft Your Perfect Uganda Safari</h2>
-      <p>Take advantage of our trip advisory services and let us assist you in creating a seamless and unforgettable journey through Uganda's captivating landscapes and incredible wildlife encounters.</p>
-      <div class="flex-center gap-16 flex-wrap">
-        <a href="/contact" class="btn btn-primary btn-lg">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg">Contact Us</a>
       </div>
-      <div class="cta-contact-row">
-        <a href="tel:+256767936590" class="cta-contact-item">
-          <i class="fa-solid fa-phone"></i> +256 767 936 590
-        </a>
-        <a href="mailto:info@tripsandadventures.co.ug" class="cta-contact-item">
-          <i class="fa-solid fa-envelope"></i> info@tripsandadventures.co.ug
-        </a>
-        <a href="https://wa.me/256767936590" target="_blank" rel="noopener" class="cta-contact-item">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
-        </a>
-      </div>
+      <ul class="hm-cta-contacts">
+        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
+        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
+        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
+      </ul>
     </div>
   </div>
 </section>

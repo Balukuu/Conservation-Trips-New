@@ -1,7 +1,4 @@
 <%
-  // How wide a destination card renders (masonry: 4 / 2 / 1 columns)
-  const DEST_SIZES = '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw';
-
   // Filter tabs only for categories that actually have a featured tour, so no
   // tab leads to an empty grid. Labels keep the friendlier home-page wording.
   const tabLabels = {
@@ -88,379 +85,341 @@
   </div>
 </div>
 
-<!-- ═══════════════ SECTION 3: ABOUT INTRO ═══════════════ -->
-<section class="section" id="about-intro" style="background: var(--surface);">
-  <div class="container">
-    <div class="grid-2">
+<!-- ═══════════════════════════════════════════════════════════════
+     Everything below the hero. Styles: public/css/home.css (hm-*).
+     ═══════════════════════════════════════════════════════════════ -->
 
-      <!-- Text Left -->
-      <div class="reveal-left">
-        <div class="section-label">
-          <i class="fa-solid fa-leaf"></i> Who We Are
-        </div>
-        <h2 style="color: var(--dark); margin-bottom: 20px;">Your Prime Tour &amp; Travel Partner in Uganda</h2>
-        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
-          Since 2008, Conservation Trips and Adventures has been creating life-changing safari experiences — with a dedication to excellence, safety, and conservation at our core. As a fully-fledged travel, tourism and conservation management company, we cater for both regional and global clients.
-        </p>
-        <p style="color: var(--text-muted); margin-bottom: 28px;">
-          Uganda • Rwanda • Kenya • Tanzania — East Africa's premier safari &amp; adventure travel company, crafting unforgettable journeys that connect travellers with Africa's most extraordinary wildlife and landscapes.
-        </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-leaf"></i></div>
-            <div>
-              <div class="about-feature-title">Conservation-First</div>
-              <div class="about-feature-desc">Every trip directly contributes to Uganda's wildlife protection and local community livelihoods.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-globe"></i></div>
-            <div>
-              <div class="about-feature-title">Regional &amp; Global Clients</div>
-              <div class="about-feature-desc">Serving travellers from East Africa and across the world with tailored, premium experiences.</div>
-            </div>
-          </div>
-        </div>
-        <a href="/about" class="about-discover-link">
-          Discover Our Story <i class="fa-solid fa-arrow-right"></i>
+<!-- ═══════════════ 1. FIND YOUR KIND OF SAFARI ═══════════════ -->
+<section class="hm-section" id="experiences">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">What do you want to see?</span>
+        <h2>Find your kind of safari</h2>
+      </div>
+      <a class="hm-link" href="/tours">All safari packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
+
+    <ul class="hm-tiles reveal">
+      <% categoryTiles.forEach(t => { %>
+      <li>
+        <a class="hm-tile" href="<%= t.href %>">
+          <%- image({ src: t.image, alt: '', sizes: '(min-width: 1200px) 16vw, (min-width: 640px) 30vw, 60vw', fill: true, position: t.position }) %>
+          <span class="hm-tile-icon"><i class="fa-solid <%= t.icon %>" aria-hidden="true"></i></span>
+          <span class="hm-tile-body">
+            <strong><%= t.label %></strong>
+            <small><%= t.count %> <%= t.count === 1 ? 'tour' : 'tours' %></small>
+          </span>
         </a>
-      </div>
-
-      <!-- Images Right -->
-      <div class="reveal-right">
-        <div class="about-image-stack">
-          <div class="about-img-primary">
-            <%- image({ src: '/images/lion.jpg', sizes: '(min-width: 1024px) 30vw, 70vw', className: 'about-photo' }) %>
-          </div>
-          <div class="about-img-secondary">
-            <%- image({ src: '/images/gorilla.jpg', sizes: '(min-width: 1024px) 18vw, 40vw', className: 'about-photo' }) %>
-          </div>
-          <div class="about-years-badge">
-            <span class="badge-num">15+</span>
-            <span class="badge-text">Years of<br>Experience</span>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
+      </li>
+      <% }) %>
+    </ul>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 4: FEATURED TOURS ═══════════════ -->
-<section class="section" id="featured-tours" style="background: var(--surface-alt); position: relative;">
-  <!-- Top Wave -->
-  <div style="position: absolute; top: -1px; left: 0; right: 0; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,60 C480,0 960,60 1440,20 L1440,0 L0,0 Z" fill="#FFFFFF"/>
-    </svg>
-  </div>
-
+<!-- ═══════════════ 2. FEATURED SAFARIS ═══════════════ -->
+<section class="hm-section hm-alt" id="featured-tours">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <header class="hm-head reveal">
       <div>
-        <div class="section-label"><i class="fa-solid fa-compass"></i> Safari Packages</div>
-        <h2 style="color: var(--dark);">Handpicked Journeys Through Uganda</h2>
-        <p class="section-subtitle">Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime.</p>
+        <span class="hm-eyebrow">Safari packages</span>
+        <h2>Handpicked journeys through Uganda</h2>
+        <p>Every experience is expertly guided, sustainably operated, and crafted to create memories that last a lifetime.</p>
       </div>
-      <a href="/tours" class="btn btn-outline-dark hide-mobile">View All Tours <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
+      <a class="hm-link hide-mobile" href="/tours">View all tours <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
 
-    <!-- Filter Tabs -->
-    <div class="filter-bar reveal mt-32" role="tablist" aria-label="Filter safari packages">
+    <div class="filter-bar hm-filter reveal" role="tablist" aria-label="Filter safari packages">
       <button class="filter-tab active" type="button" data-category="All" role="tab" aria-selected="true">All Safaris</button>
       <% featuredCategories.forEach(cat => { %>
       <button class="filter-tab" type="button" data-category="<%= cat %>" role="tab" aria-selected="false"><%= tabLabels[cat] || cat %></button>
       <% }) %>
     </div>
 
-    <!-- Tours Grid -->
     <div class="tours-grid reveal-grid" id="featured-tours-grid">
       <% featuredTours.forEach(tour => { %>
         <%- include('partials/tour-card', { tour }) %>
       <% }) %>
     </div>
 
-    <div class="text-center mt-48 reveal">
-      <a href="/tours" class="btn btn-primary btn-lg">View All Safari Packages <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="text-center mt-48 reveal hide-desktop">
+      <a href="/tours" class="btn btn-primary">View all safari packages <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-  </div>
-
-  <!-- Bottom Wave -->
-  <div style="position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,0 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="#0F1F0F"/>
-    </svg>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 5: DESTINATIONS ═══════════════ -->
-<section class="section" id="destinations" style="background: var(--dark);">
-  <div class="container-wide">
-    <div class="text-center reveal mb-0" style="padding-bottom: 0;">
-      <div class="section-label light"><i class="fa-solid fa-map-location-dot"></i> Explore Africa</div>
-      <h2 style="color: #fff;">Uganda's Most Breathtaking Destinations</h2>
-      <p style="color: rgba(255,255,255,0.6); max-width: 580px; margin: 12px auto 0; font-size: 1.05rem;">
-        From Uganda's mountain gorillas to Tanzania's endless Serengeti plains — we take you to the heart of East Africa's most iconic destinations.
-      </p>
+<!-- ═══════════════ 3. WHY CONSERVATION TRIPS ═══════════════ -->
+<section class="hm-section" id="why-us">
+  <div class="container">
+    <div class="hm-split">
+      <div class="hm-collage reveal-left">
+        <div class="hm-collage-main">
+          <%- image({ src: '/images/photos/coaster-guides.webp', sizes: '(min-width: 1024px) 40vw, 90vw', fill: true }) %>
+        </div>
+        <div class="hm-collage-sub">
+          <%- image({ src: '/images/photos/equator-kayabwe-staff-ring.webp', sizes: '(min-width: 1024px) 18vw, 40vw', fill: true }) %>
+        </div>
+        <div class="hm-badge">
+          <strong>Since 2008</strong>
+          <span>Crafting journeys across East Africa</span>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <span class="hm-eyebrow">Why Conservation Trips</span>
+        <h2>Your prime tour &amp; travel partner in Uganda</h2>
+        <p class="hm-lead">
+          We are a fully-fledged travel, tourism and conservation management company, proudly local and deeply knowledgeable, serving both regional and global clients with a dedication to excellence, safety and conservation.
+        </p>
+
+        <ul class="hm-features">
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-paw" aria-hidden="true"></i></span>
+            <div><h3>Gorilla trekking experts</h3><p>Specialist permit procurement, guides with decade-long Bwindi experience, and group sizes managed for authentic encounters.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+            <div><h3>Conservation-first</h3><p>Every trip contributes directly to Uganda's conservation efforts and local community livelihoods. Travel that gives back.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-map" aria-hidden="true"></i></span>
+            <div><h3>Custom itineraries</h3><p>Tailored to your timeline, travel style, group size and budget. No two trips are the same.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-truck-monster" aria-hidden="true"></i></span>
+            <div><h3>Safari vehicles built for it</h3><p>4x4s with pop-up roofs, USB charging, cooler boxes and first-aid kits, made for comfort and wildlife viewing.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <div><h3>Licensed &amp; insured</h3><p>Registered with Uganda Tourism Board and Uganda Wildlife Authority, with rigorous safety protocols throughout.</p></div>
+          </li>
+          <li>
+            <span class="hm-feature-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
+            <div><h3>24/7 support</h3><p>A dedicated trip advisor is available from your first enquiry through to your safe return home.</p></div>
+          </li>
+        </ul>
+
+        <a class="hm-link" href="/about">Discover our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="destinations-masonry reveal-grid">
-      <!-- Tall card 1 -->
-      <div class="dest-card dest-tall">
-        <div class="dest-card-bg"><%- image({ src: '/images/gorilla.jpg', alt: '', sizes: DEST_SIZES, fill: true }) %></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Bwindi Impenetrable National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+<!-- ═══════════════ 4. DESTINATIONS ═══════════════ -->
+<section class="hm-section hm-dark" id="destinations">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Explore East Africa</span>
+        <h2>Where we take you</h2>
+        <p>From Uganda's mountain gorillas to Tanzania's endless Serengeti plains, we take you to the heart of East Africa's most iconic destinations.</p>
       </div>
+      <a class="hm-link" href="/destinations">All destinations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
 
-      <!-- Tall card 2 -->
-      <div class="dest-card dest-tall">
-        <div class="dest-card-bg"><%- image({ src: '/images/lion.jpg', alt: '', sizes: DEST_SIZES, fill: true }) %></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
-          <div class="dest-card-name">Queen Elizabeth National Park</div>
-          <a href="/destinations/uganda" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <!-- Normal cards -->
-      <% const normalDests = [
-        { name: 'Kibale Forest National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/safari.jpg', href: '/destinations/uganda' },
-        { name: 'Murchison Falls National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/waterfall.jpg', href: '/destinations/uganda' },
-        { name: 'Serengeti — Tanzania', region: 'TANZANIA', flag: 'fi-tz', img: '/images/safari.jpg', href: '/destinations/tanzania' },
-        { name: 'Rwanda — Land of Gorillas', region: 'RWANDA', flag: 'fi-rw', img: '/images/gorilla.jpg', href: '/destinations/rwanda' }
-      ]; %>
-      <% normalDests.forEach(d => { %>
-      <div class="dest-card dest-normal">
-        <div class="dest-card-bg"><%- image({ src: d.img, alt: '', sizes: DEST_SIZES, fill: true }) %></div>
-        <div class="dest-card-overlay"></div>
-        <div class="dest-card-content">
-          <div class="dest-card-region"><span class="fi <%= d.flag %>"></span> <%= d.region %></div>
-          <div class="dest-card-name"><%= d.name %></div>
-          <a href="<%= d.href %>" class="dest-card-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
+    <div class="hm-countries reveal-grid">
+      <% countries.forEach((c, i) => { %>
+      <a class="hm-country<%= i === 0 ? ' hm-country--lead' : '' %>" href="/destinations/<%= c.slug %>">
+        <%- image({ src: c.image, alt: '', sizes: i === 0 ? '(min-width: 1024px) 45vw, 100vw' : '(min-width: 1024px) 28vw, 100vw', fill: true }) %>
+        <span class="hm-country-body">
+          <small><%= c.subtitle %></small>
+          <strong><%= c.name %></strong>
+          <% if (i === 0) { %>
+          <span class="hm-chips">
+            <% ugandaParks.forEach(p => { %><span><%= p.name.replace(/ (Impenetrable )?(Forest )?National Park$/, '').replace(/ Valley$/, '') %></span><% }) %>
+          </span>
+          <% } %>
+          <span class="hm-country-meta"><%= c.tourCount %> <%= c.tourCount === 1 ? 'tour' : 'tours' %> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </a>
       <% }) %>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 5. FROM OUR OWN JOURNEYS (photo bento) ═══════════════ -->
+<section class="hm-section" id="moments">
+  <div class="container-wide">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Photographed on our own journeys</span>
+        <h2>Stand on the Equator, meet the plains</h2>
+        <p>The Equator runs straight through Uganda and is an easy stop on the road to the western parks. Here are a few frames from the road.</p>
+      </div>
+      <a class="hm-link" href="/gallery">Open the gallery <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
+
+    <div class="hm-bento reveal-grid">
+      <% moments.forEach(m => { %>
+      <a class="hm-bento-item hm-bento-item--<%= m.shape %>" href="<%= m.href %>">
+        <%- image({ src: m.src, alt: '', sizes: m.shape === 'feature' || m.shape === 'wide' ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw', fill: true }) %>
+        <span class="hm-bento-caption"><%= m.caption %></span>
+      </a>
+      <% }) %>
+      <a class="hm-bento-cta" href="/gallery">
+        <strong><%= photoTotal %></strong>
+        <span>photographs from our own trips, in albums</span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 6. HOW IT WORKS ═══════════════ -->
+<section class="hm-section hm-alt" id="how-it-works">
+  <div class="container">
+    <header class="hm-head hm-head--center reveal">
+      <div>
+        <span class="hm-eyebrow">Planning your safari</span>
+        <h2>From first enquiry to safe return</h2>
+      </div>
+    </header>
+
+    <ol class="hm-steps reveal-grid">
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">1</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
+        <h3>Tell us your dream</h3>
+        <p>Send an enquiry in three quick steps: what you'd like to see, when, and who is travelling. No payment is needed at this stage.</p>
+      </li>
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">2</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-route" aria-hidden="true"></i></span>
+        <h3>Get a personalised itinerary</h3>
+        <p>We reply within 24 hours with an itinerary and quote shaped around your dates, interests and budget.</p>
+      </li>
+      <li class="hm-step">
+        <span class="hm-step-num" aria-hidden="true">3</span>
+        <span class="hm-step-icon"><i class="fa-solid fa-suitcase-rolling" aria-hidden="true"></i></span>
+        <h3>We handle the details</h3>
+        <p>Permits, vehicles, lodges and guides are arranged for you, and your trip advisor is on hand until you are safely home.</p>
+      </li>
+    </ol>
 
     <div class="text-center mt-48 reveal">
-      <a href="/destinations" class="btn btn-outline btn-lg">View All Destinations <i class="fa-solid fa-globe"></i></a>
+      <a href="/contact" class="btn btn-primary btn-lg">Start your enquiry <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ SECTION 5b: THE EQUATOR ═══════════════ -->
-<section class="section" id="equator" style="background: var(--surface-alt);">
+<!-- ═══════════════ 7. TRAVELLER REVIEWS ═══════════════ -->
+<section class="hm-section" id="testimonials">
   <div class="container">
-    <div class="grid-2">
-
-      <!-- Photos -->
-      <div class="reveal-left">
-        <div class="about-image-stack">
-          <div class="about-img-primary">
-            <%- image({ src: '/images/photos/equator-kikorongo-globe.webp', sizes: '(min-width: 1024px) 30vw, 70vw', fill: true }) %>
-          </div>
-          <div class="about-img-secondary">
-            <%- image({ src: '/images/photos/equator-kayabwe-ring.webp', sizes: '(min-width: 1024px) 18vw, 40vw', fill: true }) %>
-          </div>
+    <div class="hm-reviews">
+      <div class="hm-reviews-intro reveal-left">
+        <span class="hm-eyebrow">Traveller reviews</span>
+        <h2>What our travellers say</h2>
+        <% if (rating.count) { %>
+        <div class="hm-rating">
+          <span class="hm-rating-score"><%= rating.average.toFixed(1) %></span>
+          <span class="hm-rating-detail">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <small>average from <%= rating.count %> traveller reviews</small>
+          </span>
         </div>
+        <% } %>
       </div>
 
-      <!-- Text -->
-      <div class="reveal-right">
-        <div class="section-label"><i class="fa-solid fa-globe"></i> Cross the Equator</div>
-        <h2 style="color: var(--dark); margin-bottom: 20px;">Stand on the Equator, One Foot in Each Hemisphere</h2>
-        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
-          The Equator runs straight through Uganda, and it is easy to include on a safari. Two monuments make natural stops on the road to the western parks, and we build the time for photographs into your route.
-        </p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-circle-notch"></i></div>
-            <div>
-              <div class="about-feature-title">Kayabwe</div>
-              <div class="about-feature-desc">The white ring on the Kampala&ndash;Masaka road: the classic stop on the way to Lake Mburo, Lake Bunyonyi and Bwindi.</div>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"><i class="fa-solid fa-earth-africa"></i></div>
-            <div>
-              <div class="about-feature-title">Kikorongo</div>
-              <div class="about-feature-desc">The mirror-steel globe beside Queen Elizabeth National Park, on the road to Kasese, the Rwenzoris and the Kazinga Channel.</div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start; margin-top:32px;">
-          <a href="/gallery#equator" class="btn btn-green">See the Equator photos <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="/contact" class="btn btn-outline-dark">Add it to my safari</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION 6: WHY CHOOSE US ═══════════════ -->
-<section class="section" id="why-us" style="background: var(--surface);">
-  <!-- Top Wave -->
-  <div style="margin-top: -1px; line-height: 0;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%;">
-      <path d="M0,60 C360,10 720,50 1080,20 C1260,8 1380,30 1440,60 L1440,0 L0,0 Z" fill="#0F1F0F"/>
-    </svg>
-  </div>
-  <div class="container">
-    <div class="text-center reveal mb-48">
-      <div class="section-label"><i class="fa-solid fa-star"></i> Why Choose Us</div>
-      <h2 style="color: var(--dark);">Safari Excellence, Every Step of the Way</h2>
-    </div>
-
-    <div class="why-us-grid">
-      <!-- Left Column -->
-      <div class="why-us-col reveal-left">
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-paw"></i></div>
-          <div>
-            <div class="why-us-title">Gorilla Trekking Experts</div>
-            <div class="why-us-desc">Specialist gorilla permit procurement, expert guides with decade-long Bwindi experience, and group sizes carefully managed for authentic encounters.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-leaf"></i></div>
-          <div>
-            <div class="why-us-title">Conservation-First Tourism</div>
-            <div class="why-us-desc">Every trip we organise contributes directly to Uganda's conservation efforts and local community livelihoods. Travel that gives back.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-map"></i></div>
-          <div>
-            <div class="why-us-title">Custom Itineraries</div>
-            <div class="why-us-desc">Your journey, your way. Every safari is tailored to your timeline, travel style, group size, and budget — no two trips are the same.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Centre photograph -->
-      <div class="why-us-center-img reveal-scale">
-        <figure class="why-us-photo">
-          <%- image({ src: '/images/gorilla.jpg', sizes: '(min-width: 1024px) 30vw, 90vw' }) %>
-          <figcaption>Bwindi Impenetrable Forest</figcaption>
-        </figure>
-      </div>
-
-      <!-- Right Column -->
-      <div class="why-us-col why-us-right reveal-right">
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-truck-monster"></i></div>
-          <div>
-            <div class="why-us-title">Exclusive Safari Vehicles</div>
-            <div class="why-us-desc">Custom 4x4 safari vehicles with pop-up roofs, USB charging, cooler boxes, and first-aid kits — built for comfort and wildlife viewing.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
-          <div>
-            <div class="why-us-title">Licensed &amp; Insured</div>
-            <div class="why-us-desc">Fully registered with Uganda Tourism Board and Uganda Wildlife Authority. Your safety is our top priority with rigorous protocols throughout.</div>
-          </div>
-        </div>
-        <div class="why-us-item">
-          <div class="why-us-icon-wrap"><i class="fa-solid fa-headset"></i></div>
-          <div>
-            <div class="why-us-title">24/7 Dedicated Support</div>
-            <div class="why-us-desc">Your dedicated trip advisor is available throughout your journey — from first enquiry through to your safe return home.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION 7: TESTIMONIALS ═══════════════ -->
-<section class="section" id="testimonials" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--sky) 100%); padding-top: 80px; padding-bottom: 80px;">
-  <div class="container">
-    <div class="text-center reveal mb-48">
-      <div class="section-label light"><i class="fa-solid fa-star"></i> Testimonials</div>
-      <h2 style="color: #fff;">What Our Travellers Say</h2>
-    </div>
-
-    <div class="testimonial-slider reveal" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
-      <div class="testimonial-track" tabindex="0">
-        <% testimonials.forEach(t => { %>
-          <%- include('partials/testimonial-card', { testimonial: t }) %>
-        <% }) %>
-      </div>
-
-      <div class="testimonial-nav">
-        <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="test-dots">
-          <% testimonials.forEach((_, i) => { %>
-          <button class="test-dot <%= i === 0 ? 'active' : '' %>" type="button" aria-label="Testimonial <%= i + 1 %>" aria-current="<%= i === 0 ? 'true' : 'false' %>"></button>
+      <div class="testimonial-slider reveal-right" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
+        <div class="testimonial-track" tabindex="0">
+          <% testimonials.forEach(t => { %>
+            <%- include('partials/testimonial-card', { testimonial: t }) %>
           <% }) %>
         </div>
-        <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
-        <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════ SECTION 8: CONSERVATION ═══════════════ -->
-<section class="conservation-section" id="conservation">
-  <div class="container">
-    <div class="grid-2">
-      <div class="reveal-left">
-        <div class="section-label light"><i class="fa-solid fa-leaf"></i> Our Commitment</div>
-        <h2 style="color: #fff; margin-bottom: 20px;">Travel That Gives Back</h2>
-        <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px;">
-          Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.
-        </p>
-        <div class="conservation-stats">
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="1000" data-suffix="+">1,000+</div>
-            <div class="stat-label">Gorillas Protected</div>
+        <div class="testimonial-nav">
+          <button class="test-arrow test-prev" type="button" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+          <div class="test-dots">
+            <% testimonials.forEach((_, i) => { %>
+            <button class="test-dot <%= i === 0 ? 'active' : '' %>" type="button" aria-label="Testimonial <%= i + 1 %>" aria-current="<%= i === 0 ? 'true' : 'false' %>"></button>
+            <% }) %>
           </div>
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="200" data-suffix="+">200+</div>
-            <div class="stat-label">Local Jobs Created</div>
-          </div>
-          <div class="conservation-stat">
-            <div class="stat-number" data-count="10" data-suffix="%">10%</div>
-            <div class="stat-label">Revenue to Conservation</div>
-          </div>
+          <button class="test-arrow test-next" type="button" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+          <button class="test-pause" type="button" aria-label="Pause testimonials" aria-pressed="false"><i class="fa-solid fa-pause"></i></button>
         </div>
-        <a href="/about" class="btn btn-outline mt-32">Our Conservation Pledge <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="conservation-img-wrap reveal-right">
-        <figure class="conservation-photo">
-          <%- image({ src: '/images/safari.jpg', sizes: '(min-width: 1024px) 45vw, 90vw' }) %>
-        </figure>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ 8. CONSERVATION ═══════════════ -->
+<section class="hm-conservation" id="conservation">
+  <div class="container">
+    <div class="hm-conservation-grid">
+      <div class="reveal-left">
+        <span class="hm-eyebrow">Our commitment</span>
+        <h2>Travel that gives back</h2>
+        <p>Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.</p>
 
+        <dl class="hm-stats">
+          <div>
+            <dt>Gorillas protected</dt>
+            <dd class="stat-number" data-count="1000" data-suffix="+">1,000+</dd>
+          </div>
+          <div>
+            <dt>Local jobs created</dt>
+            <dd class="stat-number" data-count="200" data-suffix="+">200+</dd>
+          </div>
+          <div>
+            <dt>Revenue to conservation</dt>
+            <dd class="stat-number" data-count="10" data-suffix="%">10%</dd>
+          </div>
+        </dl>
+
+        <a href="/about" class="btn btn-outline">Our conservation pledge <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <figure class="hm-conservation-photo reveal-right">
+        <%- image({ src: '/images/safari.jpg', sizes: '(min-width: 1024px) 40vw, 90vw', fill: true }) %>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 9. FROM THE BLOG ═══════════════ -->
+<section class="hm-section" id="blog-preview">
+  <div class="container">
+    <header class="hm-head reveal">
+      <div>
+        <span class="hm-eyebrow">Safari insights</span>
+        <h2>Guides &amp; travel tips</h2>
+      </div>
+      <a class="hm-link" href="/blog">All articles <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </header>
+
+    <div class="hm-posts reveal-grid">
+      <% latestPosts.forEach((post, i) => { %>
+      <article class="hm-post<%= i === 0 ? ' hm-post--lead' : '' %>">
+        <div class="hm-post-img">
+          <%- image({ src: post.image, alt: '', sizes: i === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 18vw, 40vw', fill: true }) %>
+        </div>
+        <div class="hm-post-body">
+          <div class="hm-post-meta"><span class="hm-post-cat"><%= post.category %></span><span><%= post.readTime %></span></div>
+          <h3><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
+          <p><%= post.excerpt %></p>
+          <time><%= post.date %></time>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════ SECTION 9: FROM OUR FEED ═══════════════
      Static cards (no third-party script): photos are served from /images/social and each
      card links out to the original post on X. Data lives in data/social.json. -->
 <% const socialPosts = (typeof social !== 'undefined' && social && social.posts) ? social.posts : []; %>
 <% if (socialPosts.length) { %>
-<section class="section" id="social" style="background: var(--surface-alt);">
+<section class="hm-section hm-alt" id="social">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <header class="hm-head reveal">
       <div>
-        <div class="section-label"><i class="fa-brands fa-x-twitter"></i> Follow the Adventure</div>
-        <h2 style="color: var(--dark);">Moments From the Field</h2>
-        <p class="section-subtitle">Mountains, rivers and wildlife — shared on X as <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="text-link">@<%= social.handle %></a>.</p>
+        <span class="hm-eyebrow">Follow the adventure</span>
+        <h2>Moments from the field</h2>
+        <p>Mountains, rivers and wildlife, shared on X as <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="text-link">@<%= social.handle %></a>.</p>
       </div>
-      <a href="<%= social.profileUrl %>" target="_blank" rel="noopener" class="btn btn-outline-dark hide-mobile">Follow on X <i class="fa-brands fa-x-twitter"></i></a>
-    </div>
+      <a class="hm-link hide-mobile" href="<%= social.profileUrl %>" target="_blank" rel="noopener">Follow on X <i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+    </header>
 
     <div class="social-grid reveal-grid">
       <% socialPosts.forEach(post => {
@@ -509,94 +468,23 @@
 </section>
 <% } %>
 
-<!-- ═══════════════ SECTION 9b: FROM THE ROAD ═══════════════ -->
-<% if (typeof photoStrip !== 'undefined' && photoStrip.length) { %>
-<section class="section" id="photos" style="background: var(--surface);">
-  <div class="container-wide">
-    <div class="tours-section-header reveal">
-      <div>
-        <div class="section-label"><i class="fa-solid fa-camera"></i> From the Road</div>
-        <h2 style="color: var(--dark);">Photographed on Our Own Journeys</h2>
-        <p class="section-subtitle">Equator monuments, plains game and golden hours on the Kazinga Channel: every picture here was taken on a Conservation Trips journey.</p>
-      </div>
-      <a href="/gallery" class="btn btn-outline-dark hide-mobile">See all photos <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-
-    <div class="photo-strip reveal-grid">
-      <% photoStrip.forEach((p, i) => { %>
-      <a class="photo-strip-item<%= i === 0 ? ' photo-strip-item--feature' : '' %>" href="<%= p.href %>">
-        <%- image({ src: p.src, alt: '', sizes: i === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw', fill: true }) %>
-        <span class="photo-strip-caption"><strong><%= p.title %></strong><small><%= p.count %> photos</small></span>
-      </a>
-      <% }) %>
-    </div>
-
-    <div class="text-center mt-32 reveal hide-desktop">
-      <a href="/gallery" class="btn btn-outline-dark">See all photos <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-<% } %>
-
-<!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
-<section class="section" id="blog-preview" style="background: var(--surface);">
+<!-- ═══════════════ 11. FINAL CALL TO ACTION ═══════════════ -->
+<section class="hm-cta" id="cta">
   <div class="container">
-    <div class="tours-section-header reveal">
+    <div class="hm-cta-card reveal">
       <div>
-        <div class="section-label"><i class="fa-solid fa-newspaper"></i> Safari Insights</div>
-        <h2 style="color: var(--dark);">Safari Insights &amp; Travel Tips</h2>
-      </div>
-      <a href="/blog" class="btn btn-outline-dark hide-mobile">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <div class="blog-grid reveal-grid mt-48">
-
-      <% latestPosts.forEach(post => { %>
-      <article class="blog-card">
-        <a href="/blog/<%= post.slug %>" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <%- image({ src: post.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: post.imagePosition }) %>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> <%= post.date %></span>
-            <span class="blog-cat"><%= post.category %></span>
-          </div>
-          <h3 class="blog-title"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h3>
-          <p class="blog-excerpt"><%= post.excerpt %></p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> <%= post.readTime %></span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
+        <h2>Let us craft your perfect Uganda safari</h2>
+        <p>Take advantage of our trip advisory services and let us help you create a seamless, unforgettable journey through Uganda's captivating landscapes and incredible wildlife encounters.</p>
+        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start;">
+          <a href="/contact" class="btn btn-primary btn-lg">Start planning <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/tours" class="btn btn-outline btn-lg">Browse tours</a>
         </div>
-      </article>
-      <% }) %>
-    </div>
-    <div class="text-center mt-32 reveal hide-desktop">
-      <a href="/blog" class="btn btn-outline-dark">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ SECTION 11: CTA STRIP ═══════════════ -->
-<section class="cta-strip" id="cta">
-  <div class="cta-strip-content container">
-    <div class="reveal">
-      <h2>Let Us Craft Your Perfect Uganda Safari</h2>
-      <p>Take advantage of our trip advisory services and let us assist you in creating a seamless and unforgettable journey through Uganda's captivating landscapes and incredible wildlife encounters.</p>
-      <div class="flex-center gap-16 flex-wrap">
-        <a href="/contact" class="btn btn-primary btn-lg">Start Planning <i class="fa-solid fa-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline btn-lg">Contact Us</a>
       </div>
-      <div class="cta-contact-row">
-        <a href="tel:+256767936590" class="cta-contact-item">
-          <i class="fa-solid fa-phone"></i> +256 767 936 590
-        </a>
-        <a href="mailto:info@tripsandadventures.co.ug" class="cta-contact-item">
-          <i class="fa-solid fa-envelope"></i> info@tripsandadventures.co.ug
-        </a>
-        <a href="https://wa.me/256767936590" target="_blank" rel="noopener" class="cta-contact-item">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
-        </a>
-      </div>
+      <ul class="hm-cta-contacts">
+        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
+        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
+        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
+      </ul>
     </div>
   </div>
 </section>

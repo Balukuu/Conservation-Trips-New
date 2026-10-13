@@ -121,7 +121,7 @@ html.no-scroll, html.no-scroll body { overflow: hidden; }
 h1, h2, h3, h4, .h1, .h2, .h3, .display, .slide-title { text-wrap: balance; }
 p, li, blockquote { text-wrap: pretty; }
 /* Numbers that count up / sit in columns must not jitter */
-.stat-number, .badge-num { font-variant-numeric: lining-nums tabular-nums; }
+.stat-number { font-variant-numeric: lining-nums tabular-nums; }
 img { max-width: 100%; height: auto; display: block; }
 img[loading="lazy"] { background-color: var(--primary-light); }
 a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
@@ -137,10 +137,7 @@ a, button, input, select, textarea, label, summary, [role="button"], [role="radi
 
 /* Keyboard focus: visible everywhere, gold on dark surfaces */
 :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
-.navbar :focus-visible, .mobile-menu :focus-visible, .hero-slider :focus-visible,
-.footer :focus-visible, .cta-strip :focus-visible, .conservation-section :focus-visible,
-.cookie-banner :focus-visible, .lightbox-overlay :focus-visible, .page-hero :focus-visible,
-.availability-toast :focus-visible, #testimonials :focus-visible, .td-hero :focus-visible {
+.navbar :focus-visible, .mobile-menu :focus-visible, .hero-slider :focus-visible, .footer :focus-visible, .cta-strip :focus-visible, .cookie-banner :focus-visible, .lightbox-overlay :focus-visible, .page-hero :focus-visible, .availability-toast :focus-visible, #testimonials :focus-visible, .td-hero :focus-visible {
   outline-color: var(--accent);
 }
 
