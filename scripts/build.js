@@ -168,6 +168,7 @@ function build() {
   renderPage('blog', 'blog/index.html', pages.blogIndex());
   renderPage('destinations', 'destinations/index.html', pages.destinationsIndex());
   renderPage('experiences', 'experiences/index.html', pages.experiences());
+  renderPage('gallery', 'gallery/index.html', pages.gallery());
   renderPage('privacy', 'privacy/index.html', pages.privacy());
   renderPage('terms', 'terms/index.html', pages.terms());
   renderPage('404', '404.html', pages.notFound());

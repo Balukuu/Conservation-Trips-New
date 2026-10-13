@@ -357,5 +357,667 @@
         "url": "/images/opt/team/biira-bella-640.webp"
       }
     ]
+  },
+  "/images/photos/equator-kikorongo-wide.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kikorongo-wide-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kikorongo-wide-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kikorongo-wide-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kikorongo-wide-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/equator-kikorongo-wide-1600.webp"
+      },
+      {
+        "w": 2048,
+        "url": "/images/opt/photos/equator-kikorongo-wide-2048.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kikorongo-wide.jpg"
+  },
+  "/images/photos/equator-kikorongo-letters.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kikorongo-letters-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kikorongo-letters-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kikorongo-letters-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kikorongo-letters-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/equator-kikorongo-letters-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kikorongo-letters.jpg"
+  },
+  "/images/photos/equator-kikorongo-globe.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kikorongo-globe-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kikorongo-globe-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kikorongo-globe-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kikorongo-globe-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kikorongo-globe.jpg"
+  },
+  "/images/photos/equator-kikorongo-globe-sign.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kikorongo-globe-sign-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kikorongo-globe-sign-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kikorongo-globe-sign-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kikorongo-globe-sign-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kikorongo-globe-sign.jpg"
+  },
+  "/images/photos/equator-kikorongo-marker.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kikorongo-marker-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kikorongo-marker-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kikorongo-marker-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kikorongo-marker-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kikorongo-marker.jpg"
+  },
+  "/images/photos/equator-kayabwe-staff-ring.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kayabwe-staff-ring-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kayabwe-staff-ring-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kayabwe-staff-ring-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kayabwe-staff-ring-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kayabwe-staff-ring.jpg"
+  },
+  "/images/photos/equator-kayabwe-ring.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/equator-kayabwe-ring-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/equator-kayabwe-ring-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/equator-kayabwe-ring-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/equator-kayabwe-ring-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/equator-kayabwe-ring.jpg"
+  },
+  "/images/photos/lake-mburo-zebras.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-zebras-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-zebras-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-zebras-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-zebras-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/lake-mburo-zebras-1600.webp"
+      },
+      {
+        "w": 2048,
+        "url": "/images/opt/photos/lake-mburo-zebras-2048.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-zebras.jpg"
+  },
+  "/images/photos/lake-mburo-zebras-acacia.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-zebras-acacia-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-zebras-acacia-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-zebras-acacia-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-zebras-acacia-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/lake-mburo-zebras-acacia-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-zebras-acacia.jpg"
+  },
+  "/images/photos/lake-mburo-zebras-portrait.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-zebras-portrait-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-zebras-portrait-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-zebras-portrait-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-zebras-portrait-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-zebras-portrait.jpg"
+  },
+  "/images/photos/lake-mburo-impala.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-impala-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-impala-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-impala-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-impala-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-impala.jpg"
+  },
+  "/images/photos/lake-mburo-impala-herd.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-impala-herd-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-impala-herd-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-impala-herd-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-impala-herd-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/lake-mburo-impala-herd-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-impala-herd.jpg"
+  },
+  "/images/photos/lake-mburo-buffalo.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-mburo-buffalo-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-mburo-buffalo-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-mburo-buffalo-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-mburo-buffalo-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/lake-mburo-buffalo-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-mburo-buffalo.jpg"
+  },
+  "/images/photos/kazinga-elephant.webp": {
+    "width": 2048,
+    "height": 1367,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/kazinga-elephant-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/kazinga-elephant-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/kazinga-elephant-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/kazinga-elephant-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/kazinga-elephant-1600.webp"
+      },
+      {
+        "w": 2048,
+        "url": "/images/opt/photos/kazinga-elephant-2048.webp"
+      }
+    ],
+    "og": "/images/og/photos/kazinga-elephant.jpg"
+  },
+  "/images/photos/kazinga-hippos.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/kazinga-hippos-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/kazinga-hippos-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/kazinga-hippos-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/kazinga-hippos-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/kazinga-hippos.jpg"
+  },
+  "/images/photos/kazinga-hippos-surfacing.webp": {
+    "width": 2048,
+    "height": 1151,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/kazinga-hippos-surfacing-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/kazinga-hippos-surfacing-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/kazinga-hippos-surfacing-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/kazinga-hippos-surfacing-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/kazinga-hippos-surfacing-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/kazinga-hippos-surfacing.jpg"
+  },
+  "/images/photos/kazinga-sunset.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/kazinga-sunset-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/kazinga-sunset-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/kazinga-sunset-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/kazinga-sunset-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/kazinga-sunset-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/kazinga-sunset.jpg"
+  },
+  "/images/photos/lake-sunset-silhouette.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-sunset-silhouette-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-sunset-silhouette-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-sunset-silhouette-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-sunset-silhouette-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-sunset-silhouette.jpg"
+  },
+  "/images/photos/lake-sunset-heart.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/lake-sunset-heart-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/lake-sunset-heart-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/lake-sunset-heart-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/lake-sunset-heart-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/lake-sunset-heart.jpg"
+  },
+  "/images/photos/coaster-guide-door.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/coaster-guide-door-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/coaster-guide-door-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/coaster-guide-door-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/coaster-guide-door-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/coaster-guide-door-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/coaster-guide-door.jpg"
+  },
+  "/images/photos/coaster-guides.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/coaster-guides-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/coaster-guides-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/coaster-guides-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/coaster-guides-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/coaster-guides-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/coaster-guides.jpg"
+  },
+  "/images/photos/safari-4x4-lineup.webp": {
+    "width": 2048,
+    "height": 1367,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/safari-4x4-lineup-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/safari-4x4-lineup-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/safari-4x4-lineup-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/safari-4x4-lineup-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/safari-4x4-lineup-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/safari-4x4-lineup.jpg"
+  },
+  "/images/photos/tea-estate-sign.webp": {
+    "width": 2048,
+    "height": 1365,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/tea-estate-sign-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/tea-estate-sign-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/tea-estate-sign-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/tea-estate-sign-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/photos/tea-estate-sign-1600.webp"
+      }
+    ],
+    "og": "/images/og/photos/tea-estate-sign.jpg"
+  },
+  "/images/photos/western-uganda-road.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/western-uganda-road-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/western-uganda-road-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/western-uganda-road-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/western-uganda-road-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/western-uganda-road.jpg"
+  },
+  "/images/photos/guide-portrait.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/guide-portrait-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/guide-portrait-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/guide-portrait-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/guide-portrait-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/guide-portrait.jpg"
+  },
+  "/images/photos/guides-trio-track.webp": {
+    "width": 1365,
+    "height": 2048,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/photos/guides-trio-track-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/photos/guides-trio-track-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/photos/guides-trio-track-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/photos/guides-trio-track-1024.webp"
+      }
+    ],
+    "og": "/images/og/photos/guides-trio-track.jpg"
   }
 }

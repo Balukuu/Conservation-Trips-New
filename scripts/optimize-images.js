@@ -4,7 +4,7 @@
  * npm run images
  *
  * Reads data/images.json (the list of photos the site uses) and writes:
- *   public/images/opt/…-<w>.webp   responsive WebP sizes, never upscaled
+ *   public/images/opt/…-<w>.webp   responsive WebP sizes (up to 2048 px), never upscaled
  *   public/images/og/….jpg         1200×630 social-share crops (focal point honoured)
  *   public/images/icons/…          favicon + touch icon from the logo
  *   data/image-manifest.json       intrinsic size + variant list, read by lib/images.js
@@ -21,11 +21,19 @@ const ROOT = path.join(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
 const registry = require('../data/images.json');
 
-const WIDTHS = [160, 320, 640, 1024, 1600];
+const WIDTHS = [160, 320, 640, 1024, 1600, 2048];
 const WEBP = { quality: 72, effort: 6 };
 const OG = { width: 1200, height: 630 };
 
-const read = src => path.join(PUBLIC, src);
+// Where a registered photo's original lives: public/ for the long-standing images,
+// source-images/ for photos that are only ever served as generated variants.
+const SOURCES = path.join(ROOT, 'source-images');
+const sourceFile = src => {
+  const inPublic = path.join(PUBLIC, src);
+  if (fs.existsSync(inPublic)) return inPublic;
+  return path.join(SOURCES, src.replace(/^\/images\//, ''));
+};
+const read = src => path.join(PUBLIC, src); // outputs always go under public/
 const write = async (file, pipeline) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   await pipeline.toFile(file);
@@ -57,8 +65,8 @@ async function main() {
 
   for (const [src, cfg] of Object.entries(registry)) {
     if (!src.startsWith('/')) continue; // "_readme"
-    const file = read(src);
-    if (!fs.existsSync(file)) throw new Error(`data/images.json lists ${src}, which is not in public/`);
+    const file = sourceFile(src);
+    if (!fs.existsSync(file)) throw new Error(`data/images.json lists ${src}, which is in neither public/ nor source-images/`);
 
     const meta = await sharp(file).rotate().metadata();
     const stem = src.replace(/^\/images\//, '').replace(/\.[^.]+$/, '');
@@ -87,7 +95,7 @@ async function main() {
   }
 
   // Favicons from the logo: padded onto white so the round emblem isn't clipped.
-  const logo = read('/images/logonew.jpeg');
+  const logo = sourceFile('/images/logonew.jpeg');
   for (const [name, size] of [['favicon-32.png', 32], ['favicon-192.png', 192], ['apple-touch-icon.png', 180]]) {
     const inner = Math.round(size * 0.92);
     const mark = await sharp(logo).resize(inner, inner, { fit: 'contain', background: '#ffffff' }).toBuffer();

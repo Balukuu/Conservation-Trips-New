@@ -37,8 +37,32 @@ crops), `public/images/icons/*` (favicons from the logo) and `data/image-manifes
 committed, so CI and production don't need `sharp`. The build fails if a rendered image isn't registered, or a
 tour's gallery repeats a photo.
 
-- Source photos are 1024 px wide at most, so full-bleed heroes are upscaled on large screens. Higher-resolution
-  originals would sharpen them; drop them in, run `npm run images`.
+- The five long-standing hero photos are 1024 px wide at most, so full-bleed heroes made from them are upscaled
+  on large screens. The photos in `source-images/photos/` are 2048 px and don't have that problem.
+
+### Photo library (`tRIPS` -> `tRIPS-web` -> site)
+
+`../tRIPS/` (outside this repo) holds the original shoots: `TOUR` (1,300 JPG + CR3, Canon EOS R, 9-10 Dec 2024:
+the staff trip from Kampala via the Kayabwe equator, Lake Mburo, the tea estates, Kikorongo equator and the
+Kazinga Channel) and `WILDLIFE PHOTOS` (293 NEF, Nikon D800, 20 Apr 2025: a guest trip around Queen Elizabeth NP).
+
+`../tRIPS-web/` has **every usable frame converted to web format** (WebP q85, longest edge 2048 px, orientation
+applied, EXIF/GPS stripped; 1,592 files, ~390 MB, originals untouched). It is deliberately *not* in the repo.
+Two source files are corrupt and were skipped (`TOUR/doreen4.jpg`, `ABZ_0768.NEF`).
+
+The site uses a curated 26 of them. To add another: copy it from `tRIPS-web/` to `source-images/photos/<name>.webp`,
+add an entry (alt text, focal point, `maxWidth`) to `data/images.json` under `/images/photos/<name>.webp`, run
+`npm run images`, then reference it with `image({ src: '/images/photos/<name>.webp', … })`. `source-images/` is
+never served; only the generated sizes in `public/images/opt/` are.
+
+Where they are used: `/gallery` (all 26, five sections from `data/gallery.json`), home hero (Lake Mburo, Kikorongo
+Equator) and the new Equator section, the Boat Cruise / Queen Elizabeth / circuit / western / Bunyonyi / Rwenzori
+tour galleries, the Lake Mburo park card, the Boat Cruises, Equator and Honeymoon experiences, and the About page.
+
+**Before publishing, please check consent.** Most frames are people. The selection favours scenery, wildlife and
+the company's own uniformed guides, and uses only three frames from the guest trip (an elephant, hippos and a
+line-up of 4x4s, with no identifiable guests). The wider `tRIPS-web/wildlife-photos/` set contains families and
+children: don't use those without the guests' permission.
 - Testimonials show initials unless a `photo` is supplied in `data/testimonials.json`.
 - Prices are not shown anywhere on the site (`price` / `priceUSD` remain in `data/tours.json` but nothing renders them).
 
@@ -48,7 +72,7 @@ Every page has one address, and variants redirect (301) to it:
 
 | Page | URL |
 | --- | --- |
-| Section pages | `/tours`, `/blog`, `/destinations`, `/about`, … (no `.html`) |
+| Section pages | `/tours`, `/blog`, `/destinations`, `/experiences`, `/gallery`, `/about`, … (no `.html`) |
 | Detail pages | `/tours/<slug>`, `/blog/<slug>`, `/destinations/<country>` |
 | Category listings | `/tours/category/gorilla-trekking`, `/blog/category/travel-tips` (slug of the category name) |
 

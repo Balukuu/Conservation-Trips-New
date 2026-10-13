@@ -1179,3 +1179,44 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
 .social-link:focus-visible::after { outline: 3px solid var(--primary); outline-offset: -3px; border-radius: var(--radius-md); }
 .social-link i { font-size: 0.7rem; transition: transform 0.25s var(--ease-out); }
 .social-card:hover .social-link i { transform: translate(2px, -2px); }
+
+/* ============================================================
+   GALLERY PAGE
+   Dense grid: wide photos take 2 columns x 2 rows, portrait photos 1 x 2,
+   everything else 1 x 1, so mixed orientations tile without gaps.
+   ============================================================ */
+.gallery-section { margin-bottom: 72px; scroll-margin-top: calc(var(--nav-height) + 24px); }
+.gallery-section:last-child { margin-bottom: 0; }
+.gallery-section-head { margin-bottom: 28px; }
+.gallery-section-head .section-subtitle { max-width: 640px; }
+
+.gallery-grid--page {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 240px;
+  grid-auto-flow: dense;
+  gap: 14px;
+}
+.gallery-grid--page .gallery-item { aspect-ratio: auto; }
+.gallery-grid--page .gallery-item--wide { grid-column: span 2; grid-row: span 2; }
+.gallery-grid--page .gallery-item--tall { grid-row: span 2; }
+
+.gallery-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 28px 16px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(to top, rgba(10,20,10,0.72), rgba(10,20,10,0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .gallery-grid--page { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+}
+@media (max-width: 640px) {
+  .gallery-grid--page { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+  .gallery-grid--page .gallery-item--wide { grid-column: auto; grid-row: span 1; }
+  .gallery-grid--page .gallery-item--tall { grid-row: span 2; }
+}

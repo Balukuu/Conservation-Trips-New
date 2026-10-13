@@ -1,0 +1,58 @@
+<!-- Hero -->
+<section class="page-hero" style="min-height:380px;">
+  <div class="page-hero-bg"><%- image({ src: '/images/photos/equator-kikorongo-wide.webp', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Gallery</span></nav>
+    <h1 style="color:#fff;">Safari Gallery</h1>
+    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
+      Photographs from our own journeys: the Equator, the plains and the rivers of Uganda.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--surface);">
+  <div class="container">
+
+    <!-- Jump links -->
+    <nav class="filter-tabs reveal mb-48" aria-label="Gallery sections">
+      <% sections.forEach(section => { %>
+      <a href="#<%= section.id %>" class="filter-tab"><%= section.title %></a>
+      <% }) %>
+    </nav>
+
+    <% sections.forEach(section => { %>
+    <div class="gallery-section" id="<%= section.id %>">
+      <div class="gallery-section-head reveal">
+        <div class="section-label"><i class="fa-solid <%= section.icon %>"></i> <%= section.title %></div>
+        <p class="section-subtitle"><%= section.blurb %></p>
+      </div>
+
+      <div class="gallery-grid gallery-grid--page">
+        <% section.items.forEach(item => {
+             const info = imageInfo(item.src);
+             const tall = info && info.height > info.width * 1.1;
+             const cls = ['gallery-item', item.wide ? 'gallery-item--wide' : '', tall ? 'gallery-item--tall' : ''].join(' ').trim();
+        %>
+        <div class="<%= cls %>">
+          <%- image({ src: item.src, sizes: item.wide ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw', fill: true }) %>
+          <span class="gallery-caption"><%= item.caption %></span>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <% }) %>
+
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>See It for Yourself</h2>
+    <p>Tell us what you would like to see (zebras at Lake Mburo, hippos on the Kazinga Channel, a foot on each side of the Equator) and we will plan the route.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/contact" class="btn btn-primary btn-lg">Plan My Safari <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/tours" class="btn btn-outline btn-lg">Browse Tours</a>
+    </div>
+  </div>
+</section>

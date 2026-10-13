@@ -86,6 +86,7 @@ app.use('/about', require('./routes/about'));
 app.use('/contact', require('./routes/contact'));
 app.use('/blog', require('./routes/blog'));
 app.use('/experiences', require('./routes/experiences'));
+app.use('/gallery', require('./routes/gallery'));
 
 app.use((req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') {

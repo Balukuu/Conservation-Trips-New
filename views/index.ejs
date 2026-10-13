@@ -26,7 +26,7 @@
         <h2 class="slide-title"><%= slide.title %></h2>
         <p class="slide-sub"><%= slide.sub %></p>
         <div class="slide-ctas">
-          <a href="/tours" class="btn btn-primary btn-lg">EXPLORE ALL TOURS <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="<%= slide.cta ? slide.cta.href : '/tours' %>" class="btn btn-primary btn-lg"><%= slide.cta ? slide.cta.label : 'EXPLORE ALL TOURS' %> <i class="fa-solid fa-arrow-right"></i></a>
           <a href="/contact" class="btn btn-outline btn-lg">PLAN MY SAFARI</a>
         </div>
       </div>
@@ -250,6 +250,56 @@
 
     <div class="text-center mt-48 reveal">
       <a href="/destinations" class="btn btn-outline btn-lg">View All Destinations <i class="fa-solid fa-globe"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 5b: THE EQUATOR ═══════════════ -->
+<section class="section" id="equator" style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="grid-2">
+
+      <!-- Photos -->
+      <div class="reveal-left">
+        <div class="about-image-stack">
+          <div class="about-img-primary">
+            <%- image({ src: '/images/photos/equator-kikorongo-globe.webp', sizes: '(min-width: 1024px) 30vw, 70vw', fill: true }) %>
+          </div>
+          <div class="about-img-secondary">
+            <%- image({ src: '/images/photos/equator-kayabwe-ring.webp', sizes: '(min-width: 1024px) 18vw, 40vw', fill: true }) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal-right">
+        <div class="section-label"><i class="fa-solid fa-globe"></i> Cross the Equator</div>
+        <h2 style="color: var(--dark); margin-bottom: 20px;">Stand on the Equator, One Foot in Each Hemisphere</h2>
+        <p class="body-lg" style="color: var(--text-muted); margin-bottom: 16px;">
+          The Equator runs straight through Uganda, and it is easy to include on a safari. Two monuments make natural stops on the road to the western parks, and we build the time for photographs into your route.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fa-solid fa-circle-notch"></i></div>
+            <div>
+              <div class="about-feature-title">Kayabwe</div>
+              <div class="about-feature-desc">The white ring on the Kampala&ndash;Masaka road: the classic stop on the way to Lake Mburo, Lake Bunyonyi and Bwindi.</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fa-solid fa-earth-africa"></i></div>
+            <div>
+              <div class="about-feature-title">Kikorongo</div>
+              <div class="about-feature-desc">The mirror-steel globe beside Queen Elizabeth National Park, on the road to Kasese, the Rwenzoris and the Kazinga Channel.</div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start; margin-top:32px;">
+          <a href="/gallery#equator" class="btn btn-green">See the Equator photos <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline-dark">Add it to my safari</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

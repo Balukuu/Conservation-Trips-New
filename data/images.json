@@ -72,5 +72,135 @@
     "position": "50% 25%",
     "og": false,
     "maxWidth": 640
+  },
+  "/images/photos/equator-kikorongo-wide.webp": {
+    "alt": "The mirror-steel Uganda Equator globe sculpture beside green KIKORONGO EQUATOR lettering, with scrub-covered hills behind",
+    "position": "40% 50%",
+    "maxWidth": 2048
+  },
+  "/images/photos/equator-kikorongo-letters.webp": {
+    "alt": "Green KIKORONGO EQUATOR lettering along a yellow-topped wall with green hills and a pale sky behind",
+    "position": "50% 45%",
+    "maxWidth": 1600
+  },
+  "/images/photos/equator-kikorongo-globe.webp": {
+    "alt": "A visitor in a red patterned dress stands in front of the polished steel Uganda Equator globe sculpture at Kikorongo",
+    "position": "50% 45%",
+    "maxWidth": 1024
+  },
+  "/images/photos/equator-kikorongo-globe-sign.webp": {
+    "alt": "The polished steel Uganda Equator globe sculpture at Kikorongo, with a small Queen Elizabeth National Park sign at its base",
+    "position": "50% 40%",
+    "maxWidth": 1024
+  },
+  "/images/photos/equator-kikorongo-marker.webp": {
+    "alt": "A guide rests a hand on the polished steel sphere that marks the Equator beside the road at Kikorongo",
+    "position": "50% 55%",
+    "maxWidth": 1024
+  },
+  "/images/photos/equator-kayabwe-staff-ring.webp": {
+    "alt": "A guide in a khaki safari uniform and bush hat poses inside the white Uganda Equator ring at Kayabwe, one foot on the north mark and one on the south",
+    "position": "50% 45%",
+    "maxWidth": 1024
+  },
+  "/images/photos/equator-kayabwe-ring.webp": {
+    "alt": "The white Uganda Equator monument at Kayabwe, with palm trees behind and the S and N hemisphere markers at its base",
+    "position": "50% 50%",
+    "maxWidth": 1024
+  },
+  "/images/photos/lake-mburo-zebras.webp": {
+    "alt": "Two plains zebras grazing on bright green grass in Lake Mburo National Park",
+    "position": "50% 52%",
+    "maxWidth": 2048
+  },
+  "/images/photos/lake-mburo-zebras-acacia.webp": {
+    "alt": "Two zebras grazing on a green plain beside an acacia tree in Lake Mburo National Park",
+    "position": "50% 55%",
+    "maxWidth": 1600
+  },
+  "/images/photos/lake-mburo-zebras-portrait.webp": {
+    "alt": "Two zebras grazing in lush green savannah with forested hills behind them",
+    "position": "50% 70%",
+    "maxWidth": 1024
+  },
+  "/images/photos/lake-mburo-impala.webp": {
+    "alt": "A male impala with lyre-shaped horns stands alert on short green grass in Lake Mburo National Park",
+    "position": "50% 55%",
+    "maxWidth": 1024
+  },
+  "/images/photos/lake-mburo-impala-herd.webp": {
+    "alt": "A herd of impala grazing beneath acacia trees in Lake Mburo National Park",
+    "position": "50% 60%",
+    "maxWidth": 1600
+  },
+  "/images/photos/lake-mburo-buffalo.webp": {
+    "alt": "A Cape buffalo with heavy curved horns stands in shallow water at a waterhole in Lake Mburo National Park",
+    "position": "40% 55%",
+    "maxWidth": 1600
+  },
+  "/images/photos/kazinga-elephant.webp": {
+    "alt": "An elephant at the water's edge on the Kazinga Channel, with thick green bush behind",
+    "position": "45% 22%",
+    "maxWidth": 2048
+  },
+  "/images/photos/kazinga-hippos.webp": {
+    "alt": "A pod of hippos surfacing in the green water of the Kazinga Channel, seen from the boat",
+    "position": "50% 55%",
+    "maxWidth": 1024
+  },
+  "/images/photos/kazinga-hippos-surfacing.webp": {
+    "alt": "Hippos splashing in the Kazinga Channel below a red earth bank with an egret on the shore",
+    "position": "50% 50%",
+    "maxWidth": 1600
+  },
+  "/images/photos/kazinga-sunset.webp": {
+    "alt": "Late-afternoon light over the Kazinga Channel from the cruise boat, with a wooded headland in silhouette",
+    "position": "50% 50%",
+    "maxWidth": 1600
+  },
+  "/images/photos/lake-sunset-silhouette.webp": {
+    "alt": "A guide in a bush hat silhouetted against a golden lake at sunset, with hills beyond the water",
+    "position": "50% 55%",
+    "maxWidth": 1024
+  },
+  "/images/photos/lake-sunset-heart.webp": {
+    "alt": "Two silhouettes make a heart shape with their hands against a golden sunset over a lake",
+    "position": "50% 45%",
+    "maxWidth": 1024
+  },
+  "/images/photos/coaster-guide-door.webp": {
+    "alt": "A guide in khaki uniform steps out of the green-and-cream Conservation Trips safari coaster",
+    "position": "50% 50%",
+    "maxWidth": 1600
+  },
+  "/images/photos/coaster-guides.webp": {
+    "alt": "Three guides in khaki jumpsuits and bush hats beside the green-and-cream Conservation Trips safari coaster",
+    "position": "50% 50%",
+    "maxWidth": 1600
+  },
+  "/images/photos/safari-4x4-lineup.webp": {
+    "alt": "Three open-sided safari 4x4s parked in front of a thatched rest area, ready for a game drive",
+    "position": "50% 55%",
+    "maxWidth": 1600
+  },
+  "/images/photos/tea-estate-sign.webp": {
+    "alt": "A guide points the way with a Next Destination sign on a steep, bright green tea-estate slope",
+    "position": "50% 50%",
+    "maxWidth": 1600
+  },
+  "/images/photos/western-uganda-road.webp": {
+    "alt": "A winding tarmac road climbs through forested hills on the drive to western Uganda",
+    "position": "50% 55%",
+    "maxWidth": 1024
+  },
+  "/images/photos/guide-portrait.webp": {
+    "alt": "A smiling guide in a khaki safari uniform and wide-brimmed hat stands in front of a termite mound",
+    "position": "50% 35%",
+    "maxWidth": 1024
+  },
+  "/images/photos/guides-trio-track.webp": {
+    "alt": "Three guides in khaki shirts and green trousers walk down a dirt track with green hills behind",
+    "position": "50% 50%",
+    "maxWidth": 1024
   }
 }

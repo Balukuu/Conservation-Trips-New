@@ -1,0 +1,154 @@
+{
+  "_readme": "Sections of the /gallery page. Photos are registered in data/images.json (alt text lives there); `caption` is the short visible label.",
+  "sections": [
+    {
+      "id": "equator",
+      "title": "On the Equator",
+      "icon": "fa-globe",
+      "blurb": "Uganda straddles the Equator. Two monuments make easy photo stops on the road to the western parks: the white ring at Kayabwe and the mirror-steel globe at Kikorongo.",
+      "items": [
+        {
+          "src": "/images/photos/equator-kikorongo-wide.webp",
+          "caption": "Kikorongo Equator, near Queen Elizabeth National Park",
+          "wide": true
+        },
+        {
+          "src": "/images/photos/equator-kayabwe-staff-ring.webp",
+          "caption": "Kayabwe: one foot in each hemisphere"
+        },
+        {
+          "src": "/images/photos/equator-kayabwe-ring.webp",
+          "caption": "The white ring at Kayabwe"
+        },
+        {
+          "src": "/images/photos/equator-kikorongo-globe.webp",
+          "caption": "The steel globe at Kikorongo"
+        },
+        {
+          "src": "/images/photos/equator-kikorongo-globe-sign.webp",
+          "caption": "Next destination: Queen Elizabeth National Park"
+        },
+        {
+          "src": "/images/photos/equator-kikorongo-marker.webp",
+          "caption": "The Equator marker beside the road"
+        },
+        {
+          "src": "/images/photos/equator-kikorongo-letters.webp",
+          "caption": "Kikorongo Equator lettering",
+          "wide": true
+        }
+      ]
+    },
+    {
+      "id": "wildlife",
+      "title": "Wildlife of the Plains",
+      "icon": "fa-paw",
+      "blurb": "Lake Mburo is the closest savannah park to Kampala, and the one place in Uganda where zebra and impala graze together.",
+      "items": [
+        {
+          "src": "/images/photos/lake-mburo-zebras.webp",
+          "caption": "Zebras, Lake Mburo National Park",
+          "wide": true
+        },
+        {
+          "src": "/images/photos/lake-mburo-impala.webp",
+          "caption": "A male impala on the alert"
+        },
+        {
+          "src": "/images/photos/lake-mburo-zebras-portrait.webp",
+          "caption": "Zebras in the green season"
+        },
+        {
+          "src": "/images/photos/lake-mburo-buffalo.webp",
+          "caption": "Cape buffalo at the waterhole"
+        },
+        {
+          "src": "/images/photos/lake-mburo-impala-herd.webp",
+          "caption": "Impala under the acacias"
+        },
+        {
+          "src": "/images/photos/lake-mburo-zebras-acacia.webp",
+          "caption": "Zebras beside an acacia"
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "title": "Rivers, Channels & Lakes",
+      "icon": "fa-water",
+      "blurb": "Hippos, elephants and sunsets from the water: the Kazinga Channel cruise and golden evenings by the lake.",
+      "items": [
+        {
+          "src": "/images/photos/kazinga-elephant.webp",
+          "caption": "An elephant on the Kazinga Channel shore",
+          "wide": true
+        },
+        {
+          "src": "/images/photos/kazinga-hippos.webp",
+          "caption": "A pod of hippos from the boat"
+        },
+        {
+          "src": "/images/photos/lake-sunset-silhouette.webp",
+          "caption": "Sunset over the lake"
+        },
+        {
+          "src": "/images/photos/kazinga-hippos-surfacing.webp",
+          "caption": "Hippos along the channel bank"
+        },
+        {
+          "src": "/images/photos/lake-sunset-heart.webp",
+          "caption": "Golden hour"
+        },
+        {
+          "src": "/images/photos/kazinga-sunset.webp",
+          "caption": "Evening light on the Kazinga Channel"
+        }
+      ]
+    },
+    {
+      "id": "road",
+      "title": "On the Road",
+      "icon": "fa-route",
+      "blurb": "Our coasters and 4x4s, the tea estates of the west and the long, green road to the parks.",
+      "items": [
+        {
+          "src": "/images/photos/coaster-guides.webp",
+          "caption": "Our guides and the safari coaster",
+          "wide": true
+        },
+        {
+          "src": "/images/photos/tea-estate-sign.webp",
+          "caption": "Tea estates, western Uganda"
+        },
+        {
+          "src": "/images/photos/safari-4x4-lineup.webp",
+          "caption": "Safari 4x4s ready for a game drive"
+        },
+        {
+          "src": "/images/photos/coaster-guide-door.webp",
+          "caption": "All aboard"
+        },
+        {
+          "src": "/images/photos/western-uganda-road.webp",
+          "caption": "The road to the west"
+        }
+      ]
+    },
+    {
+      "id": "guides",
+      "title": "Our Guides",
+      "icon": "fa-people-group",
+      "blurb": "The people who make the trip: licensed guides, drivers and trip advisors.",
+      "items": [
+        {
+          "src": "/images/photos/guide-portrait.webp",
+          "caption": "In the field"
+        },
+        {
+          "src": "/images/photos/guides-trio-track.webp",
+          "caption": "Guides on the track"
+        }
+      ]
+    }
+  ]
+}
