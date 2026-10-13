@@ -91,6 +91,18 @@ It is data-driven: tiles and counts come from `data/tours.json`, destinations fr
 the bento from `MOMENTS` in `lib/pages.js`, the rating from `data/testimonials.json`, the photo total from the albums.
 Other pages can add their own stylesheet the same way (`pageStyles: ['/css/x.css']` in the view model).
 
+Redesigned pages share `public/css/sections.css` (`sx-*`: section frame and heads, split layout, feature list, closing
+call-to-action card, and the inner-page hero with its `sx-chips` fact row) and add a page stylesheet on top
+(`hm-` home, `ab-` about, `tr-` tours).
+
+## Tours page
+
+`views/tours.ejs` and `public/css/tours.css`, for `/tours` and `/tours/category/<slug>`. The hero facts (itineraries,
+day range, countries, lowest price) and the count on each filter tab are read from `data/tours.json` in `lib/pages.js`.
+The tabs are real links, so each category has its own URL and works without JavaScript; `public/js/tours.js` filters
+in place and keeps the "N itineraries" count in step. Below the container width the tabs become one swipeable strip.
+The cards are the shared `partials/tour-card.ejs`, also used on the home, destination and tour pages.
+
 ## URLs
 
 Every page has one address, and variants redirect (301) to it:

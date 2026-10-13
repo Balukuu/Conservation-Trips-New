@@ -5,6 +5,7 @@
    .sx-head       eyebrow + h2 + intro + link row
    .sx-split      two-column text / photo layout, .sx-collage the photo pair
    .sx-features   icon + title + text list     .sx-cta-card   closing call to action
+   .sx-hero       inner-page hero (+ .sx-hero-sub, .sx-chips)
    ============================================================ */
 
 /* ─── Section frame ─────────────────────────────────────────── */
@@ -61,6 +62,35 @@
 /* White-on-photo / dark surfaces need the gold focus ring */
 .sx--dark :focus-visible,
 .sx-cta-card :focus-visible { outline-color: var(--accent); }
+
+/* ─── Inner-page hero ───────────────────────────────────────────
+   Goes on a .page-hero (main.css): <section class="page-hero sx-hero">.
+   .sx-hero-sub is the intro line, .sx-chips a row of glass facts under it. */
+.sx-hero { min-height: 440px; }
+.sx-hero h1 { color: #fff; }
+.sx-hero-sub {
+  max-width: 580px;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.86);
+}
+.sx-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.sx-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+}
+.sx-chips i { color: var(--accent); font-size: 0.8rem; }
 
 /* ─── 3. Why us ─────────────────────────────────────────────── */
 .sx-split {
@@ -186,6 +216,10 @@
 }
 @media (max-width: 760px) {
   .sx-features { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+@media (max-width: 600px) {
+  /* the content (title, intro, chips) is taller than the min-height here: let it size the hero and clear the bar */
+  .sx-hero { height: auto; min-height: 0; padding-top: calc(var(--nav-height) + 28px); }
 }
 @media (max-width: 640px) {
   .sx-cta-contacts a { padding: 14px; gap: 12px; }

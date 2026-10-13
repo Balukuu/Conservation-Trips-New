@@ -1,55 +1,79 @@
-<!-- Page Hero -->
-<section class="page-hero" style="padding-top: var(--nav-height);">
+<%
+  const s = toursStats;
+  const itineraries = n => n === 1 ? '1 itinerary' : n + ' itineraries';
+%>
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="page-hero sx-hero tr-hero">
   <div class="page-hero-bg"><%- image({ src: '/images/lion.jpg', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <i class="fa-solid fa-angle-right"></i>
-      <span>Tours</span>
-    </nav>
-    <h1 style="color: #fff; margin-bottom: 12px;">Our Safari Packages</h1>
-    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 560px;">
-      Expertly crafted journeys through Uganda and East Africa — from gorilla treks to summit climbs
-    </p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Tours</span></nav>
+    <h1>Our Safari Packages</h1>
+    <p class="sx-hero-sub">Expertly crafted journeys through Uganda and East Africa, from gorilla treks to summit climbs.</p>
+    <ul class="sx-chips">
+      <li><i class="fa-solid fa-route" aria-hidden="true"></i> <%= itineraries(s.tours) %></li>
+      <% if (s.minDays && s.maxDays) { %><li><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= s.minDays %> to <%= s.maxDays %> days</li><% } %>
+      <li><i class="fa-solid fa-earth-africa" aria-hidden="true"></i> <%= s.countries %> countries</li>
+      <% if (s.fromPrice) { %><li><i class="fa-solid fa-tag" aria-hidden="true"></i> From $<%= s.fromPrice.toLocaleString('en-US') %> pp</li><% } %>
+    </ul>
   </div>
 </section>
 
-<!-- Tours Section -->
-<section class="section" style="background: var(--surface-alt); padding-top: 60px;">
+<!-- ═══════════════ PACKAGES ═══════════════ -->
+<section class="sx tr-listing" id="packages">
   <div class="container">
+    <header class="sx-head reveal">
+      <div>
+        <span class="sx-eyebrow">Handpicked itineraries</span>
+        <h2>Find the journey that fits</h2>
+        <p>Every package is expertly guided, sustainably operated and tailored to your dates, travel style and budget.</p>
+      </div>
+      <p class="tr-count" role="status" data-tours-count><%= itineraries(visibleCount) %></p>
+    </header>
 
-    <!-- Filter Tabs -->
-    <div class="flex-between flex-wrap gap-16 reveal mb-32">
-      <div class="filter-tabs" role="tablist" aria-label="Filter safari packages">
-        <% ['All'].concat(categories).forEach(cat => { %>
-        <a href="<%= categoryUrl('tours', cat) %>" class="filter-tab <%= activeCategory === cat ? 'active' : '' %>" data-category="<%= cat %>" role="tab" aria-selected="<%= activeCategory === cat %>"><%= cat === 'All' ? 'All Safaris' : cat %></a>
+    <!-- Filter tabs: real links, so every category has its own address (tours.js filters in place) -->
+    <div class="tr-filter reveal">
+      <div class="filter-tabs tr-tabs" role="tablist" aria-label="Filter safari packages">
+        <% tabs.forEach(tab => { %>
+        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
+          <span><%= tab.label %></span>
+          <span class="tr-tab-count" aria-hidden="true"><%= tab.count %></span>
+        </a>
         <% }) %>
       </div>
     </div>
 
     <!-- Grid -->
-    <div class="tours-grid reveal-grid" id="tours-grid">
+    <div class="tours-grid tr-grid reveal-grid" id="tours-grid">
       <% tours.forEach(tour => { %>
         <%- include('partials/tour-card', { tour, hidden: activeCategory !== 'All' && tour.category !== activeCategory }) %>
       <% }) %>
     </div>
 
-    <!-- No results -->
-    <div class="no-results-msg text-center" style="display:none; padding: 60px 0;">
-      <i class="fa-solid fa-binoculars" style="font-size: 3rem; color: var(--border); display:block; margin-bottom:16px;"></i>
-      <h3 style="color: var(--text-muted);">No tours found in this category</h3>
-      <p style="color: var(--text-muted); margin: 8px 0 24px;">Try a different filter or explore all our safaris</p>
-      <button class="btn btn-green" type="button" onclick="document.querySelector('.filter-tab').click()">View All Tours</button>
+    <!-- No results (tours.js shows it) -->
+    <div class="tr-empty no-results-msg" hidden>
+      <span class="tr-empty-icon"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span>
+      <h3>No tours found in this category</h3>
+      <p>Try a different filter or explore all our safaris.</p>
+      <a href="/tours" class="btn btn-green">View all tours</a>
     </div>
+  </div>
+</section>
 
-    <!-- Custom Safari CTA -->
-    <div class="text-center mt-64 reveal" style="margin-top: 60px; padding: 48px; background: var(--surface); border-radius: var(--radius-lg); border: 1px dashed var(--border); max-width: 640px; margin-left: auto; margin-right: auto;">
-      <i class="fa-solid fa-compass" style="font-size: 2rem; color: var(--accent); display: block; margin-bottom: 16px;"></i>
-      <h3 style="color: var(--dark); margin-bottom: 10px;">Can't find what you're looking for?</h3>
-      <p style="color: var(--text-muted); margin-bottom: 24px;">We specialise in bespoke safaris tailored exactly to your wishes. Tell us your dream and we'll make it happen.</p>
-      <a href="/contact" class="btn btn-primary">Request a Custom Safari <i class="fa-solid fa-arrow-right"></i></a>
+<!-- ═══════════════ CUSTOM SAFARI ═══════════════ -->
+<section class="sx sx--alt sx-cta" id="custom">
+  <div class="container">
+    <div class="sx-cta-card reveal">
+      <div>
+        <h2>Can't find what you're looking for?</h2>
+        <p>We specialise in bespoke safaris tailored exactly to your wishes. Tell us your dream and we'll make it happen.</p>
+        <a href="/contact" class="btn btn-primary btn-lg">Request a custom safari <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <ul class="sx-cta-contacts">
+        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
+        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
+        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
+      </ul>
     </div>
-
   </div>
 </section>

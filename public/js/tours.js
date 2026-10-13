@@ -23,6 +23,7 @@
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.filter-tab[data-category]'));
   var cards = Array.prototype.slice.call(grid.querySelectorAll('.tour-card'));
   var noResults = document.querySelector('.no-results-msg');
+  var countEl = document.querySelector('[data-tours-count]'); // /tours only: "11 itineraries"
   if (!tabs.length) return;
 
   function setActive(category) {
@@ -51,6 +52,7 @@
       }
     });
     if (noResults) noResults.style.display = shown === 0 ? 'block' : 'none';
+    if (countEl) countEl.textContent = shown === 1 ? '1 itinerary' : shown + ' itineraries';
   }
 
   // keep the address bar on the category's clean URL (link tabs only)

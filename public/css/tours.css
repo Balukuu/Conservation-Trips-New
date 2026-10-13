@@ -1,0 +1,97 @@
+/* ============================================================
+   TOURS PAGE
+   Loaded only on /tours and /tours/category/* (pageStyles in lib/pages.js),
+   after sections.css (the shared .sx-* components, hero and closing call to
+   action) and before preferences.css. Classes are prefixed tr-.
+   The cards themselves are partials/tour-card.ejs, styled in animations.css.
+   ============================================================ */
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.tr-hero .page-hero-bg img { object-position: 50% 40%; }
+
+/* ─── Listing header ────────────────────────────────────────── */
+.tr-count {
+  flex: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+/* .sx-head p caps and spaces paragraphs; the count is not an intro line */
+.sx-head .tr-count { max-width: none; margin-top: 0; font-size: 0.9rem; line-height: 1.4; color: var(--primary-dark); }
+
+/* ─── Filter tabs ───────────────────────────────────────────── */
+.tr-tabs { gap: 10px; }
+.tr-tabs .filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px 9px 18px;
+  white-space: nowrap;
+}
+.tr-tab-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-alt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: lining-nums tabular-nums;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.tr-tabs .filter-tab.active { box-shadow: var(--shadow-green); }
+.tr-tabs .filter-tab.active .tr-tab-count { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* ─── Grid ──────────────────────────────────────────────────── */
+.tr-grid { margin-top: 32px; }
+
+/* ─── Empty state ───────────────────────────────────────────── */
+.tr-empty { padding: 56px 0 8px; text-align: center; }
+.tr-empty-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1.7rem;
+}
+.tr-empty h3 { margin: 0 0 8px; color: var(--dark); }
+.tr-empty p { margin: 0 0 24px; color: var(--text-muted); }
+
+/* ─── Responsive ────────────────────────────────────────────── */
+/* Seven tabs only fit on one line at the full container width. Below that they
+   become one swipeable strip (an orphan pill on a second row looks broken); it
+   bleeds to the screen edge, and the padding keeps focus rings unclipped. */
+@media (max-width: 1240px) {
+  .tr-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: -4px -24px;
+    padding: 4px 48px 4px 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* fade the right edge so a cut-off tab reads as "more this way" */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+  .tr-tabs::-webkit-scrollbar { display: none; }
+  .tr-tabs .filter-tab { flex: none; }
+}
+@media (max-width: 768px) {
+  .tr-tabs { margin-left: -20px; margin-right: -20px; padding-left: 20px; }
+}
+@media (max-width: 640px) {
+  .tr-tabs .filter-tab { padding: 7px 10px 7px 14px; }
+  .tr-grid { margin-top: 24px; }
+}

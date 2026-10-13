@@ -5,32 +5,6 @@
    Classes are prefixed ab-.
    ============================================================ */
 
-/* ─── Hero ──────────────────────────────────────────────────── */
-.ab-hero { min-height: 440px; }
-.ab-hero-sub {
-  max-width: 580px;
-  margin-top: 12px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.86);
-}
-.ab-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-.ab-chips li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.12);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #fff;
-}
-.ab-chips i { color: var(--accent); font-size: 0.8rem; }
-
 /* ─── Story ─────────────────────────────────────────────────── */
 .ab-story .sx-lead { margin-top: 18px; }
 .ab-prose { margin-top: 16px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
@@ -224,8 +198,6 @@ img.ab-logo { width: auto; height: 64px; max-width: 100%; object-fit: contain; b
   .ab-crew { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; gap: 10px; }
 }
 @media (max-width: 600px) {
-  /* the content (title, intro, chips) is taller than the min-height here: let it size the hero and clear the bar */
-  .ab-hero { height: auto; min-height: 0; padding-top: calc(var(--nav-height) + 28px); }
   .ab-values { grid-template-columns: minmax(0, 1fr); }
   .ab-team { grid-template-columns: minmax(0, 1fr); }
   .ab-member { flex-direction: row; }
