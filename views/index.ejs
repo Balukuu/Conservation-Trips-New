@@ -20,7 +20,8 @@
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow"><%= slide.eyebrow %></p>
-        <h2 class="slide-title"><%= slide.title %></h2>
+        <%# Words are wrapped here, not by slider.js: the title is in place (and animating) on first paint %>
+        <h2 class="slide-title"><% slide.title.split(/\s+/).forEach(word => { %><span class="word-span"><%= word %></span> <% }) %></h2>
         <p class="slide-sub"><%= slide.sub %></p>
         <div class="slide-ctas">
           <a href="<%= slide.cta ? slide.cta.href : '/tours' %>" class="btn btn-primary btn-lg"><%= slide.cta ? slide.cta.label : 'EXPLORE ALL TOURS' %> <i class="fa-solid fa-arrow-right"></i></a>

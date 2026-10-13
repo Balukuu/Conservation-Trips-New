@@ -42,7 +42,8 @@
   }
 
   HeroSlider.prototype.splitWords = function () {
-    // One-off: wrap each title word so CSS can stagger them via --w
+    // Fallback only: index.ejs already wraps the words (so nothing is created
+    // after first paint). Wrap any title that arrives without them.
     this.slides.forEach(function (slide) {
       var title = slide.querySelector('.slide-title');
       if (!title || title.querySelector('.word-span')) return;
@@ -62,10 +63,11 @@
   HeroSlider.prototype.init = function () {
     var self = this;
 
-    // Re-enter the first slide so its text animates in on load. Same tick,
-    // before first paint — no flash.
-    this.slides[0].classList.remove('active');
-    void this.slides[0].offsetWidth;
+    // The first slide arrives .active from the server and its entrance runs
+    // from CSS (@starting-style), so this only syncs aria/inert/dots. Do not
+    // toggle .active off and on again to "replay" it: by the time this runs
+    // the slide has usually been styled already, and the replay would only
+    // cancel the entrance that is in flight.
     this.show(0);
 
     if (this.prevBtn) this.prevBtn.addEventListener('click', function () { self.go(self.current - 1); });

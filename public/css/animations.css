@@ -218,6 +218,16 @@
   transition:
     opacity 0.6s var(--ease-out) calc(200ms + var(--w, 0) * 80ms), transform 0.6s var(--ease-out) calc(200ms + var(--w, 0) * 80ms);
 }
+/* The words are in the markup (index.ejs), so their stagger index is too */
+.slide-title .word-span:nth-child(2) { --w: 1; }
+.slide-title .word-span:nth-child(3) { --w: 2; }
+.slide-title .word-span:nth-child(4) { --w: 3; }
+.slide-title .word-span:nth-child(5) { --w: 4; }
+.slide-title .word-span:nth-child(6) { --w: 5; }
+.slide-title .word-span:nth-child(7) { --w: 6; }
+.slide-title .word-span:nth-child(8) { --w: 7; }
+.slide-title .word-span:nth-child(9) { --w: 8; }
+.slide-title .word-span:nth-child(10) { --w: 9; }
 
 .slide-sub {
   font-size: 1.1rem;
@@ -248,6 +258,25 @@
   opacity: 1;
   transform: none;
   transition: opacity 0.6s var(--ease-out) 0.7s, transform 0.6s var(--ease-out) 0.7s;
+}
+
+/* First paint. The first slide is rendered .active, so on load it has no
+   "before" state for the transitions above to run from, and any script that
+   toggles the class has to win a race against the first style recalc (it
+   doesn't: deferred scripts run after it). @starting-style supplies that
+   before state: the entrance and the Ken Burns zoom play from the first
+   frame, with no JS involved. The slide itself is not faded in. Must stay
+   after the .active rules above (same specificity, source order decides). */
+@starting-style {
+  .hero-slide.active .slide-eyebrow { opacity: 0; transform: translateY(12px); }
+  .hero-slide.active .word-span { opacity: 0; transform: translateY(24px); }
+  .hero-slide.active .slide-sub,
+  .hero-slide.active .slide-ctas { opacity: 0; transform: translateY(16px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @starting-style {
+    .hero-slide.active .hero-slide-bg img { transform: scale(1); }
+  }
 }
 
 @media (max-width: 580px) {
