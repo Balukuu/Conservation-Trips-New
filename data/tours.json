@@ -16,6 +16,7 @@
       "/images/photos/kazinga-hippos.webp",
       "/images/photos/kazinga-elephant.webp"
     ],
+    "galleryAlbums": [{ "album": "kazinga-cruise", "limit": 6 }, { "album": "guest-trip-game-drives", "limit": 6 }, { "album": "kikorongo-equator", "limit": 4 }],
     "summary": "Experience the wild heart of Uganda in Queen Elizabeth National Park – home to tree-climbing lions, massive hippo pods, savannah elephants, and over 600 bird species. This 3-day adventure balances game drives, a scenic Kazinga Channel boat cruise, and golden savannah sunsets.",
     "highlights": [
       "Morning & afternoon game drives in the Kasenyi Plains",
@@ -49,6 +50,7 @@
       "/images/gorilla.jpg",
       "/images/lodge.jpg"
     ],
+    "galleryAlbums": [{ "album": "kayabwe-equator", "limit": 4 }, { "album": "road-west", "limit": 4 }],
     "summary": "A perfectly crafted 2-day gorilla trek combining the convenience of flying into Kigali, Rwanda, with the breathtaking wilderness of Bwindi Impenetrable Forest in Uganda. Come face-to-face with habituated mountain gorilla families in their misty jungle home.",
     "highlights": [
       "Encounter habituated mountain gorilla families in Bwindi",
@@ -149,6 +151,7 @@
       "/images/safari.jpg",
       "/images/photos/equator-kayabwe-ring.webp"
     ],
+    "galleryAlbums": [{ "album": "kayabwe-equator", "limit": 4 }, { "album": "lake-mburo-plains", "limit": 4 }, { "album": "road-west", "limit": 6 }, { "album": "lake-sunset", "limit": 3 }],
     "summary": "An exceptional 5-day Uganda safari combining the world's greatest wildlife encounter — mountain gorilla trekking in Bwindi — with a relaxing finale on the stunning terraced shores of Lake Bunyonyi, Africa's second deepest lake.",
     "highlights": [
       "Mountain gorilla trekking in Bwindi Impenetrable Forest",
@@ -186,6 +189,7 @@
       "/images/photos/kazinga-hippos-surfacing.webp",
       "/images/photos/kazinga-sunset.webp"
     ],
+    "galleryAlbums": [{ "album": "kazinga-cruise", "limit": 12 }, { "album": "guest-trip-kazinga", "limit": 6 }],
     "summary": "A tailor-made safari focused on the world-famous Kazinga Channel boat cruise at Queen Elizabeth National Park — where the wildlife density along the riverbanks is exceptional: hundreds of hippos, Nile crocodiles, elephants drinking at the water's edge, and 600+ bird species.",
     "highlights": [
       "Extended Kazinga Channel boat cruise with maximum wildlife viewing",
@@ -222,6 +226,7 @@
       "/images/photos/lake-mburo-zebras.webp",
       "/images/photos/equator-kikorongo-wide.webp"
     ],
+    "galleryAlbums": [{ "album": "kayabwe-equator", "limit": 4 }, { "album": "lake-mburo-plains", "limit": 6 }, { "album": "tea-estates", "limit": 4 }, { "album": "kikorongo-equator", "limit": 4 }, { "album": "kazinga-cruise", "limit": 4 }],
     "summary": "The ultimate Uganda experience — a complete 22-day circuit visiting every cultural region of the country. Northern plains, Eastern highlands, Western crater lakes, and Southern forests — all Uganda's greatest wildlife and cultural treasures in one epic journey.",
     "highlights": [
       "Gorilla trekking in Bwindi Impenetrable Forest",
@@ -339,6 +344,7 @@
       "/images/photos/equator-kayabwe-ring.webp",
       "/images/photos/western-uganda-road.webp"
     ],
+    "galleryAlbums": [{ "album": "kayabwe-equator", "limit": 4 }, { "album": "tea-estates", "limit": 6 }, { "album": "road-west", "limit": 4 }, { "album": "lake-sunset", "limit": 4 }],
     "summary": "Explore the rich cultural tapestry of western Uganda — from the ancient kingdoms of Ankole and Bunyoro to the vibrant Bwindi Batwa community and the stunning crater lakes of Fort Portal. A soul-enriching journey through Uganda's most culturally diverse region.",
     "highlights": [
       "Ankole cultural experience with the famous long-horned cattle",
@@ -379,6 +385,7 @@
       "/images/lion.jpg",
       "/images/photos/equator-kikorongo-globe-sign.webp"
     ],
+    "galleryAlbums": [{ "album": "kikorongo-equator", "limit": 6 }, { "album": "road-west", "limit": 4 }],
     "summary": "The Rwenzori Mountains — the mythical Mountains of the Moon — are one of Africa's most coveted and challenging trekking destinations. Summit Margherita Peak (5,109m), the third highest point in Africa, through alien Afro-alpine vegetation unlike anywhere on Earth.",
     "highlights": [
       "Summit Margherita Peak (5,109m) — 3rd highest in Africa",

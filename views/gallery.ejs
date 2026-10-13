@@ -6,7 +6,7 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Gallery</span></nav>
     <h1 style="color:#fff;">Safari Gallery</h1>
     <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
-      Photographs from our own journeys: the Equator, the plains and the rivers of Uganda.
+      <%= photoTotal %> photographs from our own journeys: the Equator, the plains and the rivers of Uganda.
     </p>
   </div>
 </section>
@@ -16,6 +16,7 @@
 
     <!-- Jump links -->
     <nav class="filter-tabs reveal mb-48" aria-label="Gallery sections">
+      <a href="#albums" class="filter-tab filter-tab--strong">All albums (<%= photoTotal %> photos)</a>
       <% sections.forEach(section => { %>
       <a href="#<%= section.id %>" class="filter-tab"><%= section.title %></a>
       <% }) %>
@@ -43,6 +44,34 @@
     </div>
     <% }) %>
 
+  </div>
+</section>
+
+<!-- All albums -->
+<section class="section" id="albums" style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="text-center reveal mb-48">
+      <div class="section-label"><i class="fa-solid fa-images"></i> Every Photo</div>
+      <h2 style="color:var(--dark);">Browse the Albums</h2>
+      <p class="section-subtitle" style="margin:12px auto 0; text-align:center;">
+        <%= photoTotal %> photographs from our own journeys, in <%= albums.length %> albums. Open one for the full set.
+      </p>
+    </div>
+
+    <div class="album-grid reveal-grid">
+      <% albums.forEach(a => { %>
+      <article class="album-card">
+        <div class="album-card-img">
+          <%- image({ src: a.cover, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', fill: true }) %>
+          <span class="album-card-count"><i class="fa-regular fa-images" aria-hidden="true"></i> <%= a.count %></span>
+        </div>
+        <div class="album-card-body">
+          <h3 class="album-card-title"><a href="<%= a.href %>"><%= a.title %></a></h3>
+          <p class="album-card-blurb"><%= a.blurb %></p>
+        </div>
+      </article>
+      <% }) %>
+    </div>
   </div>
 </section>
 

@@ -1,0 +1,57 @@
+<!-- Hero -->
+<section class="page-hero" style="min-height:360px;">
+  <div class="page-hero-bg"><%- image({ src: album.cover.src, alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <i class="fa-solid fa-angle-right"></i>
+      <a href="/gallery">Gallery</a> <i class="fa-solid fa-angle-right"></i>
+      <span><%= album.title %></span>
+    </nav>
+    <h1 style="color:#fff;"><%= album.title %></h1>
+    <p style="color:rgba(255,255,255,0.8); max-width:600px; margin-top:12px; font-size:1.05rem;">
+      <%= album.blurb %> <span style="opacity:.75;">(<%= album.count %> photos)</span>
+    </p>
+  </div>
+</section>
+
+<section class="section" style="background: var(--surface); padding-top: 48px;">
+  <div class="container-wide">
+
+    <div class="photo-wall" id="photos">
+      <% album.items.forEach((p, i) => { %>
+      <figure class="gallery-item photo-tile">
+        <%- image({ src: p.src, sizes: '(min-width: 1280px) 22vw, (min-width: 900px) 30vw, (min-width: 560px) 45vw, 100vw', eager: i < 4 }) %>
+      </figure>
+      <% }) %>
+    </div>
+
+    <nav class="album-nav" aria-label="More albums">
+      <% if (prev) { %>
+      <a class="album-nav-link album-nav-prev" href="<%= prev.href %>">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        <span><small>Previous album</small><%= prev.title %></span>
+      </a>
+      <% } %>
+      <a class="album-nav-link album-nav-all" href="/gallery#albums"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> All albums</a>
+      <% if (next) { %>
+      <a class="album-nav-link album-nav-next" href="<%= next.href %>">
+        <span><small>Next album</small><%= next.title %></span>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+      <% } %>
+    </nav>
+
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="cta-strip-content container reveal">
+    <h2>See It for Yourself</h2>
+    <p>Tell us what you would like to see and we will plan the route, the stops and the time for photographs.</p>
+    <div class="flex-center gap-16 flex-wrap">
+      <a href="/contact" class="btn btn-primary btn-lg">Plan My Safari <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="/tours" class="btn btn-outline btn-lg">Browse Tours</a>
+    </div>
+  </div>
+</section>

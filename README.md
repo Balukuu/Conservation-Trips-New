@@ -47,24 +47,40 @@ the staff trip from Kampala via the Kayabwe equator, Lake Mburo, the tea estates
 Kazinga Channel) and `WILDLIFE PHOTOS` (293 NEF, Nikon D800, 20 Apr 2025: a guest trip around Queen Elizabeth NP).
 
 `../tRIPS-web/` has **every usable frame converted to web format** (WebP q85, longest edge 2048 px, orientation
-applied, EXIF/GPS stripped; 1,592 files, ~390 MB, originals untouched). It is deliberately *not* in the repo.
-Two source files are corrupt and were skipped (`TOUR/doreen4.jpg`, `ABZ_0768.NEF`).
+applied, EXIF/GPS stripped; 1,591 files, ~390 MB, originals untouched). It is deliberately *not* in the repo.
+Two source files are corrupt and were skipped (`TOUR/doreen4.jpg`, `ABZ_0768.NEF`). Three frames the camera
+had saved without an orientation tag (`pik_5778`, `pik_5818`, `pik_5823`) were rotated upright in the library.
 
-The site uses a curated 26 of them. To add another: copy it from `tRIPS-web/` to `source-images/photos/<name>.webp`,
-add an entry (alt text, focal point, `maxWidth`) to `data/images.json` under `/images/photos/<name>.webp`, run
-`npm run images`, then reference it with `image({ src: '/images/photos/<name>.webp', … })`. `source-images/` is
-never served; only the generated sizes in `public/images/opt/` are.
+#### Albums on the site (`npm run albums`)
 
-Where they are used: `/gallery` (all 26, five sections from `data/gallery.json`), home hero (Lake Mburo, Kikorongo
-Equator) and the new Equator section, the Boat Cruise / Queen Elizabeth / circuit / western / Bunyonyi / Rwenzori
-tour galleries, the Lake Mburo park card, the Boat Cruises, Equator and Honeymoon experiences, and the About page.
+`data/albums.json` defines 13 albums by frame-number range (`pik_` = TOUR, `abz_` = WILDLIFE PHOTOS). The script
+reads the library (set `PHOTO_LIBRARY` if it lives elsewhere), then per album:
 
-**Before publishing, please check consent.** Most frames are people. The selection favours scenery, wildlife and
-the company's own uniformed guides, and uses only three frames from the guest trip (an elephant, hippos and a
-line-up of 4x4s, with no identifiable guests). The wider `tRIPS-web/wildlife-photos/` set contains families and
-children: don't use those without the guests' permission.
-- Testimonials show initials unless a `photo` is supplied in `data/testimonials.json`.
-- Prices are not shown anywhere on the site (`price` / `priceUSD` remain in `data/tours.json` but nothing renders them).
+1. drops corrupt (grey-filled), near-black/white and the blurriest 6% of frames,
+2. collapses bursts of near-identical frames to the sharpest one (a longer burst keeps two),
+3. encodes `public/images/gallery/<album>/<frame>-400.webp` (thumbnail) and `-1100.webp`, plus an `og.jpg` card,
+4. writes `data/album-photos.json`.
+
+That turns 1,590 frames into **857 photos**, all browsable at `/gallery/<album>` (masonry wall with the lightbox).
+The outputs are committed, so CI and production need neither the library nor `sharp`. Re-running keeps existing
+files (`--force` re-encodes); tune the burst threshold with `dedupe` in `albums.json`.
+
+Hand-edit `data/albums.json` to rename an album, move its frame range, set its `cover`, `include`/`exclude`
+single frames, or **`"hidden": true` to leave an album off the site** (the three `guests: true` albums are
+the guest-trip frames; see the consent note below).
+
+Where they appear: `/gallery` (curated highlights from `data/gallery.json`, then every album), `/gallery/<album>`,
+a "From the Road" mosaic on the home page, and the tour galleries (`galleryAlbums` in `data/tours.json`:
+`{ "album": "kazinga-cruise", "limit": 12 }` appends that many of the sharpest photos, in frame order).
+
+To use one frame elsewhere as a hero/card image, copy it from `tRIPS-web/` to `source-images/photos/<name>.webp`,
+add an entry (alt text, focal point, `maxWidth`) to `data/images.json`, run `npm run images`, and reference it with
+`image({ src: '/images/photos/<name>.webp', … })`. `source-images/` is never served.
+
+**Before publishing, please check consent.** The three guest-trip albums show families and children from the
+April 2025 trip. They are marked `guests: true`; set `"hidden": true` on them in `data/albums.json` and re-run
+`npm run albums` if you do not have permission, and the site is rebuilt without them. Photos are also captioned
+by album only; check the location names against what you know.
 
 ## URLs
 

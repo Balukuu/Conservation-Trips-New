@@ -7,6 +7,7 @@ const path = require('path');
 const { siteUrl, slugify, PUBLIC_DIR } = require('../lib/site');
 const viewLocals = require('../lib/locals');
 const images = require('../lib/images');
+const albums = require('../lib/albums');
 const data = require('../lib/data');
 const pages = require('../lib/pages');
 
@@ -181,6 +182,11 @@ function build() {
   for (const category of data.tourCategories) {
     const slug = slugify(category);
     renderPage('tours', `tours/category/${slug}/index.html`, pages.toursCategory(slug));
+  }
+
+  console.log('\n📷 Rendering Photo Albums...');
+  for (const album of albums.list) {
+    renderPage('gallery-album', `gallery/${album.slug}/index.html`, pages.galleryAlbum(album.slug));
   }
 
   console.log('\n✍️ Rendering Dynamic Blog Posts...');

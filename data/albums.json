@@ -1,0 +1,214 @@
+{
+  "_readme": "Photo albums for /gallery. Hand-edited. `frames` are [prefix, from, to] number ranges in the photo library (pik = TOUR folder, abz = WILDLIFE PHOTOS folder); `include` adds exact stems; `exclude` drops stems; `guests: true` marks albums of guest (not staff) trips. `npm run albums` picks the best frame from each run of near-duplicates and writes data/album-photos.json plus the encoded sizes in public/images/gallery/. Set `\"hidden\": true` on an album to leave it off the site entirely (its photos are then not encoded into the build).",
+  "dedupe": 22,
+  "albums": [
+    {
+      "slug": "the-coaster",
+      "title": "The Safari Coaster",
+      "blurb": "Our green-and-cream coaster and the guides who drive, host and look after every journey.",
+      "alt": "Guides in khaki safari uniforms with the green-and-cream Conservation Trips coaster",
+      "cover": "pik_5190",
+      "frames": [
+        [
+          "pik",
+          5187,
+          5196
+        ],
+        [
+          "pik",
+          5560,
+          5593
+        ]
+      ]
+    },
+    {
+      "slug": "lunch-stops",
+      "title": "Lunch Stops",
+      "blurb": "Buffet lunches and roadside restaurants on the long road west, because a good safari runs on good meals.",
+      "alt": "Guides and guests sharing a lunch stop on the road west",
+      "frames": [
+        [
+          "pik",
+          5197,
+          5204
+        ],
+        [
+          "pik",
+          5594,
+          5622
+        ]
+      ]
+    },
+    {
+      "slug": "kayabwe-equator",
+      "title": "Kayabwe Equator",
+      "blurb": "The white Uganda Equator ring on the Masaka road, where one foot stands in each hemisphere.",
+      "alt": "Guides and guests at the white Uganda Equator monument at Kayabwe",
+      "cover": "pik_5289",
+      "frames": [
+        [
+          "pik",
+          5205,
+          5362
+        ]
+      ]
+    },
+    {
+      "slug": "lake-mburo-gate",
+      "title": "Lake Mburo National Park: Sanga Gate",
+      "blurb": "Arriving at Sanga Gate, the Lake Mburo National Park entrance, with the whole group together.",
+      "alt": "Guides and guests at the Sanga Gate entrance of Lake Mburo National Park",
+      "cover": "pik_5463",
+      "frames": [
+        [
+          "pik",
+          5363,
+          5559
+        ]
+      ]
+    },
+    {
+      "slug": "lake-mburo-plains",
+      "title": "Lake Mburo: Game Drive & Plains",
+      "blurb": "Zebras, impala and buffalo on the plains of Uganda's most accessible savannah park, plus the baboons at the lodge.",
+      "alt": "Wildlife and savannah scenery on a game drive in Lake Mburo National Park",
+      "cover": "pik_5692",
+      "frames": [
+        [
+          "pik",
+          5623,
+          5777
+        ]
+      ]
+    },
+    {
+      "slug": "lake-sunset",
+      "title": "Golden Hour by the Lake",
+      "blurb": "Sunset silhouettes over a still lake, with the hills fading into the dusk behind.",
+      "alt": "Silhouettes against a golden sunset over a lake in Uganda",
+      "cover": "pik_5793",
+      "frames": [
+        [
+          "pik",
+          5778,
+          5817
+        ]
+      ],
+      "include": [
+        "doreen2",
+        "doreen3"
+      ]
+    },
+    {
+      "slug": "tea-estates",
+      "title": "Tea Estates & the Uganda Flag",
+      "blurb": "Bright green tea estates on the road to Queen Elizabeth National Park, and the flag held high.",
+      "alt": "Guides and guests on the roadside beside bright green tea estates in western Uganda",
+      "cover": "pik_5859",
+      "frames": [
+        [
+          "pik",
+          5818,
+          5930
+        ]
+      ]
+    },
+    {
+      "slug": "road-west",
+      "title": "The Road West",
+      "blurb": "Winding highways, forested hills and tea slopes between Kampala and the western parks.",
+      "alt": "Road and hillside scenery on the drive to western Uganda",
+      "cover": "pik_5972",
+      "frames": [
+        [
+          "pik",
+          5931,
+          5980
+        ]
+      ],
+      "include": [
+        "doreen6"
+      ]
+    },
+    {
+      "slug": "kikorongo-equator",
+      "title": "Kikorongo Equator",
+      "blurb": "The mirror-steel Uganda Equator globe at Kikorongo, beside Queen Elizabeth National Park.",
+      "alt": "Guides and guests at the Uganda Equator globe sculpture at Kikorongo",
+      "cover": "pik_6065",
+      "frames": [
+        [
+          "pik",
+          5981,
+          6223
+        ]
+      ],
+      "include": [
+        "doreen5"
+      ]
+    },
+    {
+      "slug": "kazinga-cruise",
+      "title": "Kazinga Channel Cruise",
+      "blurb": "Hippos, shorebirds and golden evening light from the water of the Kazinga Channel.",
+      "alt": "Hippos, shoreline and sunset light on a boat cruise on the Kazinga Channel",
+      "cover": "pik_6359",
+      "frames": [
+        [
+          "pik",
+          6224,
+          6490
+        ]
+      ],
+      "include": [
+        "doreen",
+        "doreen1"
+      ]
+    },
+    {
+      "slug": "guest-trip-roadside",
+      "title": "Guest Trip: Roadside Stops",
+      "blurb": "A guest group and their bus at roadside stops on the way to Queen Elizabeth National Park.",
+      "alt": "Guests and the tour bus at a roadside stop in Uganda",
+      "cover": "abz_0393",
+      "guests": true,
+      "frames": [
+        [
+          "abz",
+          368,
+          407
+        ]
+      ]
+    },
+    {
+      "slug": "guest-trip-game-drives",
+      "title": "Guest Trip: Queen Elizabeth Game Drives",
+      "blurb": "Open-sided safari 4x4s, the Kasenyi gate and the plains of Queen Elizabeth National Park.",
+      "alt": "Open-sided safari 4x4s and guests on a game drive in Queen Elizabeth National Park",
+      "cover": "abz_0455",
+      "guests": true,
+      "frames": [
+        [
+          "abz",
+          408,
+          630
+        ]
+      ]
+    },
+    {
+      "slug": "guest-trip-kazinga",
+      "title": "Guest Trip: Kazinga Channel Cruise",
+      "blurb": "Elephants and hippos on the shore, and a family day on the water of the Kazinga Channel.",
+      "alt": "Guests on a launch cruise on the Kazinga Channel, with elephants and hippos on the shore",
+      "cover": "abz_0720",
+      "guests": true,
+      "frames": [
+        [
+          "abz",
+          631,
+          876
+        ]
+      ]
+    }
+  ]
+}

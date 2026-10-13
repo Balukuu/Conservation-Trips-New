@@ -97,16 +97,22 @@
         </div>
 
         <!-- Photo Gallery -->
-        <% if (tour.gallery && tour.gallery.length) { %>
+        <% if (gallery && gallery.length) { %>
         <div class="tour-detail-section reveal">
           <h3><i class="fa-regular fa-images"></i> Photo Gallery</h3>
           <div class="gallery-grid">
-            <% tour.gallery.forEach((img, i) => { %>
+            <% gallery.forEach((src, i) => { %>
             <div class="gallery-item">
-              <%- image({ src: img, sizes: '(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw' }) %>
+              <%- image({ src, sizes: '(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw', fill: true }) %>
             </div>
             <% }) %>
           </div>
+          <% if (galleryAlbums.length) { %>
+          <p class="gallery-more">
+            Photos from our own journeys on this route.
+            <% galleryAlbums.forEach((a, i) => { %><a href="/gallery/<%= a.slug %>"><%= a.title %> (<%= a.count %>)</a><%= i < galleryAlbums.length - 1 ? ' · ' : '' %><% }) %>
+          </p>
+          <% } %>
         </div>
         <% } %>
 

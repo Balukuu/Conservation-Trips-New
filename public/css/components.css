@@ -1220,3 +1220,95 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
   .gallery-grid--page .gallery-item--wide { grid-column: auto; grid-row: span 1; }
   .gallery-grid--page .gallery-item--tall { grid-row: span 2; }
 }
+
+/* ============================================================
+   PHOTO WALL (album pages) — masonry columns, so every photo keeps its own
+   aspect ratio (no cropped heads) and lazy-loads as the page scrolls.
+   ============================================================ */
+.photo-wall { column-width: 270px; column-gap: 12px; }
+.photo-wall .gallery-item.photo-tile {
+  display: block;
+  margin: 0 0 12px;
+  aspect-ratio: auto;
+  break-inside: avoid;
+  background: var(--primary-light);
+}
+.photo-wall .photo-tile img { width: 100%; height: auto; display: block; }
+
+.album-nav {
+  display: flex; align-items: stretch; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border-light);
+}
+.album-nav-link {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 18px; border-radius: var(--radius-md);
+  border: 1px solid var(--border-light); background: var(--surface);
+  color: var(--dark); font-weight: 600; font-size: 0.92rem;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.album-nav-link small { display: block; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+.album-nav-link:hover { border-color: var(--primary); color: var(--primary); }
+.album-nav-next { margin-left: auto; text-align: right; }
+.album-nav-all { align-self: center; }
+
+/* ============================================================
+   ALBUM CARDS (/gallery)
+   ============================================================ */
+.album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+.album-card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s ease;
+}
+.album-card:hover { box-shadow: var(--shadow-lg); }
+.album-card-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--primary-light); }
+.album-card-img img { transition: transform 0.55s var(--ease-out); }
+@media (hover: hover) { .album-card:hover .album-card-img img { transform: scale(1.05); } }
+.album-card-count {
+  position: absolute; top: 12px; right: 12px; z-index: 1;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600;
+  color: #fff; background: rgba(15,31,15,0.62);
+}
+.album-card-body { padding: 18px 20px 22px; }
+.album-card-title { font-size: 1.15rem; margin-bottom: 6px; }
+/* the title's link covers the whole card (README: cards carry one link) */
+.album-card-title a { color: var(--dark); }
+.album-card-title a::after { content: ''; position: absolute; inset: 0; }
+.album-card-blurb { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+.filter-tab--strong { background: var(--primary); color: #fff; border-color: var(--primary); }
+.filter-tab--strong:hover { color: #fff; filter: brightness(1.08); }
+
+/* ============================================================
+   HOME: FROM THE ROAD (photo strip)
+   ============================================================ */
+.photo-strip {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+}
+.photo-strip-item {
+  position: relative; display: block; overflow: hidden;
+  border-radius: var(--radius-md); background: var(--primary-light);
+}
+.photo-strip-item--feature { grid-column: span 2; grid-row: span 2; }
+.photo-strip-item img { transition: transform 0.55s var(--ease-out); }
+@media (hover: hover) { .photo-strip-item:hover img { transform: scale(1.05); } }
+.photo-strip-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 16px 14px;
+  display: flex; flex-direction: column; gap: 2px; color: #fff;
+  background: linear-gradient(to top, rgba(10,20,10,0.78), rgba(10,20,10,0));
+}
+.photo-strip-caption strong { font-size: 0.95rem; }
+.photo-strip-caption small { font-size: 0.75rem; opacity: 0.8; }
+@media (max-width: 900px) {
+  .photo-strip { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+}
+@media (max-width: 520px) {
+  .photo-strip-item--feature { grid-column: span 2; grid-row: span 1; }
+}
+
+.gallery-more { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); }
+.gallery-more a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }

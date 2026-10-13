@@ -509,6 +509,35 @@
 </section>
 <% } %>
 
+<!-- ═══════════════ SECTION 9b: FROM THE ROAD ═══════════════ -->
+<% if (typeof photoStrip !== 'undefined' && photoStrip.length) { %>
+<section class="section" id="photos" style="background: var(--surface);">
+  <div class="container-wide">
+    <div class="tours-section-header reveal">
+      <div>
+        <div class="section-label"><i class="fa-solid fa-camera"></i> From the Road</div>
+        <h2 style="color: var(--dark);">Photographed on Our Own Journeys</h2>
+        <p class="section-subtitle">Equator monuments, plains game and golden hours on the Kazinga Channel: every picture here was taken on a Conservation Trips journey.</p>
+      </div>
+      <a href="/gallery" class="btn btn-outline-dark hide-mobile">See all photos <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="photo-strip reveal-grid">
+      <% photoStrip.forEach((p, i) => { %>
+      <a class="photo-strip-item<%= i === 0 ? ' photo-strip-item--feature' : '' %>" href="<%= p.href %>">
+        <%- image({ src: p.src, alt: '', sizes: i === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw', fill: true }) %>
+        <span class="photo-strip-caption"><strong><%= p.title %></strong><small><%= p.count %> photos</small></span>
+      </a>
+      <% }) %>
+    </div>
+
+    <div class="text-center mt-32 reveal hide-desktop">
+      <a href="/gallery" class="btn btn-outline-dark">See all photos <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+<% } %>
+
 <!-- ═══════════════ SECTION 10: BLOG PREVIEW ═══════════════ -->
 <section class="section" id="blog-preview" style="background: var(--surface);">
   <div class="container">

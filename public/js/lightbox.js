@@ -60,6 +60,7 @@
     current = index || 0;
     lastFocus = trigger || document.activeElement;
     show(true);
+    preloadNeighbours();
     overlay.classList.add('active');
     document.documentElement.classList.add('no-scroll');
     closeBtn.focus({ preventScroll: true });
@@ -72,8 +73,18 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
 
-  function next() { current = (current + 1) % items.length; show(false); }
-  function prev() { current = (current - 1 + items.length) % items.length; show(false); }
+  // Warm the cache for the photos either side of the current one, so stepping
+  // through a long album doesn't wait on the network each time.
+  function preloadNeighbours() {
+    if (items.length < 2) return;
+    [1, -1].forEach(function (d) {
+      var it = items[(current + d + items.length) % items.length];
+      if (it && it.src) new Image().src = it.src;
+    });
+  }
+
+  function next() { current = (current + 1) % items.length; show(false); preloadNeighbours(); }
+  function prev() { current = (current - 1 + items.length) % items.length; show(false); preloadNeighbours(); }
 
   // Gallery tiles become real, keyboard-operable buttons
   function bindGallery() {
