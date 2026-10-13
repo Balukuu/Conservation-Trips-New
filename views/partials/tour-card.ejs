@@ -1,17 +1,18 @@
+<%
+  const places = tour.countries || [];
+  const where = places.length > 1 ? places.slice(0, -1).join(', ') + ' & ' + places[places.length - 1] : (places[0] || '');
+  const meta = [tour.category, where].filter(Boolean).join(' • ');
+%>
 <article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
   <div class="tour-card-img">
     <%- image({ src: tour.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: tour.imagePosition }) %>
     <div class="tour-card-img-overlay"></div>
-    <span class="category-tag"><%= tour.category %></span>
-    <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
   </div>
   <div class="tour-card-body">
     <h3 class="tour-card-title">
       <a href="/tours/<%= tour.slug %>"><%= tour.name %></a>
     </h3>
-    <p class="tour-card-excerpt"><%= tour.summary %></p>
-    <div class="tour-card-footer">
-      <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
-    </div>
+    <% if (meta) { %><p class="tour-card-meta"><%= meta %></p><% } %>
+    <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
   </div>
 </article>

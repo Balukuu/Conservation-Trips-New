@@ -355,41 +355,43 @@
 
 /* ============================================================
    TOUR CARDS
+   Full-bleed photo, a tinted gradient rising from the bottom, and the
+   title / meta / glass button stacked over it. The tint is set per category
+   as an r, g, b triplet so one gradient rule serves every card.
    ============================================================ */
 .tour-card {
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: var(--transition);
+  --tint: 30, 74, 30;
+  --tour-card-radius: 22px;
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  position: relative;
-  border: 1px solid var(--border-light);
-}
-.tour-card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
-.tour-card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--primary);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.35s var(--ease-out);
-  z-index: 1;
-}
-.tour-card:hover::before { transform: scaleY(1); }
-
-.tour-card-img {
-  position: relative;
-  aspect-ratio: 4/3;
+  justify-content: flex-end;
+  aspect-ratio: 5 / 7;
+  border-radius: var(--tour-card-radius);
   overflow: hidden;
+  background: rgb(var(--tint));
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+.tour-card:hover { box-shadow: var(--shadow-lg); }
+@media (max-width: 640px) { .tour-card { aspect-ratio: 4 / 5; } }
+
+/* Palette-harmonised, dark enough for white text */
+.tour-card[data-category="Wildlife Safari"]    { --tint: 112, 64, 14; }
+.tour-card[data-category="Gorilla Trekking"]   { --tint: 20, 66, 36; }
+.tour-card[data-category="Primate Safari"]     { --tint: 16, 74, 70; }
+.tour-card[data-category="Boat Cruise"]        { --tint: 22, 58, 94; }
+.tour-card[data-category="Cultural Tour"]      { --tint: 112, 42, 30; }
+.tour-card[data-category="Mountain Climbing"]  { --tint: 40, 52, 72; }
+
+/* The photo sits behind the content (z-index -1 inside the card's own stacking
+   context) so the body can stay in normal flow and the title link's ::after
+   still measures against the whole card. */
+.tour-card-img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 .tour-card-img img {
   width: 100%;
@@ -403,49 +405,34 @@
 .tour-card-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(15,31,15,0.3) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  background: linear-gradient(
+    to top,
+    rgba(var(--tint), 0.96) 0%,
+    rgba(var(--tint), 0.88) 30%,
+    rgba(var(--tint), 0.55) 48%,
+    rgba(var(--tint), 0.18) 64%,
+    rgba(var(--tint), 0) 80%
+  );
 }
-.tour-card:hover .tour-card-img-overlay { opacity: 1; }
-
-.duration-badge,
-.category-tag {
-  position: absolute;
-  top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  color: #fff;
-  background: rgba(10,22,10,0.55);
-  border: 1px solid rgba(255,255,255,0.18);
-  -webkit-backdrop-filter: blur(10px) saturate(1.4);
-  backdrop-filter: blur(10px) saturate(1.4);
-}
-.category-tag { left: 14px; }
-.duration-badge { right: 14px; }
 
 .tour-card-body {
-  padding: 22px 24px 20px;
+  padding: 0 22px 22px;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 .tour-card-title {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  color: var(--dark);
-  margin-bottom: 10px;
-  transition: color 0.2s ease;
-  line-height: 1.22;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 14px rgba(0,0,0,0.35);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 /* The title link covers the whole card, so the entire card is one big tap target
    and screen readers meet one link per tour instead of three. */
@@ -454,52 +441,39 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  border-radius: var(--radius-md);
+  border-radius: var(--tour-card-radius);
 }
 .tour-card-title a:focus-visible { outline: none; }
-.tour-card-title a:focus-visible::after { outline: 3px solid var(--primary); outline-offset: -3px; }
-.tour-card:hover .tour-card-title { color: var(--primary); }
-.tour-card-excerpt {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 20px;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.tour-card-title a:focus-visible::after { outline: 3px solid #fff; outline-offset: -6px; }
+.tour-card-meta {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 18px;
 }
-.tour-card-footer {
+.tour-card-cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  border-top: 1px solid var(--border-light);
-  padding-top: 16px;
-}
-.tour-card-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--primary);
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.16);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  backdrop-filter: blur(10px) saturate(1.3);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
   white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .tour-card-cta i {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  font-size: 0.72rem;
-  transition: transform 0.25s var(--ease-out), background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.85rem;
+  transition: transform 0.25s var(--ease-out);
 }
-.tour-card:hover .tour-card-cta i { background: var(--primary); color: #fff; transform: translateX(3px); }
+.tour-card:hover .tour-card-cta { background: rgba(255,255,255,0.26); border-color: rgba(255,255,255,0.3); }
+.tour-card:hover .tour-card-cta i { transform: translateX(4px); }
 .tour-card.hidden { display: none; }
 
 /* ============================================================
