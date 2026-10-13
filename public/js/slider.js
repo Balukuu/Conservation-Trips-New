@@ -91,7 +91,14 @@
     this.el.addEventListener('pointerleave', function (e) {
       if (e.pointerType === 'mouse') { self.hovering = false; self.schedule(); }
     });
-    this.el.addEventListener('focusin', function () { self.focused = true; self.schedule(); });
+    // Only keyboard focus pauses. A tap leaves the dot or button focused too,
+    // and on a phone nothing ever blurs it, so the carousel would stall for good.
+    this.el.addEventListener('focusin', function (e) {
+      var keyboard = true; // no :focus-visible support: assume keyboard, the safe side for WCAG 2.2.2
+      try { keyboard = e.target.matches(':focus-visible'); } catch (err) { /* old browser */ }
+      self.focused = keyboard;
+      self.schedule();
+    });
     this.el.addEventListener('focusout', function () { self.focused = false; self.schedule(); });
     document.addEventListener('visibilitychange', function () { self.schedule(); });
 
