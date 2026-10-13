@@ -64,7 +64,8 @@ app.use((req, res, next) => {
 app.use(express.static(PUBLIC_DIR, {
   maxAge: isProduction ? '30d' : 0,
   setHeaders(res, file) {
-    if (isProduction && /\.(css|js)$/.test(file)) {
+    // versioned CSS/JS URLs and the (version-named) font files never change in place
+    if (isProduction && /\.(css|js|woff2)$/.test(file)) {
       res.set('Cache-Control', 'public, max-age=31536000, immutable');
     }
   }

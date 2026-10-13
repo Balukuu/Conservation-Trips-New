@@ -37,13 +37,11 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/favicon-192.png">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
 
-  <!-- Third-party origins used on every page: connect early -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- Font: Figtree, self-hosted (see main.css). Preloaded so text paints in it at once. -->
+  <link rel="preload" href="/fonts/figtree-v9-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons come from cdnjs: connect early -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -54,9 +52,9 @@
   
 
   <!-- Styles (assetUrl adds a content hash, so they can be cached long-term) -->
-  <link rel="stylesheet" href="/css/main.css?v=d374b1126b">
-  <link rel="stylesheet" href="/css/animations.css?v=c556fab1ba">
-  <link rel="stylesheet" href="/css/components.css?v=4d3edf0344">
+  <link rel="stylesheet" href="/css/main.css?v=3811e0e4cf">
+  <link rel="stylesheet" href="/css/animations.css?v=9afb1a38d2">
+  <link rel="stylesheet" href="/css/components.css?v=b3ea8804fa">
   <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
   <link rel="stylesheet" href="/css/preferences.css?v=c1f458811a">
 
@@ -490,7 +488,7 @@
   <div class="container-wide">
     <div class="text-center reveal mb-0" style="padding-bottom: 0;">
       <div class="section-label light"><i class="fa-solid fa-map-location-dot"></i> Explore Africa</div>
-      <h2 style="color: #fff; font-style: italic;">Uganda's Most Breathtaking Destinations</h2>
+      <h2 style="color: #fff;">Uganda's Most Breathtaking Destinations</h2>
       <p style="color: rgba(255,255,255,0.6); max-width: 580px; margin: 12px auto 0; font-size: 1.05rem;">
         From Uganda's mountain gorillas to Tanzania's endless Serengeti plains — we take you to the heart of East Africa's most iconic destinations.
       </p>
@@ -701,7 +699,7 @@
   <div class="container">
     <div class="text-center reveal mb-48">
       <div class="section-label light"><i class="fa-solid fa-star"></i> Testimonials</div>
-      <h2 style="color: #fff; font-style: italic;">What Our Travellers Say</h2>
+      <h2 style="color: #fff;">What Our Travellers Say</h2>
     </div>
 
     <div class="testimonial-slider reveal" role="region" aria-roledescription="carousel" aria-label="Traveller testimonials">
@@ -853,7 +851,7 @@
     <div class="grid-2">
       <div class="reveal-left">
         <div class="section-label light"><i class="fa-solid fa-leaf"></i> Our Commitment</div>
-        <h2 style="color: #fff; font-style: italic; margin-bottom: 20px;">Travel That Gives Back</h2>
+        <h2 style="color: #fff; margin-bottom: 20px;">Travel That Gives Back</h2>
         <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px;">
           Every safari we organise contributes directly to Uganda's conservation efforts. We partner with local communities, employ certified guides, and support the Uganda Wildlife Authority's mission to protect endangered species for generations to come.
         </p>
@@ -1343,7 +1341,7 @@
   
   <script defer src="/js/motion.js?v=d751fd3aab"></script>
   
-  <script defer src="/js/main.js?v=4476bd736a"></script>
+  <script defer src="/js/main.js?v=3262cd74a0"></script>
   
   <script defer src="/js/slider.js?v=8a714805ec"></script>
   

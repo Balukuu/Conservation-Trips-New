@@ -67,6 +67,33 @@
 }
 
 /* ============================================================
+   FONT
+   One family, like tripadvisor.com (which uses its own proprietary Trip Sans,
+   not available for other sites): Figtree, an open-source (SIL OFL) friendly
+   geometric sans, self-hosted as a variable font so there is no third-party
+   request. Change the whole site's type by changing --font below.
+   URLs are relative to this stylesheet so a base-path build still resolves.
+   ============================================================ */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('../fonts/figtree-v9-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: italic;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('../fonts/figtree-v9-latin-wght-italic.woff2') format('woff2');
+}
+:root {
+  --font: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font);
+}
+
+/* ============================================================
    CSS RESET
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -80,7 +107,7 @@ html {
   scroll-padding-top: calc(var(--nav-height) + 16px);
 }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
@@ -141,37 +168,37 @@ a, button, input, select, textarea, label, summary, [role="button"], [role="radi
    TYPOGRAPHY
    ============================================================ */
 .display {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  letter-spacing: -0.035em;
   line-height: 1.05;
 }
 h1, .h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 h2, .h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 h3, .h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
 }
 h4, .h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .body-lg {
   font-size: 1.125rem;
@@ -184,10 +211,10 @@ h4, .h4 {
   text-transform: uppercase;
 }
 .quote-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  line-height: 1.9;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.75;
 }
 
 /* Section Label */
@@ -225,6 +252,7 @@ h4, .h4 {
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .flex { display: flex; }
 .flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-wrap { flex-wrap: wrap; } /* used with .flex-center on button rows; it was never defined, so they never wrapped */
 .flex-between { display: flex; align-items: center; justify-content: space-between; }
 .gap-8 { gap: 8px; }
 .gap-16 { gap: 16px; }
@@ -257,7 +285,7 @@ h4, .h4 {
   gap: 8px;
   padding: 14px 32px;
   border-radius: var(--radius-pill);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -609,7 +637,7 @@ h4, .h4 {
   padding: 13px 16px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 1rem; /* 16px+ stops iOS Safari zooming the page on focus */
   color: var(--text);
   background: #fff;
@@ -652,9 +680,9 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
    STATISTICS
    ============================================================ */
 .stat-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
   line-height: 1;
 }
 .stat-label {
@@ -735,7 +763,7 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   font-weight: 700;
   flex-shrink: 0;
 }
-.accordion-title { font-family: 'Inter', sans-serif; font-weight: 600; flex: 1; }
+.accordion-title { font-family: var(--font); font-weight: 600; flex: 1; }
 .accordion-icon { color: var(--text-muted); transition: transform 0.3s var(--ease-out), color 0.2s ease; }
 .accordion-header.active .accordion-icon { transform: rotate(180deg); color: var(--primary); }
 .accordion-body {
@@ -900,9 +928,9 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   color: #fff;
 }
 .sidebar-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
   color: var(--accent);
 }
 .sidebar-title-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }

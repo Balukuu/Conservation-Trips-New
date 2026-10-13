@@ -53,9 +53,9 @@
   background: rgba(255,255,255,0.25);
 }
 .trust-stat .stat-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
   line-height: 1;
   display: block;
   color: var(--accent);
@@ -141,9 +141,9 @@
   z-index: 5;
 }
 .about-years-badge .badge-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
   color: var(--accent);
   display: block;
   line-height: 1;
@@ -471,10 +471,9 @@
 }
 .cta-strip-content { position: relative; z-index: 2; }
 .cta-strip h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  font-style: italic;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  font-weight: 800;
   color: var(--accent);
   margin-bottom: 20px;
 }
@@ -570,8 +569,8 @@
   transform: scale(1.05);
 }
 .team-name { 
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem; 
+  font-family: var(--font-display);
+  font-size: 1.25rem; 
   font-weight: 700; 
   color: var(--dark); 
   margin-bottom: 6px; 
@@ -647,10 +646,10 @@
   border-radius: var(--radius-pill);
 }
 .blog-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--dark);
   line-height: 1.22;
   margin-bottom: 10px;
@@ -712,9 +711,9 @@
   margin-bottom: 8px;
 }
 .contact-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
   color: var(--dark);
   margin-bottom: 28px;
   line-height: 1.25;
@@ -819,9 +818,9 @@
   margin-bottom: 16px;
 }
 .tour-detail-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  font-weight: 800;
   color: #fff;
   margin-bottom: 8px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.3);
@@ -993,10 +992,9 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
 .not-found-content { max-width: 560px; }
 .not-found-svg { max-width: 400px; margin: 0 auto 40px; }
 .not-found-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  font-style: italic;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
   color: var(--dark);
   margin-bottom: 16px;
 }
@@ -1312,3 +1310,13 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
 
 .gallery-more { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); }
 .gallery-more a { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============================================================
+   BLOG POST LAYOUT: article + sidebar, one column on tablets and phones
+   ============================================================ */
+.post-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: start; }
+.post-aside { position: sticky; top: calc(var(--nav-height) + 24px); }
+@media (max-width: 900px) {
+  .post-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .post-aside { position: static; }
+}

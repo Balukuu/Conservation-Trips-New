@@ -185,16 +185,15 @@
 }
 
 .slide-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   /* vh-aware: a 3-line title on a short laptop screen must not push the CTAs
      behind the stats panel */
-  font-size: clamp(2.5rem, min(6.4vw, 9.6vh), 5.25rem);
-  font-weight: 700;
-  font-style: italic;
+  font-size: clamp(2.2rem, min(5.4vw, 8.4vh), 4.5rem);
+  font-weight: 800;
   color: #fff;
   line-height: 1.04;
-  letter-spacing: -0.025em;
-  max-width: 17ch;
+  letter-spacing: -0.035em;
+  max-width: 18ch;
   text-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 8px 40px rgba(0,0,0,0.45);
   margin-bottom: 22px;
 }
@@ -439,10 +438,10 @@
   flex: 1;
 }
 .tour-card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--dark);
   margin-bottom: 10px;
   transition: color 0.2s ease;
@@ -552,8 +551,8 @@
 .dest-card:hover .dest-card-content,
 .dest-card:focus-within .dest-card-content { transform: translateY(0); }
 .dest-card-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
@@ -647,8 +646,7 @@
   position: absolute;
   top: 18px;
   right: 40px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
   color: var(--accent);
   opacity: 0.28;
   font-size: 8rem;
@@ -656,10 +654,10 @@
   pointer-events: none;
 }
 .testimonial-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.7;
   color: var(--text);
   margin-bottom: 28px;
 }
@@ -689,7 +687,7 @@
   letter-spacing: 0.04em;
 }
 .testimonial-author-name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-weight: 700;
   font-size: 1rem;
   color: var(--dark);
@@ -701,7 +699,6 @@
 }
 .testimonial-tour {
   font-size: 0.8rem;
-  font-style: italic;
   color: var(--primary);
   font-weight: 500;
   margin-top: 3px;
@@ -820,12 +817,13 @@
   color: #fff;
 }
 .nav-logo-text span:first-child {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
   font-weight: 700;
 }
 .nav-logo-text span:last-child {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 0.65rem;
   font-weight: 600;
   color: rgba(255,255,255,0.88);
@@ -955,9 +953,9 @@
 .mobile-menu.dragging { transition: none; }
 .mobile-link {
   display: block;
-  font-size: 1.3rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
   color: rgba(255,255,255,0.9);
   padding: 12px 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -1027,7 +1025,9 @@
   transition: opacity 0.3s ease, visibility 0s;
 }
 .menu-backdrop.dragging { transition: none; }
-@media (min-width: 769px) {
+/* The full bar (logo + 7 links + Book Now) needs ~975px, so the menu collapses
+   to the hamburger at 1024px and below. Keep main.js (NAV_BREAKPOINT) in step. */
+@media (min-width: 1025px) {
   .mobile-menu, .menu-backdrop { display: none; }
 }
 
@@ -1052,9 +1052,9 @@
 .footer-brand .footer-logo { margin-bottom: 16px; }
 .footer-brand .footer-logo img { height: 48px; }
 .footer-brand-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--accent);
   margin-bottom: 12px;
   line-height: 1.3;
@@ -1084,7 +1084,7 @@
 }
 .footer-social a:hover { border-color: var(--accent); color: var(--accent); background: rgba(200,146,42,0.1); }
 .footer-col h4 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1144,10 +1144,19 @@
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hamburger { display: flex; }
   .nav-links { display: none; }
   .nav-phone { display: none; }
+  .nav-inner { padding: 0 24px; }
+}
+/* full bar, but not much room: drop the phone number until there is */
+@media (min-width: 1025px) and (max-width: 1239px) {
+  .nav-phone { display: none; }
+  .nav-links > li > a { padding: 8px 11px; }
+  .nav-links > li > a::after { left: 11px; right: 11px; }
+}
+@media (max-width: 768px) {
   .nav-inner { padding: 0 20px; }
   .nav-logo img { height: 38px; }
   .nav-logo-text span:first-child { font-size: 1rem; }

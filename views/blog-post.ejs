@@ -17,11 +17,11 @@
 <!-- Article Content -->
 <section class="section" style="background:var(--surface);">
   <div class="container">
-    <div style="display:grid; grid-template-columns:1fr 300px; gap:48px; align-items:start;">
+    <div class="post-layout">
 
       <!-- Main Content -->
       <article class="reveal">
-        <p class="body-lg" style="color:var(--text-muted); margin-bottom:28px; font-style:italic; border-left:4px solid var(--accent); padding-left:20px;">
+        <p class="body-lg" style="color:var(--text-muted); margin-bottom:28px; font-weight:500; border-left:4px solid var(--accent); padding-left:20px;">
           <%= post.excerpt %>
         </p>
         <p style="color:var(--text); line-height:1.9; margin-bottom:20px;">
@@ -49,10 +49,10 @@
       </article>
 
       <!-- Sidebar -->
-      <aside style="position:sticky; top:calc(var(--nav-height) + 24px);">
+      <aside class="post-aside">
         <!-- CTA Card -->
         <div style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius:var(--radius-lg); padding:32px; color:#fff; margin-bottom:24px;">
-          <h4 style="margin-bottom:12px; font-family:'Cormorant Garamond',serif; font-size:1.4rem;">Plan Your Safari</h4>
+          <h4 style="margin-bottom:12px; font-family:var(--font-display); font-size:1.3rem;">Plan Your Safari</h4>
           <p style="font-size:0.9rem; opacity:0.85; margin-bottom:20px; line-height:1.6;">Ready to experience Uganda for yourself? Our team of experts is ready to craft your perfect itinerary.</p>
           <a href="/contact" class="btn btn-primary" style="width:100%; justify-content:center;">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
           <a href="/tours" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">View All Tours</a>
@@ -66,7 +66,7 @@
         <!-- Related Articles -->
         <% if (related && related.length > 0) { %>
         <div>
-          <h4 style="color:var(--dark); margin-bottom:16px; font-family:'Inter',sans-serif;">Related Articles</h4>
+          <h4 style="color:var(--dark); margin-bottom:16px; font-family:var(--font);">Related Articles</h4>
           <% related.forEach(r => { %>
           <a href="/blog/<%= r.slug %>" style="display:flex; gap:12px; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border-light); text-decoration:none;">
             <div style="width:70px; height:60px; border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0;">

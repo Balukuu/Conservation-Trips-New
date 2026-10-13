@@ -150,6 +150,21 @@ Without SMTP settings the forms are accepted in development but not emailed, and
 - **Without it**, submitting the form opens a pre-filled email to `info@tripsandadventures.co.ug`
   in the visitor's mail app, and the confirmation screen says so.
 
+## Typography
+
+The whole site uses one family, **Figtree** (friendly geometric sans, SIL OFL), self-hosted as a variable font in
+`public/fonts/` (latin subset, ~20 KB per style, `font-display: swap`, the roman file is preloaded). No Google Fonts
+request is made. Change the typeface in one place: `--font` / `--font-display` at the top of `public/css/main.css`.
+
+It stands in for tripadvisor.com's **Trip Sans**. That typeface was made for Tripadvisor (Colophon Foundry, 2020)
+and is licensed for Tripadvisor and its partners only, so it can't be used on this site; "free download" mirrors of
+it are not licensed either. Figtree is the closest open-source match we found (same friendly, open-aperture sans
+feel, 300 to 900 weights). Alternatives that fit the same brief: Plus Jakarta Sans, DM Sans, Manrope.
+
+Headings are Figtree 700 to 800 with slightly negative tracking (no italics); the serif/italic display styles of the
+earlier design were removed. When the nav, a hero or a stat looks too big or small after a font change, adjust the
+`font-size` in that rule: Figtree has a larger x-height than the old Cormorant Garamond.
+
 ## Front-end conventions
 
 The motion/interaction layer follows a few rules — keep them when adding components:
@@ -163,6 +178,8 @@ The motion/interaction layer follows a few rules — keep them when adding compo
 - **Scroll reveal** (`.reveal`, `.reveal-left`, `.reveal-right`, `.reveal-scale`, `.reveal-grid`)
   only hides content under `<html class="js">`, and `main.js` adds `.reveal-done` afterwards so the
   element's own hover/transform rules take over. Don't write inline `opacity`/`transform` from JS.
+- **The navbar collapses to the hamburger at 1024px and below** (`animations.css`; `NAV_BREAKPOINT` in `main.js`). The full bar needs
+  ~975px.
 - **Anything that slides away also goes `visibility:hidden`** so it can't be tabbed to off-screen.
 - **Cards carry one link.** The title's `<a>` is stretched over the whole card (`a::after { inset: 0 }`);
   photos and "View itinerary / Read more" are decorative (`aria-hidden`). Don't add a second link inside a card.

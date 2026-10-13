@@ -11,6 +11,8 @@
   'use strict';
 
   var root = document.documentElement;
+  // widest viewport on which the navbar collapses to the hamburger (matches animations.css)
+  var NAV_BREAKPOINT = 1024;
   var reduceMotion = function () { return window.Motion ? window.Motion.prefersReducedMotion() : false; };
 
   /* iOS Safari only applies :active (press feedback) when a touch listener
@@ -97,7 +99,7 @@
     });
 
     window.addEventListener('resize', function () {
-      if (menuOpen && window.innerWidth > 768) setMenu(false, false);
+      if (menuOpen && window.innerWidth > NAV_BREAKPOINT) setMenu(false, false);
     });
 
     /* Drag to dismiss */
