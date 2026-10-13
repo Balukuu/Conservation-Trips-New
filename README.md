@@ -91,9 +91,10 @@ It is data-driven: tiles and counts come from `data/tours.json`, destinations fr
 the bento from `MOMENTS` in `lib/pages.js`, the rating from `data/testimonials.json`, the photo total from the albums.
 Other pages can add their own stylesheet the same way (`pageStyles: ['/css/x.css']` in the view model).
 
-Redesigned pages share `public/css/sections.css` (`sx-*`: section frame and heads, split layout, feature list, closing
-call-to-action card, and the inner-page hero with its `sx-chips` fact row) and add a page stylesheet on top
-(`hm-` home, `ab-` about, `tr-` tours).
+Redesigned pages share `public/css/sections.css` (`sx-*`: section frame and heads, split layout, feature list, filter
+tabs with counts, and the inner-page hero with its `sx-chips` fact row) and add a page stylesheet on top (`hm-` home,
+`ab-` about, `tr-` tours, `ex-` experiences, `ds-` destinations, `bl-` blog, `ct-` contact). The closing call to action
+is one partial, `views/partials/cta-card.ejs` (title, text, one or two buttons, plus the phone / WhatsApp / email list).
 
 ## Tours page
 
@@ -102,6 +103,20 @@ day range, countries, lowest price) and the count on each filter tab are read fr
 The tabs are real links, so each category has its own URL and works without JavaScript; `public/js/tours.js` filters
 in place and keeps the "N itineraries" count in step. Below the container width the tabs become one swipeable strip.
 The cards are the shared `partials/tour-card.ejs`, also used on the home, destination and tour pages.
+
+## Experiences, destinations, blog and contact
+
+- **Experiences** (`views/experiences.ejs`, `experiences.css`): the list lives in `EXPERIENCES` in `lib/pages.js`. An
+  entry with a `category` links to that tour category and shows its real tour count; others use `link`.
+- **Destinations** (`destinations.ejs`, `destination-country.ejs`, `destinations.css`): park cards are
+  `partials/park-card.ejs`. Each lists the tours whose `destinations` name that park (shortest first), so adding a
+  park name to a tour in `data/tours.json` puts that tour on the park's card.
+- **Blog** (`blog.ejs`, `blog-post.ejs`, `blog.css`): tabs carry per-topic counts; `blog.js` filters in place.
+  An article's body is `content` in `data/posts.json`: blank lines separate paragraphs, a line starting `## ` is a
+  heading. While `content` is still the placeholder, every article shows the same general introduction.
+- **Contact** (`contact.ejs`, `contact.css`): the three-step enquiry form is driven by `booking.js`, which keys off the
+  `.form-step`, `.step-*`, `.safari-type-card`, `.duration-pill` and `.accom-card` classes and the `#safari_type`,
+  `#duration_range` and `#accommodation` inputs; restyle them freely but keep those names.
 
 ## URLs
 

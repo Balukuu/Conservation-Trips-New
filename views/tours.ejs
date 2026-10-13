@@ -28,16 +28,16 @@
         <h2>Find the journey that fits</h2>
         <p>Every package is expertly guided, sustainably operated and tailored to your dates, travel style and budget.</p>
       </div>
-      <p class="tr-count" role="status" data-tours-count><%= itineraries(visibleCount) %></p>
+      <p class="sx-count" role="status" data-tours-count><%= itineraries(visibleCount) %></p>
     </header>
 
     <!-- Filter tabs: real links, so every category has its own address (tours.js filters in place) -->
     <div class="tr-filter reveal">
-      <div class="filter-tabs tr-tabs" role="tablist" aria-label="Filter safari packages">
+      <div class="filter-tabs sx-tabs" role="tablist" aria-label="Filter safari packages">
         <% tabs.forEach(tab => { %>
         <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
           <span><%= tab.label %></span>
-          <span class="tr-tab-count" aria-hidden="true"><%= tab.count %></span>
+          <span class="sx-tab-count" aria-hidden="true"><%= tab.count %></span>
         </a>
         <% }) %>
       </div>
@@ -61,19 +61,9 @@
 </section>
 
 <!-- ═══════════════ CUSTOM SAFARI ═══════════════ -->
-<section class="sx sx--alt sx-cta" id="custom">
-  <div class="container">
-    <div class="sx-cta-card reveal">
-      <div>
-        <h2>Can't find what you're looking for?</h2>
-        <p>We specialise in bespoke safaris tailored exactly to your wishes. Tell us your dream and we'll make it happen.</p>
-        <a href="/contact" class="btn btn-primary btn-lg">Request a custom safari <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <ul class="sx-cta-contacts">
-        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
-        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
-        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
-      </ul>
-    </div>
-  </div>
-</section>
+<%- include('partials/cta-card', {
+  id: 'custom',
+  title: "Can't find what you're looking for?",
+  text: "We specialise in bespoke safaris tailored exactly to your wishes. Tell us your dream and we'll make it happen.",
+  primary: { href: '/contact', label: 'Request a custom safari' }
+}) %>

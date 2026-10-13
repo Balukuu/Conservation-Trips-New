@@ -1,0 +1,238 @@
+/* ============================================================
+   CONTACT PAGE
+   Loaded only on /contact (pageStyles in lib/pages.js), after
+   sections.css (the shared .sx-* components) and before preferences.css.
+   Classes are prefixed ct-. The wizard's own classes (.form-step,
+   .step-circle, .safari-type-card, ...) are the ones booking.js drives,
+   so they keep their names and are only restyled here, under .ct-form-card.
+   ============================================================ */
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.ct-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.ct-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+/* ─── Form card ─────────────────────────────────────────────── */
+.ct-form-card {
+  padding: clamp(24px, 4vw, 44px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+.ct-form-head h2 { margin: 4px 0 8px; font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--dark); }
+.ct-form-head p { margin: 0 0 28px; font-size: 0.95rem; line-height: 1.65; color: var(--text-muted); }
+
+/* progress */
+.ct-form-card .progress-bar-wrap { margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--border-light); }
+.ct-form-card .step-circle { width: 38px; height: 38px; font-size: 0.88rem; }
+.ct-form-card .step-line { height: 3px; border-radius: 3px; margin: 0 6px; }
+.ct-step-last { flex: 0; }
+/* a finished step shows a tick instead of its number */
+.ct-form-card .step-circle.done { font-size: 0; }
+.ct-form-card .step-circle.done::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.8rem;
+}
+
+/* step headings (booking.js moves focus to the h4) */
+.ct-step-title { margin: 0 0 18px; font-size: 1.15rem; color: var(--dark); }
+.ct-step-title--sub { margin: 0 0 12px; font-size: 1rem; }
+.ct-hint { font-weight: 400; color: var(--text-muted); }
+
+/* choice cards: the same three groups, one look */
+.ct-form-card .safari-type-card,
+.ct-form-card .accom-card {
+  position: relative;
+  border-width: 1.5px;
+  padding: 18px 10px;
+}
+.ct-form-card .safari-type-card i { font-size: 1.5rem; margin-bottom: 10px; }
+.ct-form-card .safari-type-card.selected::after,
+.ct-form-card .accom-card.selected::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  font-size: 0.6rem;
+  color: var(--dark);
+}
+.ct-form-card .duration-pill { padding: 9px 18px; }
+
+/* destinations as tiles; the ticked one picks up the brand tint */
+.ct-form-card .destinations-grid { gap: 10px; margin-bottom: 4px; }
+.ct-form-card .destinations-grid .checkbox-group {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.ct-form-card .destinations-grid .checkbox-group:has(input:checked) { border-color: var(--primary); background: var(--primary-light); }
+.ct-form-card .destinations-grid .checkbox-group span { font-size: 0.88rem; font-weight: 600; }
+
+.ct-terms { align-items: flex-start; }
+.ct-terms input { margin-top: 3px; }
+.ct-terms a { font-weight: 600; color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+
+/* buttons */
+.ct-btn-block { width: 100%; justify-content: center; }
+.ct-actions { display: flex; gap: 12px; margin-top: 8px; }
+.ct-actions .btn { justify-content: center; }
+.ct-actions .btn:first-child { flex: 1; }
+.ct-actions .btn:last-child { flex: 2; }
+
+/* success */
+.ct-form-card .success-screen { padding: 12px 0; text-align: center; }
+.ct-form-card .success-screen h3 { margin: 0 0 10px; color: var(--dark); }
+.ct-form-card .success-screen p { margin: 0 0 24px; color: var(--text-muted); }
+
+/* ─── Aside ─────────────────────────────────────────────────── */
+.ct-aside { position: sticky; top: calc(var(--nav-height-scrolled) + 24px); display: grid; gap: 20px; }
+
+.ct-quick {
+  list-style: none;
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background:
+    radial-gradient(90% 120% at 0% 0%, rgba(200,146,42,0.2) 0%, rgba(200,146,42,0) 55%),
+    linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+  box-shadow: var(--shadow-lg);
+}
+.ct-quick a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.ct-quick li + li { border-top: 1px solid rgba(255,255,255,0.1); }
+.ct-quick i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 1rem;
+}
+.ct-quick span { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; line-height: 1.35; }
+.ct-quick small { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.62); }
+.ct-quick strong { font-size: 1rem; font-weight: 700; }
+.ct-quick :focus-visible { outline-color: var(--accent); }
+
+.ct-card {
+  padding: 24px 26px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.ct-details { display: grid; gap: 18px; margin: 0; }
+.ct-details dt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.ct-details dt i { width: 16px; text-align: center; color: var(--primary); font-size: 0.85rem; }
+.ct-details dd { margin: 0 0 0 26px; font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+.ct-details dd a { font-weight: 600; color: var(--primary); }
+
+.ct-social { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border-light); }
+.ct-social span { margin-right: 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.ct-social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.ct-map { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); }
+.ct-map iframe { display: block; width: 100%; height: 240px; border: 0; filter: grayscale(25%); }
+
+/* ─── What happens next ─────────────────────────────────────── */
+.ct-steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  counter-reset: none;
+}
+.ct-steps li {
+  position: relative;
+  padding: 30px 28px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface-alt);
+}
+.ct-steps-num {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: var(--shadow-green);
+}
+.ct-steps h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--dark); }
+.ct-steps p { margin: 0; font-size: 0.94rem; line-height: 1.7; color: var(--text-muted); }
+
+/* ─── Hover (hover-capable devices only) ────────────────────── */
+@media (hover: hover) {
+  .ct-quick a:hover { background: rgba(255,255,255,0.08); }
+  .ct-social a:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+  .ct-details dd a:hover, .ct-terms a:hover { text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .ct-layout { grid-template-columns: minmax(0, 1fr); }
+  .ct-aside { position: static; }
+  .ct-steps { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+@media (max-width: 520px) {
+  .ct-hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+  .ct-actions { flex-direction: column-reverse; }
+  .ct-actions .btn:first-child, .ct-actions .btn:last-child { flex: none; }
+  .ct-card { padding: 20px; }
+  .ct-quick a { padding: 14px; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ct-quick a, .ct-social a, .ct-form-card .destinations-grid .checkbox-group { transition: none; }
+}

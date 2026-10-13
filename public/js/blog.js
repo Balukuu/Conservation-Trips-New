@@ -11,11 +11,12 @@
 (function () {
   'use strict';
 
-  var grid = document.querySelector('.blog-grid');
+  var grid = document.querySelector('.bl-grid');
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.filter-tabs .filter-tab[data-category]'));
   if (!grid || !tabs.length) return;
 
-  var cards = Array.prototype.slice.call(grid.querySelectorAll('.blog-card[data-category]'));
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.bl-card[data-category]'));
+  var countEl = document.querySelector('[data-blog-count]'); // "6 articles"
 
   function filterPosts(category) {
     tabs.forEach(function (tab) {
@@ -23,9 +24,13 @@
       tab.classList.toggle('active', on);
       tab.setAttribute('aria-selected', String(on));
     });
+    var shown = 0;
     cards.forEach(function (card) {
-      card.hidden = !(category === 'All' || card.getAttribute('data-category') === category);
+      var match = category === 'All' || card.getAttribute('data-category') === category;
+      card.hidden = !match;
+      if (match) shown++;
     });
+    if (countEl) countEl.textContent = shown === 1 ? '1 article' : shown + ' articles';
   }
 
   function syncUrl(tab) {

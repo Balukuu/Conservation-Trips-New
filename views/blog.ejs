@@ -1,76 +1,81 @@
-<!-- Hero -->
-<section class="page-hero">
+<%
+  const articles = n => n === 1 ? '1 article' : n + ' articles';
+%>
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="page-hero sx-hero bl-hero">
   <div class="page-hero-bg"><%- image({ src: '/images/gorilla.jpg', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
-    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Blog</span></nav>
-    <h1 style="color:#fff;">Safari Insights &amp; Travel Tips</h1>
-    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
-      Expert guides, wildlife stories, packing tips, and conservation news from East Africa
-    </p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Blog</span></nav>
+    <h1>Safari Insights &amp; Travel Tips</h1>
+    <p class="sx-hero-sub">Expert guides, wildlife stories, packing tips, and conservation news from East Africa.</p>
+    <ul class="sx-chips">
+      <li><i class="fa-regular fa-newspaper" aria-hidden="true"></i> <%= articles(blogStats.articles) %></li>
+      <li><i class="fa-solid fa-tags" aria-hidden="true"></i> <%= blogStats.topics %> topics</li>
+    </ul>
   </div>
 </section>
 
-<!-- Blog Section -->
-<section class="section" style="background:var(--surface-alt);">
+<!-- ═══════════════ ARTICLES ═══════════════ -->
+<section class="sx" id="articles">
   <div class="container">
+    <header class="sx-head reveal">
+      <div>
+        <span class="sx-eyebrow">The journal</span>
+        <h2>Guides, stories and travel tips</h2>
+        <p>Written by the people who plan and guide your safari, so you arrive knowing what to expect.</p>
+      </div>
+      <p class="sx-count" role="status" data-blog-count><%= articles(visibleCount) %></p>
+    </header>
 
-    <!-- Category Tabs -->
-    <div class="filter-tabs reveal mb-32" role="tablist" aria-label="Filter articles">
-      <% categories.forEach(cat => { %>
-      <a href="<%= categoryUrl('blog', cat) %>"
-         class="filter-tab <%= activeCategory === cat ? 'active' : '' %>"
-         data-category="<%= cat %>"
-         role="tab"
-         aria-selected="<%= activeCategory === cat %>">
-        <%= cat %>
-      </a>
-      <% }) %>
+    <!-- Category tabs: real links, so every topic has its own address (blog.js filters in place) -->
+    <div class="reveal">
+      <div class="filter-tabs sx-tabs" role="tablist" aria-label="Filter articles">
+        <% tabs.forEach(tab => { %>
+        <a href="<%= tab.href %>" class="filter-tab <%= activeCategory === tab.category ? 'active' : '' %>" data-category="<%= tab.category %>" role="tab" aria-selected="<%= activeCategory === tab.category %>">
+          <span><%= tab.category %></span>
+          <span class="sx-tab-count" aria-hidden="true"><%= tab.count %></span>
+        </a>
+        <% }) %>
+      </div>
     </div>
 
-    <!-- Blog Grid -->
     <% if (posts.length > 0) { %>
-    <div class="blog-grid reveal-grid">
+    <div class="bl-grid reveal-grid">
       <% posts.forEach(post => { %>
-      <article class="blog-card" data-category="<%= post.category %>"<%= activeCategory !== 'All' && post.category !== activeCategory ? ' hidden' : '' %>>
-        <a href="/blog/<%= post.slug %>" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <%- image({ src: post.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw' }) %>
+      <article class="bl-card" data-category="<%= post.category %>"<%= activeCategory !== 'All' && post.category !== activeCategory ? ' hidden' : '' %>>
+        <a href="/blog/<%= post.slug %>" class="bl-card-img" tabindex="-1" aria-hidden="true">
+          <%- image({ src: post.image, alt: '', sizes: '(min-width: 1100px) 380px, (min-width: 640px) 50vw, 100vw', fill: true }) %>
+          <span class="bl-tag"><%= post.category %></span>
         </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> <%= post.date %></span>
-            <span class="blog-cat"><%= post.category %></span>
-          </div>
-          <h2 class="blog-title" style="font-size:1.2rem;"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2>
-          <p class="blog-excerpt"><%= post.excerpt %></p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> <%= post.readTime %></span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
+        <div class="bl-card-body">
+          <p class="bl-meta">
+            <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= post.date %></span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= post.readTime %></span>
+          </p>
+          <h2 class="bl-card-title"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2>
+          <p class="bl-excerpt"><%= post.excerpt %></p>
+          <span class="bl-more" aria-hidden="true">Read article <i class="fa-solid fa-arrow-right"></i></span>
         </div>
       </article>
       <% }) %>
     </div>
     <% } else { %>
-    <div class="text-center" style="padding: 60px 0;">
-      <i class="fa-solid fa-newspaper" style="font-size:3rem; color:var(--border); display:block; margin-bottom:16px;"></i>
-      <h3 style="color:var(--text-muted);">No articles found in this category</h3>
-      <p style="color:var(--text-muted); margin:8px 0 24px;">Browse all our safari insights</p>
-      <a href="/blog" class="btn btn-green">View All Articles</a>
+    <div class="bl-empty">
+      <span class="bl-empty-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>
+      <h3>No articles yet</h3>
+      <p>We are writing the next one. In the meantime, browse our safari packages.</p>
+      <a href="/tours" class="btn btn-green">Browse tours</a>
     </div>
     <% } %>
-
   </div>
 </section>
 
-<!-- Newsletter / CTA -->
-<section class="cta-strip">
-  <div class="cta-strip-content container reveal">
-    <h2>Ready to Live Your Safari Story?</h2>
-    <p>Stop reading about it — let us plan your perfect Uganda adventure. Talk to our safari experts today.</p>
-    <div class="flex-center gap-16 flex-wrap">
-      <a href="/tours" class="btn btn-primary btn-lg">Explore Our Tours <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="/contact" class="btn btn-outline btn-lg">Plan My Safari</a>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════ CALL TO ACTION ═══════════════ -->
+<%- include('partials/cta-card', {
+  tone: 'alt',
+  title: 'Ready to live your safari story?',
+  text: "Stop reading about it. Let us plan your perfect Uganda adventure. Talk to our safari experts today.",
+  primary: { href: '/tours', label: 'Explore our tours' },
+  secondary: { href: '/contact', label: 'Plan my safari' }
+}) %>

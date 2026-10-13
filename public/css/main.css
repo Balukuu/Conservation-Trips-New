@@ -382,17 +382,25 @@ h4, .h4 {
    ============================================================ */
 @media (hover: hover) {
   .btn:hover, .nav-book:hover, .back-to-top:hover { transform: translateY(var(--lift-sm)); }
-  .card:hover, .tour-card:hover, .blog-card:hover, .social-card:hover,
-  .mission-card:hover, .team-card:hover { transform: translateY(var(--lift)); }
+  .card:hover,
+.tour-card:hover,
+.social-card:hover { transform: translateY(var(--lift)); }
 }
 
 /* ============================================================
    PRESS STATES — feedback on touch-down, not on release
    ============================================================ */
-.btn:active, .nav-book:active, .filter-tab:active, .share-btn:active,
-.safari-type-card:active, .duration-pill:active, .accom-card:active,
-.test-arrow:active, .contact-social-btn:active, .mobile-book-btn:active,
-.footer-social a:active, .mobile-social a:active {
+.btn:active,
+.nav-book:active,
+.filter-tab:active,
+.share-btn:active,
+.safari-type-card:active,
+.duration-pill:active,
+.accom-card:active,
+.test-arrow:active,
+.mobile-book-btn:active,
+.footer-social a:active,
+.mobile-social a:active {
   transform: scale(0.97);
   transition-duration: 0.1s;
 }

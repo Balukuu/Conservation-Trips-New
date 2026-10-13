@@ -193,22 +193,9 @@
 </section>
 
 <!-- ═══════════════ CALL TO ACTION ═══════════════ -->
-<section class="sx sx--alt sx-cta" id="cta">
-  <div class="container">
-    <div class="sx-cta-card reveal">
-      <div>
-        <h2>Ready for your African adventure?</h2>
-        <p>Let our expert team craft your perfect safari. Whether it's gorillas in Bwindi, the summit of Kilimanjaro, or a custom multi-country journey, we make it seamless.</p>
-        <div class="flex-center gap-16 flex-wrap" style="justify-content:flex-start;">
-          <a href="/tours" class="btn btn-primary btn-lg">Browse all tours <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="/contact" class="btn btn-outline btn-lg">Get a custom quote</a>
-        </div>
-      </div>
-      <ul class="sx-cta-contacts">
-        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
-        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
-        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
-      </ul>
-    </div>
-  </div>
-</section>
+<%- include('partials/cta-card', {
+  title: 'Ready for your African adventure?',
+  text: "Let our expert team craft your perfect safari. Whether it's gorillas in Bwindi, the summit of Kilimanjaro, or a custom multi-country journey, we make it seamless.",
+  primary: { href: '/tours', label: 'Browse all tours' },
+  secondary: { href: '/contact', label: 'Get a custom quote' }
+}) %>

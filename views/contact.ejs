@@ -1,106 +1,36 @@
-<!-- Hero -->
-<section class="page-hero" style="min-height:380px;">
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="page-hero sx-hero ct-hero">
   <div class="page-hero-bg"><%- image({ src: '/images/gorilla.jpg', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
-    <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Contact</span></nav>
-    <h1 style="color:#fff;">Plan Your Adventure</h1>
-    <p style="color:rgba(255,255,255,0.8); max-width:560px; margin-top:12px; font-size:1.05rem;">
-      Our expert team responds within 24 hours. No payment required at this stage — just tell us your dream safari!
-    </p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Contact</span></nav>
+    <h1>Plan Your Adventure</h1>
+    <p class="sx-hero-sub">Our expert team responds within 24 hours. No payment required at this stage, just tell us your dream safari!</p>
+    <ul class="sx-chips">
+      <li><i class="fa-regular fa-clock" aria-hidden="true"></i> Reply within 24 hours</li>
+      <li><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> No payment required</li>
+      <li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Available 7 days a week</li>
+    </ul>
+    <div class="ct-hero-actions">
+      <a href="tel:+256767936590" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call us</a>
+      <a href="https://wa.me/256767936590?text=Hello%20Conservation%20Trips%20%26%20Adventures!%20I'm%20interested%20in%20booking%20a%20Uganda%20safari." target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+    </div>
   </div>
 </section>
 
-<!-- Contact Section -->
-<section class="section" style="background:var(--surface-alt);">
+<!-- ═══════════════ ENQUIRY ═══════════════ -->
+<section class="sx sx--alt ct-main" id="enquire">
   <div class="container">
-    <div class="grid-2" style="gap:48px; align-items:start;">
+    <div class="ct-layout">
 
-      <!-- Contact Info Left -->
+      <!-- Multi-step form -->
       <div class="reveal-left">
-        <div class="contact-info-card">
-          <div class="contact-info-top"></div>
-          <div class="contact-info-body">
-            <div class="contact-label">Get In Touch</div>
-            <div class="contact-heading">We'd Love to Hear From You</div>
-
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
-              <div>
-                <div class="contact-detail-label">Address</div>
-                <div class="contact-detail-value">8FF4+GH3 Kyanyanya Trading Center, LUKAAWA PLAZA, Buloba, Busiro county</div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
-              <div>
-                <div class="contact-detail-label">Phone</div>
-                <div class="contact-detail-value">
-                  <a href="tel:+256767936590">+256 767 936 590</a><br>
-                  <a href="tel:+256744320330">+256 744 320 330</a>
-                </div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div>
-                <div class="contact-detail-label">Email</div>
-                <div class="contact-detail-value"><a href="mailto:info@tripsandadventures.co.ug">info@tripsandadventures.co.ug</a></div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-solid fa-globe"></i></div>
-              <div>
-                <div class="contact-detail-label">Website</div>
-                <div class="contact-detail-value"><a href="https://tripsandadventures.co.ug" target="_blank" rel="noopener">tripsandadventures.co.ug</a></div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-brands fa-whatsapp"></i></div>
-              <div>
-                <div class="contact-detail-label">WhatsApp</div>
-                <div class="contact-detail-value">
-                  <a href="https://wa.me/256767936590?text=Hello%20Conservation%20Trips%20%26%20Adventures!%20I'm%20interested%20in%20booking%20a%20Uganda%20safari." target="_blank" rel="noopener">
-                    Chat on WhatsApp — +256 767 936 590
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon"><i class="fa-solid fa-clock"></i></div>
-              <div>
-                <div class="contact-detail-label">Working Hours</div>
-                <div class="contact-detail-value">Mon–Sat: 8:00am – 6:00pm EAT<br>Sun: 10:00am – 4:00pm EAT</div>
-              </div>
-            </div>
-
-            <div class="contact-social">
-              <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://x.com/conservation_t" target="_blank" rel="noopener" class="contact-social-btn" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="https://www.tiktok.com/@conservationtrips" target="_blank" rel="noopener" class="contact-social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
-
-            <div class="map-wrap">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19907959017!2d32.47195744609375!3d0.31628217578947134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc0f9d74b39b%3A0x4538b8915e50cf55!2sBuloba%2C%20Uganda!5e0!3m2!1sen!2sus!4v1234567890"
-                loading="lazy"
-                title="Conservation Trips & Adventures location in Buloba, Uganda"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Multi-Step Form Right -->
-      <div class="reveal-right">
-        <div class="booking-form-card">
-          <div class="section-label" style="margin-bottom:8px;"><i class="fa-solid fa-compass"></i> Safari Enquiry</div>
-          <h2 style="color:var(--dark); font-size:1.8rem; margin-bottom:8px;">Plan Your Perfect Safari</h2>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:28px;">
-            Fill in 3 quick steps and we'll get back to you within 24 hours with a personalised quote.
-          </p>
+        <div class="ct-form-card">
+          <header class="ct-form-head">
+            <span class="sx-eyebrow">Safari enquiry</span>
+            <h2>Plan your perfect safari</h2>
+            <p>Fill in 3 quick steps and we'll get back to you within 24 hours with a personalised quote.</p>
+          </header>
 
           <%# data-mode "server" posts to the Express route; "static" (GitHub Pages build) uses
               data-endpoint if set, otherwise falls back to a prefilled mailto: draft. %>
@@ -109,7 +39,7 @@
                 data-endpoint="<%= typeof formEndpoint !== 'undefined' ? formEndpoint : '' %>"
                 data-email="info@tripsandadventures.co.ug">
 
-            <!-- Progress Bar -->
+            <!-- Progress -->
             <div class="progress-bar-wrap">
               <div class="progress-steps">
                 <div class="progress-step">
@@ -120,7 +50,7 @@
                   <div class="step-circle" id="sc-2">2</div>
                   <div class="step-line" id="sl-2"></div>
                 </div>
-                <div class="progress-step" style="flex:0;">
+                <div class="progress-step ct-step-last">
                   <div class="step-circle" id="sc-3">3</div>
                 </div>
               </div>
@@ -133,7 +63,7 @@
 
             <!-- STEP 1 -->
             <div class="form-step active" id="step-1">
-              <h4 style="margin-bottom:20px; color:var(--dark);">What kind of safari are you dreaming of?</h4>
+              <h4 class="ct-step-title">What kind of safari are you dreaming of?</h4>
               <input type="hidden" id="safari_type" name="safari_type" value="">
               <div class="safari-type-grid">
                 <div class="safari-type-card" data-value="Gorilla Trekking"><i class="fa-solid fa-paw"></i><span>Gorilla Trek</span></div>
@@ -144,7 +74,7 @@
                 <div class="safari-type-card" data-value="Custom Safari"><i class="fa-solid fa-star"></i><span>Custom Safari</span></div>
               </div>
 
-              <h4 style="margin-bottom:12px; color:var(--dark);">How many days?</h4>
+              <h4 class="ct-step-title ct-step-title--sub">How many days?</h4>
               <input type="hidden" id="duration_range" name="duration_range" value="">
               <div class="duration-pills">
                 <div class="duration-pill" data-value="1-3 days">1–3 Days</div>
@@ -173,14 +103,14 @@
                 <label for="group_size">Group Size</label>
                 <input type="number" id="group_size" name="group_size" class="form-control" placeholder="2" min="1" max="50" value="2">
               </div>
-              <button type="button" class="btn btn-primary step-next" style="width:100%; justify-content:center;">
+              <button type="button" class="btn btn-primary step-next ct-btn-block">
                 Next: Your Details <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
 
             <!-- STEP 2 -->
             <div class="form-step" id="step-2">
-              <h4 style="margin-bottom:20px; color:var(--dark);">Tell us about yourself</h4>
+              <h4 class="ct-step-title">Tell us about yourself</h4>
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName">First Name *</label>
@@ -221,11 +151,11 @@
                   <option>Other</option>
                 </select>
               </div>
-              <div style="display:flex; gap:12px;">
-                <button type="button" class="btn btn-outline-dark step-back" style="flex:1; justify-content:center;">
+              <div class="ct-actions">
+                <button type="button" class="btn btn-outline-dark step-back">
                   <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
-                <button type="button" class="btn btn-primary step-next" style="flex:2; justify-content:center;">
+                <button type="button" class="btn btn-primary step-next">
                   Next: Extra Info <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
@@ -233,10 +163,10 @@
 
             <!-- STEP 3 -->
             <div class="form-step" id="step-3">
-              <h4 style="margin-bottom:20px; color:var(--dark);">Almost done! A few more details</h4>
+              <h4 class="ct-step-title">Almost done! A few more details</h4>
 
               <div class="form-group">
-                <label>Which destinations interest you? <span style="font-weight:400; color:var(--text-muted);">(tick all that apply)</span></label>
+                <label>Which destinations interest you? <span class="ct-hint">(tick all that apply)</span></label>
                 <div class="destinations-grid">
                   <% ['Bwindi (Gorillas)', 'Queen Elizabeth NP', 'Kibale (Chimps)', 'Murchison Falls', 'Kidepo Valley', 'Lake Mburo', 'Kenya / Masai Mara', 'Mount Kilimanjaro'].forEach(dest => { %>
                   <label class="checkbox-group">
@@ -263,24 +193,24 @@
               </div>
 
               <div class="form-group">
-                <label class="checkbox-group">
+                <label class="checkbox-group ct-terms">
                   <input type="checkbox" name="terms" id="terms" required>
-                  <span>I agree to the <a href="/privacy" style="color:var(--primary);">Privacy Policy</a> and <a href="/terms" style="color:var(--primary);">Terms of Service</a></span>
+                  <span>I agree to the <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a></span>
                 </label>
                 <div class="form-error"></div>
               </div>
 
-              <div style="display:flex; gap:12px;">
-                <button type="button" class="btn btn-outline-dark step-back" style="flex:1; justify-content:center;">
+              <div class="ct-actions">
+                <button type="button" class="btn btn-outline-dark step-back">
                   <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
-                <button type="submit" class="btn btn-primary" style="flex:2; justify-content:center; overflow:hidden;">
+                <button type="submit" class="btn btn-primary">
                   Send Enquiry <i class="fa-solid fa-paper-plane"></i>
                 </button>
               </div>
             </div>
 
-            <!-- Success Screen -->
+            <!-- Success -->
             <div class="success-screen" id="booking-success">
               <div class="success-checkmark">
                 <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
@@ -288,8 +218,8 @@
                   <path class="checkmark-line" d="M20,42 L34,56 L60,28"/>
                 </svg>
               </div>
-              <h3 style="color:var(--dark); margin-bottom:10px;">Thank you, <span class="success-first-name">Explorer</span>!</h3>
-              <p style="color:var(--text-muted); margin-bottom:24px;">We've received your safari enquiry and will be in touch within <strong>24 hours</strong> with a personalised itinerary and quote.</p>
+              <h3>Thank you, <span class="success-first-name">Explorer</span>!</h3>
+              <p>We've received your safari enquiry and will be in touch within <strong>24 hours</strong> with a personalised itinerary and quote.</p>
               <a href="/" class="btn btn-green">Return Home <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
@@ -297,19 +227,98 @@
         </div>
       </div>
 
+      <!-- Contact details -->
+      <aside class="ct-aside reveal-right" aria-label="Contact details">
+        <ul class="ct-quick">
+          <li>
+            <a href="tel:+256767936590">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <span><small>Call us</small><strong>+256 767 936 590</strong></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/256767936590?text=Hello%20Conservation%20Trips%20%26%20Adventures!%20I'm%20interested%20in%20booking%20a%20Uganda%20safari." target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+              <span><small>WhatsApp</small><strong>Chat with a trip advisor</strong></span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:info@tripsandadventures.co.ug">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span><small>Email</small><strong>info@tripsandadventures.co.ug</strong></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="ct-card">
+          <dl class="ct-details">
+            <div>
+              <dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Address</dt>
+              <dd>8FF4+GH3 Kyanyanya Trading Center, LUKAAWA PLAZA, Buloba, Busiro county</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-clock" aria-hidden="true"></i> Working hours</dt>
+              <dd>Mon–Sat: 8:00am – 6:00pm EAT<br>Sun: 10:00am – 4:00pm EAT</dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-phone" aria-hidden="true"></i> Other line</dt>
+              <dd><a href="tel:+256744320330">+256 744 320 330</a></dd>
+            </div>
+            <div>
+              <dt><i class="fa-solid fa-globe" aria-hidden="true"></i> Website</dt>
+              <dd><a href="https://tripsandadventures.co.ug" target="_blank" rel="noopener">tripsandadventures.co.ug</a></dd>
+            </div>
+          </dl>
+
+          <div class="ct-social">
+            <span>Follow us</span>
+            <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/conservation_t" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.tiktok.com/@conservationtrips" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div class="ct-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19907959017!2d32.47195744609375!3d0.31628217578947134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc0f9d74b39b%3A0x4538b8915e50cf55!2sBuloba%2C%20Uganda!5e0!3m2!1sen!2sus!4v1234567890"
+            loading="lazy"
+            title="Conservation Trips & Adventures location in Buloba, Uganda"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </aside>
+
     </div>
   </div>
 </section>
 
-<!-- CTA Strip -->
-<section class="cta-strip">
-  <div class="cta-strip-content container reveal">
-    <h2>Prefer to Talk? We're Here!</h2>
-    <p>Our team is available 7 days a week to answer your questions and start planning your dream East Africa safari.</p>
-    <div class="cta-contact-row">
-      <a href="tel:+256767936590" class="cta-contact-item"><i class="fa-solid fa-phone"></i> +256 767 936 590</a>
-      <a href="mailto:info@tripsandadventures.co.ug" class="cta-contact-item"><i class="fa-solid fa-envelope"></i> info@tripsandadventures.co.ug</a>
-      <a href="https://wa.me/256767936590" target="_blank" rel="noopener" class="cta-contact-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us Now</a>
-    </div>
+<!-- ═══════════════ WHAT HAPPENS NEXT ═══════════════ -->
+<section class="sx" id="next">
+  <div class="container">
+    <header class="sx-head sx-head--center reveal">
+      <div>
+        <span class="sx-eyebrow">What happens next</span>
+        <h2>From enquiry to itinerary</h2>
+        <p>No commitment and no payment at this stage. Here is how it works.</p>
+      </div>
+    </header>
+    <ol class="ct-steps reveal-grid">
+      <li>
+        <span class="ct-steps-num" aria-hidden="true">1</span>
+        <h3>Send your enquiry</h3>
+        <p>Three quick steps: the kind of safari, who is travelling, and any special requests.</p>
+      </li>
+      <li>
+        <span class="ct-steps-num" aria-hidden="true">2</span>
+        <h3>We reply within 24 hours</h3>
+        <p>Our team sends back a personalised itinerary and quote built around your dates and group.</p>
+      </li>
+      <li>
+        <span class="ct-steps-num" aria-hidden="true">3</span>
+        <h3>You decide</h3>
+        <p>Ask questions, adjust the plan, and only book when it feels right. No payment is required at the enquiry stage.</p>
+      </li>
+    </ol>
   </div>
 </section>

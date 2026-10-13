@@ -1,0 +1,112 @@
+/* ============================================================
+   EXPERIENCES PAGE
+   Loaded only on /experiences (pageStyles in lib/pages.js), after
+   sections.css (the shared .sx-* components) and before preferences.css.
+   Classes are prefixed ex-.
+   ============================================================ */
+
+/* ─── Hero: jump links ──────────────────────────────────────── */
+/* .sx-chips li is the glass pill; here the link fills it so the whole pill is the click target */
+.ex-jump li { padding: 0; }
+.ex-jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+/* ─── One experience ────────────────────────────────────────── */
+/* anchored from the hero: clear the fixed bar when scrolled to */
+.ex-section { scroll-margin-top: calc(var(--nav-height-scrolled) - 1px); }
+.ex-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+.ex-item--flip .ex-media { order: -1; }
+
+.ex-copy h2 { font-size: clamp(1.75rem, 3.1vw, 2.5rem); color: var(--dark); }
+.ex-copy .sx-eyebrow i { margin-right: 4px; }
+.ex-where {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 10px 0 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--primary);
+}
+.ex-where i { margin-top: 3px; font-size: 0.8rem; }
+.ex-prose { margin: 0 0 14px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+
+.ex-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  margin: 24px 0 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.ex-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; line-height: 1.45; color: var(--text); }
+.ex-list i { flex: none; margin-top: 3px; font-size: 0.85rem; color: var(--primary); }
+
+.ex-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.ex-count { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); font-variant-numeric: lining-nums tabular-nums; }
+
+/* ─── Photo ─────────────────────────────────────────────────── */
+.ex-media { position: relative; }
+.ex-photo {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+}
+.ex-photo > img { position: absolute; inset: 0; transition: transform 0.8s var(--ease-out); }
+/* the big index numeral, tucked over a corner of the photo */
+.ex-num {
+  position: absolute;
+  right: 20px;
+  bottom: -22px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  box-shadow: var(--shadow-gold);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 52px;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.ex-item--flip .ex-num { right: auto; left: 20px; }
+
+/* ─── Hover (hover-capable devices only) ────────────────────── */
+@media (hover: hover) {
+  .ex-item:hover .ex-photo > img { transform: scale(1.04); }
+  .ex-jump a:hover { background: rgba(255,255,255,0.18); }
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .ex-item { grid-template-columns: minmax(0, 1fr); }
+  /* photo first on a phone, whichever side it sat on */
+  .ex-item .ex-media,
+  .ex-item--flip .ex-media { order: -1; }
+  .ex-photo { aspect-ratio: 16 / 10; }
+  .ex-num, .ex-item--flip .ex-num { right: 16px; left: auto; }
+}
+@media (max-width: 560px) {
+  .ex-list { grid-template-columns: minmax(0, 1fr); }
+  .ex-jump a { padding: 6px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ex-photo > img, .ex-jump a { transition: none; }
+}

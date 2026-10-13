@@ -1,0 +1,24 @@
+<%
+  // Closing call to action: heading + text + one or two buttons, with the phone/WhatsApp/email list.
+  // Params: title, text, primary {href, label}, secondary {href, label}?, id?, tone ('alt' | 'plain')
+  const ctaTone = typeof tone !== 'undefined' && tone === 'plain' ? ' sx-cta--plain' : '';
+%>
+<section class="sx sx-cta<%= ctaTone %>" id="<%= typeof id !== 'undefined' ? id : 'cta' %>">
+  <div class="container">
+    <div class="sx-cta-card reveal">
+      <div>
+        <h2><%= title %></h2>
+        <p><%= text %></p>
+        <div class="sx-cta-actions">
+          <a href="<%= primary.href %>" class="btn btn-primary btn-lg"><%= primary.label %> <i class="fa-solid fa-arrow-right"></i></a>
+          <% if (typeof secondary !== 'undefined' && secondary) { %><a href="<%= secondary.href %>" class="btn btn-outline btn-lg"><%= secondary.label %></a><% } %>
+        </div>
+      </div>
+      <ul class="sx-cta-contacts">
+        <li><a href="tel:+256767936590"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small>+256 767 936 590</span></a></li>
+        <li><a href="https://wa.me/256767936590" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with a trip advisor</span></a></li>
+        <li><a href="mailto:info@tripsandadventures.co.ug"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email</small>info@tripsandadventures.co.ug</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -6,6 +6,8 @@
    .sx-split      two-column text / photo layout, .sx-collage the photo pair
    .sx-features   icon + title + text list     .sx-cta-card   closing call to action
    .sx-hero       inner-page hero (+ .sx-hero-sub, .sx-chips)
+   .sx-tabs       filter tabs with counts (+ .sx-tab-count), .sx-count the "N items" pill
+   partials/cta-card.ejs renders the closing call to action (.sx-cta / .sx-cta-card)
    ============================================================ */
 
 /* ─── Section frame ─────────────────────────────────────────── */
@@ -163,8 +165,55 @@
 .sx-features p { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); }
 
 
+/* ─── Filter tabs with counts (tours, blog) ─────────────────────
+   <div class="filter-tabs sx-tabs"> of <a class="filter-tab"><span>Label</span><span class="sx-tab-count">3</span></a>.
+   One row when it fits; below the container width it becomes one swipeable
+   strip (an orphan pill on a second row looks broken). The strip bleeds to the
+   screen edge, and its padding keeps focus rings unclipped. */
+.sx-tabs { gap: 10px; }
+.sx-tabs .filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px 9px 18px;
+  white-space: nowrap;
+}
+.sx-tab-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-alt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: lining-nums tabular-nums;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.sx-tabs .filter-tab.active { box-shadow: var(--shadow-green); }
+.sx-tabs .filter-tab.active .sx-tab-count { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* "11 itineraries": sits at the end of an .sx-head */
+.sx-count {
+  flex: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+/* .sx-head p caps and spaces paragraphs; the count is not an intro line */
+.sx-head .sx-count { max-width: none; margin-top: 0; font-size: 0.9rem; line-height: 1.4; color: var(--primary-dark); }
+
 /* ─── 11. Final call to action ──────────────────────────────── */
 .sx-cta { padding: clamp(48px, 6vw, 80px) 0; background: var(--surface-alt); }
+.sx-cta--plain { background: var(--surface); }
+.sx-cta-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 .sx-cta-card {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
@@ -209,6 +258,24 @@
 
 
 /* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1240px) {
+  .sx-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: -4px -24px;
+    padding: 4px 48px 4px 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* fade the right edge so a cut-off tab reads as "more this way" */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+  .sx-tabs::-webkit-scrollbar { display: none; }
+  .sx-tabs .filter-tab { flex: none; }
+}
+@media (max-width: 768px) {
+  .sx-tabs { margin-left: -20px; margin-right: -20px; padding-left: 20px; }
+}
 @media (max-width: 1024px) {
   .sx-split { grid-template-columns: minmax(0, 1fr); }
   .sx-collage { max-width: 640px; }
@@ -222,6 +289,7 @@
   .sx-hero { height: auto; min-height: 0; padding-top: calc(var(--nav-height) + 28px); }
 }
 @media (max-width: 640px) {
+  .sx-tabs .filter-tab { padding: 7px 10px 7px 14px; }
   .sx-cta-contacts a { padding: 14px; gap: 12px; }
   .sx-cta-contacts a span { font-size: 0.9rem; }
   .sx-collage { padding-right: 12px; }
