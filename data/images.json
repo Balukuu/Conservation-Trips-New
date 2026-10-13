@@ -202,5 +202,15 @@
     "alt": "Three guides in khaki shirts and green trousers walk down a dirt track with green hills behind",
     "position": "50% 50%",
     "maxWidth": 1024
+  },
+  "/images/utb.png": {
+    "alt": "Uganda Tourism Board",
+    "og": false,
+    "maxWidth": 640
+  },
+  "/images/uwa.png": {
+    "alt": "Uganda Wildlife Authority",
+    "og": false,
+    "maxWidth": 212
   }
 }

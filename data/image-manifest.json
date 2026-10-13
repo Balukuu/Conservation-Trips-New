@@ -1019,5 +1019,37 @@
       }
     ],
     "og": "/images/og/photos/guides-trio-track.jpg"
+  },
+  "/images/utb.png": {
+    "width": 824,
+    "height": 303,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/utb-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/utb-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/utb-640.webp"
+      }
+    ]
+  },
+  "/images/uwa.png": {
+    "width": 212,
+    "height": 238,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/uwa-160.webp"
+      },
+      {
+        "w": 212,
+        "url": "/images/opt/uwa-212.webp"
+      }
+    ]
   }
 }

@@ -1,0 +1,237 @@
+/* ============================================================
+   ABOUT PAGE
+   Loaded only on /about (pageStyles in lib/pages.js), after sections.css
+   (the shared .sx-* section components) and before preferences.css.
+   Classes are prefixed ab-.
+   ============================================================ */
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.ab-hero { min-height: 440px; }
+.ab-hero-sub {
+  max-width: 580px;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.86);
+}
+.ab-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.ab-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+}
+.ab-chips i { color: var(--accent); font-size: 0.8rem; }
+
+/* ─── Story ─────────────────────────────────────────────────── */
+.ab-story .sx-lead { margin-top: 18px; }
+.ab-prose { margin-top: 16px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+.ab-quote {
+  margin: 28px 0 32px;
+  padding: 4px 0 4px 22px;
+  border-left: 4px solid var(--accent);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+}
+
+/* ─── Mission / vision / values ─────────────────────────────── */
+.ab-pillars {
+  padding: clamp(56px, 7vw, 88px) 0;
+  color: #fff;
+  background:
+    radial-gradient(110% 130% at 100% 0%, rgba(200,146,42,0.16) 0%, rgba(200,146,42,0) 55%),
+    linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+.ab-pillars-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ab-pillar { padding: 4px clamp(20px, 3vw, 44px); border-left: 1px solid rgba(255,255,255,0.18); }
+.ab-pillar:first-child { padding-left: 0; border-left: 0; }
+.ab-pillar:last-child { padding-right: 0; }
+.ab-pillar-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 1.15rem;
+}
+.ab-pillar h3 { margin: 0 0 10px; font-size: 1.4rem; color: #fff; }
+.ab-pillar p { margin: 0; font-size: 0.98rem; line-height: 1.75; color: rgba(255,255,255,0.84); }
+
+/* ─── Why choose us ─────────────────────────────────────────── */
+.ab-values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ab-value {
+  padding: 30px 28px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+.ab-value-icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+.ab-value h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--dark); }
+.ab-value p { margin: 0; font-size: 0.94rem; line-height: 1.7; color: var(--text-muted); }
+
+/* ─── Crew mosaic ───────────────────────────────────────────── */
+.ab-crew {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: clamp(150px, 15vw, 214px);
+  grid-auto-flow: dense;
+  gap: 14px;
+}
+.ab-crew-item {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--primary-light);
+}
+.ab-crew-item > img { position: absolute; inset: 0; transition: transform 0.7s var(--ease-out); }
+.ab-crew-item--feature { grid-column: span 2; grid-row: span 2; }
+.ab-crew-item--tall    { grid-row: span 2; }
+.ab-crew-item--wide    { grid-column: span 2; }
+.ab-crew-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 16px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to top, rgba(8,18,8,0.7), rgba(8,18,8,0));
+}
+.ab-crew-cta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(150deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+}
+.ab-crew-cta strong { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
+.ab-crew-cta span { font-size: 0.86rem; line-height: 1.4; opacity: 0.88; }
+.ab-crew-cta i {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.14);
+  font-size: 0.8rem;
+  transition: transform 0.25s var(--ease-out);
+}
+
+/* ─── Team ──────────────────────────────────────────────────── */
+.ab-team { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.ab-member {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s var(--ease-out);
+}
+.ab-member-photo { position: relative; aspect-ratio: 4 / 5; background: var(--primary-light); overflow: hidden; }
+.ab-member-photo > img { position: absolute; inset: 0; transition: transform 0.6s var(--ease-out); }
+.ab-member-body { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px 24px; }
+.ab-member h3 { margin: 0; font-size: 1.2rem; line-height: 1.25; color: var(--dark); }
+.ab-member-role { margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-text); line-height: 1.45; }
+.ab-member-bio { margin: 6px 0 0; font-size: 0.92rem; line-height: 1.65; color: var(--text-muted); }
+
+/* ─── Registered ────────────────────────────────────────────── */
+.ab-creds {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.ab-creds h2 { font-size: clamp(1.55rem, 2.6vw, 2.1rem); color: var(--dark); }
+.ab-logos { list-style: none; display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; }
+.ab-logos li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px 20px 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+/* the lazy-image placeholder tint must not show behind a transparent logo */
+img.ab-logo { width: auto; height: 64px; max-width: 100%; object-fit: contain; background-color: transparent; }
+.ab-logo--wide { height: 56px; }
+.ab-logos span { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+
+/* ─── Hover (hover-capable devices only) ────────────────────── */
+@media (hover: hover) {
+  .ab-value:hover, .ab-member:hover { box-shadow: var(--shadow-md); }
+  .ab-crew-item:hover > img,
+  .ab-member:hover .ab-member-photo > img { transform: scale(1.05); }
+  .ab-crew-cta:hover i { transform: translateX(4px); }
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .ab-values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-creds { grid-template-columns: minmax(0, 1fr); }
+  .ab-logos { max-width: 520px; }
+}
+@media (max-width: 860px) {
+  .ab-pillars-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .ab-pillar,
+  .ab-pillar:first-child,
+  .ab-pillar:last-child { padding: 28px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,0.18); }
+  .ab-pillar:first-child { padding-top: 0; border-top: 0; }
+}
+@media (max-width: 760px) {
+  .ab-crew { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; gap: 10px; }
+}
+@media (max-width: 600px) {
+  /* the content (title, intro, chips) is taller than the min-height here: let it size the hero and clear the bar */
+  .ab-hero { height: auto; min-height: 0; padding-top: calc(var(--nav-height) + 28px); }
+  .ab-values { grid-template-columns: minmax(0, 1fr); }
+  .ab-team { grid-template-columns: minmax(0, 1fr); }
+  .ab-member { flex-direction: row; }
+  .ab-member-photo { flex: 0 0 38%; aspect-ratio: auto; min-height: 190px; }
+  .ab-logos { grid-template-columns: 1.4fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab-crew-item > img, .ab-member-photo > img, .ab-crew-cta i { transition: none; }
+}
