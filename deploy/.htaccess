@@ -6,15 +6,22 @@ PassengerAppRoot /home/username/public_html
 PassengerAppType node
 PassengerStartupFile server.js
 
-# Ensure static files are served by Apache directly for performance
 RewriteEngine On
+
+# Redirect HTTP to HTTPS (first, so it applies to every request — a request that
+# reaches the proxy rule below never gets here)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Static files are served by Apache directly; everything else goes to Node
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
 
-# Redirect HTTP to HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Compress text responses
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
 
 # Custom 404
 ErrorDocument 404 /404.html

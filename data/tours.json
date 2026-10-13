@@ -4,15 +4,16 @@
     "slug": "3-days-queen-elizabeth-national-park",
     "name": "3 Days Queen Elizabeth National Park Safari",
     "category": "Wildlife Safari",
+    "countries": ["Uganda"],
     "duration": "3 Days",
     "durationDays": 3,
     "price": "From $650 pp",
     "priceUSD": 650,
-    "image": "/images/lion.png",
+    "image": "/images/lion.jpg",
     "gallery": [
-      "/images/lion.png",
-      "/images/safari.png",
-      "/images/lodge.png"
+      "/images/lion.jpg",
+      "/images/safari.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "Experience the wild heart of Uganda in Queen Elizabeth National Park – home to tree-climbing lions, massive hippo pods, savannah elephants, and over 600 bird species. This 3-day adventure balances game drives, a scenic Kazinga Channel boat cruise, and golden savannah sunsets.",
     "highlights": [
@@ -37,14 +38,15 @@
     "slug": "2-days-gorilla-tracking-kigali-bwindi",
     "name": "2 Days Gorilla Tracking – Kigali to Bwindi",
     "category": "Gorilla Trekking",
+    "countries": ["Rwanda", "Uganda"],
     "duration": "2 Days",
     "durationDays": 2,
     "price": "From $800 pp",
     "priceUSD": 800,
-    "image": "/images/gorilla.png",
+    "image": "/images/gorilla.jpg",
     "gallery": [
-      "/images/gorilla.png",
-      "/images/lodge.png"
+      "/images/gorilla.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "A perfectly crafted 2-day gorilla trek combining the convenience of flying into Kigali, Rwanda, with the breathtaking wilderness of Bwindi Impenetrable Forest in Uganda. Come face-to-face with habituated mountain gorilla families in their misty jungle home.",
     "highlights": [
@@ -68,14 +70,15 @@
     "slug": "2-days-chimpanzee-tracking-kibale",
     "name": "2 Days Chimpanzee Tracking at Kibale",
     "category": "Primate Safari",
+    "countries": ["Uganda"],
     "duration": "2 Days",
     "durationDays": 2,
     "price": "From $450 pp",
     "priceUSD": 450,
-    "image": "/images/gorilla.png",
+    "image": "/images/gorilla.jpg",
     "gallery": [
-      "/images/gorilla.png",
-      "/images/safari.png"
+      "/images/gorilla.jpg",
+      "/images/safari.jpg"
     ],
     "summary": "Kibale National Park is East Africa's premier primate destination — home to 1,500 chimpanzees and 12 other primate species. Immerse yourself in lush tropical forest tracking wild chimpanzees with expert naturalist guides.",
     "highlights": [
@@ -99,15 +102,16 @@
     "slug": "3-days-murchison-falls-safari",
     "name": "3 Days Murchison Falls Safari",
     "category": "Wildlife Safari",
+    "countries": ["Uganda"],
     "duration": "3 Days",
     "durationDays": 3,
     "price": "From $700 pp",
     "priceUSD": 700,
-    "image": "/images/waterfall.png",
+    "image": "/images/waterfall.jpg",
     "gallery": [
-      "/images/waterfall.png",
+      "/images/waterfall.jpg",
       "/images/social/murchison-nile-cruise.jpg",
-      "/images/safari.png"
+      "/images/safari.jpg"
     ],
     "summary": "Murchison Falls is Uganda's largest national park and one of Africa's greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world's most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.",
     "highlights": [
@@ -132,16 +136,17 @@
     "slug": "5-days-gorilla-trekking-lake-bunyonyi",
     "name": "5 Days Gorilla Trekking & Lake Bunyonyi",
     "category": "Gorilla Trekking",
+    "countries": ["Uganda"],
     "duration": "5 Days",
     "durationDays": 5,
     "price": "From $1,200 pp",
     "priceUSD": 1200,
-    "image": "/images/safari.png",
+    "image": "/images/safari.jpg",
     "gallery": [
-      "/images/safari.png",
-      "/images/safari.png",
-      "/images/safari.png",
-      "/images/safari.png"
+      "/images/safari.jpg",
+      "/images/safari.jpg",
+      "/images/safari.jpg",
+      "/images/safari.jpg"
     ],
     "summary": "An exceptional 5-day Uganda safari combining the world's greatest wildlife encounter — mountain gorilla trekking in Bwindi — with a relaxing finale on the stunning terraced shores of Lake Bunyonyi, Africa's second deepest lake.",
     "highlights": [
@@ -168,6 +173,7 @@
     "slug": "3-days-queen-elizabeth-boat-cruise",
     "name": "3 Days Queen Elizabeth & Kazinga Channel Cruise",
     "category": "Boat Cruise",
+    "countries": ["Uganda"],
     "duration": "3 Days",
     "durationDays": 3,
     "price": "From $680 pp",
@@ -175,7 +181,7 @@
     "image": "/images/social/elephants-bathing.jpg",
     "gallery": [
       "/images/social/elephants-bathing.jpg",
-      "/images/lion.png"
+      "/images/lion.jpg"
     ],
     "summary": "A tailor-made safari focused on the world-famous Kazinga Channel boat cruise at Queen Elizabeth National Park — where the wildlife density along the riverbanks is exceptional: hundreds of hippos, Nile crocodiles, elephants drinking at the water's edge, and 600+ bird species.",
     "highlights": [
@@ -200,15 +206,16 @@
     "slug": "22-days-complete-uganda-circuit",
     "name": "22 Days Complete Uganda Cultural Circuit",
     "category": "Cultural Tour",
+    "countries": ["Uganda"],
     "duration": "22 Days",
     "durationDays": 22,
     "price": "From $4,500 pp",
     "priceUSD": 4500,
-    "image": "/images/safari.png",
+    "image": "/images/safari.jpg",
     "gallery": [
-      "/images/safari.png",
-      "/images/gorilla.png",
-      "/images/waterfall.png"
+      "/images/safari.jpg",
+      "/images/gorilla.jpg",
+      "/images/waterfall.jpg"
     ],
     "summary": "The ultimate Uganda experience — a complete 22-day circuit visiting every cultural region of the country. Northern plains, Eastern highlands, Western crater lakes, and Southern forests — all Uganda's greatest wildlife and cultural treasures in one epic journey.",
     "highlights": [
@@ -241,14 +248,15 @@
     "slug": "4-days-mount-kenya-trekking",
     "name": "4 Days Mount Kenya Trekking",
     "category": "Mountain Climbing",
+    "countries": ["Kenya"],
     "duration": "4 Days",
     "durationDays": 4,
     "price": "From $890 pp",
     "priceUSD": 890,
-    "image": "/images/safari.png",
+    "image": "/images/safari.jpg",
     "gallery": [
-      "/images/safari.png",
-      "/images/lodge.png"
+      "/images/safari.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "Mount Kenya (5,199m) is Africa's second highest peak and a UNESCO World Heritage Site. Trek through equatorial forests, giant heather zones and glacial valleys to reach Point Lenana at 4,985m — a life-changing high-altitude adventure.",
     "highlights": [
@@ -274,14 +282,15 @@
     "slug": "7-days-mount-kilimanjaro",
     "name": "7 Days Mount Kilimanjaro Climbing",
     "category": "Mountain Climbing",
+    "countries": ["Tanzania"],
     "duration": "7 Days",
     "durationDays": 7,
     "price": "From $2,100 pp",
     "priceUSD": 2100,
-    "image": "/images/safari.png",
+    "image": "/images/safari.jpg",
     "gallery": [
-      "/images/safari.png",
-      "/images/lodge.png"
+      "/images/safari.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "Conquer Africa's highest peak — Mount Kilimanjaro (5,895m) — on the scenic Machame Route, known as the 'Whiskey Route' for its dramatic scenery. A life-changing 7-day ascent through five distinct climate zones to the Roof of Africa.",
     "highlights": [
@@ -310,18 +319,19 @@
     "slug": "7-days-western-uganda-cultural-tour",
     "name": "7 Days Western Uganda Cultural Tour",
     "category": "Cultural Tour",
+    "countries": ["Uganda"],
     "duration": "7 Days",
     "durationDays": 7,
     "price": "From $1,800 pp",
     "priceUSD": 1800,
-    "image": "/images/safari.png",
+    "image": "/images/safari.jpg",
     "gallery": [
-      "/images/safari.png",
-      "/images/safari.png",
-      "/images/safari.png",
-      "/images/gorilla.png",
-      "/images/safari.png",
-      "/images/lodge.png"
+      "/images/safari.jpg",
+      "/images/safari.jpg",
+      "/images/safari.jpg",
+      "/images/gorilla.jpg",
+      "/images/safari.jpg",
+      "/images/lodge.jpg"
     ],
     "summary": "Explore the rich cultural tapestry of western Uganda — from the ancient kingdoms of Ankole and Bunyoro to the vibrant Bwindi Batwa community and the stunning crater lakes of Fort Portal. A soul-enriching journey through Uganda's most culturally diverse region.",
     "highlights": [
@@ -350,6 +360,7 @@
     "slug": "8-days-rwenzori-mountain-trekking",
     "name": "8 Days Rwenzori Mountain Trekking – Margherita Peak",
     "category": "Mountain Climbing",
+    "countries": ["Uganda"],
     "duration": "8 Days",
     "durationDays": 8,
     "price": "From $2,800 pp",
@@ -358,8 +369,8 @@
     "imagePosition": "50% 16%",
     "gallery": [
       "/images/social/rwenzori-margherita-peak.jpg",
-      "/images/lodge.png",
-      "/images/lion.png"
+      "/images/lodge.jpg",
+      "/images/lion.jpg"
     ],
     "summary": "The Rwenzori Mountains — the mythical Mountains of the Moon — are one of Africa's most coveted and challenging trekking destinations. Summit Margherita Peak (5,109m), the third highest point in Africa, through alien Afro-alpine vegetation unlike anywhere on Earth.",
     "highlights": [

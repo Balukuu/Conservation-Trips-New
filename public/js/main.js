@@ -168,6 +168,7 @@
       startY = e.clientY;
       baseOffset = menuOffset; // grab it wherever it currently is
       samples = [{ x: e.clientX, t: e.timeStamp }];
+      swallowClick = false; // a stale flag from a drag that never produced a click
       if (menuSpring) {
         // interrupted mid-spring: take over from the live position
         stopMenuSpring();
@@ -248,7 +249,8 @@
 
   /* ─── Counters ─── */
   var counters = document.querySelectorAll('[data-count]');
-  function counterText(n, el) { return n.toLocaleString() + (el.getAttribute('data-suffix') || ''); }
+  // fixed locale: the server renders "2,000+", so every visitor sees the same grouping
+  function counterText(n, el) { return n.toLocaleString('en-US') + (el.getAttribute('data-suffix') || ''); }
 
   function animateCounter(el) {
     var target = parseInt(el.getAttribute('data-count'), 10);

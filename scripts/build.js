@@ -1,11 +1,18 @@
+'use strict';
+
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
+const { siteUrl, assetUrl, categoryUrl, slugify, PUBLIC_DIR } = require('../lib/site');
+const data = require('../lib/data');
+const pages = require('../lib/pages');
+
 // Deployment target
 //   BASE_PATH    URL prefix the site is served under. '' for a custom domain or a
 //                user/org site; '/<repo>' for a GitHub Pages project site.
-//   SITE_URL     Absolute origin + base path, used for canonical/og URLs.
+//   SITE_URL     Absolute origin + base path, used for canonical/og URLs
+//                (read by lib/site.js).
 //   FORM_ENDPOINT  Optional hosted form endpoint (Formspree, Web3Forms, ...) that
 //                the booking form POSTs to, since Pages has no server.
 function normalizeBasePath(p) {
@@ -14,50 +21,14 @@ function normalizeBasePath(p) {
 }
 
 const basePath = normalizeBasePath(process.env.BASE_PATH);
-const siteUrl = (process.env.SITE_URL || 'https://tripsandadventures.co.ug').replace(/\/+$/, '');
 const formEndpoint = (process.env.FORM_ENDPOINT || '').trim();
 
-// Configuration
-const config = {
-  viewsDir: path.join(__dirname, '..', 'views'),
-  dataDir: path.join(__dirname, '..', 'data'),
-  publicDir: path.join(__dirname, '..', 'public'),
-  distDir: path.join(__dirname, '..', 'dist'),
-  baseUrl: siteUrl
-};
+const VIEWS_DIR = path.join(__dirname, '..', 'views');
+const DIST_DIR = path.join(__dirname, '..', 'dist');
 
 let failures = 0;
 
-// Load Data
-const tours = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'tours.json'), 'utf8'));
-const testimonials = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'testimonials.json'), 'utf8'));
-const destinations = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'destinations.json'), 'utf8'));
-const blogPosts = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'posts.json'), 'utf8'));
-const social = JSON.parse(fs.readFileSync(path.join(config.dataDir, 'social.json'), 'utf8'));
-
-// Helper: Ensure directory exists
-function ensureDir(dirPath) {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-}
-
-// Helper: Copy directory
-function copyDir(src, dest) {
-  ensureDir(dest);
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  for (let entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    if (entry.isDirectory()) {
-      copyDir(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
-  }
-}
-
-// Helper: Re-root absolute paths
+// Re-root absolute paths
 // Templates use plain "/css/main.css"-style paths so the Express dev server and the
 // static build share one source. For a Pages project site those must live under
 // BASE_PATH, so rewrite them in the rendered HTML. Page links also get a trailing
@@ -77,195 +48,133 @@ function applyBasePath(html) {
       (_, attr, q, p) => `${attr}=${q}${prefixPath('/' + p, attr === 'href')}${q}`)
     // style="background-image:url('/x')"
     .replace(/url\((["']?)\/(?!\/)([^"')]*)\1\)/g,
-      (_, q, p) => `url(${q}${prefixPath('/' + p, false)}${q})`)
-    // og:image / twitter:image must be absolute URLs for crawlers
-    .replace(/(<meta\s+(?:property="og:image"|name="twitter:image")\s+content=")\/(?!\/)([^"]*)"/g,
-      (_, pre, p) => `${pre}${config.baseUrl}/${p}"`);
+      (_, q, p) => `url(${q}${prefixPath('/' + p, false)}${q})`);
 }
 
-// Helper: Render Page
-async function renderPage(viewName, outputPath, data = {}) {
-  const fullOutputPath = path.join(config.distDir, outputPath);
-  ensureDir(path.dirname(fullOutputPath));
+// Render one view model to dist/<outputPath>
+function renderPage(view, outputPath, model) {
+  const viewFile = path.join(VIEWS_DIR, view + '.ejs');
+  const layoutFile = path.join(VIEWS_DIR, 'layouts', 'main.ejs');
 
-  const templateData = {
-    ...data,
-    meta: {
-      title: 'Conservation Trips & Adventures',
-      description: 'Uganda Safari & East Africa Tours',
-      keywords: '',
-      ogImage: '/images/safari.png',
-      // Pages serves "/tours" by redirecting to "/tours/", so canonical URLs carry the slash.
-      ogUrl: config.baseUrl + '/' + outputPath.replace(/(^|\/)index\.html$/, '$1'),
-      ...data.meta
-    },
+  const locals = {
+    useFlags: false,
+    ...model,
+    siteUrl,
+    assetUrl,
+    categoryUrl,
     staticBuild: true,
-    formEndpoint,
-    filename: path.join(config.viewsDir, viewName + '.ejs')
+    formEndpoint
   };
 
   try {
-    // 1. Render content body
-    const bodyHtml = await ejs.renderFile(path.join(config.viewsDir, viewName + '.ejs'), templateData);
+    // 1. the view's body, 2. wrapped in the layout (which receives it as `body`)
+    const body = ejs.render(fs.readFileSync(viewFile, 'utf8'), locals, { filename: viewFile });
+    const html = ejs.render(fs.readFileSync(layoutFile, 'utf8'), { ...locals, body }, { filename: layoutFile });
 
-    // 2. Render layout
-    const finalHtml = await ejs.renderFile(path.join(config.viewsDir, 'layouts', 'main.ejs'), {
-      ...templateData,
-      body: bodyHtml,
-      filename: path.join(config.viewsDir, 'layouts', 'main.ejs')
-    });
-
-    fs.writeFileSync(fullOutputPath, applyBasePath(finalHtml));
+    const target = path.join(DIST_DIR, outputPath);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, applyBasePath(html));
     console.log(`  ✅ Generated: ${outputPath}`);
   } catch (err) {
-    console.error(`  ❌ Failed to render ${viewName}:`, err.message);
+    console.error(`  ❌ Failed to render ${view} → ${outputPath}:`, err.message);
     failures++;
   }
 }
 
-async function build() {
+// Every internal link and asset in the output must resolve to a file in dist/.
+// Cheap, and it catches a typo'd slug or a missing image before it ships.
+function checkInternalLinks() {
+  const missing = new Map();
+  const seen = new Set();
+
+  (function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith('.html')) check(full);
+    }
+  })(DIST_DIR);
+
+  function exists(urlPath) {
+    const rel = decodeURIComponent(urlPath).replace(/^\/+/, '');
+    const abs = path.join(DIST_DIR, rel);
+    if (!abs.startsWith(DIST_DIR)) return false;
+    if (fs.existsSync(abs) && fs.statSync(abs).isFile()) return true;
+    return fs.existsSync(path.join(abs, 'index.html'));
+  }
+
+  function check(file) {
+    const html = fs.readFileSync(file, 'utf8');
+    for (const m of html.matchAll(/\b(?:href|src)="(\/[^"#?]*)/g)) {
+      let p = m[1];
+      if (p.startsWith('//')) continue;
+      if (basePath && p.startsWith(basePath + '/')) p = p.slice(basePath.length);
+      else if (basePath && p === basePath) p = '/';
+      if (seen.has(p)) continue;
+      seen.add(p);
+      if (!exists(p)) missing.set(p, path.relative(DIST_DIR, file));
+    }
+  }
+
+  for (const [url, from] of missing) {
+    console.error(`  ❌ Broken link ${url} (first seen in ${from})`);
+    failures++;
+  }
+}
+
+function build() {
   console.log('🚀 Starting Static Site Build...\n');
   console.log(`   base path : ${basePath || '(root)'}`);
   console.log(`   site url  : ${siteUrl}`);
   console.log(`   form      : ${formEndpoint || '(none — mailto fallback)'}\n`);
 
-  // 1. Clean & Prepare Dist
-  if (fs.existsSync(config.distDir)) {
-    fs.rmSync(config.distDir, { recursive: true, force: true });
-  }
-  ensureDir(config.distDir);
-
-  // 2. Copy Assets
+  // 1. Clean & copy assets
+  fs.rmSync(DIST_DIR, { recursive: true, force: true });
   console.log('📂 Copying public assets...');
-  copyDir(config.publicDir, config.distDir);
+  fs.cpSync(PUBLIC_DIR, DIST_DIR, { recursive: true });
 
-  // 3. Render Static Pages
+  // 2. Static pages
   console.log('\n📄 Rendering Static Pages...');
-  
-  // Home
-  const featuredTours = tours.filter(t => t.featured);
-  const ugandaDest = destinations.find(d => d.id === 'uganda');
-  await renderPage('index', 'index.html', {
-    meta: {
-      title: 'Conservation Trips & Adventures | Uganda Safari & East Africa Tours',
-      description: "Uganda's premier safari & adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa."
-    },
-    featuredTours,
-    testimonials,
-    social,
-    ugandaParks: ugandaDest ? ugandaDest.parks : []
-  });
+  renderPage('index', 'index.html', pages.home());
+  renderPage('about', 'about/index.html', pages.about());
+  renderPage('contact', 'contact/index.html', pages.contact());
+  renderPage('tours', 'tours/index.html', pages.toursIndex());
+  renderPage('blog', 'blog/index.html', pages.blogIndex());
+  renderPage('destinations', 'destinations/index.html', pages.destinationsIndex());
+  renderPage('experiences', 'experiences/index.html', pages.experiences());
+  renderPage('privacy', 'privacy/index.html', pages.privacy());
+  renderPage('terms', 'terms/index.html', pages.terms());
+  renderPage('404', '404.html', pages.notFound());
 
-  // About
-  await renderPage('about', 'about/index.html', {
-    meta: { title: 'About Us | Conservation Trips & Adventures' }
-  });
-
-  // Contact
-  await renderPage('contact', 'contact/index.html', {
-    meta: { title: 'Contact Us | Conservation Trips & Adventures' }
-  });
-
-  // Tours Index
-  const categories = [...new Set(tours.map(t => t.category))];
-  await renderPage('tours', 'tours/index.html', {
-    meta: { title: 'Our Safari Packages | Conservation Trips & Adventures' },
-    tours: tours,
-    allTours: tours,
-    categories,
-    activeCategory: 'All'
-  });
-
-  // Blog Index
-  const blogCats = ['All', ...new Set(blogPosts.map(p => p.category))];
-  await renderPage('blog', 'blog/index.html', {
-    meta: { title: 'Safari Insights & Travel Tips | Conservation Trips & Adventures' },
-    posts: blogPosts,
-    categories: blogCats,
-    activeCategory: 'All'
-  });
-
-  // Destinations Index
-  await renderPage('destinations', 'destinations/index.html', {
-    meta: { title: "Uganda's National Parks & Destinations | Conservation Trips & Adventures" },
-    destinations
-  });
-
-  // Experiences (if exists)
-  await renderPage('experiences', 'experiences/index.html', {
-    meta: { title: 'Authentic Safari Experiences | Conservation Trips & Adventures' }
-  });
-
-  // Legal
-  await renderPage('privacy', 'privacy/index.html', {
-    meta: {
-      title: 'Privacy Policy | Conservation Trips & Adventures',
-      description: 'How Conservation Trips & Adventures collects, uses and protects your personal information when you enquire about a Uganda safari.'
-    }
-  });
-  await renderPage('terms', 'terms/index.html', {
-    meta: {
-      title: 'Terms of Service | Conservation Trips & Adventures',
-      description: 'The terms for using the Conservation Trips & Adventures website and for sending a safari enquiry.'
-    }
-  });
-
-  // 404
-  await renderPage('404', '404.html', {
-    meta: { title: 'Page Not Found | Conservation Trips & Adventures' }
-  });
-
-  // 4. Render Dynamic Tours
+  // 3. One page per tour / post / destination
   console.log('\n🐆 Rendering Dynamic Tour Pages...');
-  for (const tour of tours) {
-    const relatedTours = tours.filter(t => t.slug !== tour.slug && t.category === tour.category).slice(0, 3);
-    await renderPage('tour-detail', `tours/${tour.slug}/index.html`, {
-      meta: {
-        title: `${tour.name} | Conservation Trips & Adventures`,
-        description: tour.summary.substring(0, 155),
-        ogImage: tour.image
-      },
-      tour,
-      relatedTours,
-      allTours: tours
-    });
+  for (const tour of data.tours) {
+    renderPage('tour-detail', `tours/${tour.slug}/index.html`, pages.tourDetail(tour.slug));
+  }
+  for (const category of data.tourCategories) {
+    const slug = slugify(category);
+    renderPage('tours', `tours/category/${slug}/index.html`, pages.toursCategory(slug));
   }
 
-  // 5. Render Dynamic Blog Posts
   console.log('\n✍️ Rendering Dynamic Blog Posts...');
-  for (const post of blogPosts) {
-    const related = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3);
-    await renderPage('blog-post', `blog/${post.slug}/index.html`, {
-      meta: {
-        title: `${post.title} | Conservation Trips & Adventures`,
-        description: post.excerpt.substring(0, 155),
-        ogImage: post.image
-      },
-      post,
-      related
-    });
+  for (const post of data.posts) {
+    renderPage('blog-post', `blog/${post.slug}/index.html`, pages.blogPost(post.slug));
+  }
+  for (const category of data.postCategories) {
+    const slug = slugify(category);
+    renderPage('blog', `blog/category/${slug}/index.html`, pages.blogCategory(slug));
   }
 
-  // 6. Render Dynamic Destinations
   console.log('\n🌍 Rendering Dynamic Destination Pages...');
-  for (const dest of destinations) {
-    const countryTours = tours.filter(t => 
-      t.destinations.some(d => d.toLowerCase().includes(dest.name.toLowerCase()))
-    );
-    await renderPage('destination-country', `destinations/${dest.slug}/index.html`, {
-      meta: {
-        title: `${dest.name} Safari Tours | Conservation Trips & Adventures`,
-        description: dest.description.substring(0, 155),
-        ogImage: dest.image
-      },
-      dest,
-      tours: countryTours,
-      allTours: tours
-    });
+  for (const dest of data.destinations) {
+    renderPage('destination-country', `destinations/${dest.slug}/index.html`, pages.destination(dest.slug));
   }
+
+  console.log('\n🔗 Checking internal links...');
+  checkInternalLinks();
 
   if (failures > 0) {
-    console.error(`\n❌ Build finished with ${failures} failed page(s).\n`);
+    console.error(`\n❌ Build finished with ${failures} problem(s).\n`);
     process.exitCode = 1;
     return;
   }
@@ -273,7 +182,9 @@ async function build() {
   console.log('\n✨ Build Complete! Static site available in /dist\n');
 }
 
-build().catch(err => {
+try {
+  build();
+} catch (err) {
   console.error(err);
   process.exit(1);
-});
+}

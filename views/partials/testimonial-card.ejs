@@ -9,7 +9,7 @@
         src="<%= testimonial.photo %>"
         alt="<%= testimonial.name %>"
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name"><%= testimonial.name %></div>

@@ -2,10 +2,16 @@
    tours.js — Tour category filter
    Conservation Trips & Adventures
 
-   Used on the home page (featured tours) and /tours. Cards are shown and
-   hidden with the `hidden` attribute and re-enter with a CSS animation —
-   no inline transform/transition, which would pin cards in place and
-   defeat their hover state.
+   Used on the home page (featured tours) and /tours.
+
+   On /tours the tabs are real links to /tours/category/<slug>, so a category
+   has its own shareable URL and works without JavaScript (the server renders
+   every card and just hides the other categories). With JavaScript a click
+   filters in place and updates the address bar instead of reloading.
+
+   Cards are shown and hidden with the `hidden` attribute and re-enter with a
+   CSS animation — no inline transform/transition, which would pin cards in
+   place and defeat their hover state.
    ============================================================ */
 
 (function () {
@@ -47,6 +53,12 @@
     if (noResults) noResults.style.display = shown === 0 ? 'block' : 'none';
   }
 
+  // keep the address bar on the category's clean URL (link tabs only)
+  function syncUrl(tab) {
+    var href = tab.getAttribute('href');
+    if (href && window.history && history.replaceState) history.replaceState(null, '', href);
+  }
+
   // clean up the entrance class so it can replay next time
   grid.addEventListener('animationend', function (e) {
     if (e.target.classList && e.target.classList.contains('is-entering')) {
@@ -56,18 +68,25 @@
   });
 
   tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
+    tab.addEventListener('click', function (e) {
+      // let "open in new tab" and friends do what the browser does
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return;
       var category = tab.getAttribute('data-category') || 'All';
+      e.preventDefault();
       setActive(category);
       filter(category, !(window.Motion && window.Motion.prefersReducedMotion()));
+      syncUrl(tab);
     });
   });
 
-  // ?category= deep links (e.g. from the footer)
+  // Old ?category= links. Where a server is present it redirects to the clean
+  // URL; static hosts can't, so honour the parameter here and tidy the address.
   var param = new URLSearchParams(window.location.search).get('category');
-  if (param && tabs.some(function (t) { return t.getAttribute('data-category') === param; })) {
+  var legacyTab = param && tabs.filter(function (t) { return t.getAttribute('data-category') === param; })[0];
+  if (legacyTab) {
     setActive(param);
     filter(param, false);
+    syncUrl(legacyTab);
   } else {
     setActive(tabs.filter(function (t) { return t.classList.contains('active'); }).map(function (t) {
       return t.getAttribute('data-category');

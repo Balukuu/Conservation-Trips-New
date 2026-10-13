@@ -12,15 +12,16 @@
       try { if (localStorage.getItem('cookiesAccepted') === 'true') d.documentElement.classList.add('cookies-ok'); } catch (e) {}
     })(document);
   </script>
+  
   <title>Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours</title>
   <meta name="description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
   <meta name="keywords" content="gorilla trekking Uganda, Uganda safaris, Bwindi gorillas, Queen Elizabeth National Park, chimpanzee tracking Kibale, Murchison Falls safari, East Africa tours">
   <link rel="canonical" href="https://tripsandadventures.co.ug/">
-
+  
   <!-- Open Graph -->
   <meta property="og:title" content="Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours">
   <meta property="og:description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
-  <meta property="og:image" content="/images/safari.png">
+  <meta property="og:image" content="https://tripsandadventures.co.ug/images/safari.jpg">
   <meta property="og:url" content="https://tripsandadventures.co.ug/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Conservation Trips & Adventures">
@@ -29,30 +30,35 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours">
   <meta name="twitter:description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
-  <meta name="twitter:image" content="/images/safari.png">
+  <meta name="twitter:image" content="https://tripsandadventures.co.ug/images/safari.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="/images/logonew.jpeg">
 
-  <!-- Google Fonts -->
+  <!-- Third-party origins used on every page: connect early -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Flag Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
-  <link rel="stylesheet" href="/css/preferences.css">
-
   
+  <!-- Flag Icons (only the pages that show country flags) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+  
+
+  <!-- Styles (assetUrl adds a content hash, so they can be cached long-term) -->
+  <link rel="stylesheet" href="/css/main.css?v=00945ef709">
+  <link rel="stylesheet" href="/css/animations.css?v=a268939516">
+  <link rel="stylesheet" href="/css/components.css?v=7f34242343">
+  <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
+  <link rel="stylesheet" href="/css/preferences.css?v=c1f458811a">
+
+  <link rel="preload" as="image" href="/images/waterfall.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -107,10 +113,10 @@
   <a href="/contact" class="mobile-link">Contact</a>
   <a href="/contact" class="mobile-book-btn">Book a Safari</a>
   <div class="mobile-social">
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.facebook.com/tripsandadventures" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/trips_and_adventures.1" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://x.com/conservation_t" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
     <a href="https://wa.me/256767936590" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
   </div>
 </nav>
 
@@ -125,7 +131,7 @@
 
     
     <div class="hero-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" aria-hidden="false">
-      <div class="hero-slide-bg" style="background-image: url('/images/waterfall.png');"></div>
+      <div class="hero-slide-bg" style="background-image: url('/images/waterfall.jpg');"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Murchison Falls National Park</p>
@@ -139,7 +145,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/gorilla.png');"></div>
+      <div class="hero-slide-bg" style="background-image: url('/images/gorilla.jpg');"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Bwindi Impenetrable Forest</p>
@@ -153,7 +159,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/lion.png');"></div>
+      <div class="hero-slide-bg" style="background-image: url('/images/lion.jpg');"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Queen Elizabeth National Park</p>
@@ -167,7 +173,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/safari.png');"></div>
+      <div class="hero-slide-bg" style="background-image: url('/images/safari.jpg');"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Kibale Forest</p>
@@ -284,10 +290,10 @@
       <div class="reveal-right">
         <div class="about-image-stack">
           <div class="about-img-primary">
-            <img src="/images/lion.png" alt="Uganda wildlife safari" loading="lazy">
+            <img src="/images/lion.jpg" alt="Uganda wildlife safari" loading="lazy">
           </div>
           <div class="about-img-secondary">
-            <img src="/images/gorilla.png" alt="Mountain gorilla encounter" loading="lazy">
+            <img src="/images/gorilla.jpg" alt="Mountain gorilla encounter" loading="lazy">
           </div>
           <div class="about-years-badge">
             <span class="badge-num">15+</span>
@@ -339,10 +345,10 @@
 <article class="tour-card" data-category="Wildlife Safari">
   <div class="tour-card-img">
     <img
-      src="/images/lion.png"
+      src="/images/lion.jpg"
       alt=""
       loading="lazy"
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Wildlife Safari</span>
@@ -368,10 +374,10 @@
 <article class="tour-card" data-category="Gorilla Trekking">
   <div class="tour-card-img">
     <img
-      src="/images/gorilla.png"
+      src="/images/gorilla.jpg"
       alt=""
       loading="lazy"
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Gorilla Trekking</span>
@@ -397,10 +403,10 @@
 <article class="tour-card" data-category="Primate Safari">
   <div class="tour-card-img">
     <img
-      src="/images/gorilla.png"
+      src="/images/gorilla.jpg"
       alt=""
       loading="lazy"
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Primate Safari</span>
@@ -426,10 +432,10 @@
 <article class="tour-card" data-category="Wildlife Safari">
   <div class="tour-card-img">
     <img
-      src="/images/waterfall.png"
+      src="/images/waterfall.jpg"
       alt=""
       loading="lazy"
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Wildlife Safari</span>
@@ -455,10 +461,10 @@
 <article class="tour-card" data-category="Gorilla Trekking">
   <div class="tour-card-img">
     <img
-      src="/images/safari.png"
+      src="/images/safari.jpg"
       alt=""
       loading="lazy"
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Gorilla Trekking</span>
@@ -509,7 +515,7 @@
     <div class="destinations-masonry reveal-grid">
       <!-- Tall card 1 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -520,7 +526,7 @@
 
       <!-- Tall card 2 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/lion.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/lion.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -533,7 +539,7 @@
       
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/safari.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/safari.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -543,7 +549,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/waterfall.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/waterfall.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -553,7 +559,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/safari.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/safari.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-tz"></span> TANZANIA</div>
@@ -563,7 +569,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-rw"></span> RWANDA</div>
@@ -623,7 +629,7 @@
       <!-- Centre photograph -->
       <div class="why-us-center-img reveal-scale">
         <figure class="why-us-photo">
-          <img src="/images/gorilla.png" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
+          <img src="/images/gorilla.jpg" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
           <figcaption>Bwindi Impenetrable Forest</figcaption>
         </figure>
       </div>
@@ -675,10 +681,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="Sarah M."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">Sarah M.</div>
@@ -698,10 +704,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="James &amp; Rachel T."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">James &amp; Rachel T.</div>
@@ -721,10 +727,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="Annika L."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">Annika L.</div>
@@ -744,10 +750,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="David K."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">David K.</div>
@@ -767,10 +773,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="Priya N."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">Priya N.</div>
@@ -790,10 +796,10 @@
     <div class="testimonial-author">
       <img
         class="testimonial-avatar"
-        src="/images/lion.png"
+        src="/images/lion.jpg"
         alt="Erik &amp; Lisa H."
         loading="lazy"
-        onerror="this.src='/images/lion.png'"
+        onerror="this.onerror=null;this.src='/images/lion.jpg'"
       >
       <div>
         <div class="testimonial-author-name">Erik &amp; Lisa H.</div>
@@ -859,7 +865,7 @@
       </div>
       <div class="conservation-img-wrap reveal-right">
         <figure class="conservation-photo">
-          <img src="/images/safari.png" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
+          <img src="/images/safari.jpg" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
         </figure>
       </div>
     </div>
@@ -993,12 +999,11 @@
       <a href="/blog" class="btn btn-outline-dark hide-mobile">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <div class="blog-grid reveal-grid mt-48">
-      
 
       
       <article class="blog-card">
         <a href="/blog/best-time-gorilla-trekking-uganda" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/gorilla.png" alt="" loading="lazy" onerror="this.src='/images/lion.png'">
+          <img src="/images/gorilla.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -1006,7 +1011,7 @@
             <span class="blog-cat">Gorilla Trekking</span>
           </div>
           <h3 class="blog-title"><a href="/blog/best-time-gorilla-trekking-uganda">The Best Time to Go Gorilla Trekking in Uganda</a></h3>
-          <p class="blog-excerpt">Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit.</p>
+          <p class="blog-excerpt">Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit to Bwindi Impenetrable Forest — including permit availability tips.</p>
           <div class="blog-footer">
             <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 6 min read</span>
             <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
@@ -1015,26 +1020,8 @@
       </article>
       
       <article class="blog-card">
-        <a href="/blog/tree-climbing-lions-ishasha" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/lion.png" alt="" loading="lazy" onerror="this.src='/images/lion.png'">
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-date"><i class="fa-regular fa-calendar"></i> January 10, 2025</span>
-            <span class="blog-cat">Wildlife</span>
-          </div>
-          <h3 class="blog-title"><a href="/blog/tree-climbing-lions-ishasha">Uganda&#39;s Incredible Tree-Climbing Lions of Ishasha</a></h3>
-          <p class="blog-excerpt">One of Africa&#39;s most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park.</p>
-          <div class="blog-footer">
-            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 5 min read</span>
-            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="blog-card">
         <a href="/blog/uganda-packing-list-safari" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/social/uganda-passport.jpg" alt="" loading="lazy" onerror="this.src='/images/lion.png'">
+          <img src="/images/social/uganda-passport.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -1042,9 +1029,27 @@
             <span class="blog-cat">Travel Tips</span>
           </div>
           <h3 class="blog-title"><a href="/blog/uganda-packing-list-safari">The Ultimate Uganda Safari Packing List</a></h3>
-          <p class="blog-excerpt">From gorilla trekking clothes to savannah game drive essentials — everything you need to pack for the perfect Uganda safari.</p>
+          <p class="blog-excerpt">From gorilla trekking clothes to savannah game drive essentials — here is everything you need to pack for the perfect Uganda safari, from what to wear in the forest to camera gear recommendations.</p>
           <div class="blog-footer">
             <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 8 min read</span>
+            <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </article>
+      
+      <article class="blog-card">
+        <a href="/blog/tree-climbing-lions-ishasha" class="blog-card-img" tabindex="-1" aria-hidden="true">
+          <img src="/images/lion.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+        </a>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-date"><i class="fa-regular fa-calendar"></i> January 10, 2025</span>
+            <span class="blog-cat">Wildlife</span>
+          </div>
+          <h3 class="blog-title"><a href="/blog/tree-climbing-lions-ishasha">Uganda&#39;s Incredible Tree-Climbing Lions of Ishasha</a></h3>
+          <p class="blog-excerpt">One of Africa&#39;s most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park where this unique behaviour has been observed for generations.</p>
+          <div class="blog-footer">
+            <span class="blog-read-time"><i class="fa-regular fa-clock"></i> 5 min read</span>
             <span class="blog-read-more" aria-hidden="true">Read more <i class="fa-solid fa-arrow-right"></i></span>
           </div>
         </div>
@@ -1173,12 +1178,12 @@
         <div class="footer-col">
           <h4>Our Tours</h4>
           <ul class="footer-links">
-            <li><a href="/tours?category=Gorilla+Trekking"><i class="fa-solid fa-angle-right"></i> Gorilla Trekking</a></li>
-            <li><a href="/tours?category=Wildlife+Safari"><i class="fa-solid fa-angle-right"></i> Wildlife Safaris</a></li>
-            <li><a href="/tours?category=Mountain+Climbing"><i class="fa-solid fa-angle-right"></i> Mountain Climbing</a></li>
-            <li><a href="/tours?category=Cultural+Tour"><i class="fa-solid fa-angle-right"></i> Cultural Tours</a></li>
-            <li><a href="/tours?category=Boat+Cruise"><i class="fa-solid fa-angle-right"></i> Boat Cruise Safaris</a></li>
-            <li><a href="/tours?category=Primate+Safari"><i class="fa-solid fa-angle-right"></i> Primate Tracking</a></li>
+            <li><a href="/tours/category/gorilla-trekking"><i class="fa-solid fa-angle-right"></i> Gorilla Trekking</a></li>
+            <li><a href="/tours/category/wildlife-safari"><i class="fa-solid fa-angle-right"></i> Wildlife Safaris</a></li>
+            <li><a href="/tours/category/mountain-climbing"><i class="fa-solid fa-angle-right"></i> Mountain Climbing</a></li>
+            <li><a href="/tours/category/cultural-tour"><i class="fa-solid fa-angle-right"></i> Cultural Tours</a></li>
+            <li><a href="/tours/category/boat-cruise"><i class="fa-solid fa-angle-right"></i> Boat Cruise Safaris</a></li>
+            <li><a href="/tours/category/primate-safari"><i class="fa-solid fa-angle-right"></i> Primate Tracking</a></li>
             <li><a href="/contact"><i class="fa-solid fa-angle-right"></i> Custom Safaris</a></li>
           </ul>
         </div>
@@ -1218,8 +1223,6 @@
       </div>
     </div>
   </div>
-
-
 
   <!-- Footer Bottom -->
   <div class="container">
@@ -1265,14 +1268,22 @@
     <div class="lightbox-count" aria-live="polite"></div>
   </div>
 
-  <!-- Scripts -->
-  <script src="/js/motion.js"></script>
-  <script src="/js/main.js"></script>
-  <script src="/js/slider.js"></script>
-  <script src="/js/lightbox.js"></script>
-  <script src="/js/tours.js"></script>
-  <script src="/js/blog.js"></script>
-  <script src="/js/booking.js"></script>
+  <!-- Scripts (order matters: motion.js first; defer keeps it while unblocking the parser) -->
+  
+  <script defer src="/js/motion.js?v=d751fd3aab"></script>
+  
+  <script defer src="/js/main.js?v=4476bd736a"></script>
+  
+  <script defer src="/js/slider.js?v=8a714805ec"></script>
+  
+  <script defer src="/js/lightbox.js?v=1a54572767"></script>
+  
+  <script defer src="/js/tours.js?v=07a8b28fcd"></script>
+  
+  <script defer src="/js/blog.js?v=0c9f3a26a2"></script>
+  
+  <script defer src="/js/booking.js?v=5d78c7231b"></script>
+  
 
   
 </body>

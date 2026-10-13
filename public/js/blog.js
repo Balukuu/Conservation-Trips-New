@@ -1,8 +1,11 @@
 /* ============================================================
    blog.js — Blog Category Filter
    Conservation Trips & Adventures
-   Filters in the browser so it also works on the static build,
-   where "?category=" can't be handled by a server.
+
+   The tabs are real links to /blog/category/<slug>; the server renders every
+   post and hides the other categories, so a category URL works without
+   JavaScript. Here a click filters in place and updates the address bar.
+   Filtering in the browser also works on the static build.
    ============================================================ */
 
 (function () {
@@ -25,18 +28,26 @@
     });
   }
 
+  function syncUrl(tab) {
+    var href = tab.getAttribute('href');
+    if (href && window.history && history.replaceState) history.replaceState(null, '', href);
+  }
+
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return;
       e.preventDefault();
       filterPosts(tab.getAttribute('data-category'));
-      history.replaceState(null, '', tab.getAttribute('href'));
+      syncUrl(tab);
     });
   });
 
-  // Initialize from URL query param
-  var catParam = new URLSearchParams(window.location.search).get('category');
-  if (catParam && tabs.some(function (tab) { return tab.getAttribute('data-category') === catParam; })) {
-    filterPosts(catParam);
+  // Old ?category= links (a server redirects them; static hosts can't)
+  var param = new URLSearchParams(window.location.search).get('category');
+  var legacyTab = param && tabs.filter(function (t) { return t.getAttribute('data-category') === param; })[0];
+  if (legacyTab) {
+    filterPosts(param);
+    syncUrl(legacyTab);
   }
 
 })();

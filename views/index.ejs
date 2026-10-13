@@ -1,33 +1,4 @@
 <%
-  // Homepage needs hero images for slider
-  const slides = [
-    {
-      eyebrow: 'Murchison Falls National Park',
-      title: 'Murchison Falls Awaits',
-      sub: 'The World\'s Most Powerful Waterfall',
-      badge: 'EXPLORE ALL TOURS',
-      bg: '/images/waterfall.png'
-    },
-    {
-      eyebrow: 'Bwindi Impenetrable Forest',
-      title: 'Face to Face with Mountain Gorillas',
-      sub: 'Trek through ancient rainforest for a once-in-a-lifetime encounter with Africa\'s most magnificent primates',
-      bg: '/images/gorilla.png'
-    },
-    {
-      eyebrow: 'Queen Elizabeth National Park',
-      title: 'Where the Savanna Meets the Forest',
-      sub: 'Witness the rare tree-climbing lions and cruise the legendary Kazinga Channel teeming with wildlife',
-      bg: '/images/lion.png'
-    },
-    {
-      eyebrow: 'Kibale Forest',
-      title: 'Track Our Closest Relatives',
-      sub: 'Uganda is home to the world\'s greatest concentration of habituated chimpanzees in Kibale Forest',
-      bg: '/images/safari.png'
-    }
-  ];
-
   // Filter tabs only for categories that actually have a featured tour, so no
   // tab leads to an empty grid. Labels keep the friendlier home-page wording.
   const tabLabels = {
@@ -156,10 +127,10 @@
       <div class="reveal-right">
         <div class="about-image-stack">
           <div class="about-img-primary">
-            <img src="/images/lion.png" alt="Uganda wildlife safari" loading="lazy">
+            <img src="/images/lion.jpg" alt="Uganda wildlife safari" loading="lazy">
           </div>
           <div class="about-img-secondary">
-            <img src="/images/gorilla.png" alt="Mountain gorilla encounter" loading="lazy">
+            <img src="/images/gorilla.jpg" alt="Mountain gorilla encounter" loading="lazy">
           </div>
           <div class="about-years-badge">
             <span class="badge-num">15+</span>
@@ -234,7 +205,7 @@
     <div class="destinations-masonry reveal-grid">
       <!-- Tall card 1 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -245,7 +216,7 @@
 
       <!-- Tall card 2 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/lion.png');"></div>
+        <div class="dest-card-bg" style="background-image: url('/images/lion.jpg');"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -256,10 +227,10 @@
 
       <!-- Normal cards -->
       <% const normalDests = [
-        { name: 'Kibale Forest National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/safari.png', href: '/destinations/uganda' },
-        { name: 'Murchison Falls National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/waterfall.png', href: '/destinations/uganda' },
-        { name: 'Serengeti — Tanzania', region: 'TANZANIA', flag: 'fi-tz', img: '/images/safari.png', href: '/destinations/tanzania' },
-        { name: 'Rwanda — Land of Gorillas', region: 'RWANDA', flag: 'fi-rw', img: '/images/gorilla.png', href: '/destinations/rwanda' }
+        { name: 'Kibale Forest National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/safari.jpg', href: '/destinations/uganda' },
+        { name: 'Murchison Falls National Park', region: 'UGANDA', flag: 'fi-ug', img: '/images/waterfall.jpg', href: '/destinations/uganda' },
+        { name: 'Serengeti — Tanzania', region: 'TANZANIA', flag: 'fi-tz', img: '/images/safari.jpg', href: '/destinations/tanzania' },
+        { name: 'Rwanda — Land of Gorillas', region: 'RWANDA', flag: 'fi-rw', img: '/images/gorilla.jpg', href: '/destinations/rwanda' }
       ]; %>
       <% normalDests.forEach(d => { %>
       <div class="dest-card dest-normal">
@@ -323,7 +294,7 @@
       <!-- Centre photograph -->
       <div class="why-us-center-img reveal-scale">
         <figure class="why-us-photo">
-          <img src="/images/gorilla.png" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
+          <img src="/images/gorilla.jpg" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
           <figcaption>Bwindi Impenetrable Forest</figcaption>
         </figure>
       </div>
@@ -413,7 +384,7 @@
       </div>
       <div class="conservation-img-wrap reveal-right">
         <figure class="conservation-photo">
-          <img src="/images/safari.png" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
+          <img src="/images/safari.jpg" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
         </figure>
       </div>
     </div>
@@ -496,40 +467,11 @@
       <a href="/blog" class="btn btn-outline-dark hide-mobile">View All Articles <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <div class="blog-grid reveal-grid mt-48">
-      <% const blogPreviews = [
-        {
-          title: 'The Best Time to Go Gorilla Trekking in Uganda',
-          category: 'Gorilla Trekking',
-          date: 'March 15, 2025',
-          readTime: '6 min read',
-          excerpt: 'Planning a gorilla trek in Bwindi? Timing is everything. We break down the dry and wet seasons to help you plan the perfect visit.',
-          image: '/images/gorilla.png',
-          slug: 'best-time-gorilla-trekking-uganda'
-        },
-        {
-          title: "Uganda's Incredible Tree-Climbing Lions of Ishasha",
-          category: 'Wildlife',
-          date: 'January 10, 2025',
-          readTime: '5 min read',
-          excerpt: "One of Africa's most extraordinary wildlife sightings — lions lounging in fig trees. We explore the Ishasha sector of Queen Elizabeth National Park.",
-          image: '/images/lion.png',
-          slug: 'tree-climbing-lions-ishasha'
-        },
-        {
-          title: 'The Ultimate Uganda Safari Packing List',
-          category: 'Travel Tips',
-          date: 'February 22, 2025',
-          readTime: '8 min read',
-          excerpt: 'From gorilla trekking clothes to savannah game drive essentials — everything you need to pack for the perfect Uganda safari.',
-          image: '/images/social/uganda-passport.jpg',
-          slug: 'uganda-packing-list-safari'
-        }
-      ]; %>
 
-      <% blogPreviews.forEach(post => { %>
+      <% latestPosts.forEach(post => { %>
       <article class="blog-card">
         <a href="/blog/<%= post.slug %>" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="<%= post.image %>" alt="" loading="lazy" onerror="this.src='/images/lion.png'">
+          <img src="<%= post.image %>" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -597,7 +539,7 @@
   "@type": "TravelAgency",
   "name": "Conservation Trips & Adventures",
   "description": "Leading tours and travel company in Uganda — Gorilla trekking, wildlife safaris, mountain climbing and cultural tours across East Africa.",
-  "url": "https://tripsandadventures.co.ug/",
+  "url": "<%= siteUrl %>/",
   "telephone": "+256767936590",
   "email": "info@tripsandadventures.co.ug",
   "address": {
@@ -612,8 +554,8 @@
     "name": "Uganda Safari Packages"
   },
   "foundingDate": "2008",
-  "logo": "https://tripsandadventures.co.ug/images/logonew.jpeg",
-  "image": "https://tripsandadventures.co.ug/images/logonew.jpeg",
+  "logo": "<%= siteUrl %>/images/logonew.jpeg",
+  "image": "<%= siteUrl %>/images/logonew.jpeg",
   "sameAs": [
     "https://www.facebook.com/tripsandadventures",
     "https://www.instagram.com/trips_and_adventures.1",

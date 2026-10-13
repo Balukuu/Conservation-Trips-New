@@ -19,7 +19,7 @@
         <h2 style="color:var(--dark); margin-bottom:20px;"><%= dest.name %> — <%= dest.subtitle %></h2>
         <p class="body-lg" style="color:var(--text-muted)"><%= dest.description %></p>
         <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
-          <span class="dest-stat-pill"><i class="fa-solid fa-plane"></i> <%= dest.tourCount %> tours available</span>
+          <span class="dest-stat-pill"><i class="fa-solid fa-plane"></i> <%= dest.tourCount %> <%= dest.tourCount === 1 ? 'tour' : 'tours' %> available</span>
         </div>
         <a href="/tours" class="btn btn-green mt-32">View All <%= dest.name %> Tours <i class="fa-solid fa-arrow-right"></i></a>
       </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="<%= i%2===0?'reveal-right':'reveal-left' %>" style="<%= i%2!==0?'order:1;':'' %>">
           <div style="border-radius:var(--radius-lg); overflow:hidden; height:280px; box-shadow:var(--shadow-md);">
-            <img src="<%= park.image %>" alt="<%= park.name %>" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/lion.png'">
+            <img src="<%= park.image %>" alt="<%= park.name %>" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='/images/lion.jpg'">
           </div>
         </div>
       </div>

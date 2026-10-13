@@ -1,52 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const tours = require('../data/tours.json');
-const testimonials = require('../data/testimonials.json');
-const destinations = require('../data/destinations.json');
-const social = require('../data/social.json');
+'use strict';
 
-router.get('/', (req, res) => {
-  const featuredTours = tours.filter(t => t.featured);
-  const ugandaDest = destinations.find(d => d.id === 'uganda');
-  
-  res.render('index', {
-    meta: {
-      title: 'Conservation Trips & Adventures | Uganda Safari & East Africa Tours',
-      description: "Uganda's premier safari & adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.",
-      keywords: 'gorilla trekking Uganda, Uganda safaris, Bwindi gorillas, Queen Elizabeth National Park, chimpanzee tracking Kibale, Murchison Falls safari, East Africa tours',
-      ogImage: '/images/safari.png',
-      ogUrl: 'https://tripsandadventures.co.ug/'
-    },
-    featuredTours,
-    testimonials,
-    social,
-    ugandaParks: ugandaDest ? ugandaDest.parks : []
-  });
-});
+const express = require('express');
+const pages = require('../lib/pages');
+
+const router = express.Router();
+
+router.get('/', (req, res) => res.render('index', pages.home()));
 
 // Legal pages (linked from the footer, the cookie notice and the contact form)
-router.get('/privacy', (req, res) => {
-  res.render('privacy', {
-    meta: {
-      title: 'Privacy Policy | Conservation Trips & Adventures',
-      description: 'How Conservation Trips & Adventures collects, uses and protects your personal information when you enquire about a Uganda safari.',
-      keywords: 'privacy policy, Conservation Trips Adventures',
-      ogImage: '/images/safari.png',
-      ogUrl: 'https://tripsandadventures.co.ug/privacy'
-    }
-  });
-});
-
-router.get('/terms', (req, res) => {
-  res.render('terms', {
-    meta: {
-      title: 'Terms of Service | Conservation Trips & Adventures',
-      description: 'The terms for using the Conservation Trips & Adventures website and for sending a safari enquiry.',
-      keywords: 'terms of service, Conservation Trips Adventures',
-      ogImage: '/images/safari.png',
-      ogUrl: 'https://tripsandadventures.co.ug/terms'
-    }
-  });
-});
+router.get('/privacy', (req, res) => res.render('privacy', pages.privacy()));
+router.get('/terms', (req, res) => res.render('terms', pages.terms()));
 
 module.exports = router;

@@ -32,6 +32,10 @@
     this.reduced = window.Motion ? window.Motion.prefersReducedMotion() : false;
 
     if (!this.slides.length) return;
+    // looked up once: the links/buttons inside each slide never change
+    this.focusables = this.slides.map(function (slide) {
+      return Array.prototype.slice.call(slide.querySelectorAll('a, button'));
+    });
     this.splitWords();
     this.init();
   }
@@ -128,6 +132,7 @@
     var total = this.slides.length;
     var next = ((n % total) + total) % total;
 
+    var focusables = this.focusables;
     this.slides.forEach(function (slide, i) {
       var on = i === next;
       slide.classList.toggle('active', on);
@@ -135,7 +140,7 @@
       // inert removes the slide's links from tab order and the a11y tree;
       // tabindex covers browsers without inert.
       slide.inert = !on;
-      slide.querySelectorAll('a, button').forEach(function (c) {
+      focusables[i].forEach(function (c) {
         if (on) c.removeAttribute('tabindex'); else c.setAttribute('tabindex', '-1');
       });
     });

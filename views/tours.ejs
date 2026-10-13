@@ -1,6 +1,6 @@
 <!-- Page Hero -->
 <section class="page-hero" style="padding-top: var(--nav-height);">
-  <div class="page-hero-bg" style="background-image: url('/images/lion.png');"></div>
+  <div class="page-hero-bg" style="background-image: url('/images/lion.jpg');"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -22,9 +22,8 @@
     <!-- Filter Tabs -->
     <div class="flex-between flex-wrap gap-16 reveal mb-32">
       <div class="filter-tabs" role="tablist" aria-label="Filter safari packages">
-        <button class="filter-tab <%= activeCategory === 'All' ? 'active' : '' %>" type="button" data-category="All" role="tab" aria-selected="<%= activeCategory === 'All' %>">All Safaris</button>
-        <% categories.forEach(cat => { %>
-        <button class="filter-tab <%= activeCategory === cat ? 'active' : '' %>" type="button" data-category="<%= cat %>" role="tab" aria-selected="<%= activeCategory === cat %>"><%= cat %></button>
+        <% ['All'].concat(categories).forEach(cat => { %>
+        <a href="<%= categoryUrl('tours', cat) %>" class="filter-tab <%= activeCategory === cat ? 'active' : '' %>" data-category="<%= cat %>" role="tab" aria-selected="<%= activeCategory === cat %>"><%= cat === 'All' ? 'All Safaris' : cat %></a>
         <% }) %>
       </div>
     </div>
@@ -32,7 +31,7 @@
     <!-- Grid -->
     <div class="tours-grid reveal-grid" id="tours-grid">
       <% tours.forEach(tour => { %>
-        <%- include('partials/tour-card', { tour }) %>
+        <%- include('partials/tour-card', { tour, hidden: activeCategory !== 'All' && tour.category !== activeCategory }) %>
       <% }) %>
     </div>
 

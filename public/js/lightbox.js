@@ -32,6 +32,8 @@
 
   function apply() {
     var item = items[current];
+    // the deferred swap in show() can fire after the lightbox was closed
+    if (!item) return;
     img.src = item.src;
     img.alt = item.alt || 'Gallery image ' + (current + 1);
     if (countEl) countEl.textContent = (current + 1) + ' / ' + items.length;
@@ -105,8 +107,9 @@
       // trap focus inside the dialog
       var controls = [closeBtn, prevBtn, nextBtn].filter(Boolean);
       var i = controls.indexOf(document.activeElement);
+      // i === -1: focus has strayed outside the dialog — pull it back in
       if (e.shiftKey && i <= 0) { e.preventDefault(); controls[controls.length - 1].focus(); }
-      else if (!e.shiftKey && i === controls.length - 1) { e.preventDefault(); controls[0].focus(); }
+      else if (!e.shiftKey && (i === -1 || i === controls.length - 1)) { e.preventDefault(); controls[0].focus(); }
     }
   });
 

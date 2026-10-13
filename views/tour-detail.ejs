@@ -78,7 +78,7 @@
           <div class="inclusions-grid">
             <div>
               <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px;">✓ Included</p>
-              <% tour.included.forEach(item => { %>
+              <% (tour.included || []).forEach(item => { %>
               <div class="inclusion-item">
                 <i class="fa-solid fa-circle-check"></i>
                 <span><%= item %></span>
@@ -87,7 +87,7 @@
             </div>
             <div>
               <p style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #E53E3E; margin-bottom: 12px;">✕ Not Included</p>
-              <% tour.excluded.forEach(item => { %>
+              <% (tour.excluded || []).forEach(item => { %>
               <div class="exclusion-item">
                 <i class="fa-solid fa-circle-xmark"></i>
                 <span><%= item %></span>
@@ -98,24 +98,26 @@
         </div>
 
         <!-- Photo Gallery -->
+        <% if (tour.gallery && tour.gallery.length) { %>
         <div class="tour-detail-section reveal">
           <h3><i class="fa-regular fa-images"></i> Photo Gallery</h3>
           <div class="gallery-grid">
             <% tour.gallery.forEach((img, i) => { %>
             <div class="gallery-item">
-              <img src="<%= img %>" alt="<%= tour.name %> gallery image <%= i + 1 %>" loading="lazy" onerror="this.src='/images/lion.png'">
+              <img src="<%= img %>" alt="<%= tour.name %> gallery image <%= i + 1 %>" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
             </div>
             <% }) %>
           </div>
         </div>
+        <% } %>
 
         <!-- Share -->
         <div class="tour-detail-section reveal">
           <h4 style="margin-bottom: 12px;">Share This Tour</h4>
           <div class="share-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent('https://tripsandadventures.co.ug/tours/' + tour.slug) %>" target="_blank" rel="noopener" class="share-btn share-fb"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
-            <a href="https://wa.me/?text=<%= encodeURIComponent(tour.name + ' — Conservation Trips & Adventures: https://tripsandadventures.co.ug/tours/' + tour.slug) %>" target="_blank" rel="noopener" class="share-btn share-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:?subject=<%= encodeURIComponent(tour.name) %>&body=<%= encodeURIComponent('Check out this safari: https://tripsandadventures.co.ug/tours/' + tour.slug) %>" class="share-btn share-email"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(siteUrl + meta.path) %>" target="_blank" rel="noopener" class="share-btn share-fb"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+            <a href="https://wa.me/?text=<%= encodeURIComponent(tour.name + ' — Conservation Trips & Adventures: ' + siteUrl + meta.path) %>" target="_blank" rel="noopener" class="share-btn share-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:?subject=<%= encodeURIComponent(tour.name) %>&amp;body=<%= encodeURIComponent('Check out this safari: ' + siteUrl + meta.path) %>" class="share-btn share-email"><i class="fa-solid fa-envelope"></i> Email</a>
           </div>
         </div>
 

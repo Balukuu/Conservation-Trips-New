@@ -7,14 +7,14 @@
   const perPerson = /\s*(pp|per person)\s*$/i.test(priceValue);
   priceValue = priceValue.replace(/\s*(pp|per person)\s*$/i, '');
 %>
-<article class="tour-card" data-category="<%= tour.category %>">
+<article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
   <div class="tour-card-img">
     <img
       src="<%= tour.image %>"
       alt=""
       loading="lazy"<% if (tour.imagePosition) { %>
       style="object-position: <%= tour.imagePosition %>"<% } %>
-      onerror="this.src='/images/lion.png'"
+      onerror="this.onerror=null;this.src='/images/lion.jpg'"
     >
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag"><%= tour.category %></span>

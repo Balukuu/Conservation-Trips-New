@@ -53,7 +53,7 @@
           var message;
           try {
             var j = await r.json();
-            message = j.error || (j.errors && j.errors.map(function (err) { return err.message; }).join(', '));
+            message = j.error || j.message || (j.errors && j.errors.map(function (err) { return err.message; }).join(', '));
           } catch (_) { /* non-JSON error body */ }
           return { ok: false, message: message };
         }
@@ -302,12 +302,10 @@
       if (!validateStep(currentStep)) return;
 
       var submitBtn = form.querySelector('[type="submit"]');
-      var sendLabel = submitBtn ? submitBtn.innerHTML : '';
+      var sendLabel = submitBtn.innerHTML;
       clearStatus(submitBtn.parentElement);
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-      }
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
       var data = collect(form);
       var fail = function (msg) {
@@ -345,7 +343,7 @@
   /* ═══════════════ Quick enquiry (tour pages) ═══════════════ */
   var quick = document.getElementById('quick-enquiry-form');
   if (quick) {
-    var quickDelivery = createDelivery(quick, '/contact', function (data) {
+    var quickDelivery = createDelivery(quick, '/contact/enquiry', function (data) {
       return {
         subject: ('Tour enquiry: ' + (data.tour || 'Safari') + ' — ' + (data.name || '')).trim(),
         lines: [

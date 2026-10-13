@@ -1,152 +1,143 @@
+'use strict';
+
 const express = require('express');
+const pages = require('../lib/pages');
+const mail = require('../lib/mail');
+const rateLimit = require('../lib/rate-limit');
+
 const router = express.Router();
-const tours = require('../data/tours.json');
 
-// GET contact page
-router.get('/', (req, res) => {
-  res.render('contact', {
-    meta: {
-      title: 'Contact & Book | Conservation Trips & Adventures Uganda',
-      description: 'Plan your Uganda safari with Conservation Trips & Adventures. Contact us for custom itineraries, gorilla permits, booking enquiries. We respond within 24 hours.',
-      keywords: 'contact Conservation Trips Adventures, safari booking Uganda, gorilla permit booking, custom safari enquiry',
-      ogImage: '/images/safari.png',
-      ogUrl: 'https://tripsandadventures.co.ug/contact'
-    },
-    tours
-  });
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SEND_FAILED = `We couldn't send your enquiry. Please contact us directly at ${mail.FALLBACK_RECIPIENT}`;
+
+// Visitors can fix a typo and resubmit; a script can't hammer the mailbox.
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 8,
+  message: 'Too many enquiries from your connection just now. Please wait a few minutes, or reach us by phone or WhatsApp.'
 });
 
-// POST contact form
-router.post('/', (req, res) => {
-  const { name, email, phone, message, safari_type, duration, travel_date, group_size } = req.body;
-  
-  console.log('\n📩 New Contact Form Submission:');
-  console.log('Name:', name);
-  console.log('Email:', email);
-  console.log('Phone:', phone);
-  console.log('Safari Type:', safari_type);
-  console.log('Duration:', duration);
-  console.log('Travel Date:', travel_date);
-  console.log('Group Size:', group_size);
-  console.log('Message:', message);
-  console.log('---\n');
+/* ─── Input hygiene ───
+   Everything arriving here is untrusted. `line` is for single-line fields, and
+   `block` for free text that may legitimately contain line breaks. Both coerce
+   to a capped plain string; escaping for HTML happens where the email is built. */
+const CONTROL = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 
-  // Optional nodemailer setup (uncomment and configure .env):
-  /*
-  const nodemailer = require('nodemailer');
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
-  });
-  transporter.sendMail({
-    from: email,
-    to: process.env.CONTACT_EMAIL,
-    subject: `Safari Enquiry from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
-  });
-  */
+function coerce(value) {
+  if (Array.isArray(value)) value = value.join(', ');
+  return typeof value === 'string' || typeof value === 'number' ? String(value) : '';
+}
+const line = (value, max = 120) => coerce(value).replace(CONTROL, '').replace(/\s+/g, ' ').trim().slice(0, max);
+const block = (value, max = 3000) => coerce(value).replace(CONTROL, '').trim().slice(0, max);
+const orNone = (value, none = 'Not provided') => value || none;
 
-  res.json({ 
-    success: true, 
-    message: `Thank you ${name}! We've received your enquiry and will be in touch within 24 hours.` 
-  });
-});
+/* ─── Enquiry builders: request body -> { error } | email description ─── */
 
-const nodemailer = require('nodemailer');
+// Multi-step form on /contact
+function bookingEnquiry(body) {
+  const firstName = line(body.firstName, 60);
+  const lastName = line(body.lastName, 60);
+  const email = line(body.email, 254);
+  const safariType = line(body.safari_type, 60);
 
-// POST booking form
-router.post('/booking', async (req, res) => {
-  const { 
-    firstName, lastName, email, phone, country, 
-    safari_type, duration_range, travel_month, travel_year, 
-    group_size, destinations, accommodation, requirements 
-  } = req.body;
-  
-  // Basic validation
-  if (!firstName || !email || !safari_type) {
-    return res.status(400).json({ success: false, message: 'Please fill in all required fields.' });
-  }
-  
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
-  }
+  if (!firstName || !email || !safariType) return { error: 'Please fill in all required fields.' };
+  if (!EMAIL_RE.test(email)) return { error: 'Please enter a valid email address.' };
 
-  console.log('\n🦍 New Booking Enquiry:');
-  console.log('Name:', firstName, lastName);
-  console.log('Email:', email);
-  console.log('Phone:', phone);
-  console.log('--- Details ---\n');
+  const name = `${firstName} ${lastName}`.trim();
+  const travelDate = [line(body.travel_month, 20), line(body.travel_year, 4)].filter(Boolean).join(' ');
+  const destinations = (Array.isArray(body.destinations) ? body.destinations : [body.destinations])
+    .slice(0, 12).map(d => line(d, 60)).filter(Boolean).join(', ');
 
-  try {
-    // 1. Configure the transporter
-    // SMTP credentials must be set in .env
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT || 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+  return {
+    summary: `booking enquiry (${safariType})`,
+    subject: `New Safari Enquiry: ${safariType} from ${name}`,
+    fromName: name,
+    replyTo: { name, address: email },
+    rows: [
+      ['Customer', name],
+      ['Email', email],
+      ['Phone', orNone(line(body.phone, 40))],
+      ['Country', orNone(line(body.country, 80))],
+      ['Safari type', safariType],
+      ['Duration', orNone(line(body.duration_range, 40), 'Not specified')],
+      ['Travel date', orNone(travelDate, 'Not specified')],
+      ['Group size', orNone(line(body.group_size, 10), 'Not specified')],
+      ['Preferred destinations', orNone(destinations, 'None selected')],
+      ['Accommodation', orNone(line(body.accommodation, 40), 'No preference')],
+      ['Heard about us via', orNone(line(body.heard, 60))],
+      ['Special requirements', orNone(block(body.requirements), 'None noted')]
+    ]
+  };
+}
+
+// Sidebar form on each tour page
+function quickEnquiry(body) {
+  const name = line(body.name, 120);
+  const email = line(body.email, 254);
+
+  if (!name || !email) return { error: 'Please fill in all required fields.' };
+  if (!EMAIL_RE.test(email)) return { error: 'Please enter a valid email address.' };
+
+  const tour = line(body.tour, 160);
+
+  return {
+    summary: `tour enquiry (${tour || 'no tour named'})`,
+    subject: `Tour enquiry: ${tour || 'Safari'} from ${name}`,
+    fromName: name,
+    replyTo: { name, address: email },
+    rows: [
+      ['Tour', orNone(tour, 'Not specified')],
+      ['Customer', name],
+      ['Email', email],
+      ['Phone', orNone(line(body.phone, 40))],
+      ['Travel date', orNone(line(body.travel_date, 20), 'Not specified')],
+      ['Group size', orNone(line(body.group_size, 10), 'Not specified')],
+      ['Special requests', orNone(block(body.message), 'None noted')]
+    ]
+  };
+}
+
+function deliver(build) {
+  return async function handler(req, res) {
+    const body = req.body && typeof req.body === 'object' ? req.body : {};
+    const enquiry = build(body);
+
+    if (enquiry.error) return res.status(400).json({ success: false, message: enquiry.error });
+
+    if (!mail.isConfigured()) {
+      if (process.env.NODE_ENV === 'production') {
+        console.error(`Dropped ${enquiry.summary}: SMTP_HOST / SMTP_USER / SMTP_PASS are not set.`);
+        return res.status(503).json({ success: false, message: SEND_FAILED });
       }
-    });
-
-    // 2. Format the email content
-    const destString = Array.isArray(destinations) ? destinations.join(', ') : destinations;
-    
-    const mailOptions = {
-      from: `"${firstName} ${lastName}" <${process.env.SMTP_USER}>`, // Recommended to send from your authenticated user
-      replyTo: email,
-      to: process.env.CONTACT_EMAIL || 'info@tripsandadventures.co.ug',
-      subject: `New Safari Enquiry: ${safari_type} from ${firstName} ${lastName}`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; padding: 20px; border: 1px solid #eee;">
-          <h2 style="color: #2D6A2D;">New Safari Enquiry 🦍</h2>
-          <p><strong>Customer:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-          <p><strong>Country:</strong> ${country || 'Not provided'}</p>
-          <hr>
-          <h3 style="color: #2D6A2D;">Trip Details</h3>
-          <p><strong>Safari Type:</strong> ${safari_type}</p>
-          <p><strong>Duration:</strong> ${duration_range || 'Not specified'}</p>
-          <p><strong>Travel Date:</strong> ${travel_month} ${travel_year}</p>
-          <p><strong>Group Size:</strong> ${group_size}</p>
-          <p><strong>Preferred Destinations:</strong> ${destString || 'None selected'}</p>
-          <p><strong>Accommodation:</strong> ${accommodation || 'No preference'}</p>
-          <hr>
-          <h3 style="color: #2D6A2D;">Additional Info</h3>
-          <p>${requirements || 'No special requirements noted.'}</p>
-        </div>
-      `
-    };
-
-    // 3. Send the email
-    // Note: In development without real credentials, this will fail.
-    // I'll wrap it so it still "succeeds" for the user experience in Dev, but logs the error.
-    if (process.env.NODE_ENV === 'production' || (process.env.SMTP_USER && process.env.SMTP_PASS && process.env.SMTP_USER !== 'your@email.com')) {
-      await transporter.sendMail(mailOptions);
-      console.log('✅ Email sent successfully.');
-    } else {
-      console.log('⚠️  Email skipped (Development mode or missing SMTP credentials)');
+      // Local development: accept the form without sending, so the UI can be exercised.
+      console.log(`⚠️  ${enquiry.summary} accepted but not emailed (SMTP not configured)`);
+      return res.json({ success: true });
     }
 
-    res.json({ 
-      success: true, 
-      firstName,
-      message: `Thank you, ${firstName}! Your safari enquiry has been received. Our team will contact you within 24 hours to craft your perfect Uganda adventure.`
-    });
+    try {
+      await mail.sendEnquiry(enquiry);
+      res.json({ success: true });
+    } catch (err) {
+      console.error(`Could not email ${enquiry.summary}:`, err.message);
+      res.status(500).json({ success: false, message: SEND_FAILED });
+    }
+  };
+}
 
-  } catch (error) {
-    console.error('❌ Error sending email:', error);
-    // Still return success if it's the server's fault (to keep customer UX), or return error.
-    // Given the user's "Failed to send" issue, they probably WANT to know if the email failed.
-    res.status(500).json({ 
-      success: false, 
-      message: 'Failed to send enquiry. Please contact us directly at info@tripsandadventures.co.ug' 
-    });
-  }
+router.get('/', (req, res) => {
+  res.render('contact', pages.contact());
 });
+
+router.post('/booking', limiter, deliver(bookingEnquiry));
+// One URL for both forms, for static builds that point FORM_ENDPOINT at this
+// server (both forms post to the same endpoint there). The booking form is the
+// one that sends firstName / safari_type.
+router.post('/submit', limiter, deliver(body =>
+  body.firstName || body.safari_type ? bookingEnquiry(body) : quickEnquiry(body)
+));
+// "/" is the pre-existing path the tour-page form used; "/enquiry" is its proper
+// name and what the front end posts to now (it sits under /contact/ so one
+// proxy rule covers both forms).
+router.post(['/enquiry', '/'], limiter, deliver(quickEnquiry));
 
 module.exports = router;

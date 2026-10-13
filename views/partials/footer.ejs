@@ -41,12 +41,12 @@
         <div class="footer-col">
           <h4>Our Tours</h4>
           <ul class="footer-links">
-            <li><a href="/tours?category=Gorilla+Trekking"><i class="fa-solid fa-angle-right"></i> Gorilla Trekking</a></li>
-            <li><a href="/tours?category=Wildlife+Safari"><i class="fa-solid fa-angle-right"></i> Wildlife Safaris</a></li>
-            <li><a href="/tours?category=Mountain+Climbing"><i class="fa-solid fa-angle-right"></i> Mountain Climbing</a></li>
-            <li><a href="/tours?category=Cultural+Tour"><i class="fa-solid fa-angle-right"></i> Cultural Tours</a></li>
-            <li><a href="/tours?category=Boat+Cruise"><i class="fa-solid fa-angle-right"></i> Boat Cruise Safaris</a></li>
-            <li><a href="/tours?category=Primate+Safari"><i class="fa-solid fa-angle-right"></i> Primate Tracking</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Gorilla Trekking') %>"><i class="fa-solid fa-angle-right"></i> Gorilla Trekking</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Wildlife Safari') %>"><i class="fa-solid fa-angle-right"></i> Wildlife Safaris</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Mountain Climbing') %>"><i class="fa-solid fa-angle-right"></i> Mountain Climbing</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Cultural Tour') %>"><i class="fa-solid fa-angle-right"></i> Cultural Tours</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Boat Cruise') %>"><i class="fa-solid fa-angle-right"></i> Boat Cruise Safaris</a></li>
+            <li><a href="<%= categoryUrl('tours', 'Primate Safari') %>"><i class="fa-solid fa-angle-right"></i> Primate Tracking</a></li>
             <li><a href="/contact"><i class="fa-solid fa-angle-right"></i> Custom Safaris</a></li>
           </ul>
         </div>
@@ -87,13 +87,11 @@
     </div>
   </div>
 
-
-
   <!-- Footer Bottom -->
   <div class="container">
     <div class="footer-bottom">
       <p class="footer-copy">
-        &copy; 2026 Conservation Trips and Adventures. All rights reserved. &nbsp;|&nbsp;
+        &copy; <%= new Date().getFullYear() %> Conservation Trips and Adventures. All rights reserved. &nbsp;|&nbsp;
         <a href="/privacy">Privacy Policy</a> &nbsp;|&nbsp;
         <a href="/terms">Terms of Service</a>
       </p>

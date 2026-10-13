@@ -9,6 +9,33 @@ npm install
 npm run dev        # Express + nodemon on http://localhost:3000
 ```
 
+## How the pieces fit
+
+- `lib/pages.js` builds the view model for **every** page (view data + SEO title/description).
+  `routes/*.js` call it per request; `scripts/build.js` calls it once per page. Change page copy or
+  data there and the dev server and the static build can't drift apart.
+- `lib/data.js` loads `data/*.json` once and derives lookups (tours per country, related tours, …).
+  A tour belongs to every country in its `countries` list; the "N tours available" counts are computed.
+- `lib/site.js` has `assetUrl()`, which appends a content hash to CSS/JS URLs
+  (`/css/main.css?v=00945ef709`), so they are cached for a year and still update on deploy.
+- `app.js` is the Express app, `server.js` just listens (keep that name: the cPanel/Passenger config starts it).
+
+## URLs
+
+Every page has one address, and variants redirect (301) to it:
+
+| Page | URL |
+| --- | --- |
+| Section pages | `/tours`, `/blog`, `/destinations`, `/about`, … (no `.html`) |
+| Detail pages | `/tours/<slug>`, `/blog/<slug>`, `/destinations/<country>` |
+| Category listings | `/tours/category/gorilla-trekking`, `/blog/category/travel-tips` (slug of the category name) |
+
+The Express server (`lib/clean-urls.js`) redirects `/Tours`, `/tours/`, `/about.html`, `/index.html` and the old
+`?category=Gorilla+Trekking` links to the canonical form. Static hosts serve folders, so there the canonical form
+ends in `/` (`/tours/`); `public/.htaccess` and `deploy/nginx.conf` redirect `/…/index.html` to it, and the
+filter scripts tidy an old `?category=` link in the address bar. Category pages are generated for every category
+in `data/tours.json` / `data/posts.json` by the build, and the link check fails the build if one is missing.
+
 ## Static build
 
 ```bash
@@ -20,8 +47,10 @@ The build is controlled by environment variables:
 | Variable        | Default                           | Purpose |
 | --------------- | --------------------------------- | ------- |
 | `BASE_PATH`     | *(empty)*                         | URL prefix the site is served under, e.g. `/Conservation-Trips-New` for a Pages project site. Leave empty for a custom domain. |
-| `SITE_URL`      | `https://tripsandadventures.co.ug` | Origin **including** the base path. Used for canonical / Open Graph URLs. |
-| `FORM_ENDPOINT` | *(empty)*                         | Hosted form endpoint the booking form POSTs JSON to (e.g. `https://formspree.io/f/xxxxxxxx`). |
+| `SITE_URL`      | `https://tripsandadventures.co.ug` | Origin **including** the base path. Used for canonical / Open Graph / share URLs (dev server too). |
+| `FORM_ENDPOINT` | *(empty)*                         | Where the static forms POST JSON: a hosted endpoint (e.g. `https://formspree.io/f/xxxxxxxx`) or your Node app (`/contact/submit`). |
+
+The build also **checks every internal link and asset** in `dist/` and fails if one doesn't resolve.
 
 To preview a project-site build locally:
 
@@ -48,6 +77,11 @@ The workflow works out the URL for you:
 ### Booking form
 
 GitHub Pages has no server, so `routes/contact.js` (and its SMTP settings) is not used on the live site.
+When the Node app is running (`npm start`), `routes/contact.js` serves `POST /contact/booking`
+(multi-step form), `POST /contact/enquiry` (tour-page form) and `POST /contact/submit` (either payload).
+It validates and length-caps input, escapes it in the email, rate-limits per IP (8 per 10 min), and
+sends through SMTP (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `CONTACT_EMAIL` in `.env`).
+Without SMTP settings the forms are accepted in development but not emailed, and answer 503 in production.
 
 - **Recommended:** create a free form endpoint (e.g. Formspree), then add its URL as a repository
   *variable* named `FORM_ENDPOINT` (Settings → Secrets and variables → Actions → Variables) and re-run the workflow.
@@ -101,3 +135,10 @@ if a post is deleted). The static site can't read X live, so to refresh: add pos
   and "1,000+ Gorillas Protected".
 - `public.html` is a generated snapshot of the home page (`node scripts/export-html.js`); regenerate it
   after changing `views/index.ejs`.
+- The blog posts in `data/posts.json` have placeholder `content` ("Full article content here..."), so every
+  article page currently shows the same generic body text. Real articles need writing, then
+  `views/blog-post.ejs` should render `post.content`.
+- The "50+ Tour Packages" stat on the home page vs. the 11 tours in `data/tours.json`.
+- `public/images/` holds files nothing references: `logo.jpeg` (identical to `logonew.jpeg`),
+  `east-africa-tourism.png`, `safaribookings.png`, `utb.png`, `uwa.png`, `iucn.svg`, `tripadvisor.svg`.
+  Presumably intended for a partners strip — use them or delete them.
