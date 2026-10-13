@@ -1069,9 +1069,9 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
     visibility: hidden;
     transition: transform 0.35s var(--ease-sheet), opacity 0.25s ease, visibility 0s linear 0.35s;
   }
-  .sticky-cta-price { display: flex; flex-direction: column; line-height: 1.15; color: #fff; }
-  .sticky-cta-price span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
-  .sticky-cta-price strong { font-size: 1.1rem; font-weight: 700; }
+  .sticky-cta-info { display: flex; flex-direction: column; line-height: 1.15; color: #fff; }
+  .sticky-cta-info span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+  .sticky-cta-info strong { font-size: 1.1rem; font-weight: 700; }
   /* lift the floating buttons clear of the bar while it exists */
   .has-sticky-cta .whatsapp-float { bottom: calc(88px + env(safe-area-inset-bottom)); }
   .has-sticky-cta .back-to-top { bottom: calc(160px + env(safe-area-inset-bottom)); }

@@ -7,7 +7,7 @@
 %>
 <!-- Hero -->
 <section class="page-hero" style="height:auto; min-height:300px;">
-  <div class="page-hero-bg" style="background-image:url('/images/lion.jpg');"></div>
+  <div class="page-hero-bg"><%- image({ src: '/images/lion.jpg', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Terms of Service</span></nav>
@@ -43,10 +43,11 @@
 
       <h2>Prices, itineraries and availability</h2>
       <p>
-        Prices and itineraries shown on the site are a guide. They can change with park and permit
-        fees, exchange rates, season, group size and availability of lodges, vehicles and permits
-        (gorilla and chimpanzee permits in particular are limited each day). Wildlife sightings are
-        never guaranteed.
+        Itineraries shown on the site are a guide, and the site does not publish prices: each
+        quotation is prepared for your dates and group. Prices and itineraries can change with park
+        and permit fees, exchange rates, season, group size and availability of lodges, vehicles and
+        permits (gorilla and chimpanzee permits in particular are limited each day). Wildlife
+        sightings are never guaranteed.
       </p>
 
       <h2>Your responsibilities as a traveller</h2>

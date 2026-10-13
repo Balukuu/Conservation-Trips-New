@@ -13,7 +13,8 @@ const morgan = require('morgan');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 
-const { siteUrl, assetUrl, categoryUrl, PUBLIC_DIR } = require('./lib/site');
+const { PUBLIC_DIR } = require('./lib/site');
+const locals = require('./lib/locals');
 const cleanUrls = require('./lib/clean-urls');
 const pages = require('./lib/pages');
 
@@ -41,9 +42,7 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/main');
 
 // Available to every view and to the layout
-app.locals.siteUrl = siteUrl;
-app.locals.assetUrl = assetUrl;
-app.locals.categoryUrl = categoryUrl;
+Object.assign(app.locals, locals);
 app.locals.staticBuild = false;
 app.locals.formEndpoint = '';
 app.locals.useFlags = false;

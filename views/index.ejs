@@ -1,4 +1,7 @@
 <%
+  // How wide a destination card renders (masonry: 4 / 2 / 1 columns)
+  const DEST_SIZES = '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw';
+
   // Filter tabs only for categories that actually have a featured tour, so no
   // tab leads to an empty grid. Labels keep the friendlier home-page wording.
   const tabLabels = {
@@ -16,7 +19,7 @@
 
     <% slides.forEach((slide, i) => { %>
     <div class="hero-slide <%= i === 0 ? 'active' : '' %>" role="group" aria-roledescription="slide" aria-label="<%= i + 1 %> of <%= slides.length %>" aria-hidden="<%= i !== 0 %>">
-      <div class="hero-slide-bg" style="background-image: url('<%= slide.bg %>');"></div>
+      <div class="hero-slide-bg"><%- image({ src: slide.bg, alt: '', sizes: '100vw', fill: true, priority: i === 0 ? true : 'low' }) %></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow"><%= slide.eyebrow %></p>
@@ -127,10 +130,10 @@
       <div class="reveal-right">
         <div class="about-image-stack">
           <div class="about-img-primary">
-            <img src="/images/lion.jpg" alt="Uganda wildlife safari" loading="lazy">
+            <%- image({ src: '/images/lion.jpg', sizes: '(min-width: 1024px) 30vw, 70vw', className: 'about-photo' }) %>
           </div>
           <div class="about-img-secondary">
-            <img src="/images/gorilla.jpg" alt="Mountain gorilla encounter" loading="lazy">
+            <%- image({ src: '/images/gorilla.jpg', sizes: '(min-width: 1024px) 18vw, 40vw', className: 'about-photo' }) %>
           </div>
           <div class="about-years-badge">
             <span class="badge-num">15+</span>
@@ -205,7 +208,7 @@
     <div class="destinations-masonry reveal-grid">
       <!-- Tall card 1 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
+        <div class="dest-card-bg"><%- image({ src: '/images/gorilla.jpg', alt: '', sizes: DEST_SIZES, fill: true }) %></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -216,7 +219,7 @@
 
       <!-- Tall card 2 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/lion.jpg');"></div>
+        <div class="dest-card-bg"><%- image({ src: '/images/lion.jpg', alt: '', sizes: DEST_SIZES, fill: true }) %></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -234,7 +237,7 @@
       ]; %>
       <% normalDests.forEach(d => { %>
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('<%= d.img %>');"></div>
+        <div class="dest-card-bg"><%- image({ src: d.img, alt: '', sizes: DEST_SIZES, fill: true }) %></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi <%= d.flag %>"></span> <%= d.region %></div>
@@ -294,7 +297,7 @@
       <!-- Centre photograph -->
       <div class="why-us-center-img reveal-scale">
         <figure class="why-us-photo">
-          <img src="/images/gorilla.jpg" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
+          <%- image({ src: '/images/gorilla.jpg', sizes: '(min-width: 1024px) 30vw, 90vw' }) %>
           <figcaption>Bwindi Impenetrable Forest</figcaption>
         </figure>
       </div>
@@ -384,7 +387,7 @@
       </div>
       <div class="conservation-img-wrap reveal-right">
         <figure class="conservation-photo">
-          <img src="/images/safari.jpg" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
+          <%- image({ src: '/images/safari.jpg', sizes: '(min-width: 1024px) 45vw, 90vw' }) %>
         </figure>
       </div>
     </div>
@@ -419,12 +422,12 @@
       <article class="social-card">
         <% if (media.length === 1) { %>
         <div class="social-media">
-          <img src="<%= media[0].src %>" alt="<%= media[0].alt %>" loading="lazy">
+          <%- image({ src: media[0].src, alt: media[0].alt, sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw' }) %>
         </div>
         <% } else if (media.length > 1) { %>
         <div class="social-media social-media--mosaic">
           <% media.slice(0, 3).forEach(m => { %>
-          <img src="<%= m.src %>" alt="<%= m.alt %>" loading="lazy">
+          <%- image({ src: m.src, alt: m.alt, sizes: '(min-width: 1024px) 130px, 33vw' }) %>
           <% }) %>
         </div>
         <% } else { %>
@@ -471,7 +474,7 @@
       <% latestPosts.forEach(post => { %>
       <article class="blog-card">
         <a href="/blog/<%= post.slug %>" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="<%= post.image %>" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+          <%- image({ src: post.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: post.imagePosition }) %>
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">

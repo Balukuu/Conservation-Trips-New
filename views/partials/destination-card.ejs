@@ -1,5 +1,5 @@
 <div class="dest-card <%= typeof tall !== 'undefined' && tall ? 'dest-tall' : 'dest-normal' %>">
-  <div class="dest-card-bg" style="background-image: url('<%= dest.image %>')"></div>
+  <div class="dest-card-bg"><%- image({ src: dest.image, alt: '', sizes: '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw', fill: true }) %></div>
   <div class="dest-card-overlay"></div>
   <div class="dest-card-content">
     <div class="dest-card-region">🌍 <%= dest.subtitle || dest.country || 'East Africa' %></div>

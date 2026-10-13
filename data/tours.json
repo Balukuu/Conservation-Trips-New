@@ -56,7 +56,7 @@
       "Expert gorilla guides and trackers",
       "1 magical hour with a gorilla family in the wild"
     ],
-    "included": ["Gorilla trekking permit ($800 pp)", "Professional gorilla guide & trackers", "Private 4x4 safari vehicle", "1 night accommodation at Bwindi lodge", "All meals during safari", "Kigali-Bwindi transfer (both ways)"],
+    "included": ["Gorilla trekking permit", "Professional gorilla guide & trackers", "Private 4x4 safari vehicle", "1 night accommodation at Bwindi lodge", "All meals during safari", "Kigali-Bwindi transfer (both ways)"],
     "excluded": ["International flights to Kigali", "Rwanda & Uganda visa fees", "Travel insurance", "Personal expenses & tips"],
     "itinerary": [
       { "day": 1, "title": "Kigali Arrival – Transfer to Bwindi", "description": "Arrive at Kigali International Airport. Meet your guide for the scenic drive through Rwanda's terraced hillsides and across the Rwanda-Uganda border into Bwindi. Evening briefing with your gorilla guide about tomorrow's trek. Dinner and overnight at your Bwindi forest lodge." },
@@ -141,11 +141,10 @@
     "durationDays": 5,
     "price": "From $1,200 pp",
     "priceUSD": 1200,
-    "image": "/images/safari.jpg",
+    "image": "/images/gorilla.jpg",
     "gallery": [
-      "/images/safari.jpg",
-      "/images/safari.jpg",
-      "/images/safari.jpg",
+      "/images/gorilla.jpg",
+      "/images/lodge.jpg",
       "/images/safari.jpg"
     ],
     "summary": "An exceptional 5-day Uganda safari combining the world's greatest wildlife encounter — mountain gorilla trekking in Bwindi — with a relaxing finale on the stunning terraced shores of Lake Bunyonyi, Africa's second deepest lake.",
@@ -254,6 +253,7 @@
     "price": "From $890 pp",
     "priceUSD": 890,
     "image": "/images/safari.jpg",
+    "imagePosition": "50% 34%",
     "gallery": [
       "/images/safari.jpg",
       "/images/lodge.jpg"
@@ -288,6 +288,7 @@
     "price": "From $2,100 pp",
     "priceUSD": 2100,
     "image": "/images/safari.jpg",
+    "imagePosition": "50% 34%",
     "gallery": [
       "/images/safari.jpg",
       "/images/lodge.jpg"
@@ -327,10 +328,7 @@
     "image": "/images/safari.jpg",
     "gallery": [
       "/images/safari.jpg",
-      "/images/safari.jpg",
-      "/images/safari.jpg",
       "/images/gorilla.jpg",
-      "/images/safari.jpg",
       "/images/lodge.jpg"
     ],
     "summary": "Explore the rich cultural tapestry of western Uganda — from the ancient kingdoms of Ankole and Bunyoro to the vibrant Bwindi Batwa community and the stunning crater lakes of Fort Portal. A soul-enriching journey through Uganda's most culturally diverse region.",

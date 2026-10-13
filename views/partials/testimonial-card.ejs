@@ -4,13 +4,11 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text"><%= testimonial.quote %></p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="<%= testimonial.photo %>"
-        alt="<%= testimonial.name %>"
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      <% if (testimonial.photo) { %>
+      <%- image({ src: testimonial.photo, alt: testimonial.name, sizes: '58px', className: 'testimonial-avatar' }) %>
+      <% } else { %>
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true"><%= initials(testimonial.name) %></span>
+      <% } %>
       <div>
         <div class="testimonial-author-name"><%= testimonial.name %></div>
         <div class="testimonial-author-country"><%= testimonial.flag %> <%= testimonial.country %></div>

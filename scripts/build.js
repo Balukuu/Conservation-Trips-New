@@ -4,7 +4,9 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
-const { siteUrl, assetUrl, categoryUrl, slugify, PUBLIC_DIR } = require('../lib/site');
+const { siteUrl, slugify, PUBLIC_DIR } = require('../lib/site');
+const viewLocals = require('../lib/locals');
+const images = require('../lib/images');
 const data = require('../lib/data');
 const pages = require('../lib/pages');
 
@@ -48,7 +50,10 @@ function applyBasePath(html) {
       (_, attr, q, p) => `${attr}=${q}${prefixPath('/' + p, attr === 'href')}${q}`)
     // style="background-image:url('/x')"
     .replace(/url\((["']?)\/(?!\/)([^"')]*)\1\)/g,
-      (_, q, p) => `url(${q}${prefixPath('/' + p, false)}${q})`);
+      (_, q, p) => `url(${q}${prefixPath('/' + p, false)}${q})`)
+    // srcset="/a-320.webp 320w, /a-640.webp 640w"
+    .replace(/\b(srcset|imagesrcset)="([^"]*)"/g, (_, attr, list) =>
+      `${attr}="${list.split(',').map(c => c.trim().replace(/^\/(?!\/)(\S*)/, (m, p) => prefixPath('/' + p, false))).join(', ')}"`);
 }
 
 // Render one view model to dist/<outputPath>
@@ -59,9 +64,7 @@ function renderPage(view, outputPath, model) {
   const locals = {
     useFlags: false,
     ...model,
-    siteUrl,
-    assetUrl,
-    categoryUrl,
+    ...viewLocals,
     staticBuild: true,
     formEndpoint
   };
@@ -105,8 +108,15 @@ function checkInternalLinks() {
 
   function check(file) {
     const html = fs.readFileSync(file, 'utf8');
-    for (const m of html.matchAll(/\b(?:href|src)="(\/[^"#?]*)/g)) {
-      let p = m[1];
+    // href/src, plus every URL inside srcset
+    const urls = [...html.matchAll(/\b(?:href|src)="(\/[^"#?]*)/g)].map(m => m[1]);
+    for (const m of html.matchAll(/\bsrcset="([^"]*)"/g)) {
+      for (const candidate of m[1].split(',')) {
+        const url = candidate.trim().split(/\s+/)[0];
+        if (url.startsWith('/')) urls.push(url);
+      }
+    }
+    for (let p of urls) {
       if (p.startsWith('//')) continue;
       if (basePath && p.startsWith(basePath + '/')) p = p.slice(basePath.length);
       else if (basePath && p === basePath) p = '/';
@@ -119,6 +129,22 @@ function checkInternalLinks() {
   for (const [url, from] of missing) {
     console.error(`  ❌ Broken link ${url} (first seen in ${from})`);
     failures++;
+  }
+}
+
+// Every local image that was rendered must be registered (alt text + generated
+// sizes), and a gallery shouldn't show the same photo twice.
+function checkImages() {
+  for (const src of images.unregistered) {
+    console.error(`  ❌ ${src} is used but not in data/images.json / data/image-manifest.json (add it, then npm run images)`);
+    failures++;
+  }
+  for (const tour of data.tours) {
+    const dupes = tour.gallery.filter((src, i) => tour.gallery.indexOf(src) !== i);
+    if (dupes.length) {
+      console.error(`  ❌ ${tour.slug}: gallery repeats ${[...new Set(dupes)].join(', ')}`);
+      failures++;
+    }
   }
 }
 
@@ -169,6 +195,9 @@ function build() {
   for (const dest of data.destinations) {
     renderPage('destination-country', `destinations/${dest.slug}/index.html`, pages.destination(dest.slug));
   }
+
+  console.log('\n🖼️  Checking images...');
+  checkImages();
 
   console.log('\n🔗 Checking internal links...');
   checkInternalLinks();

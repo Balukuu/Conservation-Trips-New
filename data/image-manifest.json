@@ -1,0 +1,361 @@
+{
+  "/images/gorilla.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/gorilla-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/gorilla-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/gorilla-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/gorilla-1024.webp"
+      }
+    ],
+    "og": "/images/og/gorilla.jpg"
+  },
+  "/images/lion.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/lion-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/lion-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/lion-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/lion-1024.webp"
+      }
+    ],
+    "og": "/images/og/lion.jpg"
+  },
+  "/images/safari.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/safari-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/safari-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/safari-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/safari-1024.webp"
+      }
+    ],
+    "og": "/images/og/safari.jpg"
+  },
+  "/images/waterfall.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/waterfall-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/waterfall-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/waterfall-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/waterfall-1024.webp"
+      }
+    ],
+    "og": "/images/og/waterfall.jpg"
+  },
+  "/images/lodge.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/lodge-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/lodge-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/lodge-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/lodge-1024.webp"
+      }
+    ],
+    "og": "/images/og/lodge.jpg"
+  },
+  "/images/logonew.jpeg": {
+    "width": 1080,
+    "height": 1021,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/logonew-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/logonew-320.webp"
+      }
+    ]
+  },
+  "/images/social/elephant-mother-and-calves.jpg": {
+    "width": 1301,
+    "height": 1500,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/elephant-mother-and-calves-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/elephant-mother-and-calves-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/elephant-mother-and-calves-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/social/elephant-mother-and-calves-1024.webp"
+      },
+      {
+        "w": 1301,
+        "url": "/images/opt/social/elephant-mother-and-calves-1301.webp"
+      }
+    ],
+    "og": "/images/og/social/elephant-mother-and-calves.jpg"
+  },
+  "/images/social/elephants-bathing.jpg": {
+    "width": 800,
+    "height": 534,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/elephants-bathing-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/elephants-bathing-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/elephants-bathing-640.webp"
+      },
+      {
+        "w": 800,
+        "url": "/images/opt/social/elephants-bathing-800.webp"
+      }
+    ],
+    "og": "/images/og/social/elephants-bathing.jpg"
+  },
+  "/images/social/murchison-nile-cruise.jpg": {
+    "width": 1600,
+    "height": 1069,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/murchison-nile-cruise-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/murchison-nile-cruise-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/murchison-nile-cruise-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/social/murchison-nile-cruise-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/social/murchison-nile-cruise-1600.webp"
+      }
+    ],
+    "og": "/images/og/social/murchison-nile-cruise.jpg"
+  },
+  "/images/social/rwenzori-margherita-peak.jpg": {
+    "width": 1125,
+    "height": 1066,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/rwenzori-margherita-peak-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/rwenzori-margherita-peak-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/rwenzori-margherita-peak-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/social/rwenzori-margherita-peak-1024.webp"
+      },
+      {
+        "w": 1125,
+        "url": "/images/opt/social/rwenzori-margherita-peak-1125.webp"
+      }
+    ],
+    "og": "/images/og/social/rwenzori-margherita-peak.jpg"
+  },
+  "/images/social/safari-vehicles-at-the-nile.jpg": {
+    "width": 1600,
+    "height": 1200,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/safari-vehicles-at-the-nile-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/safari-vehicles-at-the-nile-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/safari-vehicles-at-the-nile-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/social/safari-vehicles-at-the-nile-1024.webp"
+      },
+      {
+        "w": 1600,
+        "url": "/images/opt/social/safari-vehicles-at-the-nile-1600.webp"
+      }
+    ],
+    "og": "/images/og/social/safari-vehicles-at-the-nile.jpg"
+  },
+  "/images/social/uganda-passport.jpg": {
+    "width": 1101,
+    "height": 1400,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/social/uganda-passport-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/social/uganda-passport-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/social/uganda-passport-640.webp"
+      },
+      {
+        "w": 1024,
+        "url": "/images/opt/social/uganda-passport-1024.webp"
+      },
+      {
+        "w": 1101,
+        "url": "/images/opt/social/uganda-passport-1101.webp"
+      }
+    ],
+    "og": "/images/og/social/uganda-passport.jpg"
+  },
+  "/images/team/kule-eric.jpeg": {
+    "width": 1013,
+    "height": 1280,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/team/kule-eric-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/team/kule-eric-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/team/kule-eric-640.webp"
+      }
+    ]
+  },
+  "/images/team/doreen-masika.jpeg": {
+    "width": 810,
+    "height": 1080,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/team/doreen-masika-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/team/doreen-masika-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/team/doreen-masika-640.webp"
+      }
+    ]
+  },
+  "/images/team/nyakato-dativa.jpeg": {
+    "width": 1280,
+    "height": 1101,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/team/nyakato-dativa-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/team/nyakato-dativa-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/team/nyakato-dativa-640.webp"
+      }
+    ]
+  },
+  "/images/team/biira-bella.jpeg": {
+    "width": 720,
+    "height": 581,
+    "variants": [
+      {
+        "w": 160,
+        "url": "/images/opt/team/biira-bella-160.webp"
+      },
+      {
+        "w": 320,
+        "url": "/images/opt/team/biira-bella-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/team/biira-bella-640.webp"
+      }
+    ]
+  }
+}

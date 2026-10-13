@@ -1,21 +1,6 @@
-<%
-  // tour.price is authored as "From $700 pp". Split it so the label, the figure and
-  // the unit can be styled separately (falls back to the raw string if it differs).
-  const rawPrice = String(tour.price || '').trim();
-  const fromMatch = rawPrice.match(/^from\s+(.+)$/i);
-  let priceValue = fromMatch ? fromMatch[1] : rawPrice;
-  const perPerson = /\s*(pp|per person)\s*$/i.test(priceValue);
-  priceValue = priceValue.replace(/\s*(pp|per person)\s*$/i, '');
-%>
 <article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
   <div class="tour-card-img">
-    <img
-      src="<%= tour.image %>"
-      alt=""
-      loading="lazy"<% if (tour.imagePosition) { %>
-      style="object-position: <%= tour.imagePosition %>"<% } %>
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <%- image({ src: tour.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: tour.imagePosition }) %>
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag"><%= tour.category %></span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
@@ -26,10 +11,6 @@
     </h3>
     <p class="tour-card-excerpt"><%= tour.summary %></p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <% if (fromMatch) { %><span class="tour-card-price-label">From</span><% } %>
-        <span class="tour-card-price-value"><%= priceValue %><% if (perPerson) { %> <small>per person</small><% } %></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>

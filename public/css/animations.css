@@ -479,34 +479,11 @@
   border-top: 1px solid var(--border-light);
   padding-top: 16px;
 }
-.tour-card-price {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-  font-family: 'Inter', sans-serif;
-}
-.tour-card-price-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.tour-card-price-value {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--dark);
-}
-.tour-card-price-value small {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0;
-}
 .tour-card-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 600;
@@ -700,6 +677,16 @@
   object-fit: cover;
   border: 3px solid var(--accent);
   flex-shrink: 0;
+}
+/* no photo supplied: the traveller's initials instead of a stand-in picture */
+.testimonial-avatar--initials {
+  display: grid;
+  place-items: center;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 .testimonial-author-name {
   font-family: 'Inter', sans-serif;

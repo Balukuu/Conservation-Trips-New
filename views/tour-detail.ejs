@@ -1,6 +1,6 @@
 <!-- Tour Hero -->
 <section class="tour-hero">
-  <div class="tour-hero-img" style="background-image: url('<%= tour.image %>');<% if (tour.imagePosition) { %> background-position: <%= tour.imagePosition %>;<% } %>"></div>
+  <div class="tour-hero-img"><%- image({ src: tour.image, alt: '', sizes: '100vw', priority: true, fill: true, position: tour.imagePosition }) %></div>
   <div class="tour-hero-overlay"></div>
   <div class="tour-hero-content container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -13,7 +13,6 @@
     <div class="tour-badges-row">
       <span class="badge badge-primary"><i class="fa-regular fa-clock"></i> <%= tour.duration %></span>
       <span class="badge badge-accent"><%= tour.category %></span>
-      <span class="badge badge-dark"><i class="fa-solid fa-tag"></i> <%= tour.price %></span>
     </div>
     <h1 class="tour-detail-title"><%= tour.name %></h1>
     <a href="#enquire-form" class="btn btn-primary btn-lg">Book This Tour <i class="fa-solid fa-arrow-right"></i></a>
@@ -104,7 +103,7 @@
           <div class="gallery-grid">
             <% tour.gallery.forEach((img, i) => { %>
             <div class="gallery-item">
-              <img src="<%= img %>" alt="<%= tour.name %> gallery image <%= i + 1 %>" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+              <%- image({ src: img, sizes: '(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw' }) %>
             </div>
             <% }) %>
           </div>
@@ -131,8 +130,8 @@
               <span class="sidebar-meta-item"><i class="fa-regular fa-clock"></i> <%= tour.duration %></span>
               <span class="sidebar-meta-item"><i class="fa-solid fa-users"></i> Small Groups</span>
             </div>
-            <div class="sidebar-price"><%= tour.price %></div>
-            <div class="sidebar-price-sub">Per person, inclusive of park fees</div>
+            <div class="sidebar-title">Plan this safari</div>
+            <div class="sidebar-title-sub">Tell us your dates and group size</div>
           </div>
           <div class="sidebar-body">
             <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; display: flex; align-items: center; gap: 6px;">
@@ -222,9 +221,9 @@
 
 <!-- Sticky enquiry bar (tablet / phone; behaviour in main.js) -->
 <div class="sticky-cta is-hidden" id="sticky-cta">
-  <div class="sticky-cta-price">
-    <span>From</span>
-    <strong><%= String(tour.price || '').replace(/^\s*from\s+/i, '') %></strong>
+  <div class="sticky-cta-info">
+    <span>Duration</span>
+    <strong><%= tour.duration %></strong>
   </div>
   <a href="#enquire-form" class="btn btn-primary btn-sm">Enquire now <i class="fa-solid fa-arrow-right"></i></a>
 </div>

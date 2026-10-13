@@ -20,6 +20,28 @@ npm run dev        # Express + nodemon on http://localhost:3000
   (`/css/main.css?v=00945ef709`), so they are cached for a year and still update on deploy.
 - `app.js` is the Express app, `server.js` just listens (keep that name: the cPanel/Passenger config starts it).
 
+## Images
+
+Every photo the site uses is listed in `data/images.json` (alt text + a focal point for cropping).
+Templates never write `<img>` by hand; they call `image({ src, sizes, … })` (`lib/images.js`), which emits a
+responsive `<img srcset>` of WebP sizes with intrinsic `width`/`height` (no layout shift), lazy-loading and
+the registry's alt text / `object-position`. The page's main image uses `priority: true`; purely decorative
+images pass `alt: ''`.
+
+```bash
+npm run images     # after adding/replacing a photo in public/images/ (and listing it in data/images.json)
+```
+
+writes `public/images/opt/*.webp` (160–1600 px, never upscaled), `public/images/og/*.jpg` (1200×630 social
+crops), `public/images/icons/*` (favicons from the logo) and `data/image-manifest.json`. The outputs are
+committed, so CI and production don't need `sharp`. The build fails if a rendered image isn't registered, or a
+tour's gallery repeats a photo.
+
+- Source photos are 1024 px wide at most, so full-bleed heroes are upscaled on large screens. Higher-resolution
+  originals would sharpen them; drop them in, run `npm run images`.
+- Testimonials show initials unless a `photo` is supplied in `data/testimonials.json`.
+- Prices are not shown anywhere on the site (`price` / `priceUSD` remain in `data/tours.json` but nothing renders them).
+
 ## URLs
 
 Every page has one address, and variants redirect (301) to it:
@@ -139,6 +161,9 @@ if a post is deleted). The static site can't read X live, so to refresh: add pos
   article page currently shows the same generic body text. Real articles need writing, then
   `views/blog-post.ejs` should render `post.content`.
 - The "50+ Tour Packages" stat on the home page vs. the 11 tours in `data/tours.json`.
+- Photo content to review: the safari vehicle in `safari.jpg` carries another operator's logo ("Wilderness
+  Safaris") and a Tanzanian number plate; the Kibale chimpanzee tour uses the gorilla photo because there is
+  no chimpanzee photo yet; only 5 hero photos + 6 social photos are shared across all tours, parks and posts.
 - `public/images/` holds files nothing references: `logo.jpeg` (identical to `logonew.jpeg`),
   `east-africa-tourism.png`, `safaribookings.png`, `utb.png`, `uwa.png`, `iucn.svg`, `tripadvisor.svg`.
   Presumably intended for a partners strip — use them or delete them.

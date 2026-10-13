@@ -94,7 +94,7 @@ html.no-scroll, html.no-scroll body { overflow: hidden; }
 h1, h2, h3, h4, .h1, .h2, .h3, .display, .slide-title { text-wrap: balance; }
 p, li, blockquote { text-wrap: pretty; }
 /* Numbers that count up / sit in columns must not jitter */
-.stat-number, .tour-card-price, .sidebar-price, .badge-num { font-variant-numeric: lining-nums tabular-nums; }
+.stat-number, .badge-num { font-variant-numeric: lining-nums tabular-nums; }
 img { max-width: 100%; height: auto; display: block; }
 img[loading="lazy"] { background-color: var(--primary-light); }
 a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
@@ -899,13 +899,13 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   padding: 28px 32px;
   color: #fff;
 }
-.sidebar-price {
+.sidebar-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--accent);
 }
-.sidebar-price-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
+.sidebar-title-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
 .sidebar-body { padding: 32px; }
 .sidebar-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
 .sidebar-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.85); }

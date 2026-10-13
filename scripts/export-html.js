@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 
-const { siteUrl, assetUrl, categoryUrl } = require('../lib/site');
+const viewLocals = require('../lib/locals');
 const pages = require('../lib/pages');
 
 const viewsDir = path.join(__dirname, '..', 'views');
@@ -15,7 +15,7 @@ const outputFile = path.join(__dirname, '..', 'public.html');
 try {
   console.log('🚀 Starting static HTML export...');
 
-  const locals = { ...pages.home(), siteUrl, assetUrl, categoryUrl, staticBuild: true, formEndpoint: '' };
+  const locals = { ...pages.home(), ...viewLocals, staticBuild: true, formEndpoint: '' };
   const viewFile = path.join(viewsDir, 'index.ejs');
   const layoutFile = path.join(viewsDir, 'layouts', 'main.ejs');
 

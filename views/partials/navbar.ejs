@@ -2,7 +2,7 @@
   <div class="nav-inner">
     <!-- Logo (sized in CSS; an inline height here used to beat the mobile rule) -->
     <a href="/" class="nav-logo">
-      <img src="/images/logonew.jpeg" alt="">
+      <%- image({ src: '/images/logonew.jpeg', alt: '', sizes: '56px', eager: true }) %>
       <div class="nav-logo-text">
         <span>Conservation Trips</span>
         <span>&amp; Adventures</span>

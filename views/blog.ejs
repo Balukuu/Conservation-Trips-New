@@ -1,6 +1,6 @@
 <!-- Hero -->
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('/images/gorilla.jpg');"></div>
+  <div class="page-hero-bg"><%- image({ src: '/images/gorilla.jpg', alt: '', sizes: '100vw', priority: true, fill: true }) %></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content container">
     <nav class="breadcrumb"><a href="/">Home</a> <i class="fa-solid fa-angle-right"></i> <span>Blog</span></nav>
@@ -34,7 +34,7 @@
       <% posts.forEach(post => { %>
       <article class="blog-card" data-category="<%= post.category %>"<%= activeCategory !== 'All' && post.category !== activeCategory ? ' hidden' : '' %>>
         <a href="/blog/<%= post.slug %>" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="<%= post.image %>" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+          <%- image({ src: post.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw' }) %>
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">

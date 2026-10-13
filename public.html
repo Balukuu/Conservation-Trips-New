@@ -21,7 +21,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours">
   <meta property="og:description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
-  <meta property="og:image" content="https://tripsandadventures.co.ug/images/safari.jpg">
+  <meta property="og:image" content="https://tripsandadventures.co.ug/images/og/safari.jpg">
   <meta property="og:url" content="https://tripsandadventures.co.ug/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Conservation Trips & Adventures">
@@ -30,10 +30,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Conservation Trips &amp; Adventures | Uganda Safari &amp; East Africa Tours">
   <meta name="twitter:description" content="Uganda&#39;s premier safari &amp; adventure travel company. Gorilla trekking, wildlife safaris, mountain climbing, and cultural tours across East Africa. Crafting life-changing journeys since 2008.">
-  <meta name="twitter:image" content="https://tripsandadventures.co.ug/images/safari.jpg">
+  <meta name="twitter:image" content="https://tripsandadventures.co.ug/images/og/safari.jpg">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="/images/logonew.jpeg">
+  <!-- Favicon (small PNGs generated from the logo by `npm run images`) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/favicon-192.png">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
 
   <!-- Third-party origins used on every page: connect early -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,13 +54,13 @@
   
 
   <!-- Styles (assetUrl adds a content hash, so they can be cached long-term) -->
-  <link rel="stylesheet" href="/css/main.css?v=00945ef709">
-  <link rel="stylesheet" href="/css/animations.css?v=a268939516">
-  <link rel="stylesheet" href="/css/components.css?v=7f34242343">
+  <link rel="stylesheet" href="/css/main.css?v=d374b1126b">
+  <link rel="stylesheet" href="/css/animations.css?v=c556fab1ba">
+  <link rel="stylesheet" href="/css/components.css?v=8e6c31d919">
   <!-- Reduced motion / transparency / contrast — keep LAST so it wins -->
   <link rel="stylesheet" href="/css/preferences.css?v=c1f458811a">
 
-  <link rel="preload" as="image" href="/images/waterfall.jpg" fetchpriority="high">
+  
 </head>
 <body>
 
@@ -66,7 +68,7 @@
   <div class="nav-inner">
     <!-- Logo (sized in CSS; an inline height here used to beat the mobile rule) -->
     <a href="/" class="nav-logo">
-      <img src="/images/logonew.jpeg" alt="">
+      <img src="/images/opt/logonew-320.webp" srcset="/images/opt/logonew-160.webp 160w, /images/opt/logonew-320.webp 320w" sizes="56px" width="1080" height="1021" alt="" decoding="async">
       <div class="nav-logo-text">
         <span>Conservation Trips</span>
         <span>&amp; Adventures</span>
@@ -131,7 +133,7 @@
 
     
     <div class="hero-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" aria-hidden="false">
-      <div class="hero-slide-bg" style="background-image: url('/images/waterfall.jpg');"></div>
+      <div class="hero-slide-bg"><img src="/images/opt/waterfall-1024.webp" srcset="/images/opt/waterfall-160.webp 160w, /images/opt/waterfall-320.webp 320w, /images/opt/waterfall-640.webp 640w, /images/opt/waterfall-1024.webp 1024w" sizes="100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%" fetchpriority="high" decoding="async"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Murchison Falls National Park</p>
@@ -145,7 +147,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/gorilla.jpg');"></div>
+      <div class="hero-slide-bg"><img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" fetchpriority="low" decoding="async"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Bwindi Impenetrable Forest</p>
@@ -159,7 +161,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/lion.jpg');"></div>
+      <div class="hero-slide-bg"><img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 42%" loading="lazy" fetchpriority="low" decoding="async"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Queen Elizabeth National Park</p>
@@ -173,7 +175,7 @@
     </div>
     
     <div class="hero-slide " role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
-      <div class="hero-slide-bg" style="background-image: url('/images/safari.jpg');"></div>
+      <div class="hero-slide-bg"><img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" fetchpriority="low" decoding="async"></div>
       <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="slide-eyebrow">Kibale Forest</p>
@@ -290,10 +292,10 @@
       <div class="reveal-right">
         <div class="about-image-stack">
           <div class="about-img-primary">
-            <img src="/images/lion.jpg" alt="Uganda wildlife safari" loading="lazy">
+            <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 30vw, 70vw" width="1024" height="1024" alt="A male lion resting on the branch of an acacia tree at sunset" class="about-photo" style="object-position:50% 42%" loading="lazy" decoding="async">
           </div>
           <div class="about-img-secondary">
-            <img src="/images/gorilla.jpg" alt="Mountain gorilla encounter" loading="lazy">
+            <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 18vw, 40vw" width="1024" height="1024" alt="A mountain gorilla sitting among ferns and moss in the misty Bwindi rainforest" class="about-photo" style="object-position:50% 38%" loading="lazy" decoding="async">
           </div>
           <div class="about-years-badge">
             <span class="badge-num">15+</span>
@@ -341,15 +343,9 @@
     <!-- Tours Grid -->
     <div class="tours-grid reveal-grid" id="featured-tours-grid">
       
-        
-<article class="tour-card" data-category="Wildlife Safari">
+        <article class="tour-card" data-category="Wildlife Safari">
   <div class="tour-card-img">
-    <img
-      src="/images/lion.jpg"
-      alt=""
-      loading="lazy"
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 42%" loading="lazy" decoding="async">
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Wildlife Safari</span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> 3 Days</span>
@@ -360,25 +356,15 @@
     </h3>
     <p class="tour-card-excerpt">Experience the wild heart of Uganda in Queen Elizabeth National Park – home to tree-climbing lions, massive hippo pods, savannah elephants, and over 600 bird species. This 3-day adventure balances game drives, a scenic Kazinga Channel boat cruise, and golden savannah sunsets.</p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <span class="tour-card-price-label">From</span>
-        <span class="tour-card-price-value">$650 <small>per person</small></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>
 </article>
 
       
-        
-<article class="tour-card" data-category="Gorilla Trekking">
+        <article class="tour-card" data-category="Gorilla Trekking">
   <div class="tour-card-img">
-    <img
-      src="/images/gorilla.jpg"
-      alt=""
-      loading="lazy"
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 38%" loading="lazy" decoding="async">
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Gorilla Trekking</span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> 2 Days</span>
@@ -389,25 +375,15 @@
     </h3>
     <p class="tour-card-excerpt">A perfectly crafted 2-day gorilla trek combining the convenience of flying into Kigali, Rwanda, with the breathtaking wilderness of Bwindi Impenetrable Forest in Uganda. Come face-to-face with habituated mountain gorilla families in their misty jungle home.</p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <span class="tour-card-price-label">From</span>
-        <span class="tour-card-price-value">$800 <small>per person</small></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>
 </article>
 
       
-        
-<article class="tour-card" data-category="Primate Safari">
+        <article class="tour-card" data-category="Primate Safari">
   <div class="tour-card-img">
-    <img
-      src="/images/gorilla.jpg"
-      alt=""
-      loading="lazy"
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 38%" loading="lazy" decoding="async">
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Primate Safari</span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> 2 Days</span>
@@ -418,25 +394,15 @@
     </h3>
     <p class="tour-card-excerpt">Kibale National Park is East Africa&#39;s premier primate destination — home to 1,500 chimpanzees and 12 other primate species. Immerse yourself in lush tropical forest tracking wild chimpanzees with expert naturalist guides.</p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <span class="tour-card-price-label">From</span>
-        <span class="tour-card-price-value">$450 <small>per person</small></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>
 </article>
 
       
-        
-<article class="tour-card" data-category="Wildlife Safari">
+        <article class="tour-card" data-category="Wildlife Safari">
   <div class="tour-card-img">
-    <img
-      src="/images/waterfall.jpg"
-      alt=""
-      loading="lazy"
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <img src="/images/opt/waterfall-1024.webp" srcset="/images/opt/waterfall-160.webp 160w, /images/opt/waterfall-320.webp 320w, /images/opt/waterfall-640.webp 640w, /images/opt/waterfall-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 52%" loading="lazy" decoding="async">
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Wildlife Safari</span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> 3 Days</span>
@@ -447,25 +413,15 @@
     </h3>
     <p class="tour-card-excerpt">Murchison Falls is Uganda&#39;s largest national park and one of Africa&#39;s greatest wildlife theatres — where the Nile explodes through a 7-metre rock gap creating the world&#39;s most powerful waterfall. Game drives, boat cruises and the falls top viewpoint all await.</p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <span class="tour-card-price-label">From</span>
-        <span class="tour-card-price-value">$700 <small>per person</small></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>
 </article>
 
       
-        
-<article class="tour-card" data-category="Gorilla Trekking">
+        <article class="tour-card" data-category="Gorilla Trekking">
   <div class="tour-card-img">
-    <img
-      src="/images/safari.jpg"
-      alt=""
-      loading="lazy"
-      onerror="this.onerror=null;this.src='/images/lion.jpg'"
-    >
+    <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 38%" loading="lazy" decoding="async">
     <div class="tour-card-img-overlay"></div>
     <span class="category-tag">Gorilla Trekking</span>
     <span class="duration-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> 5 Days</span>
@@ -476,10 +432,6 @@
     </h3>
     <p class="tour-card-excerpt">An exceptional 5-day Uganda safari combining the world&#39;s greatest wildlife encounter — mountain gorilla trekking in Bwindi — with a relaxing finale on the stunning terraced shores of Lake Bunyonyi, Africa&#39;s second deepest lake.</p>
     <div class="tour-card-footer">
-      <div class="tour-card-price">
-        <span class="tour-card-price-label">From</span>
-        <span class="tour-card-price-value">$1,200 <small>per person</small></span>
-      </div>
       <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
     </div>
   </div>
@@ -515,7 +467,7 @@
     <div class="destinations-masonry reveal-grid">
       <!-- Tall card 1 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -526,7 +478,7 @@
 
       <!-- Tall card 2 -->
       <div class="dest-card dest-tall">
-        <div class="dest-card-bg" style="background-image: url('/images/lion.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 42%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -539,7 +491,7 @@
       
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/safari.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -549,7 +501,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/waterfall.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/waterfall-1024.webp" srcset="/images/opt/waterfall-160.webp 160w, /images/opt/waterfall-320.webp 320w, /images/opt/waterfall-640.webp 640w, /images/opt/waterfall-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-ug"></span> UGANDA</div>
@@ -559,7 +511,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/safari.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-tz"></span> TANZANIA</div>
@@ -569,7 +521,7 @@
       </div>
       
       <div class="dest-card dest-normal">
-        <div class="dest-card-bg" style="background-image: url('/images/gorilla.jpg');"></div>
+        <div class="dest-card-bg"><img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%" loading="lazy" decoding="async"></div>
         <div class="dest-card-overlay"></div>
         <div class="dest-card-content">
           <div class="dest-card-region"><span class="fi fi-rw"></span> RWANDA</div>
@@ -629,7 +581,7 @@
       <!-- Centre photograph -->
       <div class="why-us-center-img reveal-scale">
         <figure class="why-us-photo">
-          <img src="/images/gorilla.jpg" alt="A mountain gorilla resting in the Bwindi rainforest" loading="lazy">
+          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 30vw, 90vw" width="1024" height="1024" alt="A mountain gorilla sitting among ferns and moss in the misty Bwindi rainforest" style="object-position:50% 38%" loading="lazy" decoding="async">
           <figcaption>Bwindi Impenetrable Forest</figcaption>
         </figure>
       </div>
@@ -679,13 +631,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">The gorilla trekking experience was beyond anything I could have imagined. Our guide was incredibly knowledgeable, and the logistics were flawless. Conservation Trips and Adventures truly lives up to their &#39;premium&#39; promise. I&#39;ll be back for Kilimanjaro next year!</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="Sarah M."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">SM</span>
+      
       <div>
         <div class="testimonial-author-name">Sarah M.</div>
         <div class="testimonial-author-country">🇬🇧 United Kingdom</div>
@@ -702,13 +650,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">Absolutely magical 5 days. From the moment we arrived at Bwindi to our last sunset on Lake Bunyonyi, everything was perfectly arranged. The gorilla trek was life-changing — we were sitting 3 metres from a silverback. Worth every penny and more.</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="James &amp; Rachel T."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">JR</span>
+      
       <div>
         <div class="testimonial-author-name">James &amp; Rachel T.</div>
         <div class="testimonial-author-country">🇺🇸 United States</div>
@@ -725,13 +669,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">Seeing the tree-climbing lions in Ishasha was a dream come true. Our guide Moses was exceptional — his knowledge of animal behaviour made every sighting so much more meaningful. The Kazinga Channel cruise was spectacular. Uganda is incredible and I will return!</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="Annika L."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">AL</span>
+      
       <div>
         <div class="testimonial-author-name">Annika L.</div>
         <div class="testimonial-author-country">🇩🇪 Germany</div>
@@ -748,13 +688,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">I&#39;ve climbed mountains on four continents and this was my most memorable summit. The Conservation Trips team had everything dialled in perfectly — guides, porters, catering. Reaching Uhuru Peak at sunrise is something I will never forget. Highly recommend!</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="David K."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">DK</span>
+      
       <div>
         <div class="testimonial-author-name">David K.</div>
         <div class="testimonial-author-country">🇦🇺 Australia</div>
@@ -771,13 +707,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">We tracked chimpanzees through Kibale Forest and it was absolutely extraordinary. The chimps were so close and so human-like in their movements. Our guide explained their behaviours in such detail. This trip changed how I see our relationship with the natural world.</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="Priya N."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">PN</span>
+      
       <div>
         <div class="testimonial-author-name">Priya N.</div>
         <div class="testimonial-author-country">🇨🇦 Canada</div>
@@ -794,13 +726,9 @@
     <span class="testimonial-quote-mark">&ldquo;</span>
     <p class="testimonial-text">Murchison Falls exceeded all our expectations. The sheer power of the Nile crashing through that gap is something you have to experience in person. The night game drive produced a leopard sighting. We couldn&#39;t believe our luck. The team was professional and caring.</p>
     <div class="testimonial-author">
-      <img
-        class="testimonial-avatar"
-        src="/images/lion.jpg"
-        alt="Erik &amp; Lisa H."
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/images/lion.jpg'"
-      >
+      
+      <span class="testimonial-avatar testimonial-avatar--initials" aria-hidden="true">EL</span>
+      
       <div>
         <div class="testimonial-author-name">Erik &amp; Lisa H.</div>
         <div class="testimonial-author-country">🇳🇱 Netherlands</div>
@@ -865,7 +793,7 @@
       </div>
       <div class="conservation-img-wrap reveal-right">
         <figure class="conservation-photo">
-          <img src="/images/safari.jpg" alt="Elephants crossing the savanna beside a safari vehicle" loading="lazy">
+          <img src="/images/opt/safari-1024.webp" srcset="/images/opt/safari-160.webp 160w, /images/opt/safari-320.webp 320w, /images/opt/safari-640.webp 640w, /images/opt/safari-1024.webp 1024w" sizes="(min-width: 1024px) 45vw, 90vw" width="1024" height="1024" alt="Guests in a safari vehicle watching a herd of elephants on the savannah at sunset" style="object-position:50% 55%" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
@@ -916,7 +844,7 @@
       <article class="social-card">
         
         <div class="social-media">
-          <img src="/images/social/rwenzori-margherita-peak.jpg" alt="A climber holding an ice axe beside the Margherita Peak sign, the highest point in Uganda" loading="lazy">
+          <img src="/images/opt/social/rwenzori-margherita-peak-1125.webp" srcset="/images/opt/social/rwenzori-margherita-peak-160.webp 160w, /images/opt/social/rwenzori-margherita-peak-320.webp 320w, /images/opt/social/rwenzori-margherita-peak-640.webp 640w, /images/opt/social/rwenzori-margherita-peak-1024.webp 1024w, /images/opt/social/rwenzori-margherita-peak-1125.webp 1125w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1125" height="1066" alt="A climber holding an ice axe beside the Margherita Peak sign, the highest point in Uganda" style="object-position:50% 38%" loading="lazy" decoding="async">
         </div>
         
         <div class="social-body">
@@ -936,7 +864,7 @@
       <article class="social-card">
         
         <div class="social-media">
-          <img src="/images/social/elephant-mother-and-calves.jpg" alt="An elephant mother with two calves walking through green savannah grass" loading="lazy">
+          <img src="/images/opt/social/elephant-mother-and-calves-1301.webp" srcset="/images/opt/social/elephant-mother-and-calves-160.webp 160w, /images/opt/social/elephant-mother-and-calves-320.webp 320w, /images/opt/social/elephant-mother-and-calves-640.webp 640w, /images/opt/social/elephant-mother-and-calves-1024.webp 1024w, /images/opt/social/elephant-mother-and-calves-1301.webp 1301w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1301" height="1500" alt="An elephant mother with two calves walking through green savannah grass" style="object-position:50% 58%" loading="lazy" decoding="async">
         </div>
         
         <div class="social-body">
@@ -957,11 +885,11 @@
         
         <div class="social-media social-media--mosaic">
           
-          <img src="/images/social/murchison-nile-cruise.jpg" alt="A tour boat on the Nile heading toward Murchison Falls between forested hills" loading="lazy">
+          <img src="/images/opt/social/murchison-nile-cruise-1600.webp" srcset="/images/opt/social/murchison-nile-cruise-160.webp 160w, /images/opt/social/murchison-nile-cruise-320.webp 320w, /images/opt/social/murchison-nile-cruise-640.webp 640w, /images/opt/social/murchison-nile-cruise-1024.webp 1024w, /images/opt/social/murchison-nile-cruise-1600.webp 1600w" sizes="(min-width: 1024px) 130px, 33vw" width="1600" height="1069" alt="A tour boat on the Nile heading toward Murchison Falls between forested hills" style="object-position:50% 50%" loading="lazy" decoding="async">
           
-          <img src="/images/social/safari-vehicles-at-the-nile.jpg" alt="Safari vehicles parked in a line beside the river" loading="lazy">
+          <img src="/images/opt/social/safari-vehicles-at-the-nile-1600.webp" srcset="/images/opt/social/safari-vehicles-at-the-nile-160.webp 160w, /images/opt/social/safari-vehicles-at-the-nile-320.webp 320w, /images/opt/social/safari-vehicles-at-the-nile-640.webp 640w, /images/opt/social/safari-vehicles-at-the-nile-1024.webp 1024w, /images/opt/social/safari-vehicles-at-the-nile-1600.webp 1600w" sizes="(min-width: 1024px) 130px, 33vw" width="1600" height="1200" alt="Safari vehicles parked in a line beside the river" style="object-position:50% 50%" loading="lazy" decoding="async">
           
-          <img src="/images/social/elephants-bathing.jpg" alt="Elephants bathing in a river" loading="lazy">
+          <img src="/images/opt/social/elephants-bathing-800.webp" srcset="/images/opt/social/elephants-bathing-160.webp 160w, /images/opt/social/elephants-bathing-320.webp 320w, /images/opt/social/elephants-bathing-640.webp 640w, /images/opt/social/elephants-bathing-800.webp 800w" sizes="(min-width: 1024px) 130px, 33vw" width="800" height="534" alt="Elephants bathing in a river" style="object-position:50% 50%" loading="lazy" decoding="async">
           
         </div>
         
@@ -1003,7 +931,7 @@
       
       <article class="blog-card">
         <a href="/blog/best-time-gorilla-trekking-uganda" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/gorilla.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+          <img src="/images/opt/gorilla-1024.webp" srcset="/images/opt/gorilla-160.webp 160w, /images/opt/gorilla-320.webp 320w, /images/opt/gorilla-640.webp 640w, /images/opt/gorilla-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 38%" loading="lazy" decoding="async">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -1021,7 +949,7 @@
       
       <article class="blog-card">
         <a href="/blog/uganda-packing-list-safari" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/social/uganda-passport.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+          <img src="/images/opt/social/uganda-passport-1101.webp" srcset="/images/opt/social/uganda-passport-160.webp 160w, /images/opt/social/uganda-passport-320.webp 320w, /images/opt/social/uganda-passport-640.webp 640w, /images/opt/social/uganda-passport-1024.webp 1024w, /images/opt/social/uganda-passport-1101.webp 1101w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1101" height="1400" alt="" style="object-position:50% 58%" loading="lazy" decoding="async">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -1039,7 +967,7 @@
       
       <article class="blog-card">
         <a href="/blog/tree-climbing-lions-ishasha" class="blog-card-img" tabindex="-1" aria-hidden="true">
-          <img src="/images/lion.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='/images/lion.jpg'">
+          <img src="/images/opt/lion-1024.webp" srcset="/images/opt/lion-160.webp 160w, /images/opt/lion-320.webp 320w, /images/opt/lion-640.webp 640w, /images/opt/lion-1024.webp 1024w" sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" width="1024" height="1024" alt="" style="object-position:50% 42%" loading="lazy" decoding="async">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">
@@ -1144,11 +1072,7 @@
         <!-- Brand Column -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <img
-              src="/images/logonew.jpeg"
-              alt="Conservation Trips & Adventures"
-              style="height:60px; width:auto; object-fit:contain; border-radius: 4px;"
-            >
+            <img src="/images/opt/logonew-320.webp" srcset="/images/opt/logonew-160.webp 160w, /images/opt/logonew-320.webp 320w" sizes="60px" width="1080" height="1021" alt="Conservation Trips &amp; Adventures" style="height:60px;width:auto;object-fit:contain;border-radius:4px" loading="lazy" decoding="async">
           </div>
           <div class="footer-brand-name">Conservation Trips &amp; Adventures</div>
           <p class="footer-brand-desc">Your prime tour and travel partner bringing exceptional experiences in Uganda and beyond. A fully-fledged travel, tourism and conservation management company catering for both regional and global clients. Crafting life-changing journeys since 2008.</p>
