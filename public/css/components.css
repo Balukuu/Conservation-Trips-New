@@ -74,27 +74,57 @@
 }
 
 @media (max-width: 768px) {
+  /* 2x2 stats below (see 480px rule) are ~150px tall; the 4-up row is ~100px */
   .hero-slider { height: calc(100vh - 150px); height: calc(100svh - 150px); min-height: 480px; }
   .hero-slide-content { padding: calc(var(--nav-height) + 8px) 24px 56px; }
-  .slider-controls { bottom: 14px; }
+  .slider-controls { bottom: 18px; }
+  /* The photo dissolves into the stats band instead of ending on a hard edge,
+     and the pause/dots get a calm ground to sit on whatever the photo is. */
+  .hero-slider::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 88px;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(15,31,15,0) 0%, rgba(15,31,15,0.72) 55%, var(--dark) 100%);
+  }
   .hero-trust-strip {
     position: static;
     background: var(--dark);
-    padding: 12px 0 10px;
+    padding: 2px 0 10px;
     pointer-events: auto;
   }
+  /* One row of four: each stat gets ~110px+, so nothing floats in a wide cell */
   .trust-strip-inner {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 6px;
+    grid-template-columns: repeat(4, 1fr);
+    /* equal-height cells: numbers share a baseline, dividers match */
+    align-items: stretch;
   }
-  .trust-stat { padding: 6px 10px; }
+  .trust-stat { padding: 10px 6px; }
+  .trust-stat .stat-number { font-size: clamp(1.35rem, 4.4vw, 1.9rem); }
+  .trust-stat .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+  .hero-slider { height: calc(100vh - 110px); height: calc(100svh - 110px); }
+}
+/* Narrow phones: 2x2 keeps labels on one line and numbers large */
+@media (max-width: 479px) {
+  .trust-strip-inner { grid-template-columns: repeat(2, 1fr); }
+  .trust-stat { padding: 12px 10px; }
   .trust-stat .stat-number { font-size: 1.6rem; }
-  .trust-stat .stat-label { font-size: 0.65rem; }
-  /* hairlines only between the two columns, not at the start of each row */
+  .trust-stat .stat-label { letter-spacing: 0.1em; }
+  /* hairline between the columns only, plus one between the rows */
   .trust-stat:nth-child(odd)::before { display: none; }
-  .trust-stat:nth-child(even)::before { display: block; }
-  .trust-stat:nth-child(3)::before { display: none; }
+  .trust-stat:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.1); }
 }
 
 /* ============================================================

@@ -286,7 +286,7 @@
     max-width: 320px;
     gap: 12px;
   }
-  .slide-ctas .btn { width: 100%; }
+  .slide-ctas .btn { width: 100%; justify-content: center; }
 }
 
 /* Slider Navigation */
