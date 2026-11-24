@@ -25,7 +25,8 @@
   /* Loops and decoration */
   .whatsapp-btn,
   .scroll-chevrons i { animation: none; }
-  .btn:hover::after { animation: none; }
+  /* the lightbox spinner stays as a still ring */
+  .lightbox-overlay.is-loading::after { animation: lbAppear var(--dur-base) ease 0.25s both; }
 
   /* Hero: a short cross-fade; text just arrives with its slide */
   .hero-slide { transition-delay: 0.5s; }

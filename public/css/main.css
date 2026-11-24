@@ -12,6 +12,7 @@
   --primary-light:  #E8F5E8;
   --accent:         #C8922A;
   --accent-dark:    #A87420;
+  --accent-on-dark: #D3A03A;  /* small gold text on dark surfaces: --accent itself is 4.4:1 there */
   --accent-light:   #FFF3DC;
   /* Gold for TEXT on light surfaces: 5.2:1 on white (--accent is only 2.8:1) */
   --accent-text:    #8A5F14;
@@ -33,8 +34,12 @@
   --shadow-xl:      0 8px 16px rgba(15,31,15,0.06), 0 40px 80px rgba(15,31,15,0.22);
   --shadow-gold:    0 1px 2px rgba(138,95,20,0.25), 0 8px 24px rgba(200,146,42,0.28);
   --shadow-green:   0 1px 2px rgba(30,74,30,0.2), 0 8px 24px rgba(45,106,45,0.22);
+  --radius-xs:      4px;
   --radius-sm:      6px;
+  --radius-ms:      12px;
   --radius-md:      16px;
+  --radius-ml:      20px;
+  --radius-xl:      24px;
   --radius-lg:      28px;
   --radius-pill:    999px;
 
@@ -132,6 +137,14 @@ html.no-scroll, html.no-scroll body { overflow: hidden; }
 /* Balanced headings avoid one-word last lines; pretty paragraphs avoid orphans */
 h1, h2, h3, h4, .h1, .h2, .h3, .display, .slide-title { text-wrap: balance; }
 p, li, blockquote { text-wrap: pretty; }
+/* "Trip: Place" titles wrap between the two phrases (lib/locals.js splitTitle), not inside the place name */
+.t-part { display: inline-block; }
+/* Figures that change, or that people compare down a column, use equal-width digits so nothing jitters */
+.td-trip-prices strong, .td-trip-when strong, .td-trip-fee, .tour-card-facts, .td-facts-list strong,
+.sticky-cta-info, .sx-tab-count, .sx-count, .lightbox-count, .stat-number, [data-count],
+.nav-phone, .footer-contact-item, input[type="tel"], input[type="date"], input[type="number"] {
+  font-variant-numeric: tabular-nums;
+}
 /* Numbers that count up / sit in columns must not jitter */
 .stat-number { font-variant-numeric: lining-nums tabular-nums; }
 img { max-width: 100%; height: auto; display: block; }
@@ -148,7 +161,7 @@ a, button, input, select, textarea, label, summary, [role="button"], [role="radi
 }
 
 /* Keyboard focus: visible everywhere, gold on dark surfaces */
-:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: var(--radius-xs); }
 .navbar :focus-visible, .mobile-menu :focus-visible, .hero-slider :focus-visible, .footer :focus-visible, .cta-strip :focus-visible, .cookie-banner :focus-visible, .lightbox-overlay :focus-visible, .page-hero :focus-visible, .availability-toast :focus-visible, #testimonials :focus-visible, .td-hero :focus-visible {
   outline-color: var(--accent);
 }
@@ -304,31 +317,13 @@ h4, .h4 {
   overflow: hidden;
   white-space: nowrap;
 }
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transform: skewX(-15deg);
-  transition: none;
-  pointer-events: none;
-}
-@media (hover: hover) {
-  .btn:hover::after { animation: shimmer 0.7s ease forwards; }
-}
-
 .btn-primary {
-  background: linear-gradient(180deg, #D3A03A 0%, var(--accent) 100%);
+  background: var(--accent);
   color: var(--dark);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), var(--shadow-gold);
+  box-shadow: var(--shadow-sm);
 }
 @media (hover: hover) {
-  .btn-primary:hover {
-    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(138,95,20,0.3), 0 12px 32px rgba(200,146,42,0.38);
-  }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
 }
 .btn-outline {
   background: transparent;
@@ -886,6 +881,20 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   -webkit-user-drag: none;
 }
 .lightbox-inner img.is-swapping { opacity: 0; }
+.lightbox-overlay.is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 3px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: lbSpin 0.8s linear infinite, lbAppear var(--dur-base) ease 0.25s both;
+}
 .lightbox-close, .lightbox-nav {
   position: absolute;
   width: 48px;
@@ -934,8 +943,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   font-weight: 600;
   transition: var(--transition-fast);
 }
-.share-fb { background: #1877F2; color: #fff; }
-.share-fb:hover { background: #1869D8; color: #fff; }
+.share-fb { background: #1565D8; color: #fff; }
+.share-fb:hover { background: #1257B8; color: #fff; }
 .share-wa { background: #0F7A40; color: #fff; }
 .share-wa:hover { background: #0B6334; color: #fff; }
 .share-email { background: var(--surface-alt); color: var(--text); border: 1px solid var(--border); }
@@ -944,7 +953,7 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 /* ============================================================
    STARS
    ============================================================ */
-.stars { color: var(--accent); letter-spacing: 2px; font-size: 1.1rem; }
+.stars { color: var(--accent-dark); letter-spacing: 2px; font-size: 1.1rem; }
 
 /* ============================================================
    SUCCESS STATE

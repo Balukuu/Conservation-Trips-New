@@ -27,13 +27,9 @@
       <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
       <span><%= tour.name %></span>
     </nav>
-    <div class="td-hero-tags">
-      <span class="badge badge-accent"><%= tour.category %></span>
-      <span class="badge badge-glass"><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
-      <% if (trip) { %><span class="badge badge-glass"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= trip.short %></span><% } %>
-      <% if (countries) { %><span class="badge badge-glass"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <%= countries %></span><% } %>
-    </div>
-    <h1 class="td-title"><%= tour.name %></h1>
+    <%# Category, length, dates and place are in the facts bar just below: the hero keeps only a real claim, if there is one %>
+    <% if (tour.badge) { %><div class="td-hero-tags"><span class="badge badge-accent"><%= tour.badge %></span></div><% } %>
+    <h1 class="td-title"><%- splitTitle(tour.name) %></h1>
   </div>
 </section>
 
@@ -44,15 +40,15 @@
     <!-- Quick facts -->
     <div class="td-facts">
       <ul class="td-facts-list">
-        <li><i class="fa-regular fa-clock" aria-hidden="true"></i><span class="td-fact-label">Duration</span><strong><%= tour.duration %></strong></li>
-        <% if (trip) { %><li><i class="fa-regular fa-calendar" aria-hidden="true"></i><span class="td-fact-label">Dates</span><strong><%= trip.short %></strong></li><% } %>
-        <li><i class="fa-solid fa-compass" aria-hidden="true"></i><span class="td-fact-label">Style</span><strong><%= tour.category %></strong></li>
+        <li><i class="fa-solid fa-clock" aria-hidden="true"></i><span class="td-fact-label">Duration</span><strong><%= tour.duration %></strong></li>
+        <% if (trip) { %><li><i class="fa-solid fa-calendar" aria-hidden="true"></i><span class="td-fact-label">Dates</span><strong><%= trip.short %></strong></li><% } %>
+        <% if (!trip) { %><li><i class="fa-solid fa-compass" aria-hidden="true"></i><span class="td-fact-label">Style</span><strong><%= tour.category %></strong></li><% } %>
         <% if (countries) { %><li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span class="td-fact-label">Where</span><strong><%= countries %></strong></li><% } %>
         <% if (tour.stay) { %><li><i class="fa-solid fa-bed" aria-hidden="true"></i><span class="td-fact-label">Stay</span><strong><%= tour.stay %></strong></li><% } %>
         <%# "Small groups" describes the any-date safaris; a scheduled trip has its own dates instead %>
         <% if (!trip) { %><li><i class="fa-solid fa-users" aria-hidden="true"></i><span class="td-fact-label">Group</span><strong>Small groups</strong></li><% } %>
       </ul>
-      <a href="#enquire-form" class="btn btn-primary">Enquire now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <a href="#enquire-form" class="btn btn-primary td-facts-cta">Enquire now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 
     <div class="td-layout">
@@ -62,15 +58,15 @@
 
         <% if (trip || pricing) { %>
         <section class="td-section reveal" aria-labelledby="td-trip-h">
-          <h2 class="td-h2" id="td-trip-h"><span class="td-h2-icon"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span>Dates &amp; prices</h2>
+          <h2 class="td-h2" id="td-trip-h"><span class="td-h2-icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span>Dates &amp; prices</h2>
           <div class="td-trip-wrap<%= poster ? ' has-poster' : '' %>">
           <div class="td-trip">
             <% if (trip) { %>
             <div class="td-trip-when">
-              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
               <div>
                 <strong><%= trip.long %></strong>
-                <span><%= tour.duration %><% if (tour.theme) { %> &middot; <%= tour.theme %><% } %></span>
+                <% if (tour.theme) { %><span><%= tour.theme %></span><% } %>
               </div>
             </div>
             <% } %>
@@ -89,7 +85,7 @@
           <figure class="td-poster">
             <%# Opens in the lightbox at the largest generated size (lightbox.js); the original PNG is the download %>
             <button type="button" class="td-poster-open" aria-label="View the poster full size">
-              <%- image({ src: poster.src, sizes: '(min-width: 641px) 220px, 320px' }) %>
+              <%- image({ src: poster.src, sizes: '(min-width: 641px) 260px, 320px' }) %>
               <i class="fa-solid fa-expand" aria-hidden="true"></i>
             </button>
             <figcaption>
@@ -103,7 +99,7 @@
         <% } %>
 
         <section class="td-section reveal" aria-labelledby="td-overview-h">
-          <h2 class="td-h2" id="td-overview-h"><span class="td-h2-icon"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span>Overview</h2>
+          <h2 class="td-h2" id="td-overview-h"><span class="td-h2-icon"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span>About <%= tour.name %></h2>
           <p class="td-overview"><%= tour.summary %></p>
           <% if (tour.highlights && tour.highlights.length) { %>
           <h3 class="td-h3">Tour highlights</h3>
@@ -117,13 +113,13 @@
 
         <% if (mosaic.length) { %>
         <section class="td-section reveal" aria-labelledby="td-photos-h">
-          <h2 class="td-h2" id="td-photos-h"><span class="td-h2-icon"><i class="fa-regular fa-images" aria-hidden="true"></i></span>A glimpse of the journey</h2>
+          <h2 class="td-h2" id="td-photos-h"><span class="td-h2-icon"><i class="fa-solid fa-images" aria-hidden="true"></i></span><%= (tour.destinations || [])[0] || 'The journey' %> in pictures</h2>
           <div class="td-mosaic" data-tiles="<%= mosaic.length %>">
             <% mosaic.forEach((src, i) => { %>
             <div class="gallery-item td-mosaic-item">
               <%- image({ src, sizes: i === 0 ? '(min-width: 1024px) 480px, 100vw' : '(min-width: 1024px) 240px, 50vw', fill: true }) %>
               <% if (i === mosaic.length - 1 && morePhotos.length) { %>
-              <span class="td-mosaic-more"><i class="fa-regular fa-images" aria-hidden="true"></i> +<%= morePhotos.length %> more</span>
+              <span class="td-mosaic-more"><i class="fa-solid fa-images" aria-hidden="true"></i> +<%= morePhotos.length %> more</span>
               <% } %>
             </div>
             <% }) %>
@@ -192,7 +188,7 @@
 
         <% if (morePhotos.length) { %>
         <section class="td-section reveal" aria-labelledby="td-more-h">
-          <h2 class="td-h2" id="td-more-h"><span class="td-h2-icon"><i class="fa-regular fa-image" aria-hidden="true"></i></span>More photos</h2>
+          <h2 class="td-h2" id="td-more-h"><span class="td-h2-icon"><i class="fa-solid fa-image" aria-hidden="true"></i></span>More photos</h2>
           <div class="td-photo-grid">
             <% morePhotos.forEach(src => { %>
             <div class="gallery-item">
@@ -224,12 +220,8 @@
       <aside class="td-sidebar" aria-label="Enquire about this tour">
         <div class="td-book" id="enquire-form">
           <div class="td-book-head">
-            <p class="td-book-meta">
-              <span><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
-              <% if (trip) { %><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= trip.short %></span><% } else { %><span><i class="fa-solid fa-users" aria-hidden="true"></i> Small groups</span><% } %>
-            </p>
-            <p class="td-book-title"><%= trip ? 'Book this trip' : 'Plan this safari' %></p>
-            <p class="td-book-sub"><%= trip ? (fromPrice ? 'From ' + money(fromPrice, pricing.currency) + ' · ' : '') + 'tell us your group size' : 'Tell us your dates and group size' %></p>
+            <p class="td-book-title"><%= trip ? 'Book ' + tour.name.split(':')[0] : 'Plan this safari' %></p>
+            <p class="td-book-sub"><%= trip ? 'Tell us how many are coming' : 'Tell us your dates and group size' %></p>
           </div>
           <div class="td-book-body">
             <p class="td-book-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> We respond within 24 hours &middot; No payment required</p>
@@ -242,7 +234,7 @@
               <input type="hidden" name="tour" value="<%= tour.name %><%= trip ? ' (' + trip.long + ')' : '' %>">
               <div class="form-group">
                 <label for="eq-name">Full Name *</label>
-                <input type="text" id="eq-name" name="name" class="form-control" placeholder="Your name" autocomplete="name" autocapitalize="words" required>
+                <input type="text" id="eq-name" name="name" class="form-control" autocomplete="name" autocapitalize="words" required>
                 <div class="form-error"></div>
               </div>
               <div class="form-group">

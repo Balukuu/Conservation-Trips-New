@@ -11,7 +11,7 @@
     <h1><%= album.title %></h1>
     <p class="sx-hero-sub"><%= album.blurb %></p>
     <ul class="sx-chips">
-      <li><i class="fa-regular fa-images" aria-hidden="true"></i> <%= album.count %> <%= album.count === 1 ? 'photo' : 'photos' %></li>
+      <li><i class="fa-solid fa-images" aria-hidden="true"></i> <%= album.count %> <%= album.count === 1 ? 'photo' : 'photos' %></li>
       <% if (album.guests) { %><li><i class="fa-solid fa-user-group" aria-hidden="true"></i> Guest trip</li><% } %>
     </ul>
   </div>

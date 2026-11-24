@@ -7,22 +7,22 @@
   const fromPrice = lowestPrice(tour.pricing);
 %>
 <article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
-  <% if (tour.badge) { %><span class="tour-card-badge"><i class="fa-solid fa-fire" aria-hidden="true"></i> <%= tour.badge %></span><% } %>
+  <% if (tour.badge) { %><span class="tour-card-badge"><%= tour.badge %></span><% } %>
   <div class="tour-card-img">
     <%- image({ src: tour.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: tour.imagePosition }) %>
     <div class="tour-card-img-overlay"></div>
   </div>
   <div class="tour-card-body">
     <h3 class="tour-card-title">
-      <a href="/tours/<%= tour.slug %>"><%= tour.name %></a>
+      <a href="/tours/<%= tour.slug %>"><%- splitTitle(tour.name) %></a>
     </h3>
-    <% if (meta) { %><p class="tour-card-meta"><%= meta %></p><% } %>
+    <% if (meta && !trip) { %><p class="tour-card-meta"><%= meta %></p><% } %>
     <% if (trip || fromPrice) { %>
     <ul class="tour-card-facts">
-      <% if (trip) { %><li><i class="fa-regular fa-calendar" aria-hidden="true"></i><span><%= trip.short %></span></li><% } %>
-      <% if (fromPrice) { %><li><i class="fa-solid fa-tag" aria-hidden="true"></i><span>From <%= money(fromPrice, tour.pricing.currency) %></span></li><% } %>
+      <% if (trip) { %><li><i class="fa-solid fa-calendar" aria-hidden="true"></i><span><%= trip.short %></span></li><% } %>
+      <% if (fromPrice) { %><li class="is-price"><i class="fa-solid fa-tag" aria-hidden="true"></i><span>From <%= money(fromPrice, tour.pricing.currency) %></span></li><% } %>
     </ul>
     <% } %>
-    <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
+    <span class="tour-card-cta" aria-hidden="true"><%= trip ? 'See dates & prices' : 'View itinerary' %> <i class="fa-solid fa-arrow-right"></i></span>
   </div>
 </article>

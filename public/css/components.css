@@ -14,7 +14,7 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 18px 12px;
-    border-radius: 22px;
+    border-radius: var(--radius-xl);
     background: rgba(10,22,10,0.4);
     border: 1px solid rgba(255,255,255,0.14);
     box-shadow: 0 16px 48px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
@@ -297,7 +297,7 @@
   padding: 18px 22px 18px 26px;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 20px;
+  border-radius: var(--radius-ml);
   box-shadow: var(--shadow-md);
 }
 .td-facts-list { list-style: none; display: flex; flex-wrap: wrap; gap: 16px 40px; }
@@ -314,7 +314,7 @@
   height: 42px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: var(--radius-ms);
   background: var(--primary-light);
   color: var(--primary);
   font-size: 1rem;
@@ -351,7 +351,7 @@
   height: 38px;
   display: grid;
   place-items: center;
-  border-radius: 11px;
+  border-radius: var(--radius-ms);
   background: var(--primary-light);
   color: var(--primary);
   font-size: 0.95rem;
@@ -379,7 +379,7 @@
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   font-size: 0.92rem;
   line-height: 1.5;
@@ -404,7 +404,7 @@
   grid-template-rows: repeat(2, 190px);
   gap: 10px;
 }
-.td-mosaic .gallery-item { aspect-ratio: auto; min-height: 0; border-radius: 14px; }
+.td-mosaic .gallery-item { aspect-ratio: auto; min-height: 0; border-radius: var(--radius-md); }
 /* Out of flow, so a photo's own proportions can never stretch its grid track */
 .td-mosaic .gallery-item img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .td-mosaic-item:first-child { grid-row: 1 / span 2; }
@@ -430,7 +430,7 @@
   pointer-events: none;
 }
 .td-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.td-photo-grid .gallery-item { border-radius: 12px; }
+.td-photo-grid .gallery-item { border-radius: var(--radius-ms); }
 
 /* Itinerary: the shared accordion, dressed as day cards */
 .td-timeline { display: flex; flex-direction: column; gap: 12px; }
@@ -438,7 +438,7 @@
   margin: 0;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
 .td-timeline .accordion-header { padding: 14px 18px 14px 14px; gap: 16px; }
@@ -447,7 +447,7 @@
   width: 56px;
   height: 56px;
   flex-direction: column;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   background: var(--primary-light);
   color: var(--primary);
   line-height: 1;
@@ -473,7 +473,7 @@
   padding: 22px;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 18px;
+  border-radius: var(--radius-ml);
   box-shadow: var(--shadow-sm);
 }
 .td-inclusion--yes { border-top: 4px solid var(--primary); }
@@ -510,7 +510,7 @@
   gap: 24px 32px;
   margin-bottom: 48px;
   padding: 28px 30px;
-  border-radius: 22px;
+  border-radius: var(--radius-xl);
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #fff;
 }
@@ -536,7 +536,7 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
+  border-radius: var(--radius-ms);
   background: rgba(255,255,255,0.14);
   color: var(--accent);
   font-size: 0.9rem;
@@ -551,7 +551,7 @@
   padding: 18px 22px;
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 18px;
+  border-radius: var(--radius-ml);
 }
 .td-share-title { font-weight: 700; color: var(--dark); }
 
@@ -560,7 +560,7 @@
 .td-book {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 24px;
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
@@ -606,7 +606,7 @@
 .td-trip {
   background: var(--surface);
   border: 1px solid var(--border-light);
-  border-radius: 20px;
+  border-radius: var(--radius-ml);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
@@ -623,7 +623,7 @@
   height: 46px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   background: var(--accent);
   color: var(--dark);
   font-size: 1.1rem;
@@ -637,33 +637,23 @@
   color: var(--dark);
 }
 .td-trip-when span { display: block; margin-top: 2px; font-size: 0.9rem; color: var(--text-muted); }
-.td-trip-prices {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-  padding: 20px 24px;
-}
+/* Prices read as a list: label left, figure right. Spacing and hairlines group them; no boxes inside the card. */
+.td-trip-prices { list-style: none; padding: 8px 24px 6px; }
 .td-trip-prices li {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 14px 16px;
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
 }
-.td-trip-prices span {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
+.td-trip-prices li + li { border-top: 1px solid var(--border-light); }
+.td-trip-prices span { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
 .td-trip-prices strong {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--primary-dark);
 }
 .td-trip-fee {
@@ -681,25 +671,26 @@
 .td-trip-fee strong { color: var(--dark); }
 @media (max-width: 480px) {
   .td-trip-when, .td-trip-fee { padding-left: 18px; padding-right: 18px; }
-  .td-trip-prices { grid-template-columns: 1fr; padding: 16px 18px; }
-  .td-trip-prices li { flex-direction: row; align-items: center; justify-content: space-between; }
+  .td-trip-prices { padding: 6px 18px 4px; }
 }
 
 /* The trip's poster, beside the dates & prices card (a column on wide screens, below it on a phone) */
 .td-trip-wrap.has-poster {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-columns: minmax(0, 1fr) 260px;
   gap: 20px;
   align-items: start;
 }
 .td-poster { margin: 0; }
+/* On desktop the booking form sits beside the facts bar, so its button is the page's one CTA */
+@media (min-width: 1025px) { .td-facts > .td-facts-cta { display: none; } }
 .td-poster-open {
   position: relative;
   display: block;
   width: 100%;
   padding: 0;
   border: 0;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--primary-light);
   box-shadow: var(--shadow-md);
@@ -842,7 +833,7 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
     bottom: calc(12px + env(safe-area-inset-bottom));
     z-index: 990;
     padding: 10px 10px 10px 20px;
-    border-radius: 22px;
+    border-radius: var(--radius-xl);
     background: rgba(10, 22, 10, 0.86);
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 16px 40px rgba(0,0,0,0.35);
@@ -1061,7 +1052,7 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
 .album-card-count {
   position: absolute; top: 12px; right: 12px; z-index: 1;
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600;
+  padding: 5px 10px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600;
   color: #fff; background: rgba(15,31,15,0.62);
 }
 .album-card-body { padding: 18px 20px 22px; }

@@ -158,7 +158,7 @@
   height: 44px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   background: var(--primary-light);
   color: var(--primary);
 }
@@ -194,7 +194,7 @@
   transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 .sx-tabs .filter-tab.active { box-shadow: var(--shadow-green); }
-.sx-tabs .filter-tab.active .sx-tab-count { background: rgba(255,255,255,0.2); color: #fff; }
+.sx-tabs .filter-tab.active .sx-tab-count { background: var(--primary-dark); color: #fff; }
 
 /* "11 itineraries": sits at the end of an .sx-head */
 .sx-count {

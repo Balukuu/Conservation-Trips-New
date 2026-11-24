@@ -10,7 +10,7 @@
     <h1 data-page-heading><%= heading %></h1>
     <p class="sx-hero-sub">Expert guides, wildlife stories, packing tips, and conservation news from East Africa.</p>
     <ul class="sx-chips">
-      <li><i class="fa-regular fa-newspaper" aria-hidden="true"></i> <%= articles(blogStats.articles) %></li>
+      <li><i class="fa-solid fa-newspaper" aria-hidden="true"></i> <%= articles(blogStats.articles) %></li>
       <li><i class="fa-solid fa-tags" aria-hidden="true"></i> <%= blogStats.topics %> topics</li>
     </ul>
   </div>
@@ -50,8 +50,8 @@
         </a>
         <div class="bl-card-body">
           <p class="bl-meta">
-            <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= post.date %></span>
-            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= post.readTime %></span>
+            <span><i class="fa-solid fa-calendar" aria-hidden="true"></i> <%= post.date %></span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> <%= post.readTime %></span>
           </p>
           <h2 class="bl-card-title"><a href="/blog/<%= post.slug %>"><%= post.title %></a></h2>
           <p class="bl-excerpt"><%= post.excerpt %></p>

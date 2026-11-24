@@ -121,7 +121,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-on-dark);
 }
 .hm-country-body strong { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
 .hm-country--lead .hm-country-body strong { font-size: clamp(1.9rem, 3vw, 2.6rem); }
@@ -237,7 +237,7 @@
   width: 52px;
   height: 52px;
   margin-bottom: 20px;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: var(--primary);
   color: #fff;
   font-size: 1.15rem;
@@ -257,7 +257,7 @@
 .hm-rating { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
 .hm-rating-score { font-size: 3.4rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--dark); }
 .hm-rating-detail { display: flex; flex-direction: column; gap: 2px; }
-.hm-rating-detail .stars { color: var(--accent); font-size: 1.05rem; letter-spacing: 0.1em; }
+.hm-rating-detail .stars { color: var(--accent-dark); font-size: 1.05rem; letter-spacing: 0.1em; }
 .hm-rating-detail small { font-size: 0.82rem; color: var(--text-muted); }
 
 /* the track clips overflow, so the card's shadow has to fit inside its padding */

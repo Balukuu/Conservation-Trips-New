@@ -10,7 +10,7 @@
     <h1>Safari Gallery</h1>
     <p class="sx-hero-sub"><%= photoTotal %> photographs from our own journeys: the Equator, the plains and the rivers of Uganda.</p>
     <ul class="sx-chips">
-      <li><i class="fa-regular fa-images" aria-hidden="true"></i> <%= plural(photoTotal, 'photo', 'photos') %></li>
+      <li><i class="fa-solid fa-images" aria-hidden="true"></i> <%= plural(photoTotal, 'photo', 'photos') %></li>
       <li><i class="fa-solid fa-folder-open" aria-hidden="true"></i> <%= plural(albums.length, 'album', 'albums') %></li>
     </ul>
   </div>
@@ -72,7 +72,7 @@
       <article class="album-card">
         <div class="album-card-img">
           <%- image({ src: a.cover, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', fill: true }) %>
-          <span class="album-card-count"><i class="fa-regular fa-images" aria-hidden="true"></i> <%= a.count %></span>
+          <span class="album-card-count"><i class="fa-solid fa-images" aria-hidden="true"></i> <%= a.count %></span>
         </div>
         <div class="album-card-body">
           <h3 class="album-card-title"><a href="<%= a.href %>"><%= a.title %></a></h3>

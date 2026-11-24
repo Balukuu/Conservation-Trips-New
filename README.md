@@ -145,6 +145,16 @@ caption. `pix/` is just a drop folder; the site never reads it.
 `itinerary` and `excluded` are optional: the day-by-day section and the "Not included" column are left out when empty.
 Trips do not expire by themselves: remove one (or unset `featured`) once its dates have passed.
 
+## UI conventions
+
+- **One icon style.** Font Awesome *solid* only; the regular set is a few outline icons that look like mistakes next to solid ones.
+- **Corner radii come from the scale** in `main.css` (`--radius-xs` 4, `-sm` 6, `-ms` 12, `-md` 16, `-ml` 20, `-xl` 24, `-lg` 28, `-pill`): no raw `border-radius: 14px`.
+- **Equal-width digits** (`font-variant-numeric: tabular-nums`) for anything with figures that change or are compared: prices, dates, counts, phone numbers. The list is in `main.css`.
+- **No decoration for its own sake**: buttons are flat colour (no shimmer, gradient or glow), and a hero doesn't repeat a facts bar that sits right under it.
+- **Say what it is.** Headings and button labels name the trip or the action ("About Christmas in the Wild", "See dates & prices"), not "Overview" / "View itinerary" where those would be wrong.
+- **Contrast**: text is at least 4.5:1 (3:1 for large text and graphics). `--accent` on white is fine for large UI; small gold text on dark uses `--accent-on-dark`.
+- **Loading states**: a form button shows a spinner while it sends, and the lightbox shows one while a picture loads.
+
 ## Touch and hover
 
 Hover effects that move or shadow things live inside `@media (hover: hover)`, so a tap on a phone doesn't leave a

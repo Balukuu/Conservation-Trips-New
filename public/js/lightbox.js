@@ -34,6 +34,20 @@
     var item = items[current];
     // the deferred swap in show() can fire after the lightbox was closed
     if (!item) return;
+    if (img.getAttribute('src') !== item.src) {
+      // hide the previous picture and show a spinner until this one has arrived
+      // (the spinner only appears after a beat, so a cached image never flashes it)
+      overlay.classList.add('is-loading');
+      img.classList.add('is-swapping');
+      var arrived = function () {
+        overlay.classList.remove('is-loading');
+        img.classList.remove('is-swapping');
+        img.removeEventListener('load', arrived);
+        img.removeEventListener('error', arrived);
+      };
+      img.addEventListener('load', arrived);
+      img.addEventListener('error', arrived);
+    }
     img.src = item.src;
     img.alt = item.alt || 'Gallery image ' + (current + 1);
     if (countEl) countEl.textContent = (current + 1) + ' / ' + items.length;
