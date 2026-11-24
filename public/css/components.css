@@ -467,6 +467,7 @@
 .td-timeline .accordion-body.open .accordion-inner { padding-bottom: 20px; }
 
 .td-inclusions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.td-inclusions--single { grid-template-columns: 1fr; }
 .td-inclusion {
   --td-danger: #B3261E;
   padding: 22px;
@@ -600,6 +601,89 @@
 .td-book-success i { display: block; margin-bottom: 12px; font-size: 2.5rem; color: var(--primary); }
 .td-book-success p:first-of-type { font-weight: 700; color: var(--dark); }
 .td-book-success p:last-child { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Dates & prices card: dated, fixed-price trips (Seasonal Trips) */
+.td-trip {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.td-trip-when {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--accent-light);
+}
+.td-trip-when > i {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 1.1rem;
+}
+.td-trip-when strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--dark);
+}
+.td-trip-when span { display: block; margin-top: 2px; font-size: 0.9rem; color: var(--text-muted); }
+.td-trip-prices {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  padding: 20px 24px;
+}
+.td-trip-prices li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+}
+.td-trip-prices span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.td-trip-prices strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--primary-dark);
+}
+.td-trip-fee {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-light);
+  background: var(--primary-light);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--dark-mid);
+}
+.td-trip-fee i { color: var(--primary); }
+.td-trip-fee strong { color: var(--dark); }
+@media (max-width: 480px) {
+  .td-trip-when, .td-trip-fee { padding-left: 18px; padding-right: 18px; }
+  .td-trip-prices { grid-template-columns: 1fr; padding: 16px 18px; }
+  .td-trip-prices li { flex-direction: row; align-items: center; justify-content: space-between; }
+}
 
 .td-related { margin-top: 64px; }
 .td-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

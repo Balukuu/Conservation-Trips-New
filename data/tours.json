@@ -1,5 +1,264 @@
 [
   {
+    "id": "murchison-falls-christmas-in-the-wild-2026",
+    "slug": "murchison-falls-christmas-in-the-wild-2026",
+    "name": "Christmas in the Wild: Murchison Falls",
+    "category": "Seasonal Trips",
+    "countries": ["Uganda"],
+    "duration": "3 Days / 2 Nights",
+    "durationDays": 3,
+    "dates": { "start": "2026-12-24", "end": "2026-12-26" },
+    "theme": "Christmas Bush Brunch + Bonfire Night",
+    "pricing": {
+      "currency": "UGX",
+      "options": [
+        { "label": "Sharing", "amount": 950000 },
+        { "label": "Single", "amount": 1250000 },
+        { "label": "Kids (5–12 yrs)", "amount": 550000, "child": true }
+      ],
+      "bookingFee": 300000,
+      "bookingFeeNote": "To secure your festive slot"
+    },
+    "image": "/images/social/elephant-mother-and-calves.jpg",
+    "gallery": [
+      "/images/social/elephant-mother-and-calves.jpg",
+      "/images/waterfall.jpg",
+      "/images/social/murchison-nile-cruise.jpg",
+      "/images/social/safari-vehicles-at-the-nile.jpg",
+      "/images/social/elephants-bathing.jpg"
+    ],
+    "summary": "Spend Christmas in the wild at Murchison Falls National Park. Over three days and two nights you'll stand at the Top of the Falls, enjoy a Christmas bush brunch, go on a game drive and a boat cruise, and round it off with a bonfire night and Christmas cake cutting, with a visit from Santa for the kids.",
+    "highlights": [
+      "Christmas bush brunch",
+      "Top of the Falls experience",
+      "Game drive and boat cruise",
+      "Bonfire night with Christmas cake cutting",
+      "Santa visits the kids",
+      "Christmas dinner with half-board accommodation"
+    ],
+    "included": [
+      "Transport",
+      "Accommodation (half board + Christmas dinner)",
+      "Top of the Falls experience",
+      "Christmas bush brunch",
+      "Game drive",
+      "Boat cruise",
+      "Park entrance & guide fees",
+      "Bonfire + Christmas cake cutting",
+      "Santa for the kids"
+    ],
+    "destinations": ["Murchison Falls National Park"],
+    "featured": true
+  },
+  {
+    "id": "queen-elizabeth-christmas-in-the-wild-2026",
+    "slug": "queen-elizabeth-christmas-in-the-wild-2026",
+    "name": "Christmas in the Wild: Queen Elizabeth National Park",
+    "category": "Seasonal Trips",
+    "countries": ["Uganda"],
+    "duration": "3 Days / 2 Nights",
+    "durationDays": 3,
+    "dates": { "start": "2026-12-24", "end": "2026-12-26" },
+    "stay": "Equator Campsite & Safari Lodge",
+    "pricing": {
+      "currency": "UGX",
+      "options": [
+        { "label": "Sharing", "amount": 980000 },
+        { "label": "Single", "amount": 1280000 },
+        { "label": "Kids (5–12 yrs)", "amount": 580000, "child": true }
+      ],
+      "bookingFee": 300000
+    },
+    "image": "/images/photos/kazinga-elephant.webp",
+    "gallery": [
+      "/images/photos/kazinga-elephant.webp",
+      "/images/photos/kazinga-hippos.webp",
+      "/images/photos/equator-kikorongo-wide.webp",
+      "/images/photos/safari-4x4-lineup.webp",
+      "/images/photos/equator-kikorongo-globe-sign.webp"
+    ],
+    "galleryAlbums": [
+      { "album": "kikorongo-equator", "limit": 4 },
+      { "album": "kazinga-cruise", "limit": 6 }
+    ],
+    "summary": "Celebrate Christmas in Queen Elizabeth National Park. Across three days and two nights you'll go on a game drive on the Kasenyi Plains, cruise the Kazinga Channel, tour the crater lakes, stand on the Equator and visit Katwe Salt Lake, with a Christmas dinner and a bonfire with Christmas cake.",
+    "highlights": [
+      "Game drive on the Kasenyi Plains",
+      "Kazinga Channel boat cruise",
+      "Crater lakes tour",
+      "Equator experience",
+      "Katwe Salt Lake visit",
+      "Christmas dinner and a bonfire with Christmas cake"
+    ],
+    "included": [
+      "Transport",
+      "Accommodation (half board + Christmas dinner)",
+      "Game drive (Kasenyi Plains)",
+      "Kazinga Channel boat cruise",
+      "Crater lakes tour",
+      "Equator experience",
+      "Katwe Salt Lake visit",
+      "Park entrance & guide fees",
+      "Bonfire + Christmas cake"
+    ],
+    "destinations": ["Queen Elizabeth National Park"],
+    "featured": true
+  },
+  {
+    "id": "murchison-falls-new-year-crossover-2026",
+    "slug": "murchison-falls-new-year-crossover-2026",
+    "name": "New Year Crossover: Murchison Falls",
+    "category": "Seasonal Trips",
+    "countries": ["Uganda"],
+    "duration": "3 Days / 2 Nights",
+    "durationDays": 3,
+    "dates": { "start": "2026-12-30", "end": "2027-01-01" },
+    "theme": "Crossover Night at the Falls",
+    "badge": "Best Seller",
+    "pricing": {
+      "currency": "UGX",
+      "options": [
+        { "label": "Sharing", "amount": 1050000 },
+        { "label": "Single", "amount": 1350000 }
+      ],
+      "bookingFee": 300000,
+      "bookingFeeNote": "To secure your festive slot"
+    },
+    "image": "/images/waterfall.jpg",
+    "gallery": [
+      "/images/waterfall.jpg",
+      "/images/social/murchison-nile-cruise.jpg",
+      "/images/social/elephants-bathing.jpg",
+      "/images/social/safari-vehicles-at-the-nile.jpg",
+      "/images/social/elephant-mother-and-calves.jpg"
+    ],
+    "summary": "See in the New Year at Murchison Falls National Park. Three days and two nights with the Top of the Falls experience, a New Year bush brunch, a game drive and a sunset boat cruise, building to a New Year gala dinner, a bonfire with fireworks viewing, a crossover party and countdown drinks.",
+    "highlights": [
+      "Crossover night at the Falls",
+      "New Year gala dinner",
+      "Bonfire and fireworks viewing",
+      "Crossover party with countdown drinks",
+      "Top of the Falls and a New Year bush brunch",
+      "Game drive and sunset boat cruise"
+    ],
+    "included": [
+      "Transport",
+      "Accommodation (half board + New Year gala dinner)",
+      "Top of the Falls experience",
+      "New Year bush brunch",
+      "Game drive",
+      "Sunset boat cruise",
+      "Park entrance & guide fees",
+      "Bonfire + fireworks viewing",
+      "Crossover party",
+      "Countdown drinks"
+    ],
+    "destinations": ["Murchison Falls National Park"],
+    "featured": true
+  },
+  {
+    "id": "queen-elizabeth-new-year-crossover-2026",
+    "slug": "queen-elizabeth-new-year-crossover-2026",
+    "name": "New Year Crossover: Queen Elizabeth National Park",
+    "category": "Seasonal Trips",
+    "countries": ["Uganda"],
+    "duration": "3 Days / 2 Nights",
+    "durationDays": 3,
+    "dates": { "start": "2026-12-30", "end": "2027-01-01" },
+    "theme": "Crossover Night at the Park",
+    "badge": "Best Seller",
+    "pricing": {
+      "currency": "UGX",
+      "options": [
+        { "label": "Sharing", "amount": 650000 },
+        { "label": "Single", "amount": 750000 }
+      ],
+      "bookingFee": 350000
+    },
+    "image": "/images/photos/kazinga-sunset.webp",
+    "gallery": [
+      "/images/photos/kazinga-sunset.webp",
+      "/images/photos/kazinga-hippos-surfacing.webp",
+      "/images/photos/kazinga-elephant.webp",
+      "/images/photos/safari-4x4-lineup.webp",
+      "/images/photos/equator-kikorongo-wide.webp"
+    ],
+    "galleryAlbums": [
+      { "album": "kazinga-cruise", "limit": 6 },
+      { "album": "kikorongo-equator", "limit": 4 }
+    ],
+    "summary": "See in the New Year in Queen Elizabeth National Park. Three days and two nights with a game drive, a sunset Kazinga Channel cruise, the crater lakes, an Equator stop and the hot springs, then a New Year gala dinner, a bonfire, a crossover party, countdown drinks and fireworks.",
+    "highlights": [
+      "Crossover night in the park",
+      "New Year gala dinner",
+      "Bonfire, crossover party and fireworks",
+      "Sunset Kazinga Channel boat cruise",
+      "Crater lakes, Equator stop and hot springs",
+      "Game drive"
+    ],
+    "included": [
+      "Transport",
+      "Accommodation (half board + New Year gala dinner)",
+      "Game drive",
+      "Sunset Kazinga boat cruise",
+      "Crater lakes",
+      "Equator stop",
+      "Hot springs",
+      "Park entrance & guide fees",
+      "Bonfire + crossover party",
+      "Countdown drinks & fireworks"
+    ],
+    "destinations": ["Queen Elizabeth National Park"],
+    "featured": true
+  },
+  {
+    "id": "murchison-falls-brunch-on-the-falls-2027",
+    "slug": "murchison-falls-brunch-on-the-falls-2027",
+    "name": "Brunch on the Falls: Murchison Falls",
+    "category": "Seasonal Trips",
+    "countries": ["Uganda"],
+    "duration": "3 Days / 2 Nights",
+    "durationDays": 3,
+    "dates": { "start": "2027-01-08", "end": "2027-01-10" },
+    "stay": "Gipir & Labongo Safari Lodge",
+    "pricing": {
+      "currency": "UGX",
+      "options": [
+        { "label": "Sharing", "amount": 865000 },
+        { "label": "Single", "amount": 1150000 }
+      ],
+      "bookingFee": 250000
+    },
+    "image": "/images/social/murchison-nile-cruise.jpg",
+    "gallery": [
+      "/images/social/murchison-nile-cruise.jpg",
+      "/images/waterfall.jpg",
+      "/images/social/safari-vehicles-at-the-nile.jpg",
+      "/images/social/elephants-bathing.jpg",
+      "/images/social/elephant-mother-and-calves.jpg"
+    ],
+    "summary": "Brunch on the Falls is a three-day, two-night trip to Murchison Falls National Park, staying at Gipir & Labongo Safari Lodge. It brings together the Top of the Falls experience, a bush brunch, a game drive, a boat cruise safari and a bonfire.",
+    "highlights": [
+      "Top of the Falls experience",
+      "Bush brunch",
+      "Game drive",
+      "Boat cruise safari",
+      "Bonfire experience"
+    ],
+    "included": [
+      "Transport",
+      "Accommodation (half board)",
+      "Top of the Falls experience",
+      "Bush brunch",
+      "Game drive",
+      "Boat cruise safari",
+      "Park entrance & guide fees",
+      "Bonfire experience"
+    ],
+    "destinations": ["Murchison Falls National Park"],
+    "featured": true
+  },
+  {
     "id": "3-days-queen-elizabeth-national-park",
     "slug": "3-days-queen-elizabeth-national-park",
     "name": "3 Days Queen Elizabeth National Park Safari",

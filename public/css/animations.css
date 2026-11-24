@@ -421,6 +421,7 @@
 .tour-card[data-category="Boat Cruise"]        { --tint: 22, 58, 94; }
 .tour-card[data-category="Cultural Tour"]      { --tint: 112, 42, 30; }
 .tour-card[data-category="Mountain Climbing"]  { --tint: 40, 52, 72; }
+.tour-card[data-category="Seasonal Trips"]     { --tint: 88, 38, 76; }
 
 /* The photo sits behind the content (z-index -1 inside the card's own stacking
    context) so the body can stay in normal flow and the title link's ::after
@@ -487,6 +488,38 @@
   line-height: 1.4;
   color: rgba(255,255,255,0.82);
   margin-bottom: 18px;
+}
+.tour-card-facts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: -8px 0 18px;   /* tucks under the meta line (which has an 18px bottom margin) */
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+.tour-card-facts li { display: inline-flex; align-items: center; gap: 8px; }
+.tour-card-facts i { color: var(--accent); font-size: 0.82rem; }
+/* "Best Seller" and the like: solid, so it reads over any photo */
+.tour-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 .tour-card-cta {
   display: flex;

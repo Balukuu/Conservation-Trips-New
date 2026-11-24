@@ -2,8 +2,12 @@
   const places = tour.countries || [];
   const where = places.length > 1 ? places.slice(0, -1).join(', ') + ' & ' + places[places.length - 1] : (places[0] || '');
   const meta = [tour.category, where].filter(Boolean).join(' • ');
+  // Dated, fixed-price trips (Seasonal Trips) show when they run and what they cost
+  const trip = tripDates(tour.dates);
+  const fromPrice = lowestPrice(tour.pricing);
 %>
 <article class="tour-card" data-category="<%= tour.category %>"<%= typeof hidden !== 'undefined' && hidden ? ' hidden' : '' %>>
+  <% if (tour.badge) { %><span class="tour-card-badge"><i class="fa-solid fa-fire" aria-hidden="true"></i> <%= tour.badge %></span><% } %>
   <div class="tour-card-img">
     <%- image({ src: tour.image, alt: '', sizes: '(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw', position: tour.imagePosition }) %>
     <div class="tour-card-img-overlay"></div>
@@ -13,6 +17,12 @@
       <a href="/tours/<%= tour.slug %>"><%= tour.name %></a>
     </h3>
     <% if (meta) { %><p class="tour-card-meta"><%= meta %></p><% } %>
+    <% if (trip || fromPrice) { %>
+    <ul class="tour-card-facts">
+      <% if (trip) { %><li><i class="fa-regular fa-calendar" aria-hidden="true"></i><span><%= trip.short %></span></li><% } %>
+      <% if (fromPrice) { %><li><i class="fa-solid fa-tag" aria-hidden="true"></i><span>From <%= money(fromPrice, tour.pricing.currency) %></span></li><% } %>
+    </ul>
+    <% } %>
     <span class="tour-card-cta" aria-hidden="true">View itinerary <i class="fa-solid fa-arrow-right"></i></span>
   </div>
 </article>

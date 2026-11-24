@@ -5,7 +5,14 @@
   const morePhotos = photos.slice(mosaic.length);
   const countries = (tour.countries || []).join(' & ');
   const itinerary = tour.itinerary || [];
-  const whatsapp = 'https://wa.me/256767936590?text=' + encodeURIComponent('Hello! I\'m interested in "' + tour.name + '". Can you help me plan it?');
+  // Dated, fixed-price trips (Seasonal Trips): when they run and what they cost
+  const trip = tripDates(tour.dates);
+  const pricing = tour.pricing || null;
+  const fromPrice = lowestPrice(pricing);
+  const excluded = tour.excluded || [];
+  const whatsapp = 'https://wa.me/256767936590?text=' + encodeURIComponent(trip
+    ? 'Hello! I\'d like to book "' + tour.name + '" (' + trip.long + '). Is there space?'
+    : 'Hello! I\'m interested in "' + tour.name + '". Can you help me plan it?');
 %>
 <!-- Hero -->
 <section class="td-hero">
@@ -22,6 +29,7 @@
     <div class="td-hero-tags">
       <span class="badge badge-accent"><%= tour.category %></span>
       <span class="badge badge-glass"><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
+      <% if (trip) { %><span class="badge badge-glass"><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= trip.short %></span><% } %>
       <% if (countries) { %><span class="badge badge-glass"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <%= countries %></span><% } %>
     </div>
     <h1 class="td-title"><%= tour.name %></h1>
@@ -36,9 +44,12 @@
     <div class="td-facts">
       <ul class="td-facts-list">
         <li><i class="fa-regular fa-clock" aria-hidden="true"></i><span class="td-fact-label">Duration</span><strong><%= tour.duration %></strong></li>
+        <% if (trip) { %><li><i class="fa-regular fa-calendar" aria-hidden="true"></i><span class="td-fact-label">Dates</span><strong><%= trip.short %></strong></li><% } %>
         <li><i class="fa-solid fa-compass" aria-hidden="true"></i><span class="td-fact-label">Style</span><strong><%= tour.category %></strong></li>
         <% if (countries) { %><li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span class="td-fact-label">Where</span><strong><%= countries %></strong></li><% } %>
-        <li><i class="fa-solid fa-users" aria-hidden="true"></i><span class="td-fact-label">Group</span><strong>Small groups</strong></li>
+        <% if (tour.stay) { %><li><i class="fa-solid fa-bed" aria-hidden="true"></i><span class="td-fact-label">Stay</span><strong><%= tour.stay %></strong></li><% } %>
+        <%# "Small groups" describes the any-date safaris; a scheduled trip has its own dates instead %>
+        <% if (!trip) { %><li><i class="fa-solid fa-users" aria-hidden="true"></i><span class="td-fact-label">Group</span><strong>Small groups</strong></li><% } %>
       </ul>
       <a href="#enquire-form" class="btn btn-primary">Enquire now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     </div>
@@ -47,6 +58,33 @@
 
       <!-- Main column -->
       <div class="td-main">
+
+        <% if (trip || pricing) { %>
+        <section class="td-section reveal" aria-labelledby="td-trip-h">
+          <h2 class="td-h2" id="td-trip-h"><span class="td-h2-icon"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span>Dates &amp; prices</h2>
+          <div class="td-trip">
+            <% if (trip) { %>
+            <div class="td-trip-when">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              <div>
+                <strong><%= trip.long %></strong>
+                <span><%= tour.duration %><% if (tour.theme) { %> &middot; <%= tour.theme %><% } %></span>
+              </div>
+            </div>
+            <% } %>
+            <% if (pricing && pricing.options && pricing.options.length) { %>
+            <ul class="td-trip-prices">
+              <% pricing.options.forEach(o => { %>
+              <li><span><%= o.label %></span><strong><%= money(o.amount, pricing.currency) %></strong></li>
+              <% }) %>
+            </ul>
+            <% if (pricing.bookingFee) { %>
+            <p class="td-trip-fee"><i class="fa-solid fa-ticket" aria-hidden="true"></i><span><strong>Booking fee: <%= money(pricing.bookingFee, pricing.currency) %></strong><% if (pricing.bookingFeeNote) { %> &middot; <%= pricing.bookingFeeNote %><% } %></span></p>
+            <% } %>
+            <% } %>
+          </div>
+        </section>
+        <% } %>
 
         <section class="td-section reveal" aria-labelledby="td-overview-h">
           <h2 class="td-h2" id="td-overview-h"><span class="td-h2-icon"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span>Overview</h2>
@@ -101,7 +139,7 @@
 
         <section class="td-section reveal" aria-labelledby="td-included-h">
           <h2 class="td-h2" id="td-included-h"><span class="td-h2-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span>What&rsquo;s included</h2>
-          <div class="td-inclusions">
+          <div class="td-inclusions<%= excluded.length ? '' : ' td-inclusions--single' %>">
             <div class="td-inclusion td-inclusion--yes">
               <h3><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Included</h3>
               <ul>
@@ -110,14 +148,16 @@
                 <% }) %>
               </ul>
             </div>
+            <% if (excluded.length) { %>
             <div class="td-inclusion td-inclusion--no">
               <h3><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Not included</h3>
               <ul>
-                <% (tour.excluded || []).forEach(item => { %>
+                <% excluded.forEach(item => { %>
                 <li><i class="fa-solid fa-xmark" aria-hidden="true"></i><span><%= item %></span></li>
                 <% }) %>
               </ul>
             </div>
+            <% } %>
           </div>
         </section>
 
@@ -170,10 +210,10 @@
           <div class="td-book-head">
             <p class="td-book-meta">
               <span><i class="fa-regular fa-clock" aria-hidden="true"></i> <%= tour.duration %></span>
-              <span><i class="fa-solid fa-users" aria-hidden="true"></i> Small groups</span>
+              <% if (trip) { %><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <%= trip.short %></span><% } else { %><span><i class="fa-solid fa-users" aria-hidden="true"></i> Small groups</span><% } %>
             </p>
-            <p class="td-book-title">Plan this safari</p>
-            <p class="td-book-sub">Tell us your dates and group size</p>
+            <p class="td-book-title"><%= trip ? 'Book this trip' : 'Plan this safari' %></p>
+            <p class="td-book-sub"><%= trip ? (fromPrice ? 'From ' + money(fromPrice, pricing.currency) + ' · ' : '') + 'tell us your group size' : 'Tell us your dates and group size' %></p>
           </div>
           <div class="td-book-body">
             <p class="td-book-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> We respond within 24 hours &middot; No payment required</p>
@@ -183,7 +223,7 @@
                   data-mode="<%= typeof staticBuild !== 'undefined' && staticBuild ? 'static' : 'server' %>"
                   data-endpoint="<%= typeof formEndpoint !== 'undefined' ? formEndpoint : '' %>"
                   data-email="info@tripsandadventures.co.ug">
-              <input type="hidden" name="tour" value="<%= tour.name %>">
+              <input type="hidden" name="tour" value="<%= tour.name %><%= trip ? ' (' + trip.long + ')' : '' %>">
               <div class="form-group">
                 <label for="eq-name">Full Name *</label>
                 <input type="text" id="eq-name" name="name" class="form-control" placeholder="Your name" autocomplete="name" autocapitalize="words" required>
@@ -201,7 +241,7 @@
               <div class="form-row">
                 <div class="form-group">
                   <label for="eq-date">Travel Date</label>
-                  <input type="date" id="eq-date" name="travel_date" class="form-control">
+                  <input type="date" id="eq-date" name="travel_date" class="form-control" value="<%= tour.dates ? tour.dates.start : '' %>">
                 </div>
                 <div class="form-group">
                   <label for="eq-group">Group Size</label>
@@ -245,8 +285,13 @@
 <!-- Sticky enquiry bar (tablet / phone; behaviour in main.js) -->
 <div class="sticky-cta is-hidden" id="sticky-cta">
   <div class="sticky-cta-info">
+    <% if (trip && fromPrice) { %>
+    <span><%= trip.short %></span>
+    <strong>From <%= money(fromPrice, pricing.currency) %></strong>
+    <% } else { %>
     <span>Duration</span>
     <strong><%= tour.duration %></strong>
+    <% } %>
   </div>
   <a href="#enquire-form" class="btn btn-primary btn-sm">Enquire now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
 </div>
