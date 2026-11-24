@@ -56,10 +56,19 @@
 
   function setMenu(open, returnFocus) {
     if (!navbar || !mobileMenu) return;
+    // Interrupted mid-drag or mid-spring, the menu sits at an inline offset with
+    // transitions switched off (.dragging). Switch them back on and commit that
+    // offset as the start value BEFORE dropping it, so the class change slides on
+    // from where the menu is. Left on, .dragging would also linger and silently
+    // disable every later open/close animation.
+    var interrupted = !!menuSpring || mobileMenu.classList.contains('dragging');
     stopMenuSpring();
+    if (interrupted) {
+      mobileMenu.classList.remove('dragging');
+      if (menuBackdrop) menuBackdrop.classList.remove('dragging');
+      void mobileMenu.offsetWidth; // flush style: the inline offset becomes the transition's start
+    }
     menuOpen = open;
-    // Drop inline drag styles with transitions off, so the class change
-    // continues from the same visual position instead of jumping.
     clearMenuInline();
     menuOffset = 0;
     navbar.classList.toggle('menu-open', open);

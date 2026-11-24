@@ -847,7 +847,9 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
   overflow: hidden;
   transition: var(--transition);
 }
-.social-card:hover { box-shadow: var(--shadow-lg); }
+@media (hover: hover) {
+  .social-card:hover { box-shadow: var(--shadow-lg); }
+}
 
 .social-media {
   aspect-ratio: 1 / 1;
@@ -921,7 +923,9 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
 .social-link:focus-visible { outline: none; }
 .social-link:focus-visible::after { outline: 3px solid var(--primary); outline-offset: -3px; border-radius: var(--radius-md); }
 .social-link i { font-size: 0.7rem; transition: transform var(--dur-base) var(--ease-out); }
-.social-card:hover .social-link i { transform: translate(2px, -2px); }
+@media (hover: hover) {
+  .social-card:hover .social-link i { transform: translate(2px, -2px); }
+}
 
 /* ============================================================
    GALLERY PAGE
@@ -1004,7 +1008,9 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
   border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);
   transition: box-shadow var(--dur-base) ease;
 }
-.album-card:hover { box-shadow: var(--shadow-lg); }
+@media (hover: hover) {
+  .album-card:hover { box-shadow: var(--shadow-lg); }
+}
 .album-card-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--primary-light); }
 .album-card-img img { transition: transform 0.55s var(--ease-out); }
 @media (hover: hover) { .album-card:hover .album-card-img img { transform: scale(1.05); } }

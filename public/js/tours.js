@@ -25,7 +25,20 @@
   var noResults = document.querySelector('.no-results-msg');
   var countEl = document.querySelector('[data-tours-count]'); // /tours only: "11 itineraries"
   var headingEl = document.querySelector('[data-page-heading]'); // /tours only: the h1
+  var chipEls = Array.prototype.slice.call(document.querySelectorAll('[data-hero-chips] [data-chip]')); // /tours only: hero facts
   if (!tabs.length) return;
+
+  // The hero facts belong to the category on show: each tab carries its own as JSON.
+  function setChips(json) {
+    if (!chipEls.length || !json) return;
+    var chips;
+    try { chips = JSON.parse(json); } catch (err) { return; }
+    chipEls.forEach(function (li) {
+      var text = chips[li.getAttribute('data-chip')] || '';
+      li.querySelector('span').textContent = text;
+      li.hidden = !text;
+    });
+  }
 
   function setActive(category) {
     tabs.forEach(function (tab) {
@@ -36,6 +49,7 @@
       if (on) {
         if (headingEl && tab.getAttribute('data-heading')) headingEl.textContent = tab.getAttribute('data-heading');
         if (tab.getAttribute('data-title')) document.title = tab.getAttribute('data-title');
+        setChips(tab.getAttribute('data-chips'));
       }
     });
   }

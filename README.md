@@ -116,6 +116,31 @@ The tabs are real links, so each category has its own URL and works without Java
 in place and keeps the "N itineraries" count in step. Below the container width the tabs become one swipeable strip.
 The cards are the shared `partials/tour-card.ejs`, also used on the home, destination and tour pages.
 
+The hero facts follow the category on show: every tab carries its own set (`chips`, built by `toursStats()` in
+`lib/pages.js`) and `tours.js` swaps them in when a tab filters in place. The "from" price quotes one currency, USD
+for any set that has USD safaris, otherwise the trips' own (Seasonal Trips are UGX), so it never compares across
+currencies.
+
+### Seasonal trips (dated, fixed-price)
+
+A tour in `data/tours.json` becomes a dated trip by adding any of these (helpers in `lib/trips.js`; tours without
+them are unaffected, and `priceUSD` is left out so they don't feed the USD "from" price):
+
+| Field | Example | Shows |
+| --- | --- | --- |
+| `dates` | `{ "start": "2026-12-24", "end": "2026-12-26" }` | "24-26 Dec 2026" on cards, hero and sticky bar; "24th - 26th December 2026" in the Dates & prices card. The enquiry form's travel date is pre-filled with `start`. |
+| `pricing` | `{ "currency": "UGX", "options": [{ "label": "Sharing", "amount": 950000 }, { "label": "Kids (5-12 yrs)", "amount": 550000, "child": true }], "bookingFee": 300000, "bookingFeeNote": "..." }` | The price tiles and the booking-fee line. Cards say "From <cheapest adult option>": options flagged `child: true` are skipped. |
+| `theme`, `stay` | `"Crossover Night at the Falls"`, `"Gipir & Labongo Safari Lodge"` | The theme in the dates card; the stay in the quick facts. |
+| `badge` | `"Best Seller"` | A pill on the card. |
+
+`itinerary` and `excluded` are optional: the day-by-day section and the "Not included" column are left out when empty.
+Trips do not expire by themselves: remove one (or unset `featured`) once its dates have passed.
+
+## Touch and hover
+
+Hover effects that move or shadow things live inside `@media (hover: hover)`, so a tap on a phone doesn't leave a
+card lifted or a button restyled. New hover rules should go there too (colour-only changes are harmless).
+
 ## Motion, press feedback and hit areas
 
 - **Tokens** (`main.css` `:root`): `--dur-press / -fast / -base / -slow` for durations, `--ease-out` / `--ease-sheet`

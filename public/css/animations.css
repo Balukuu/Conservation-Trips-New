@@ -411,7 +411,9 @@
   box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
-.tour-card:hover { box-shadow: var(--shadow-lg); }
+@media (hover: hover) {
+  .tour-card:hover { box-shadow: var(--shadow-lg); }
+}
 @media (max-width: 640px) { .tour-card { aspect-ratio: 4 / 5; } }
 
 /* Palette-harmonised, dark enough for white text */
@@ -543,7 +545,9 @@
   transition: transform var(--dur-base) var(--ease-out);
 }
 .tour-card:hover .tour-card-cta { background: rgba(255,255,255,0.26); border-color: rgba(255,255,255,0.3); }
-.tour-card:hover .tour-card-cta i { transform: translateX(4px); }
+@media (hover: hover) {
+  .tour-card:hover .tour-card-cta i { transform: translateX(4px); }
+}
 .tour-card.hidden { display: none; }
 
 /* ============================================================
@@ -915,7 +919,9 @@
   transition: transform var(--dur-base) var(--ease-out);
 }
 .nav-links > li > a:hover { color: #fff; }
-.nav-links > li > a:hover::after { transform: scaleX(1); }
+@media (hover: hover) {
+  .nav-links > li > a:hover::after { transform: scaleX(1); }
+}
 .nav-links > li > a.active { color: #fff; }
 .nav-links > li > a.active::after { transform: scaleX(1); }
 .nav-phone {
@@ -946,10 +952,12 @@
   transition: var(--transition);
   white-space: nowrap;
 }
-.nav-book:hover {
-  background: var(--accent-dark);
-  box-shadow: var(--shadow-gold);
-  color: #fff;
+@media (hover: hover) {
+  .nav-book:hover {
+    background: var(--accent-dark);
+    box-shadow: var(--shadow-gold);
+    color: #fff;
+  }
 }
 
 /* Hamburger — a 44px target; bars translate first, then rotate, so the X
