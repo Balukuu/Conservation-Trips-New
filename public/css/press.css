@@ -27,6 +27,7 @@
 }
 
 .tour-card:active,
+.td-poster-open:active,
 .social-card:active,
 .bl-card:active,
 .ds-country:active,
@@ -64,6 +65,7 @@
 .ct-terms a:active,
 .mobile-meta a:active,
 .td-assure-wa:active,
+.td-poster-dl:active,
 a.badge:active {
   opacity: 0.6;
   transition-duration: var(--dur-press);
@@ -96,11 +98,13 @@ a.badge:active {
 .ds-park-more,
 .ds-park-tours li a,
 .nav-logo,
+.td-poster-dl,
 a.badge,
 .slider-pause,
 .test-pause {
   position: relative;
 }
+.td-poster-dl::after { content: ''; position: absolute; inset: -12px -6px; }
 a.badge::after { content: ''; position: absolute; inset: -8px; }
 /* the round pause buttons are 32px; the padding brings them to 44px */
 .slider-pause::after,
@@ -133,6 +137,7 @@ a.badge::after { content: ''; position: absolute; inset: -8px; }
 /* ─── Reduced motion: dim instead of scale ──────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .tour-card:active,
+  .td-poster-open:active,
   .social-card:active,
   .bl-card:active,
   .ds-country:active,

@@ -905,6 +905,9 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .lightbox-nav { top: 50%; margin-top: -24px; }
 .lightbox-prev { left: 12px; }
 .lightbox-next { right: 12px; }
+/* one image (a poster): nothing to browse */
+.lightbox-overlay.is-single .lightbox-nav,
+.lightbox-overlay.is-single .lightbox-count { display: none; }
 .lightbox-close:hover, .lightbox-nav:hover { background: var(--accent); border-color: var(--accent); color: var(--dark); }
 .lightbox-close:active, .lightbox-nav:active { transform: scale(0.94); transition-duration: var(--dur-press); }
 .lightbox-count {

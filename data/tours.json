@@ -15,9 +15,11 @@
         { "label": "Sharing", "amount": 950000 },
         { "label": "Single", "amount": 1250000 },
         { "label": "Kids (5–12 yrs)", "amount": 550000, "child": true }
-      ],
-      "bookingFee": 300000,
-      "bookingFeeNote": "To secure your festive slot"
+      ]
+    },
+    "poster": {
+      "src": "/images/posters/murchison-falls-christmas-in-the-wild-2026.png",
+      "credit": "Photo: Wikimedia Commons, public domain"
     },
     "image": "/images/social/elephant-mother-and-calves.jpg",
     "gallery": [
@@ -68,6 +70,10 @@
         { "label": "Kids (5–12 yrs)", "amount": 580000, "child": true }
       ],
       "bookingFee": 300000
+    },
+    "poster": {
+      "src": "/images/posters/queen-elizabeth-christmas-in-the-wild-2026.png",
+      "credit": "Photo: Giles Laurent / Wikimedia Commons, CC BY-SA 4.0"
     },
     "image": "/images/photos/kazinga-elephant.webp",
     "gallery": [
@@ -124,6 +130,10 @@
       "bookingFee": 300000,
       "bookingFeeNote": "To secure your festive slot"
     },
+    "poster": {
+      "src": "/images/posters/murchison-falls-new-year-crossover-2026.png",
+      "credit": "Photo: Wikimedia Commons, public domain"
+    },
     "image": "/images/waterfall.jpg",
     "gallery": [
       "/images/waterfall.jpg",
@@ -174,6 +184,10 @@
         { "label": "Single", "amount": 750000 }
       ],
       "bookingFee": 350000
+    },
+    "poster": {
+      "src": "/images/posters/queen-elizabeth-new-year-crossover-2026.png",
+      "credit": "Photo: Giles Laurent / Wikimedia Commons, CC BY-SA 4.0"
     },
     "image": "/images/photos/kazinga-sunset.webp",
     "gallery": [

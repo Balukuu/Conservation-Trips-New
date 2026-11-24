@@ -1051,5 +1051,77 @@
         "url": "/images/opt/uwa-212.webp"
       }
     ]
+  },
+  "/images/posters/murchison-falls-christmas-in-the-wild-2026.png": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "w": 320,
+        "url": "/images/opt/posters/murchison-falls-christmas-in-the-wild-2026-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/posters/murchison-falls-christmas-in-the-wild-2026-640.webp"
+      },
+      {
+        "w": 1080,
+        "url": "/images/opt/posters/murchison-falls-christmas-in-the-wild-2026-1080.webp"
+      }
+    ]
+  },
+  "/images/posters/murchison-falls-new-year-crossover-2026.png": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "w": 320,
+        "url": "/images/opt/posters/murchison-falls-new-year-crossover-2026-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/posters/murchison-falls-new-year-crossover-2026-640.webp"
+      },
+      {
+        "w": 1080,
+        "url": "/images/opt/posters/murchison-falls-new-year-crossover-2026-1080.webp"
+      }
+    ]
+  },
+  "/images/posters/queen-elizabeth-christmas-in-the-wild-2026.png": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "w": 320,
+        "url": "/images/opt/posters/queen-elizabeth-christmas-in-the-wild-2026-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/posters/queen-elizabeth-christmas-in-the-wild-2026-640.webp"
+      },
+      {
+        "w": 1080,
+        "url": "/images/opt/posters/queen-elizabeth-christmas-in-the-wild-2026-1080.webp"
+      }
+    ]
+  },
+  "/images/posters/queen-elizabeth-new-year-crossover-2026.png": {
+    "width": 1080,
+    "height": 1350,
+    "variants": [
+      {
+        "w": 320,
+        "url": "/images/opt/posters/queen-elizabeth-new-year-crossover-2026-320.webp"
+      },
+      {
+        "w": 640,
+        "url": "/images/opt/posters/queen-elizabeth-new-year-crossover-2026-640.webp"
+      },
+      {
+        "w": 1080,
+        "url": "/images/opt/posters/queen-elizabeth-new-year-crossover-2026-1080.webp"
+      }
+    ]
   }
 }

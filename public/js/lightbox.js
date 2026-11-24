@@ -59,6 +59,7 @@
     stopSpring();
     resetPaint();
     items = normalise(list);
+    overlay.classList.toggle('is-single', items.length < 2); // a lone image has nothing to browse
     current = index || 0;
     lastFocus = trigger || document.activeElement;
     show(true);
@@ -107,6 +108,16 @@
     });
   }
 
+  // A trip poster opens on its own, at the largest size the page has for it
+  function bindPosters() {
+    Array.prototype.forEach.call(document.querySelectorAll('.td-poster-open'), function (btn) {
+      btn.addEventListener('click', function () {
+        var im = btn.querySelector('img');
+        if (im) open([{ src: im.src, alt: im.alt }], 0, btn);
+      });
+    });
+  }
+
   if (closeBtn) closeBtn.addEventListener('click', close);
   if (prevBtn) prevBtn.addEventListener('click', prev);
   if (nextBtn) nextBtn.addEventListener('click', next);
@@ -119,7 +130,7 @@
     if (e.key === 'ArrowLeft') { prev(); return; }
     if (e.key === 'Tab') {
       // trap focus inside the dialog
-      var controls = [closeBtn, prevBtn, nextBtn].filter(Boolean);
+      var controls = [closeBtn, prevBtn, nextBtn].filter(function (b) { return b && b.getClientRects().length; });
       var i = controls.indexOf(document.activeElement);
       // i === -1: focus has strayed outside the dialog — pull it back in
       if (e.shiftKey && i <= 0) { e.preventDefault(); controls[controls.length - 1].focus(); }
@@ -295,6 +306,7 @@
   }, true);
 
   bindGallery();
+  bindPosters();
 
   // Expose for external use
   window.LightboxOpen = open;

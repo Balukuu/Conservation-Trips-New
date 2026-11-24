@@ -76,10 +76,13 @@ async function main() {
     // every standard width below the original (and below cfg.maxWidth, for images
     // only ever shown small, like avatars), plus the original width if it fits
     const cap = Math.min(cfg.maxWidth || Infinity, WIDTHS[WIDTHS.length - 1]);
-    const widths = WIDTHS.filter(w => w < Math.min(meta.width, cap)).concat(meta.width <= cap ? [meta.width] : [cap]);
+    // cfg.widths replaces the standard ladder; cfg.webp overrides the encoder options
+    // (posters are text-heavy, so they use near-lossless instead of quality 72)
+    const widths = (cfg.widths || WIDTHS).filter(w => w < Math.min(meta.width, cap)).concat(meta.width <= cap ? [meta.width] : [cap]);
+    const webp = { ...WEBP, ...(cfg.webp || {}) };
     for (const w of widths) {
       const out = `/images/opt/${stem}-${w}.webp`;
-      const bytes = await write(read(out), sharp(file).rotate().resize({ width: w, withoutEnlargement: true }).webp(WEBP));
+      const bytes = await write(read(out), sharp(file).rotate().resize({ width: w, withoutEnlargement: true }).webp(webp));
       entry.variants.push({ w, url: out });
       if (w === widths[widths.length - 1]) after += bytes;
     }

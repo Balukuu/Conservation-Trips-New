@@ -8,6 +8,7 @@
   // Dated, fixed-price trips (Seasonal Trips): when they run and what they cost
   const trip = tripDates(tour.dates);
   const pricing = tour.pricing || null;
+  const poster = tour.poster || null; // the trip's poster: shown beside the dates & prices, opens full size
   const fromPrice = lowestPrice(pricing);
   const excluded = tour.excluded || [];
   const whatsapp = 'https://wa.me/256767936590?text=' + encodeURIComponent(trip
@@ -62,6 +63,7 @@
         <% if (trip || pricing) { %>
         <section class="td-section reveal" aria-labelledby="td-trip-h">
           <h2 class="td-h2" id="td-trip-h"><span class="td-h2-icon"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span>Dates &amp; prices</h2>
+          <div class="td-trip-wrap<%= poster ? ' has-poster' : '' %>">
           <div class="td-trip">
             <% if (trip) { %>
             <div class="td-trip-when">
@@ -82,6 +84,20 @@
             <p class="td-trip-fee"><i class="fa-solid fa-ticket" aria-hidden="true"></i><span><strong>Booking fee: <%= money(pricing.bookingFee, pricing.currency) %></strong><% if (pricing.bookingFeeNote) { %> &middot; <%= pricing.bookingFeeNote %><% } %></span></p>
             <% } %>
             <% } %>
+          </div>
+          <% if (poster) { %>
+          <figure class="td-poster">
+            <%# Opens in the lightbox at the largest generated size (lightbox.js); the original PNG is the download %>
+            <button type="button" class="td-poster-open" aria-label="View the poster full size">
+              <%- image({ src: poster.src, sizes: '(min-width: 641px) 220px, 320px' }) %>
+              <i class="fa-solid fa-expand" aria-hidden="true"></i>
+            </button>
+            <figcaption>
+              <a class="td-poster-dl" href="<%= poster.src %>" download="<%= tour.slug %>-poster.png"><i class="fa-solid fa-download" aria-hidden="true"></i> Download HD poster</a>
+              <% if (poster.credit) { %><small><%= poster.credit %></small><% } %>
+            </figcaption>
+          </figure>
+          <% } %>
           </div>
         </section>
         <% } %>
@@ -286,7 +302,7 @@
 <div class="sticky-cta is-hidden" id="sticky-cta">
   <div class="sticky-cta-info">
     <% if (trip && fromPrice) { %>
-    <span><%= trip.short %></span>
+    <span><%= trip.compact %></span>
     <strong>From <%= money(fromPrice, pricing.currency) %></strong>
     <% } else { %>
     <span>Duration</span>

@@ -132,6 +132,15 @@ them are unaffected, and `priceUSD` is left out so they don't feed the USD "from
 | `pricing` | `{ "currency": "UGX", "options": [{ "label": "Sharing", "amount": 950000 }, { "label": "Kids (5-12 yrs)", "amount": 550000, "child": true }], "bookingFee": 300000, "bookingFeeNote": "..." }` | The price tiles and the booking-fee line. Cards say "From <cheapest adult option>": options flagged `child: true` are skipped. |
 | `theme`, `stay` | `"Crossover Night at the Falls"`, `"Gipir & Labongo Safari Lodge"` | The theme in the dates card; the stay in the quick facts. |
 | `badge` | `"Best Seller"` | A pill on the card. |
+| `poster` | `{ "src": "/images/posters/<slug>.png", "credit": "Photo: ..." }` | The trip's poster beside the Dates & prices card (below it on a phone). Clicking opens it alone in the lightbox at full size; "Download HD poster" saves the original PNG; the credit shows under it. |
+
+**Posters.** Drop the finished PNG in `public/images/posters/<trip-slug>.png`, add an entry to `data/images.json` (copy one of
+the existing poster entries), run `npm run images`, then set `poster` on the trip. A poster is mostly small print, so its entry
+sets `"webp": { "nearLossless": true, ... }` instead of the usual quality 72 (which visibly softens the text), `"widths"`
+for a short size ladder, and `"og": false` (no 1200x630 crop of a portrait poster). The lightbox shows the largest generated
+size, which is the poster's own width: ours are 1080x1350, so exporting at 2x from the design tool gives a sharper one
+(up to 2048 px wide) with no code change. The photo credit printed at the bottom of each poster is repeated in the page
+caption. `pix/` is just a drop folder; the site never reads it.
 
 `itinerary` and `excluded` are optional: the day-by-day section and the "Not included" column are left out when empty.
 Trips do not expire by themselves: remove one (or unset `featured`) once its dates have passed.

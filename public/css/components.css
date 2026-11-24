@@ -685,6 +685,50 @@
   .td-trip-prices li { flex-direction: row; align-items: center; justify-content: space-between; }
 }
 
+/* The trip's poster, beside the dates & prices card (a column on wide screens, below it on a phone) */
+.td-trip-wrap.has-poster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 20px;
+  align-items: start;
+}
+.td-poster { margin: 0; }
+.td-poster-open {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--primary-light);
+  box-shadow: var(--shadow-md);
+  cursor: zoom-in;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+.td-poster-open img { display: block; width: 100%; height: auto; }
+.td-poster-open i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(15, 31, 15, 0.78);
+  color: #fff;
+  font-size: 0.8rem;
+}
+@media (hover: hover) { .td-poster-open:hover { box-shadow: var(--shadow-lg); } }
+.td-poster figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.td-poster-dl { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+.td-poster figcaption small { font-size: 0.72rem; line-height: 1.4; color: var(--text-muted); }
+@media (max-width: 640px) {
+  .td-trip-wrap.has-poster { grid-template-columns: minmax(0, 1fr); }
+  .td-poster { width: 100%; max-width: 320px; margin: 0 auto; }
+}
+
 .td-related { margin-top: 64px; }
 .td-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
@@ -814,7 +858,7 @@ body:has(.not-found-page) .navbar { background: var(--dark); }
   }
   .sticky-cta-info { display: flex; flex-direction: column; line-height: 1.15; color: #fff; }
   .sticky-cta-info span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
-  .sticky-cta-info strong { font-size: 1.1rem; font-weight: 700; }
+  .sticky-cta-info strong { font-size: clamp(0.98rem, 4.4vw, 1.1rem); font-weight: 700; white-space: nowrap; }
   /* lift the floating buttons clear of the bar while it exists */
   .has-sticky-cta .whatsapp-float { bottom: calc(88px + env(safe-area-inset-bottom)); }
   .has-sticky-cta .back-to-top { bottom: calc(160px + env(safe-area-inset-bottom)); }
